@@ -84,7 +84,7 @@ class FacebookScraper:
             print(f"登入過程中發生錯誤: {str(e)}")
             return False
     
-    def save_cookies(self, file_path="facebook_cookies.json"):
+    def save_cookies(self, file_path="key/facebook_cookies.json"):
         """保存目前的cookies到文件"""
         with open(file_path, 'w') as file:
             json.dump(self.driver.get_cookies(), file)
@@ -264,7 +264,7 @@ def main():
     password = "Abcdefgh88125"
     
     # cookies檔案路徑（可選）
-    cookies_file = "facebook_cookies.json"
+    cookies_file = "key/facebook_cookies.json"
     
     # FB社團網址
     group_url = "https://www.facebook.com/groups/423579508162626/"
