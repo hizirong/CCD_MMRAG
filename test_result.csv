@@ -1,0 +1,45 @@
+id,type,question,answers,keywords,面向,llm_response,predicted,is_correct
+24,選擇,"若家中老犬常在晚間吠叫、彷彿不安，以下哪項做法最優先？
+A. 搬家讓牠換新環境
+B. 夜間完全關燈並限制活動
+C. 先維持穩定環境並提供微弱光源
+D. 立即施打鎮靜劑",C,夜間焦躁、穩定環境、光線調整、行為介入,照護,"**Answer:** C
+
+**Explanation:**
+
+*   The question requires the veterinarian to identify the most appropriate course of action for a dog that is barking excessively at night.
+*   Option A, moving the dog to a new environment, may not address the underlying issue and could potentially exacerbate the problem.
+*   Option D, administering tranquilizers, is not a recommended solution as it may mask the symptoms rather than addressing the root cause of the behavior.
+*   Option B, keeping the room completely dark and restricting activity, may help to calm the dog but does not address the underlying issue of the dog's anxiety or stress.
+*   Option C, maintaining a stable environment with a small amount of light, is the most appropriate solution as it allows for the dog to feel secure and comfortable while also providing some visual stimulation.
+
+**Reference:**
+
+*   Landsberg, G., Araujo, J.A. (2005). Behaviour problems in geriatric pets. Veterinary Clinics Small Animal Practice, 35, 675–698.
+*   McGreevy, P.D., Thomson, P.C., Pride, C., Fawcett, A., Grassi, T., Jones, B. (2005). Prevalence of obesity in dogs examined by Australian veterinary practices and the risk factors involved. Veterinary Record, 156, 695–702.
+*   Michell, A.R. (1999). Longevity of British breeds of dog and its relationship with sex, size, cardiovascular variables and disease. Veterinary Record, 145, 625–629.
+
+By following these guidelines, the veterinarian can provide a well-rounded answer that addresses the question while also providing relevant information from the references provided.",UNKNOWN,0
+25,選擇,"在照顧失智犬時，若發現牠對日常指令反應變慢，下列哪種訓練原則較合適？
+A. 加大音量不斷重複指令
+B. 利用簡短口令並搭配手勢或嗅聞提示
+C. 堅持原有長句式指令不做改變
+D. 取消所有訓練",B,簡短口令、視覺/嗅覺提示、指令調整、行為訓練,照護,"**Answer:** B. 利用簡短口令並搭配手勢或嗅聞提示。
+
+**Reasoning:**
+
+*   當照顧失智犬時，需要考慮到其認知功能的受限。利用簡短口令可以減少對其記憶力和注意力的要求。
+*   搭配手勢或嗅聞提示可以幫助犬隻更好地理解指令並執行動作。
+*   這種方法不僅有助於犬隻的認知功能，還能夠保持訓練的持續性和效果。
+
+**Reference:** 
+[Experience: https://www.facebook.com/share/p/19XTRfUdmd/]",UNKNOWN,0
+26,選擇,"如果高齡犬經常在家裡亂撞傢俱，可能和下列哪種現象最相關？
+A. 單純故意搗蛋
+B. Thigmotaxis 或定向障礙
+C. 想吸引主人注意
+D. 正常老化行為，不需處理",B,亂撞傢俱、Thigmotaxis、定向障礙、空間認知,照護,"B. Thigmotaxis 或定向障礙
+
+這種情況可能與Thigmotaxis或定向障礙相關，因為高齡犬在家裡亂撞傢俱可能是由於失去了方向感和空間認知能力，導致他們難以辨識周圍環境的位置和距離。這種情況與老年犬常見的認知功能障礙綜合症（CCD）相關。
+
+來源：[reference: CCD文獻]",UNKNOWN,0
