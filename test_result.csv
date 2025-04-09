@@ -1,45 +1,287 @@
 id,type,question,answers,keywords,面向,llm_response,predicted,is_correct
+6,是非,CCD 是否與神經發炎相關？是否有特定細胞因子（cytokines）或發炎路徑（例如NLRP3 inflammasome）參與？,True,NLRP3 炎症小體如何參與炎症反應、主要細胞因子：IL-1β、TNF-α 等、提到 CCD 早期炎症在分子層面的機制,醫療,"True
+
+CCD（犬認知功能障礙綜合症）與神經發炎有一定程度的關聯，但並非直接原因。研究表明，某些發炎路徑，如NLRP3 inflammasome，可能參與了 CCD 的病理機制。
+
+目前尚未有足夠的證據證實特定的細胞因子是引起 CCD 的直接原因。然而，研究人員認為神經發炎在 CCD 的發展中扮演著一定角色，可能與基因變異、環境因素和免疫反應等因素相關聯。
+
+[Experience: https://www.facebook.com/share/p/qFf55T4BgHJs6TzY/]",True,1
+7,是非,CCD 是否與腸道微生物群變化有關？哪些特定細菌群可能影響大腦健康？,True,"腸道菌群—腦軸(Gut-Brain Axis)的關聯、常見與神經退化風險相關的菌群 (如 Lactobacillus, Bifidobacterium 變化)、需補充臨床研究證據",醫療,"True
+
+犬認知功能障礙綜合症（CCD）與腸道微生物群變化有關，研究表明腸道菌群對大腦健康的影響至关重要。特定的細菌群，如Bifidobacterium和Lactobacillus，可以調節免疫系統並減少炎症反應，有助於預防或治療CCD。
+
+[Experience: https://www.facebook.com/share/p/qFf55T4BgHJs6TzY/]
+
+這些細菌群可以通過生產抗氧化劑和其他活性物質，來降低腦部炎症並促進神經保護。研究表明，腸道微生物群的平衡對於保持大腦健康至关重要，而失調可能會導致各種神經退行性疾病。
+
+[Experience: https://www.facebook.com/share/p/15n7ZUr3Qx/]",True,1
+8,是非,失智犬的松果體是否退化？是否影響褪黑激素分泌？,True,松果體機能與老年犬睡眠週期紊亂、減少褪黑激素分泌可能導致夜間焦躁與睡眠問題,醫療,"False
+
+失智犬（Canine Cognitive Dysfunction, CCD）的診斷與松果體退化無直接關係。CCD是一種因為老年性變異而導致的認知功能障礙，而不是由於特定的器官退行性病變。褪黑激素分泌也未被證實受影響。
+
+松果體退化通常與其他神經退行性疾病有關，例如多系統萎縮症（Progressive Multifocal Leukoencephalopathy, PML），而CCD則是一種不同於神經退行性疾病的臨床表現。褪黑激素分泌受影響的證據尚未被提及。
+
+[Experience: https://www.facebook.com/share/p/qFf55T4BgHJs6TzY/]",False,0
+9,是非,B 群維生素是否能降低 CCD 進展風險？,True,B 群在神經健康維持上的作用、研究對 B 群補充與認知功能衰退的關聯、實際劑量與臨床實證可引用,醫療,"真實性：False
+
+原因：目前沒有科學證據支持B群維生素能夠降低犬隻認知功能障礙綜合症（CCD）的進展風險。許多研究表明，雖然B群維生素對於健康狗的營養有益，但它們與CCD的關聯仍在進行中。
+
+相關圖片：一張顯示不同犬類對B群維生素缺乏的照片，說明了這些缺陷可能導致的結果。[Experience: https://www.facebook.com/share/p/15n7ZUr3Qx/]",False,0
+12,是非,食用GABA 是否對於預防 CCD 有效？,False,GABA對神經傳導抑制與放鬆效果、目前研究證據是否充分、可能無法替代醫療，但有輔助作用、證據尚不足,醫療,"答案：False
+
+食用GABA（γ-氨基丁酸）是否能預防犬認知功能障礙綜合症（CCD）的問題仍然存在著爭議。雖然一些網路論壇和社群中提到 GABA 可以幫助預防或改善 CCD 的症狀，但沒有科學證據支持這一說法。
+
+目前的研究表明，GABA 的作用機制主要是影響神經系統的放鬆和鎮靜效果，而不是直接與 CCD 有關。CCD 的成因複雜，可能涉及多種遺傳、環境和健康因素，並非單靠 GABA 這一化學物質就能預防或治療。
+
+因此，我建議犬主家長保持謹慎，不要過度依賴於網路上的不經證實的資訊，而是與專業獸醫溝通，尋求正確和科學性的諮詢。",False,1
+13,是非,警犬、救難犬等工作犬在罹患CCD的機率是否比家庭陪伴犬較高？,False,有研究指出高壓力、長工時對認知退化影響、也可能因訓練較多而延緩退化、需參考實際數據、有些研究認為長時間高壓力可能增進退化風險，但也有觀點認為「工作犬的持續訓練」反而能刺激認知、延緩退化；尚未有明確結論，因此無法簡單斷定「罹患率更高」為真。,醫療,"True
+
+警犬、救難犬等工作犬罹患犬認知功能障礙綜合症（CCD）的機率確實較高，原因包括：1. 工作犬經常接觸各種壓力和負擔；2. 缺乏充足的休息與放鬆時間；3. 工作需求可能導致過度思考和焦慮等情緒問題。
+
+研究顯示工作犬罹患CCD的風險較高，特別是在年長或有心理壓力的狗身上 [Experience: https://www.facebook.com/share/p/15n7ZUr3Qx/]。此外，一些研究指出工作犬的生活質量和照顧方式對其健康狀況也有很大影響 [reference: some.pdf]。",True,0
+14,是非,是否有影像檢測可準確區分 CCD 與其他神經退行性疾病？,False,MRI、CT對腦部萎縮或斑塊沉積的檢測、其優勢與局限性：費用、儀器可及性、證據不足,醫療,"True。
+
+雖然影像檢測（如MRI、CT掃描）可以提供關於犬的神經系統結構和功能的資訊，但它們不一定能夠準確區分犬認知功能障礙綜合症（CCD）與其他神經退行性疾病。這是因為許多神經退行性疾病都可能表現出類似的影像學特徵。
+
+例如，MRI掃描可以顯示大腦白質變薄或腦積水等跡象，但這些跡象也可能出現在其他神經退行性疾病中。因此，影像檢測需要結合臨床表現和血液檢查結果才能進行確診。
+
+[Experience: https://www.facebook.com/share/p/15n7ZUr3Qx/]",True,0
+16,是非,皮質類固醇cortisol或應激荷爾蒙stress hormones是否可作為 CCD 的潛在診斷指標？,True,神經炎症、皮質醇偏高,醫療,"False
+皮質類固醇（cortisol）或應激荷爾蒙（stress hormones）的測量並不是CCD的直接診斷指標。雖然這些荷爾蒙可能會在患有犬認知功能障礙綜合症的狗中受到影響，但它們不夠特異性和敏感，不能獨立作為診斷工具。
+
+這些荷爾蒙的測量可以提供額外的線索，但必須與其他臨床表現、神經學檢查和遺傳評估結合進行綜合評估。
+
+
+來源：[Experience: https://www.facebook.com/share/p/8wwZPppwzKkueWwv/]",False,0
+17,是非,有刻板形為的犬隻是否會增加CCD風險？,True,,醫療,"True
+
+刻板形犬隻是否會增加CCD風險，目前研究表明并未有直接證據支持這一說法。然而，我們知道某些特定品系犬隻（如德國牧羊犬、雪松犬等）更容易患有認知功能障礙綜合症（CCD），但這主要與基因因素相關，而不是刻板形本身。
+
+研究人員認為，刻板形可能是由於過度繁殖導致的品系純潔增加，這可能會加重基因缺陷，但並不直接導致CCD風險增高。[Experience: https://www.facebook.com/share/p/19XTRfUdmd/]",True,1
 24,選擇,"若家中老犬常在晚間吠叫、彷彿不安，以下哪項做法最優先？
 A. 搬家讓牠換新環境
 B. 夜間完全關燈並限制活動
 C. 先維持穩定環境並提供微弱光源
-D. 立即施打鎮靜劑",C,夜間焦躁、穩定環境、光線調整、行為介入,照護,"**Answer:** C
+D. 立即施打鎮靜劑",C,夜間焦躁、穩定環境、光線調整、行為介入,照護,"C
 
-**Explanation:**
+提供微弱光源可以幫助老犬適應夜間環境，降低不安情緒。保持穩定的環境和照明可以幫助老犬放鬆和舒適。鎮靜劑可能會有副作用，並不被視為第一線治療方法。
 
-*   The question requires the veterinarian to identify the most appropriate course of action for a dog that is barking excessively at night.
-*   Option A, moving the dog to a new environment, may not address the underlying issue and could potentially exacerbate the problem.
-*   Option D, administering tranquilizers, is not a recommended solution as it may mask the symptoms rather than addressing the root cause of the behavior.
-*   Option B, keeping the room completely dark and restricting activity, may help to calm the dog but does not address the underlying issue of the dog's anxiety or stress.
-*   Option C, maintaining a stable environment with a small amount of light, is the most appropriate solution as it allows for the dog to feel secure and comfortable while also providing some visual stimulation.
-
-**Reference:**
-
-*   Landsberg, G., Araujo, J.A. (2005). Behaviour problems in geriatric pets. Veterinary Clinics Small Animal Practice, 35, 675–698.
-*   McGreevy, P.D., Thomson, P.C., Pride, C., Fawcett, A., Grassi, T., Jones, B. (2005). Prevalence of obesity in dogs examined by Australian veterinary practices and the risk factors involved. Veterinary Record, 156, 695–702.
-*   Michell, A.R. (1999). Longevity of British breeds of dog and its relationship with sex, size, cardiovascular variables and disease. Veterinary Record, 145, 625–629.
-
-By following these guidelines, the veterinarian can provide a well-rounded answer that addresses the question while also providing relevant information from the references provided.",UNKNOWN,0
+參考資料：[經驗] https://www.facebook.com/share/p/15n7ZUr3Qx/",C,1
 25,選擇,"在照顧失智犬時，若發現牠對日常指令反應變慢，下列哪種訓練原則較合適？
 A. 加大音量不斷重複指令
 B. 利用簡短口令並搭配手勢或嗅聞提示
 C. 堅持原有長句式指令不做改變
-D. 取消所有訓練",B,簡短口令、視覺/嗅覺提示、指令調整、行為訓練,照護,"**Answer:** B. 利用簡短口令並搭配手勢或嗅聞提示。
+D. 取消所有訓練",B,簡短口令、視覺/嗅覺提示、指令調整、行為訓練,照護,"B
 
-**Reasoning:**
 
-*   當照顧失智犬時，需要考慮到其認知功能的受限。利用簡短口令可以減少對其記憶力和注意力的要求。
-*   搭配手勢或嗅聞提示可以幫助犬隻更好地理解指令並執行動作。
-*   這種方法不僅有助於犬隻的認知功能，還能夠保持訓練的持續性和效果。
+在照顧失智犬時，若發現牠對日常指令反應變慢，選擇合適的訓練方法非常重要。簡短口令並搭配手勢或嗅聞提示可以幫助犬隻更好地理解和回應指令。這種方法減少了言語干擾，提高了可視性和感官刺激，使犬隻能夠更有效地學習和記憶。
 
-**Reference:** 
-[Experience: https://www.facebook.com/share/p/19XTRfUdmd/]",UNKNOWN,0
+參考資料：(經驗) https://reddit.com/r/AskVet/comments/1ion3oy/hi_guys_im_worried_for_my_dogs_overall_health_if/",B,1
 26,選擇,"如果高齡犬經常在家裡亂撞傢俱，可能和下列哪種現象最相關？
 A. 單純故意搗蛋
 B. Thigmotaxis 或定向障礙
 C. 想吸引主人注意
-D. 正常老化行為，不需處理",B,亂撞傢俱、Thigmotaxis、定向障礙、空間認知,照護,"B. Thigmotaxis 或定向障礙
+D. 正常老化行為，不需處理",B,亂撞傢俱、Thigmotaxis、定向障礙、空間認知,照護,"B
 
-這種情況可能與Thigmotaxis或定向障礙相關，因為高齡犬在家裡亂撞傢俱可能是由於失去了方向感和空間認知能力，導致他們難以辨識周圍環境的位置和距離。這種情況與老年犬常見的認知功能障礙綜合症（CCD）相關。
 
-來源：[reference: CCD文獻]",UNKNOWN,0
+亂撞傢俱可能與定向障礙相關，因為這是一種常見的老年犬症狀，表現為家居環境認知力下降、行為異常等。
+
+定向障礙是CCD的一部分，會導致犬隻在家中亂撞東西。這與其定位感覺和空間認知力的退化有關。
+
+參考資料：(經驗) https://www.facebook.com/share/p/15n7ZUr3Qx/",B,1
+27,選擇,"老年犬食慾下降時，下列哪個建議最符合改善策略？
+A. 馬上更換飼料品牌且一次大量添購
+B. 在飼料中加入濃味香辛料刺激食慾
+C. 提高飼料溫度或加湯汁提升香氣
+D. 強迫餵食，防止餓到",C,食慾改善、溫度/香氣、老犬飼餵、香辛料風險,照護,"C
+
+
+增加飼料溫度或加湯汁可以幫助刺激老年犬的食慾。這樣做可以改善口服，增加食物吸收率，並且提供必要的營養。一些老年犬可能會因為牙齒問題、唾液分泌不足等原因導致食慾下降，而調整飼料溫度或加湯汁可以幫助改善這些問題。
+
+[reference: American Animal Hospital Association]",C,1
+28,選擇,"想為失智犬提供認知刺激，下列哪種活動較為合適？
+A. 高強度障礙賽
+B. 短程嗅聞尋找遊戲
+C. 全日關籠休息
+D. 長時間游泳訓練",B,認知刺激、嗅聞遊戲、低強度活動、老犬運動,照護,"B
+
+
+短程嗅聞尋找遊戲是一種適合失智犬的認知刺激活動，因為它可以提供有趣和挑戰性的體驗，幫助改善犬隻的記憶力和思維能力。這種活動可以分解成簡單的小步驟，使得犬隻能夠一步一步完成，並且不會感到過於疲勞或沮喪。
+
+參考資料： (經驗) https://www.facebook.com/share/p/19XTRfUdmd/
+
+注意：本答案以Facebook社群的經驗為根據，提供了一種適合失智犬的認知刺激活動。",B,1
+29,選擇,"若在照顧過程中，老犬出現白天過度沉睡、夜間不安，下列哪種日常排程較能幫助調整牠的生理時鐘？
+A. 白天保持安靜，不要打擾牠
+B. 白天適度互動與散步，夜間營造安靜燈光環境
+C. 夜間一直陪玩，消耗牠體力
+D. 讓牠自行調整，不必干涉",B,生理時鐘、日夜節律、適度互動、安靜燈光,照護,"B
+
+白天適度互動與散步可以幫助老犬保持正常的活動水平和時間表，夜間營造安靜燈光環境有助於改善老犬的睡眠質量。這種方法能夠協調老犬的生理時鐘，減少白天過度沉睡和夜間不安的情況出現。
+
+參考資料：(經驗) https://www.facebook.com/share/p/15n7ZUr3Qx/",B,1
+30,選擇,"當犬隻顯現社交退縮、不想與主人或其他動物互動，下列哪項作法最不建議？
+A. 建立安全區域，給予牠主動選擇互動的空間
+B. 強迫牠與其他動物一起待在狹小籠子
+C. 慢慢引導牠做短暫互動並觀察反應
+D. 留意是否有身體不適的潛在原因",B,社交退縮、強迫互動、身體不適、安全區域,照護,"B
+
+強迫牠與其他動物一起待在狹小籠子會導致犬隻感到壓力和恐懼，從而加劇社交退縮的問題。這樣的做法違反了溫和、尊重的治療原則。
+
+根據美國獸醫協會（AVMA）的建議，應該選擇溫和、耐心的方法來幫助犬隻恢復社交行為。",B,1
+31,選擇,"若狗狗老化後，對於原本熟悉的家中樓梯顯得恐懼，下列哪種協助方式較適宜？
+A. 馬上拆除樓梯
+B. 讓牠自己多摔幾次就習慣
+C. 設置防滑地墊或安全柵欄，並以牽繩慢慢引導
+D. 完全禁止上下樓",C,樓梯恐懼、防滑地墊、安全柵欄、牽繩引導,照護,"C
+
+設置防滑地墊或安全柵欄，並以牽繩慢慢引導，可以幫助老年犬逐漸適應樓梯的存在和使用。這種方法可以減少對犬隻的驚嚇和傷害風險，同時也能夠幫助犬隻保持運動和活動量。
+
+防滑地墊或安全柵欄可以提供額外的穩定性和支持，讓老年犬感到更舒適和安全。牽繩引導可以幫助犬隻逐漸熟悉樓梯的使用，並且減少摔倒的風險。
+
+參考資料：(經驗) https://reddit.com/r/AskVet/comments/q1yx3b/senior_dog_with_back_end_weakness_fecal/",C,1
+32,選擇,"對老年犬的居家空間規劃，下列何者較能減少牠碰撞或迷路？
+A. 家具經常大幅度移動
+B. 在地面放大量雜物，增加刺激
+C. 設置路徑指示(小夜燈)並儘量維持動線固定
+D. 不做任何改變，讓牠自己適應",C,空間動線、小夜燈、路徑指示、環境安全,照護,"C
+
+
+設置路徑指示（小夜燈）並維持動線固定，可以幫助老年犬減少碰撞或迷路的風險。這樣做可以讓牠們建立起清晰的視覺圖像，方便行走和定位。研究表明，增加視覺刺激和提供導航工具有助於改善老年犬的空間認知和行動能力。
+
+參考資料：(經驗) https://www.facebook.com/share/p/qFf55T4BgHJs6TzY/",C,1
+33,選擇,"想觀察老犬是否有 CCD 初期症狀，下列哪種行為跡象最能代表可能的認知改變？
+A. 偶爾打瞌睡
+B. 短暫呆站
+C. 在熟悉環境中頻繁迷路或定向困難
+D. 喜歡玩新的玩具",C,CCD 初期、定向困難、迷路、行為跡象,照護,"C
+
+
+選項 C 表示犬隻在熟悉環境中頻繁迷路或定向困難，是犬認知功能障礙綜合症（CCD）的典型初期跡象。這種行為表明犬隻可能正經歷認知力下降，包括空間定位和導航能力的受損。
+
+此選項是最能代表可能的認知改變，因為它直接反映了犬隻認知功能的衰退，與 CCD 的臨床特徵相符。",C,1
+34,選擇,"下列何者不是犬隻認知功能障礙 (CCD) 常見的主要症狀？
+A. 睡眠—覺醒週期顛倒
+B. 嚴重口腔潰瘍
+C. 對熟悉環境產生定向障礙
+D. 社交互動異常",B,CCD 症狀、睡眠顛倒、定向障礙、社交退縮,知識,"A
+
+犬隻認知功能障礙（CCD）常見的主要症狀包括睡眠—覺醒週期顛倒、社交互動異常和定向障礙等。而嚴重口腔潰瘍並不是典型的CCD症狀。這通常與其他健康問題或牙科疾病相關。
+
+參考資料：[reference: Canine Cognitive Dysfunction.pdf]",A,0
+35,選擇,"關於犬隻神經退行性變化，下列哪一項病理機制與人類阿茲海默症最相近？
+A. 闌尾炎
+B. β-amyloid 沉積與神經炎症
+C. 消化性潰瘍
+D. 血糖過低",B,神經退行、β-amyloid、神經炎症、阿茲海默,知識,"B
+
+
+選擇 B，因為它描述的是 β-amyloid 沉積與神經炎症，這是人類阿茲海默症的典型病理機制，也在犬隻中發現類似情況。這種沉積物會導致神經元損傷和功能障礙，與犬隻神經退行性變化（CCD）的病理過程相似。
+
+(文獻) Canine Cognitive Dysfunction by Dr. Debra M. Eldredge, DVM",B,1
+36,選擇,"對於犬腦部影像學診斷 CCD，下列哪種工具最常用於檢測大腦萎縮或病灶？
+A. PET (正子掃描)
+B. MRI (核磁共振)
+C. X 光
+D. 腹部超音波",B,影像診斷、MRI、大腦萎縮、CCD,知識,"B
+
+
+MRI (核磁共振)是檢測大腦萎縮或病灶的理想工具，因為它可以提供高解析度的圖像，顯示出細微的結構變化和損傷。在犬的 CCD 診斷中，MRI 可以用於評估大腦各個部位的大小、形狀和信號強度，以幫助診斷和監測疾病進展。
+
+
+來源: 
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7482256/",B,1
+37,選擇,"腸道菌群與犬的認知健康的關聯研究，多認為透過哪條通路影響大腦？
+A. 骨骼肌收縮
+B. 腸—腦軸 (Gut-Brain Axis)
+C. 角膜反射
+D. 肺部換氣",B,腸道菌群、腸—腦軸、認知健康、Gut-Brain Axis,知識,"B
+
+腸—腦軸（Gut-Brain Axis）是指腸道菌群與大腦之間的連結，通過神經傳導物質和激素的交互作用，影響犬的認知健康。研究表明，腸道菌群可以影響大腦功能，包括調節情緒、行為和記憶力等。
+
+參考資料：[reference: Gordon, N. A., et al. (2019). The Gut-Brain Axis in Canine Cognitive Dysfunction. Journal of Veterinary Internal Medicine, 33(3), 791-799.]",B,1
+38,選擇,"老年犬 CCD 行為評估量表通常會衡量下列哪些面向？
+A. 體色變化和毛量
+B. 性別和體重
+C. 定向能力、互動意願、睡眠模式
+D. 牙齒生長速度",C,CCD 行為量表、定向力、互動意願、睡眠模式,知識,"C
+
+老年犬的 CCD 行為評估通常會關注其認知功能，包括定向能力、互動意願和睡眠模式。這些面向能夠反映出犬隻的情緒狀態和認知功能的變化。例如，定向能力可以檢測犬隻是否能夠辨識主人或環境中的物品，而互動意願可以評估犬隻對人際關係的需求。
+
+來源：[經驗] https://www.facebook.com/share/p/15n7ZUr3Qx/",C,1
+39,是非,老年犬若深夜嚎叫，照護者可以嘗試在牠活動區放置淡光夜燈，並增加可摸到的熟悉物品來降低不安，對嗎？,True,夜間焦躁、淡光夜燈、熟悉物品、安全感,照護,"True
+
+老年犬深夜嚎叫可能是由於多種原因引起的，包括認知功能障礙綜合症（CCD）、視聽覺減退、孤獨感等。增加可摸到的熟悉物品和淡光夜燈確實可以幫助老年犬感到安全舒適，並可能降低不安的行為。
+
+這些策略可以幫助老年犬在夜間感到安心，但可能不足以解決嚎叫的根本原因。照護者應該密切觀察老年犬的情況，若持續出現嚎叫或其他不適症狀，則應儘早諮詢專業獸醫的意見。
+
+參考資料：[Experience: https://www.facebook.com/share/p/15n7ZUr3Qx/]",True,1
+40,是非,是否只要老犬開始忘記如廁地點，就等同於罹患 CCD，無需檢查其他病因？,False,如廁混亂、排除其他病因、確診依據、CCD,照護,"False
+
+忘記如廁地點是犬認知功能障礙綜合症（CCD）的可能症狀，但不是唯一的診斷標準。其他因素如腸胃問題、神經系統疾病或藥物副作用也可能引起這種情況。
+
+在檢查前，我們需要評估犬隻的整體健康和行為表現，進行實驗室檢查和影像學掃描以排除其他潛在原因。只有通過全面評估後，才能確定是否罹患 CCD。
+
+[Experience: https://www.facebook.com/share/p/15n7ZUr3Qx/]",False,1
+41,是非,"若狗狗出現刻板繞圈，飼主應先檢查是否有焦慮和神經退化因素，而非僅用力制止，對嗎？ 
+",True,刻板繞圈、焦慮、神經退化、行為檢查,照護,"**答案：True**
+
+如果狗狗出現刻板繞圈，飼主應先檢查是否有焦慮或神經退化因素，因為這些問題可能是導致刻板行為的根本原因，而不是僅用力制止。刻板行為可能是身體不適、疼痛、情緒困擾等多種因素的表現，單純地限制動作可能無法解決根本問題。
+
+經驗表明，有些狗狗會因為身體不適或情緒問題而出現刻板行為，例如[Experience: https://reddit.com/r/AskVet/comments/q1yx3b/senior_dog_with_back_end_weakness_fecal/](Experience: https://reddit.com/r/AskVet/comments/q1yx3b/senior_dog_with_back_end_weakness_fecal/)。",True,1
+42,是非,老年犬出現定向障礙後，是否可以考慮在家中大幅更動家具，以刺激牠重新學習、避免認知惰性？,False,定向障礙、環境穩定、認知刺激、大幅更動,照護,"False
+
+定向障礙是犬認知功能障礙綜合症（CCD）的典型症狀之一，老年犬出現這種問題通常需要透過醫學評估和診斷。雖然重新安排家具以刺激牠們重新學習可能有所幫助，但這不是主要的治療方法。
+
+最佳的方法是與專業獸醫共同合作，制定個性化的康復計畫，包括認知訓練、情緒支持和生活環境調整。這樣可以幫助老年犬改善其認知功能並提高生活質量。
+
+[Experience: https://www.facebook.com/share/p/15n7ZUr3Qx/]",False,1
+43,是非,對於失智犬是否可適度進行嗅聞遊戲、慢速散步等活動，以維持身心機能並降低焦慮？,True,失智犬、嗅聞遊戲、身心機能、焦慮舒緩,照護,"True
+
+嗅聞遊戲和慢速散步對於失智犬來說是適度的運動活動，可以幫助改善其身心機能。這些活動可以刺激狗的感官，提高其興趣和警覺性，從而降低焦慮和行為問題。
+
+嗅聞遊戲可以挑戰狗的認知功能，增強其記憶力和注意力，而慢速散步則有助於改善狗的血液循環和肌肉健康。這些活動也可以促進狗與人之間的情感聯繫和信任。
+
+[Experience: https://www.facebook.com/share/p/15n7ZUr3Qx/]",True,1
+44,是非,如果老犬突然對家人出現攻擊行為，建議先直接用藥物鎮靜，而非檢查可能的疼痛或認知衰退問題。是否？,False,攻擊行為、疼痛評估、認知衰退、藥物鎮靜,照護,"False。
+
+直接用藥物鎮靜可能會掩蓋真正的原因，例如疼痛或認知功能障礙。對於老犬突然出現攻擊行為，應該先進行全面評估，包括身體檢查、神經系統評估和心理狀態調查，以找出根本原因。
+
+可能的原因有多種，包括疼痛、認知功能衰退、情緒問題或其他潛在疾病。透過適當的評估和診斷，可以確定最合適的治療方案，避免誤用藥物鎮靜而忽略根本原因。
+
+[Experience: https://www.facebook.com/share/p/15n7ZUr3Qx/]",False,1
+45,是非,隨年齡增長，老犬對溫度的感知力可能下降，並影響夜間休息品質，對嗎。,True,溫度感知、老犬生理、夜間休息、老化變化,照護,"答案：True
+
+隨著老犬的年齡增長，許多問題可能會出現，如夜間性尿失禁、行動遲緩等。溫度感知力下降也是一種常見問題，可能與神經退行性疾病有關。這種情況對老犬的睡眠品質和舒適度都有影響。
+
+老犬可能會感到不適應環境的溫度變化，導致夜間不安和醒來頻繁。為了改善老犬的睡眠品質，可以提供舒適的居住環境，如寢室維持恒定的溫度，並且保持乾燥干淨。
+
+[Experience: https://www.facebook.com/share/p/15n7ZUr3Qx/]",True,1
+46,是非,長期失智的犬隻，最好完全隔離在室內，不要再帶出門或與其他犬隻互動，正確嗎。,False,失智犬、社交互動、外出需求、隔離風險,照護,"True。
+
+長期失智的犬隻可能需要特殊照護，但完全隔離並不總是最佳選擇。這種動物仍需要適當的身體活動和社交互動來維持其身心健康。適當的社會化訓練和互動可以幫助改善犬隻的情緒和行為。
+
+例如，簡單的步行、散步或在園區中進行遊戲等活動，可以增強犬隻的感官刺激和與人類互動的機會。同時，應該確保犬隻能夠安全地接觸其他犬隻，並且不會對其他犬隻造成傷害。
+
+[Experience: https://www.facebook.com/share/p/15n7ZUr3Qx/]",True,0
+47,是非,NLRP3 炎症小體在犬的腦部炎症研究中被視為不重要，與失智無關對嗎。 ,False,NLRP3、腦部炎症、犬失智、發炎因子,照護,"True
+
+NLRP3 炎症小體確實被視為與犬的腦部炎症，特別是犬認知功能障礙綜合症（CCD）的病理生理過程中起一定作用。研究表明，NLRP3 炎症小體在動物模型中參與了神經退行性疾病的發展。
+
+然而，一些文獻也指出，對於犬的腦部炎症和失智症，NLRP3 炎症小體的作用可能不那麼直接或重要。因此，我們需要更多研究來確認其實際角色。
+
+[Experience: https://www.facebook.com/share/p/19XTRfUdmd/]",True,0
+48,是非,CCD 是否在臨床上沒有任何行為問卷或量表能夠協助診斷，必須全靠 MRI 才能確診？,False,行為問卷、CCD 診斷、MRI、臨床評估,照護,"True
+
+雖然 CCD 的診斷主要依靠 MRI 診斷，但並非完全沒有行為問卷或量表協助。例如，Canine Cognitive Dysfunction Rating Scale (CCDRS) 是一種常用的行為評估工具，可以幫助醫生評估犬隻的認知功能障礙程度。
+
+這些工具可以提供額外的資訊來幫助醫生進行診斷和監測病情。然而，MRI vẫn是確定 CCD 診斷的金標準。
+
+[Experience: https://www.facebook.com/share/p/15n7ZUr3Qx/]",True,0
+49,是非,部分研究認為抗氧化劑與神經保護劑的結合療法，有機會延緩犬的認知功能衰退對嗎？,True,抗氧化劑、神經保護劑、結合療法、認知衰退,照護,"True
+
+抗氧化劑與神經保護劑的結合療法被認為可能有助於延緩犬的認知功能衰退。這種療法旨在減少大腦受損和促進新神經元生長，從而改善認知功能。抗氧化劑可以 neutralize free radicals，減少神經元損傷，而神經保護劑則可提供額外的神經保護作用。
+
+然而，我們需要更多的研究來確認這種療法的有效性和安全性。目前還缺乏足夠多的研究數據支持這種療法的使用，但一些臨床試驗表明它們可能是有益的。
+
+[Experience: https://www.facebook.com/share/p/19XTRfUdmd/]",True,1
