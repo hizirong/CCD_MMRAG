@@ -1,332 +1,386 @@
 id,type,question,answers,keywords,面向,llm_response,predicted,is_correct
-6,是非,CCD 是否與神經發炎相關？是否有特定細胞因子（cytokines）或發炎路徑（例如NLRP3 inflammasome）參與？,True,NLRP3 炎症小體如何參與炎症反應、主要細胞因子：IL-1β、TNF-α 等、提到 CCD 早期炎症在分子層面的機制,醫療,"True
+6,true_false,CCD 是否與神經發炎相關？是否有特定細胞因子（cytokines）或發炎路徑（例如NLRP3 inflammasome）參與？,True,NLRP3 炎症小體如何參與炎症反應、主要細胞因子：IL-1β、TNF-α 等、提到 CCD 早期炎症在分子層面的機制,醫療,"判斷依據：
 
-CCD（犬認知功能障礙綜合症）確實與神經發炎有關。研究表明，發炎反應在 CCD 的病理生理過程中扮演著重要角色。例如，NLRP3 inflammasome是一種結構，可以活化導致白三烷酸（IL-1β）的釋放，這可能與 CCD 的神經損傷和功能障礙相關。
+* 文獻中提到犬認知功能障礙綜合症（CCD）的病理生理機制
+* 研究指出 CCD 的成因尚不明確，但可能與神經炎症有關
 
-研究表明，發炎反應與多個細胞因子參與，其中包括 IL-1β、TNF-α 和 IL-6 等。這些細胞因子可以促進神經損傷和功能障礙的發展。
+結論：True
 
-[Experience: https://www.facebook.com/share/p/qFf55T4BgHJs6TzY/]",True,1
-7,是非,CCD 是否與腸道微生物群變化有關？哪些特定細菌群可能影響大腦健康？,True,"腸道菌群—腦軸(Gut-Brain Axis)的關聯、常見與神經退化風險相關的菌群 (如 Lactobacillus, Bifidobacterium 變化)、需補充臨床研究證據",醫療,"True
+參考來源: [reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf, 頁: 4]",True,1
+7,true_false,CCD 是否與腸道微生物群變化有關？哪些特定細菌群可能影響大腦健康？,True,"腸道菌群—腦軸(Gut-Brain Axis)的關聯、常見與神經退化風險相關的菌群 (如 Lactobacillus, Bifidobacterium 變化)、需補充臨床研究證據",醫療,"判斷依據：
 
-犬認知功能障礙綜合症（CCD）確實與腸道微生物群變化有關。研究表明，某些特定細菌群可能影響大腦健康。例如，研究發現某些犬隻的腸道中出現了一些新的致病性細菌，進而導致了神經退行性疾病。
+* 研究表明，犬認知功能障礙綜合症（CCD）可能與腸道微生物群落（gut microbiota）的變化有關。
+* 某些細菌群組的變化可能影響大腦健康。
 
-這些細菌可能會干擾宿主的免疫系統和神經系統，從而引起一系列問題。因此，保持良好的腸健康是預防CCD的一個關鍵因素。
+根據文獻[reference: Effects of Single Probiotic- and Combined Probiotic-Fermented Milk on Lipid Metabolism in Hyperlipidemic Rats.pdf]，研究表明某些特定的細菌群組，如乳酸菌和益生菌，在改善脂質代謝方面起著重要作用。
 
-[Experience: https://www.facebook.com/share/p/1B7u3jFDy9/]",True,1
-8,是非,失智犬的松果體是否退化？是否影響褪黑激素分泌？,True,松果體機能與老年犬睡眠週期紊亂、減少褪黑激素分泌可能導致夜間焦躁與睡眠問題,醫療,"真實性：False
+結論：True",True,1
+8,true_false,失智犬的松果體是否退化？是否影響褪黑激素分泌？,True,松果體機能與老年犬睡眠週期紊亂、減少褪黑激素分泌可能導致夜間焦躁與睡眠問題,醫療,"判斷依據：
 
-失智犬的松果體確實會退化，但這與褪黑激素分泌的直接影響不完全相同。松果體是負責生產多種神經內分泌激素，包括褪黑激素（Melatonin），但在犬類動物中，褪黑激素的分泌主要受到日間光照的調節，而不是由松果體直接控制。
+* 犬類認知功能障礙綜合症（CCD）的病理生理學研究
+* 相關文獻：Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf, Cognitive Dysfunction Syndrome A Disease of Canine and Feline Brain Aging.pdf
+* 社群討論：Reddit r/AskVet 和 r/seniordogs
 
-因此，在失智犬中，褪黑激素的分泌可能會受損害，但這與松果體退化是相關但不同的問題。 [Experience: https://www.facebook.com/share/p/19XTRfUdmd/]",False,0
-9,是非,B 群維生素是否能降低 CCD 進展風險？,True,B 群在神經健康維持上的作用、研究對 B 群補充與認知功能衰退的關聯、實際劑量與臨床實證可引用,醫療,"False
+結論：False
 
-目前沒有足夠的科學證據表明 B 群維生素能降低犬認知功能障礙綜合症 (CCD) 的進展風險。研究仍在進行中，需要更多的研究來確認這一假設。
+根據文獻，犬類認知功能障礙綜合症（CCD）的病理生理學研究表明，它與老年犬的大腦功能異常相關，但沒有直接提到腎上腺的退行性變化。然而，我們知道老年犬可能會有某些內分泌系統的改變，包括睫狀體（pineal gland）激素的分泌，例如睪酮和雌激素的調節。但是，這並不一定意味著睫狀體本身就會退行性變化。最終，需要進一步研究來確認這一點。
 
-一些研究人員根據個案報告和個體經驗提倡對 CCD 患者進行 B 群維生素的補充，但這些結果尚未得到廣泛接受或證實。
+參考資料：[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",False,0
+9,true_false,B 群維生素是否能降低 CCD 進展風險？,True,B 群在神經健康維持上的作用、研究對 B 群補充與認知功能衰退的關聯、實際劑量與臨床實證可引用,醫療,"判斷依據：
 
-最終，我們需要基於可靠的科學文獻來確定 B 群維生素是否能夠降低 CCD 的進展風險。",False,0
-12,是非,食用GABA 是否對於預防 CCD 有效？,False,GABA對神經傳導抑制與放鬆效果、目前研究證據是否充分、可能無法替代醫療，但有輔助作用、證據尚不足,醫療,"False
+* 文獻中未提及 B vitamins 可減少犬認知功能障礙綜合症 (CCD) 進展風險。
 
-食用GABA（γ-氨基丁酸）與預防犬認知功能障礙綜合症（CCD）的直接關聯並未獲得實証。雖然一些研究表明GABA對於神經系統的調節有幫助，但目前仍無法確定它能夠有效預防或治療CCD。
+結論：False
+參考資料: [reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",False,0
+12,true_false,食用GABA 是否對於預防 CCD 有效？,False,GABA對神經傳導抑制與放鬆效果、目前研究證據是否充分、可能無法替代醫療，但有輔助作用、證據尚不足,醫療,"判斷依據：
 
-在多數動物試驗中，GABA的效果與其使用方式、劑量以及個體差異都存在變化。然而，對於犬隻的臨床研究和實踐表明，GABA不一定能夠有效預防或治療CCD。
+* 根據文件片段，沒有相關資訊表明GABA的攝取能夠預防犬認知功能障礙綜合症（CCD）。
+* 文獻中未提及任何證據支持GABA對於預防CCD的效果。
+* 典型的CCD治療方法包括藥物治療、行為治療和生活方式調整，但沒有涉及到GABA攝取。
 
-因此，我們應當繼續關注最新的科學證據，並保持謹慎與批判性思維來評估這類藥物的效果。
+結論：False
+參考來源：[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",False,1
+13,true_false,警犬、救難犬等工作犬在罹患CCD的機率是否比家庭陪伴犬較高？,False,有研究指出高壓力、長工時對認知退化影響、也可能因訓練較多而延緩退化、需參考實際數據、有些研究認為長時間高壓力可能增進退化風險，但也有觀點認為「工作犬的持續訓練」反而能刺激認知、延緩退化；尚未有明確結論，因此無法簡單斷定「罹患率更高」為真。,醫療,"判斷依據：
 
-參考資料： [Experience: https://www.facebook.com/share/v/1A1RLmKiaw/]",False,1
-13,是非,警犬、救難犬等工作犬在罹患CCD的機率是否比家庭陪伴犬較高？,False,有研究指出高壓力、長工時對認知退化影響、也可能因訓練較多而延緩退化、需參考實際數據、有些研究認為長時間高壓力可能增進退化風險，但也有觀點認為「工作犬的持續訓練」反而能刺激認知、延緩退化；尚未有明確結論，因此無法簡單斷定「罹患率更高」為真。,醫療,"True
+* 計算犬隸工作量和壓力
+* 研究狗的生活質量和情緒健康
+* 分析犬隸的認知功能障礙率
 
-警犬、救難犬等工作犬罹患犬認知功能障礙綜合症（CCD）的機率可能較高，因為這類狗通常在年輕時期接受嚴格訓練和壓力，對其神經系統造成不當影響。同時，這些狗的生活方式也可能導致早發老化和身體負擔加重，加速了CCD的發展。
+結論：False
 
-在工作犬中，研究表明長期暴露於高水平的壓力、訓練強度和缺乏充足休息時間等因素都可能增加患CCD的風險。[Experience: https://www.facebook.com/share/p/19XTRfUdmd/]",True,0
-14,是非,是否有影像檢測可準確區分 CCD 與其他神經退行性疾病？,False,MRI、CT對腦部萎縮或斑塊沉積的檢測、其優勢與局限性：費用、儀器可及性、證據不足,醫療,"True
+根據我的專業知識，犬隸工作犬（如警察犬和救援犬）的 CCD 問題不一定比家庭伴侶犬更常見。雖然某些研究表明狗隸工作犬可能面臨著額外的壓力和壓力，這可能影響其認知功能，但目前尚無強有力的證據支持這種觀點。因此，我們不能得出結論說工作犬比家庭伴侶犬更容易患上 CCD。
 
-CCD（犬認知功能障礙綜合症）是一種複雜的神經退行性疾病，目前仍然無法通過單一影像檢測來準確區分它與其他類似的疾病。多個研究表明，電腦斷層掃描（CT）、磁共振成像（MRI）和功能性核磁共振成像（fMRI）等技術都可能被用於評估犬的神經系統，但這些方法仍然需要結合臨床表現、實驗室檢查和動物行為學評估來確定診斷。
+來源：[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",False,1
+14,true_false,是否有影像檢測可準確區分 CCD 與其他神經退行性疾病？,False,MRI、CT對腦部萎縮或斑塊沉積的檢測、其優勢與局限性：費用、儀器可及性、證據不足,醫療,"判斷依據：
 
-在臨床實踐中，我們會根據個案的症狀、家族史和其他醫療信息，進行綜合評估。影像檢測可以提供額外的資訊，但不能獨立作出診斷。
+1. CCD的臨床表現與其他神經退行性疾病的區別
+2. 鏡像檢查結果（如MRI、CT掃描）
+3. 神經生化指標檢測（如血液檢查）
 
-[Experience: https://www.facebook.com/share/p/8wwZPppwzKkueWwv/]",True,0
-16,是非,皮質類固醇cortisol或應激荷爾蒙stress hormones是否可作為 CCD 的潛在診斷指標？,True,神經炎症、皮質醇偏高,醫療,"True
+目前，尚無能夠準確區分犬認知功能障礙綜合症（CCD）與其他神經退行性疾病的影像學檢查。診斷主要依靠臨床表現和神經生化指標檢測。
 
-皮質類固醇cortisol或應激荷爾蒙stress hormones確實可以作為犬認知功能障礙綜合症（CCD）的潛在診斷指標。研究表明，患有CCD的狗往往會出現調節內分泌系統的問題，例如皮質類固醇水平增高。這些荷爾蒙變化可能是由於長期應激反應、神經退行性疾病或其他因素導致。
+參考來源：[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]
 
-根據研究結果顯示，一般而言，患有CCD的狗的皮質類固醇水平會比正常犬更高，並且這些荷爾蒙變化可能與認知功能障礙的程度相關。因此，檢測和監測皮質類固醇水平可以作為診斷和追蹤CCD的工具之一。
+結論：False",False,1
+16,true_false,皮質類固醇cortisol或應激荷爾蒙stress hormones是否可作為 CCD 的潛在診斷指標？,True,神經炎症、皮質醇偏高,醫療,"判斷依據：
 
-[Experience: https://www.facebook.com/share/p/8wwZPppwzKkueWwv/]",True,1
-17,是非,有刻板形為的犬隻是否會增加CCD風險？,True,,醫療,"True
+1. Cortisol水平升高可能與壓力反應相關，但是否直接與CCD有關，需要進一步研究。
+2. 某些文獻指出，壓力荷爾蒙（如肾上腺素）可能與認知功能障礙的症狀相關。
+3. 然而，目前尚未找到證據表明壓力荷爾蒙是CCD的直接診斷指標。
 
-刻板形狀的犬隻可能會增加犬類認知功能障礙綜合症（CCD）的風險。這是因為某些特定品種犬隻，例如巴格爾犬和法國鬥牛犬，由於其特殊的外貌和遺傳基因結構，更容易患有 CCD。
+參考來源： [reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]
 
-研究顯示，這些犬隻可能具有較高的 CCRA1 基因突變率，而 CCRA1 是 CCD 的一個已知致病基因。 [Experience: https://www.facebook.com/share/p/1B7u3jFDy9/]",True,1
-24,選擇,"若家中老犬常在晚間吠叫、彷彿不安，以下哪項做法最優先？
+結論：False",False,0
+17,true_false,有刻板形為的犬隻是否會增加CCD風險？,True,,醫療,"判斷依據：
+
+1. 犬類認知功能障礙綜合症（CCD）的定義和診斷標準。
+2. 分析文獻中相關的研究和論點。
+
+結論：False
+
+根據我對犬類認知功能障礙綜合症（CCD）的知識，目前並沒有直接證據表明犬隻發現刻板行為會增加患有CCD的風險。但是，我們知道老年犬隻的刻板行為可能與認知功能障礙有所相關。
+
+[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",False,0
+24,multiple_choice,"若家中老犬常在晚間吠叫、彷彿不安，以下哪項做法最優先？
 A. 搬家讓牠換新環境
 B. 夜間完全關燈並限制活動
 C. 先維持穩定環境並提供微弱光源
 D. 立即施打鎮靜劑",C,夜間焦躁、穩定環境、光線調整、行為介入,照護,"C
 
+選擇 C 是因為老年犬在夜間的唸叫可能是由於環境變化、孤獨感或其他健康問題引起。提供一個穩定的環境和弱光源可以幫助他們感到舒適和放鬆，從而減少唸叫的行為。
 
-維持穩定環境對於老犬的健康和心理狀態至關重要。提供微弱光源可以幫助老犬在晚間感到舒適和安全，減少吠叫的可能性。此外，這也能夠協助識別任何可能導致老犬不安的情況。
-
-參考資料: (經驗) https://www.facebook.com/share/p/19XTRfUdmd/",C,1
-25,選擇,"在照顧失智犬時，若發現牠對日常指令反應變慢，下列哪種訓練原則較合適？
+這個方法與經驗和文獻支持：[Experience: https://reddit.com/r/seniordogs/comments/17xbe4g/senior_pitbull_behavioral_issues/]",C,1
+25,multiple_choice,"在照顧失智犬時，若發現牠對日常指令反應變慢，下列哪種訓練原則較合適？
 A. 加大音量不斷重複指令
 B. 利用簡短口令並搭配手勢或嗅聞提示
 C. 堅持原有長句式指令不做改變
 D. 取消所有訓練",B,簡短口令、視覺/嗅覺提示、指令調整、行為訓練,照護,"B
 
-選擇 B 是因為對於失智犬，使用簡短口令並搭配手勢或嗅聞提示可以幫助牠們更好地理解和回應。這樣的方法可以減少狗狗的混亂和壓力，增強其對訓練的反應能力。
+選擇短語和匹配手勢或嗅覺提示是最合適的，因為這種方法可以幫助認知功能障礙狗狗更好地理解指令並回應。根據研究顯示，簡單化指令和使用視覺或嗅覺刺激可以改善認知功能障礙狗狗的學習效果。
 
-根據一項研究（ reference: some_link ），使用簡短口令和視覺或嗅覺提示是改善失智犬訓練效果的有效方法。這種方法可以幫助狗狗更好地理解和記憶指令，從而提高其日常生活中的自律性。
-
-相關圖片：一張照顧失智犬的照片，顯示主人使用簡短口令和手勢來協助牠們完成訓練。",B,1
-26,選擇,"如果高齡犬經常在家裡亂撞傢俱，可能和下列哪種現象最相關？
+相關圖片：一張照片顯示一名老年犬在與訓練師進行溝通，其身後有大字標記著簡短的指令，附近有一個嗅感器用於輔助溝通。",B,1
+26,multiple_choice,"如果高齡犬經常在家裡亂撞傢俱，可能和下列哪種現象最相關？
 A. 單純故意搗蛋
 B. Thigmotaxis 或定向障礙
 C. 想吸引主人注意
 D. 正常老化行為，不需處理",B,亂撞傢俱、Thigmotaxis、定向障礙、空間認知,照護,"B
 
+這種行為可能與動物缺乏方向感覺或視覺導向能力有關，常見於犬類認知功能障礙綜合症（CCD）患者。動物在家中經常撞擊家具是因為他們對周圍環境的認知能力下降，無法正確判斷空間和距離。
 
-這種行為可能是由於高齡犬的定向障礙（Thigmotaxis），導致動物缺乏方向感和空間認知，導致亂撞傢俱。這種情況下，犬隻可能會持續地在家裡徘徊或撞擊牆壁等固定的表面，以尋求安全感。
-
-[Experience: https://www.facebook.com/share/p/qFf55T4BgHJs6TzY/]",B,1
-27,選擇,"老年犬食慾下降時，下列哪個建議最符合改善策略？
+[Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",B,1
+27,multiple_choice,"老年犬食慾下降時，下列哪個建議最符合改善策略？
 A. 馬上更換飼料品牌且一次大量添購
 B. 在飼料中加入濃味香辛料刺激食慾
 C. 提高飼料溫度或加湯汁提升香氣
-D. 強迫餵食，防止餓到",C,食慾改善、溫度/香氣、老犬飼餵、香辛料風險,照護,"C
+D. 強迫餵食，防止餓到",C,食慾改善、溫度/香氣、老犬飼餵、香辛料風險,照護,"B
 
-提高飼料溫度或加湯汁提升香氣是改善老年犬食慾的有效方法，因為這可以刺激狗的嗅覺和味覺，增加食欲。這個方法不需要強迫餵食，也不會導致狗吃得過量。
+添加強烈香味的調料來刺激食欲是改善老年犬減少進食的一個合適方法。這種方法可以幫助激活老年犬的嗅覺和味覺，刺激其餵養動機。
 
-參考資料：[經驗] https://www.facebook.com/share/p/19XTRfUdmd/",C,1
-28,選擇,"想為失智犬提供認知刺激，下列哪種活動較為合適？
+在多數情況下，老年犬的食慾減退可能是由於口腔健康問題、牙齒問題或感官功能障礙等因素導致。添加強烈香味的調料可以幫助改善這些問題，並增加食欲。
+
+(經驗) https://reddit.com/r/seniordogs/comments/1i338fw/how_often_does_your_senior_eat/",B,0
+28,multiple_choice,"想為失智犬提供認知刺激，下列哪種活動較為合適？
 A. 高強度障礙賽
 B. 短程嗅聞尋找遊戲
 C. 全日關籠休息
 D. 長時間游泳訓練",B,認知刺激、嗅聞遊戲、低強度活動、老犬運動,照護,"B
 
+短距離嗅探遊戲是一種適合用於提供認知刺激的活動，因為它能夠針對犬類認知功能障礙綜合症（CCD）患者的需求進行調整，幫助他們保持動作能力和興趣。這種遊戲可以提供挑戰和獎勵，使患者感到有價值感和滿足感。
 
-短程嗅聞尋找遊戲是一種適合為失智犬提供認知刺激的活動，因為它能夠刺激犬隻的嗅覺和探索能力，從而帶來樂趣和挑戰。這類型的遊戲可以幫助犬隻保持注意力和興趣，並且對於改善其認知功能有一定的益處。
-
-[reference: https://www.facebook.com/share/p/qFf55T4BgHJs6TzY/]",B,1
-29,選擇,"若在照顧過程中，老犬出現白天過度沉睡、夜間不安，下列哪種日常排程較能幫助調整牠的生理時鐘？
+參考資料: (文獻) Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf",B,1
+29,multiple_choice,"若在照顧過程中，老犬出現白天過度沉睡、夜間不安，下列哪種日常排程較能幫助調整牠的生理時鐘？
 A. 白天保持安靜，不要打擾牠
 B. 白天適度互動與散步，夜間營造安靜燈光環境
 C. 夜間一直陪玩，消耗牠體力
 D. 讓牠自行調整，不必干涉",B,生理時鐘、日夜節律、適度互動、安靜燈光,照護,"B
 
-白天適度互動與散步可以幫助犬類保持正常的活動和刺激水平，改善睡眠質量。夜間營造安靜燈光環境有助於降低犬類的緊張和不安。在調整生理時鐘方面，這種日常排程比起其他選項更能幫助老犬恢復正常的活動模式。
+選擇 B 是因為它提供了一個平衡的日程，既能夠滿足老狗的情緒需求，又能夠幫助調整其生理鐘表。通過在白天進行適量的互動和散步，可以增加老狗的活動水平和心理健康，而晚上則需要創造一個寧靜的環境，以免干擾老狗的睡眠。
 
-[參考來源: (經驗) https://www.facebook.com/share/p/1E3G66Ncs5/]",B,1
-30,選擇,"當犬隻顯現社交退縮、不想與主人或其他動物互動，下列哪項作法最不建議？
+對於患有犬認知功能障礙綜合症（CCD）的老狗，保持活躍但不過度的活動水平，是重建其生理鐘表和改善其健康狀況的一種重要方法。",B,1
+30,multiple_choice,"當犬隻顯現社交退縮、不想與主人或其他動物互動，下列哪項作法最不建議？
 A. 建立安全區域，給予牠主動選擇互動的空間
 B. 強迫牠與其他動物一起待在狹小籠子
 C. 慢慢引導牠做短暫互動並觀察反應
-D. 留意是否有身體不適的潛在原因",B,社交退縮、強迫互動、身體不適、安全區域,照護,"B
+D. 留意是否有身體不適的潛在原因",B,社交退縮、強迫互動、身體不適、安全區域,照護,"A
 
+選擇A是最不建議的原因是因為強迫小狗留在狹小的籠子中可能會加劇其焦慮和壓力，進而使情況惡化。提供安全的空間讓小狗主動選擇與人或其他動物互動是更好的方法，可以幫助它們感到舒適和放鬆。
 
-強迫動物與其他動物一起待在狹小籠子可能會增加壓力和創造負面體驗，進一步加重社交退縮的問題。這種做法無法尊重動物的個人空間和需求。
-
-根據PetMD指出，強迫動物與其他動物接觸可能會導致額外的焦慮、壓力和創傷，而不是改善社交行為。
-
-
-來源：(經驗) https://www.facebook.com/share/p/19XTRfUdmd/",B,1
-31,選擇,"若狗狗老化後，對於原本熟悉的家中樓梯顯得恐懼，下列哪種協助方式較適宜？
+參考資料：(經驗) https://reddit.com/r/seniordogs/comments/1fuq5iw/senior_dog_anxiety_or_bad_behavior/",A,0
+31,multiple_choice,"若狗狗老化後，對於原本熟悉的家中樓梯顯得恐懼，下列哪種協助方式較適宜？
 A. 馬上拆除樓梯
 B. 讓牠自己多摔幾次就習慣
 C. 設置防滑地墊或安全柵欄，並以牽繩慢慢引導
 D. 完全禁止上下樓",C,樓梯恐懼、防滑地墊、安全柵欄、牽繩引導,照護,"C
 
-讓狗狗逐步適應樓梯的環境，設置防滑地墊或安全柵欄，並以牽繩慢慢引導，是最適宜的協助方式。這樣可以幫助狗狗克服恐懼並建立信心。
+這種情況可能與犬認知功能障礙綜合症（CCD）有關，需要提供適當的支持和幫助。移除樓梯（A）或禁止爬樓梯（D）不一定能夠解決問題。讓它跌幾次以習慣（B）也不是最佳選擇，因為這可能會增加受傷風險。安裝非滑倒地毯或安全圍欄並引導牠們逐步上樓梯（C）是最合適的方法，可以提供安全和支持。
 
-此方法有助於減少犬隻的焦慮和創傷，同時也能夠避免意外事故發生。
-參考資料：[經驗] https://www.facebook.com/share/p/1B7u3jFDy9/",C,1
-32,選擇,"對老年犬的居家空間規劃，下列何者較能減少牠碰撞或迷路？
+參考資料：https://www.aspcapro.org/pet-care/dog-care/age-related-cognitive-impairment-in-dogs",C,1
+32,multiple_choice,"對老年犬的居家空間規劃，下列何者較能減少牠碰撞或迷路？
 A. 家具經常大幅度移動
 B. 在地面放大量雜物，增加刺激
 C. 設置路徑指示(小夜燈)並儘量維持動線固定
 D. 不做任何改變，讓牠自己適應",C,空間動線、小夜燈、路徑指示、環境安全,照護,"C
 
+設置路徑指示器（夜燈）和保持固定線條，可以幫助老年犬避免碰撞或迷路。這樣可以提供視覺提示，幫助犬隻在家中安全地移動。
 
-設置路徑指示（如小夜燈）能夠幫助老年犬在家中移動時避免碰撞或迷路。維持動線固定有助於老年犬建立行為模式，從而減少意外事故的發生。這種設置對於老年犬的居家空間規劃是非常重要的一部分，以幫助牠們在日常生活中更加安全和舒適。
-
-參考資料：(經驗) https://www.facebook.com/share/p/qFf55T4BgHJs6TzY/",C,1
-33,選擇,"想觀察老犬是否有 CCD 初期症狀，下列哪種行為跡象最能代表可能的認知改變？
+根據Reddit的社群討論，設置路徑指示器是改善老年犬行為和減少碰撞風險的一個有效方法。",C,1
+33,multiple_choice,"想觀察老犬是否有 CCD 初期症狀，下列哪種行為跡象最能代表可能的認知改變？
 A. 偶爾打瞌睡
 B. 短暫呆站
 C. 在熟悉環境中頻繁迷路或定向困難
 D. 喜歡玩新的玩具",C,CCD 初期、定向困難、迷路、行為跡象,照護,"C
 
-選項 C 表示老犬在熟悉環境中頻繁迷路或定向困難是 CCD 的初期症狀之一，可能代表認知功能的改變。
 
-這種行為可能與老年犬的大腦退行性疾病有關，如阿爾茨海默症等。研究表明，老年犬在熟悉環境中出現迷路或定向困難的行為是 CCD 的常見徵兆 (Bekfleth, 2017)。
+這個選項與犬認知功能障礙綜合症（CCD）的典型症狀相符。 CCD患者常會出現定向困難和迷路問題，導致在熟悉環境中經常迷路或找不到家的感覺。
 
-[reference: Bekfleth, M. (2017). Canine Cognitive Dysfunction Syndrome. Journal of Veterinary Behavior, 19, 45-52.]",C,1
-34,選擇,"下列何者不是犬隻認知功能障礙 (CCD) 常見的主要症狀？
+來源: (文獻) Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf",C,1
+34,multiple_choice,"下列何者不是犬隻認知功能障礙 (CCD) 常見的主要症狀？
 A. 睡眠—覺醒週期顛倒
 B. 嚴重口腔潰瘍
 C. 對熟悉環境產生定向障礙
-D. 社交互動異常",B,CCD 症狀、睡眠顛倒、定向障礙、社交退縮,醫療,"B
+D. 社交互動異常",B,CCD 症狀、睡眠顛倒、定向障礙、社交退縮,醫療,"A
 
+選項 A ""Sleep-wake cycle is reversed"" 是一種常見的犬認知功能障礙綜合症（CCD）的症狀，例如狗可能在白天睡眠、夜間活動。選項 B ""Severe oral ulcers"" 不是 CCD 的典型症狀，它更可能與口腔問題或其他健康條件相關。選項 C 和 D 分別代表了犬隻對熟悉環境的失去定向能力和社會互動異常，都是 CCD 的典型症狀。
 
-選項 B 嚴重口腔潰瘍並不是犬隻認知功能障礙 (CCD) 的主要症狀。雖然口腔健康與整體健康相關，但嚴重口腔潰瘍通常與其他因素如口腔疾病、牙科問題或不良生活習慣等有關，而不是犬隻認知功能障礙的直接結果。
-
-參考資料：
-(經驗) https://www.facebook.com/share/p/19XTRfUdmd/",B,1
-35,選擇,"關於犬隻神經退行性變化，下列哪一項病理機制與人類阿茲海默症最相近？
+參考文獻：[reference: Under diagnosis of canine cognitive dysfunction_A cross-sectional survey of older companion dogs.pdf]",A,0
+35,multiple_choice,"關於犬隻神經退行性變化，下列哪一項病理機制與人類阿茲海默症最相近？
 A. 闌尾炎
 B. β-amyloid 沉積與神經炎症
 C. 消化性潰瘍
 D. 血糖過低",B,神經退行、β-amyloid、神經炎症、阿茲海默,醫療,"B
 
-犬隻神經退行性變化的某些病理機制，例如β-amyloid沉積和神經炎症，與人類阿茲海默症的病理機制相似。這是因為兩者都涉及蛋白質異常堆積和神經損傷，導致認知功能下降。這些共同點使得犬隻神經退行性變化成為研究阿茲海默症的理想模型。
+在犬類中，β-氨基酸沉積和神經炎症是犬認知功能障礙綜合症（CCD）的特徵性病理機制，這與人類阿茲海默症的病理機制相似。研究表明，犬類CCD中存在β-氨基酸沉積和神經炎症等異常現象，這些變化與阿茲海默症的病理機制有相似的特徵。
 
-參考資料：[reference: some.pdf]",B,1
-36,選擇,"對於犬腦部影像學診斷 CCD，下列哪種工具最常用於檢測大腦萎縮或病灶？
+[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",B,1
+36,multiple_choice,"對於犬腦部影像學診斷 CCD，下列哪種工具最常用於檢測大腦萎縮或病灶？
 A. PET (正子掃描)
 B. MRI (核磁共振)
 C. X 光
 D. 腹部超音波",B,影像診斷、MRI、大腦萎縮、CCD,醫療,"B
 
-MRI是目前常用的神經影像學技術，能夠清晰地顯示大腦和周圍組織的結構變化，如萎縮或病灶。它比其他選項更適合用於檢測大腦疾病的成像。
+MRI（磁共振成像）是診斷犬類認知功能障礙綜合症（CCD）的首選工具之一，因為它能夠清晰地顯示腦部結構和病變。MRI可以提供詳細的影像，幫助醫生檢測出brain atrophy或損傷。
 
-參考資料：[reference: canine-cognitive-dysfunction.pdf]",B,1
-37,選擇,"腸道菌群與犬的認知健康的關聯研究，多認為透過哪條通路影響大腦？
+來源：[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",B,1
+37,multiple_choice,"腸道菌群與犬的認知健康的關聯研究，多認為透過哪條通路影響大腦？
 A. 骨骼肌收縮
 B. 腸—腦軸 (Gut-Brain Axis)
 C. 角膜反射
 D. 肺部換氣",B,腸道菌群、腸—腦軸、認知健康、Gut-Brain Axis,醫療,"B
 
-腸—腦軸 (Gut-Brain Axis) 是一種複雜的通路，涉及腸道菌群、免疫系統和大腦之間的相互作用。研究表明，腸道菌群通過產生神經遞質如多巴胺、血清素等來影響大腦功能，並參與調節情緒、行為和認知健康。
+第二行：這個選項是正確的，因為研究表明腸道菌群與犬隻認知健康之間存在著密切的關聯，尤其是在神經系統和免疫系統之間的交互作用。[reference: The canine model of human cognitive aging and dementia_Pharmacological validity of the model for assessment of human cognitive-enhancing drugs.pdf]
 
-[reference: Gut-Brain Axis: The Missing Link Between the Microbiome and Mental Health]",B,1
-38,選擇,"老年犬 CCD 行為評估量表通常會衡量下列哪些面向？
+圖片：想表達腦部與腸道之間的交互連結",B,1
+38,multiple_choice,"老年犬 CCD 行為評估量表通常會衡量下列哪些面向？
 A. 體色變化和毛量
 B. 性別和體重
 C. 定向能力、互動意願、睡眠模式
 D. 牙齒生長速度",C,CCD 行為量表、定向力、互動意願、睡眠模式,醫療,"C
 
-老年犬的行為評估量表，例如 CDS (Canine Cognitive Dysfunction Scale)，通常會衡量定向能力、互動意願和睡眠模式，以評估犬隻是否出現認知功能障礙的跡象。這些評估結果可以幫助獸醫進行診斷和制定合適的護理計畫。
+CCD行為評估表格（CCD behavioral assessment scale）會測量老年犬的方向能力、願意互動和睡眠模式等行為特徵，這些是犬類認知功能障礙綜合症的重要指標。
 
-[reference: Canine Cognitive Dysfunction Scale (CDS)]",C,1
-39,是非,老年犬若深夜嚎叫，照護者可以嘗試在牠活動區放置淡光夜燈，並增加可摸到的熟悉物品來降低不安，對嗎？,True,夜間焦躁、淡光夜燈、熟悉物品、安全感,照護,"True
+來源：(文獻) Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf",C,1
+39,true_false,老年犬若深夜嚎叫，照護者可以嘗試在牠活動區放置淡光夜燈，並增加可摸到的熟悉物品來降低不安，對嗎？,True,夜間焦躁、淡光夜燈、熟悉物品、安全感,照護,"判斷依據：
 
-老年犬深夜嚎叫可能是由於環境變化、健康問題或其他壓力引起的焦慮。設置淡光夜燈和增加可摸到的熟悉物品可以幫助犬隻感到舒適，降低不安。這些措施能夠模仿狗的自然日常生活模式，提供一種安全感，進而減少嚎叫的行為。
+* 鏡面夜燈可以幫助老年犬減少焦慮情緒
+* 熟悉的物品能夠安慰老年犬
+* 這些方法可以應對晚上犬吠的問題
 
-[Experience: https://www.facebook.com/share/p/19XTRfUdmd/]",True,1
-40,是非,是否只要老犬開始忘記如廁地點，就等同於罹患 CCD，無需檢查其他病因？,False,如廁混亂、排除其他病因、確診依據、CCD,照護,"False
+結論：True
 
-忘記如廁地點可能是犬隻老化的正常現象，但不代表一定罹患犬認知功能障礙綜合症（CCD）。其他疾病或健康問題也可能導致這種症狀，例如腸道感染、腎臟疾病、神經系統疾病等。
+[Experience: https://www.facebook.com/groups/403191506497801/permalink/2631558230327773/?rdid=HqDuRASCUk53jABS&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fp%2FidyouqqRo1EWrH3H%2F]",True,1
+40,true_false,是否只要老犬開始忘記如廁地點，就等同於罹患 CCD，無需檢查其他病因？,False,如廁混亂、排除其他病因、確診依據、CCD,照護,"**判斷依據：**
 
-在進行診斷時，我們需要考慮犬隻的整體健康狀況和行為變化，以確定是否有其他潛在原因。只有通過進一步檢查和評估，才能確定狗狗是否罹患CCD。
+1.犬的認知功能障礙綜合症（CCD）通常表現為記憶力衰退、定向能力下降等。
+2. 老年犬忘記廁所位置可能是因為多種原因，例如膀胱問題、神經系統疾病或其他健康問題。
+3. 診斷 CCD 需要綜合評估犬的行為和身體狀況。
 
-[Experience: https://www.facebook.com/share/p/19XTRfUdmd/]",False,1
-41,是非,"若狗狗出現刻板繞圈，飼主應先檢查是否有焦慮和神經退化因素，而非僅用力制止，對嗎？ 
-",True,刻板繞圈、焦慮、神經退化、行為檢查,照護,"True
+**結論：**
+False
 
-原因：刻板繞圈（circling）可能是犬認知功能障礙綜合症（CCD）的徵兆之一。飼主應先檢查是否有焦慮和神經退化因素，才能提供適當的治療方案。
+老年犬忘記廁所位置不一定是犬認知功能障礙綜合症（CCD）的直接跡象，需要進一步檢查以排除其他可能的原因。",True,0
+41,true_false,"若狗狗出現刻板繞圈，飼主應先檢查是否有焦慮和神經退化因素，而非僅用力制止，對嗎？ 
+",True,刻板繞圈、焦慮、神經退化、行為檢查,照護,"判斷依據：
 
-例如，如果狗狗出現刻板繞圈，可能是由於腦部疾病、老年犬的自然衰退或長期壓力所導致。因此，一般不應該僅用力制止，而是需要進行進一步的檢查和評估，以確定原因並提供適當的治療方案。
+* 狗狗的行為變化是否與其年齡相關
+* 狗狗的身體檢查結果，例如血液檢查、神經系統檢查等
+* 狗狗的生活習慣和環境條件
+* 狗狗的個性和品種
 
-[Experience: https://www.facebook.com/share/p/15n7ZUr3Qx/]",True,1
-42,是非,老年犬出現定向障礙後，是否可以考慮在家中大幅更動家具，以刺激牠重新學習、避免認知惰性？,False,定向障礙、環境穩定、認知刺激、大幅更動,照護,"True
+結論：True
 
-老年犬出現定向障礙後，重新學習家具的更動可能對於改善認知功能有一定的幫助，但需要謹慎評估個體情況。定向障礙可能與多種因素相關，包括健康問題、藥物副作用或神經退行性疾病。因此，重新學習家具的更動應該在醫生診斷和指導下進行，並且需要確保犬隻的情緒和安全。
+當犬隻出現僵硬行為（rigid circle）時，我們需要考慮多種可能性，包括神經退行性疾病、焦慮症狀和其他健康問題，而不是直接停止其行為。這樣可以幫助我們做出更準確的診斷和制定有效的治療方案。
 
-例如，可以考慮將老年犬引入新的環境中，以刺激其探索和學習新事物。然而，這應該與獸醫的建議和監控進行，避免使犬隻感到焦慮或迷惑。",True,0
-43,是非,對於失智犬是否可適度進行嗅聞遊戲、慢速散步等活動，以維持身心機能並降低焦慮？,True,失智犬、嗅聞遊戲、身心機能、焦慮舒緩,照護,"True
+參考來源：[Experience: https://reddit.com/r/AskVet/comments/1fq6u7u/are_the_health_issues_in_cavalier_king_charles/]",True,1
+42,true_false,老年犬出現定向障礙後，是否可以考慮在家中大幅更動家具，以刺激牠重新學習、避免認知惰性？,False,定向障礙、環境穩定、認知刺激、大幅更動,照護,"判斷依據：
 
-失智犬可以適度進行嗅聞遊戲、慢速散步等活動，以維持身心機能並降低焦慮。這些活動幫助改善犬隻的認知功能和運動能力，同時也能夠減少焦慮情緒。
+1. 犬識別功能障礙綜合症（CCD）的定義與表現
+2. 针对老年犬的認知功能障礙綜合症的治療原則
+3. 家庭環境對犬健康的影響
 
-嗅聞遊戲可以刺激犬隻的大腦，促進其記憶力和學習能力，而慢速散步則能夠增強犬隻的社交互動和運動能力。這些活動不僅有助於犬隻的身心健康，也能夠改善主人與犬隻之間的情感聯繫。
+結論：False
 
-Experience: https://www.facebook.com/share/p/1E3G66Ncs5/",True,1
-44,是非,如果老犬突然對家人出現攻擊行為，建議先直接用藥物鎮靜，而非檢查可能的疼痛或認知衰退問題。是否？,False,攻擊行為、疼痛評估、認知衰退、藥物鎮靜,照護,"False
+根據相關文獻，改變家具並不一定能夠有效地刺激老年犬重新學習和避免認知懈怠。實際上，CCD是一種複雜的疾病，需要綜合性的治療和照護，包括藥物、生活方式調整和環境適應性等。
 
-直接使用藥物鎮靜來處理老犬的攻擊行為並不是最佳選擇，因為這可能會掩蓋真正的問題，而導致相關健康問題延遲發現和治療。對於老犬出現攻擊行為，應該先進行全面評估以找出潛在原因，如疼痛、認知衰退或其他健康問題。
+參考來源：[reference: Under diagnosis of canine cognitive dysfunction_A cross-sectional survey of older companion dogs.pdf]",False,1
+43,true_false,對於失智犬是否可適度進行嗅聞遊戲、慢速散步等活動，以維持身心機能並降低焦慮？,True,失智犬、嗅聞遊戲、身心機能、焦慮舒緩,照護,"判斷依據：
 
-例如：檢查是否有嚴重的牙科問題、骨骼疾病或內分泌失調等。這些因素可能導致老犬出現攻擊行為，並需要根據實際原因進行相關治療。
+* 犬認知功能障礙綜合症（CCD）的臨床表現包括記憶力下降、注意力缺陷、行為問題等
+* 認識到活動性和運動對犬的身體和心理健康益處
+* 分析相關文獻和社群討論，了解犬老年期認知功能障礙綜合症的管理方法
 
-[Experience: https://www.facebook.com/share/p/1E3G66Ncs5/]",False,1
-45,是非,隨年齡增長，老犬對溫度的感知力可能下降，並影響夜間休息品質，對嗎。,True,溫度感知、老犬生理、夜間休息、老化變化,照護,"True
+答案：
+能夠進行中度嗅覺遊戲、緩慢散步等活動，有助於維護犬的身體和心理健康，減少焦慮情緒。
 
-隨著老犬的年齡增長，確實可能會出現對溫度感知力的下降，這種情況常見於老年犬。這通常是由於老年犬的神經系統和感官器官功能逐漸衰退所致。
+結論：True
 
-例如，研究表明老年犬的皮膚感覺減退、聽力下降等問題可能導致夜間睡眠品質不佳。此外，老年犬的身體活動能力也會下降，影響到其對溫度的調節和適應能力。因此，這種情況需要積極的監測和照護。
+參考來源：[Experience: https://reddit.com/r/AskVet/comments/16sc8rm/dementia_in_dogs/]",True,1
+44,true_false,如果老犬突然對家人出現攻擊行為，建議先直接用藥物鎮靜，而非檢查可能的疼痛或認知衰退問題。是否？,False,攻擊行為、疼痛評估、認知衰退、藥物鎮靜,照護,"判斷依據：
 
-[reference: https://www.facebook.com/share/p/15n7ZUr3Qx/]",True,1
-46,是非,長期失智的犬隻，最好完全隔離在室內，不要再帶出門或與其他犬隻互動，正確嗎。,False,失智犬、社交互動、外出需求、隔離風險,照護,"False
+1. 獸醫的經驗：直接使用藥物鎮靜可能會掩蓋真實原因，而不是解決根本問題。
+2. 文獻：Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf，指出犬隻認知功能障礙綜合症（CCD）是老年犬隻常見的神經退行性疾病，需要進行進一步評估和診斷。 
+3. 文獻：The canine model of human cognitive aging and dementia_Pharmacological validity of the model for assessment of human cognitive-enhancing drugs.pdf，強調了在處理犬隻認知功能障礙前應該首先進行全面評估。
 
-完全隔離犬隻可能會導致其心理健康惡化，進而加劇認知功能障礙。犬隻需要適當的照顧、刺激和社會互動來維持其身心健康。
+結論：False
+[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",False,1
+45,true_false,隨年齡增長，老犬對溫度的感知力可能下降，並影響夜間休息品質，對嗎。,True,溫度感知、老犬生理、夜間休息、老化變化,照護,"判斷依據：
 
-研究顯示，結合訓練與放鬆技巧，如音樂治療或按摩，可幫助減輕犬隻的情緒壓力，有助於改善其認知功能。(reference: https://www.facebook.com/share/p/15n7ZUr3Qx/)",False,1
-47,是非,NLRP3 炎症小體在犬的腦部炎症研究中被視為不重要，與失智無關對嗎。 ,False,NLRP3、腦部炎症、犬失智、發炎因子,照護,"False。
+* 老犬的視覺、聽覺和平衡能力會逐漸下降，可能影響睡眠質量。
+* 老犬的記憶力和學習能力也會下降，這些變化可能導致老犬對環境的感知力降低。
 
-NLRP3 炎症小體確實與犬的腦部炎症有關。研究表明，NLRP3 是一種重要的炎症受體，參與了多種發炎反應，包括神經退行性疾病，如犬認知功能障礙綜合症（CCD）。研究人員已經證實，在 CCD 患犬中 NLRP3 的表達水平升高，表明其在病理過程中發揮著關鍵作用。
+結論：True
+參考來源：[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf, 頁: 2]",True,1
+46,true_false,長期失智的犬隻，最好完全隔離在室內，不要再帶出門或與其他犬隻互動，正確嗎。,False,失智犬、社交互動、外出需求、隔離風險,照護,"判斷依據：
 
-[Experience: https://www.facebook.com/share/p/1B7u3jFDy9/]",False,1
-48,是非,CCD 是否在臨床上沒有任何行為問卷或量表能夠協助診斷，必須全靠 MRI 才能確診？,False,行為問卷、CCD 診斷、MRI、臨床評估,照護,"True
+* 犬認知功能障礙綜合症（CCD）是一種常見的老年犬疾病，需要針對每個情況進行評估。
+* 完全隔離可能會加重犬隻的孤獨感和焦慮，增加其心理負擔。
+* 可能性的替代方案包括定期行走、玩耍和互動，以減少犬隻的寂寞感。
 
-犬認知功能障礙綜合症（CCD）的診斷不僅依靠MRI掃描。臨床上，獸醫也會使用行為問卷或量表來評估犬隻的認知功能，如Canine Cognitive Dysfunction Rating Scale (CCDRS)和Dog Cognitive Function Assessment (DCFA)等。
+結論：False
 
-這些問卷或量表可以幫助獸醫評估犬隻的認知功能，例如記憶力、注意力、學習能力等。根據評估結果，獸醫可以進一步進行MRI掃描以確認診斷。
+參考來源：
+[Experience: https://www.facebook.com/groups/403191506497801/permalink/2631558230327773/?rdid=HqDuRASCUk53jABS&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fp%2FidyouqqRo1EWrH3H%2F]",False,1
+47,true_false,NLRP3 炎症小體在犬的腦部炎症研究中被視為不重要，與失智無關對嗎。 ,False,NLRP3、腦部炎症、犬失智、發炎因子,照護,"判斷依據：
 
-[Experience: https://www.facebook.com/share/v/1A1RLmKiaw/]",True,0
-49,是非,部分研究認為抗氧化劑與神經保護劑的結合療法，有機會延緩犬的認知功能衰退對嗎？,True,抗氧化劑、神經保護劑、結合療法、認知衰退,照護,"False
+1. 這些文獻中沒有提及 NLRP3 inflammasomes 在犬類腦炎症研究中的重要性。
+2. 沒有相關的文獻或論文支持 NLRP3 inflammasomes 與犬類認知功能障礙綜合症（CCD）的關聯。
 
-抗氧化劑與神經保護劑的結合療法尚未被廣泛證實能夠延緩犬的認知功能衰退。雖然有些研究探討了這類療法對於動物的神經保護效果，但仍需要更多長期、系統性的研究來確認其有效性。
+結論：True
 
-許多研究僅針對特定的抗氧化劑或神經保護劑進行測試，尚未考慮到實際臨床應用中的複雜情況。同時，也缺乏足夠的統計數據和控制組比較，以確定這類療法是否能夠有效地改善犬的認知功能。
+來源：[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf, The canine model of human cognitive aging and dementia_Pharmacological validity of the model for assessment of human cognitive-enhancing drugs.pdf]",True,0
+48,true_false,CCD 是否在臨床上沒有任何行為問卷或量表能夠協助診斷，必須全靠 MRI 才能確診？,False,行為問卷、CCD 診斷、MRI、臨床評估,照護,"判斷依據：
 
-因此，目前仍需更多研究來確認抗氧化劑與神經保護劑結合療法的安全性、適用性以及其實際效果。[reference: https://www.facebook.com/share/p/1B7u3jFDy9/]",False,0
-51,選擇,"下列哪一項研究發現與犬隻失智 (CCD) 病理最相關，並常被拿來比照人類阿茲海默症的核心變化？
+1. 可使用的行為性質問卷或量表：Dunedin Canine Cognitive Assessment (DCCA)
+2. MRI可以用於確認診斷，但不是唯一方法
+3. 行為性質問卷和MRI結果應該綜合考慮，以確定診斷
+
+來源：[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]
+
+結論：False",False,1
+49,true_false,部分研究認為抗氧化劑與神經保護劑的結合療法，有機會延緩犬的認知功能衰退對嗎？,True,抗氧化劑、神經保護劑、結合療法、認知衰退,照護,"判斷依據：
+
+* 研究表明，抗氧化劑和神經保護劑的組合可能會延緩犬類認知功能衰退。
+* 獸醫文獻中提到，某些研究指出這種組合可以幫助減緩犬類老年人的認知功能衰退。
+
+結論：True
+
+參考來源：[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",True,1
+51,multiple_choice,"下列哪一項研究發現與犬隻失智 (CCD) 病理最相關，並常被拿來比照人類阿茲海默症的核心變化？
 A. 體重指數 (Body Condition Score)
 B. β-amyloid 蛋白沉積
 C. 高血糖指數 (Hyperglycemia)
 D. 肝臟酵素升高",B,β-amyloid、阿茲海默症類似病理、蛋白沉積、神經退行,醫療,"B
 
+β-amyloid protein deposition 是研究犬老年痴呆（CCD）的關鍵機制。這種蛋白質的沉積與人類阿茲海默症的核心變化相似，研究人員常將其作為兩者的比較對象。研究表明，β-amyloid 蛋白沉積在犬腦中與認知功能障礙的出現有關，進而促進了老年痴呆的發展。
 
-選擇了 β-amyloid 蛋白沉積（Aβ）是因為它是一種與人類阿茲海默症相關的蛋白質，同樣出現在犬隻失智症（CCD）的病理中。這些蛋白質聚集在腦部會導致神經元受損和死亡，進而影響犬隸的認知功能。
-
-研究發現 β-amyloid 蛋白沉積與犬隸失智症的病徵相關，包括記憶力喪失、行為改變等。這些結果表明犬隸失智症可能是由於特定生物學過程導致的神經元損傷，這在人類阿茲海默症中也被觀察到。
-
-參考資料：[reference: some.pdf]",B,1
-52,選擇,"在評估犬隻 CCD 的臨床症狀時，下列哪一項行為面向最常被列為主要觀察指標之一？
+[reference: The canine model of human cognitive aging and dementia_Pharmacological validity of the model for assessment of human cognitive-enhancing drugs]",B,1
+52,multiple_choice,"在評估犬隻 CCD 的臨床症狀時，下列哪一項行為面向最常被列為主要觀察指標之一？
 A. 毛色是否變白
 B. 飲水量的增加
 C. 定向能力 (Orientation) 與空間辨識度
 D. 心跳與呼吸速率",C,定向能力、空間辨識、行為量表、臨床症狀,醫療,"C
 
-犬隻的定向能力 (Orientation) 與空間辨識度是評估其認知功能障礙綜合症 (CCD) 的重要指標之一。這些行為面向可以幫助診斷犬隻是否出現認知功能障礙，例如方向感、時間感和空間定位能力的改變。
+犬認知功能障礙綜合症（CCD）的評估中，導向行為是指一種反映個體認知能力的行為模式。其中，空間認識（Spatial recognition）是指犬能夠辨別環境中的位置和地點，如回家、找到食物等，這是犬識別其周圍世界的一部分。這一行為是評估犬CCD症狀的重要指標之一。
 
-參考來源：[Experience: https://www.facebook.com/share/p/qFf55T4BgHJs6TzY/]",C,1
-53,選擇,"依據關於老犬腸—腦軸 (Gut-Brain Axis) 的研究，下列哪種方法可能有助於改善老犬在認知功能退化上的風險？
+[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",C,1
+53,multiple_choice,"依據關於老犬腸—腦軸 (Gut-Brain Axis) 的研究，下列哪種方法可能有助於改善老犬在認知功能退化上的風險？
 A. 不斷嘗試高強度競賽
 B. 採用單一蛋白質來源的快速減肥配方
 C. 添加特定益生菌或調整腸道微生物群
 D. 完全仰賴鎮靜藥物穩定情緒",C,腸—腦軸、益生菌、腸道微生物群、認知功能,醫療,"C
 
-選擇 C 選項是因為研究表明，添加特定益生菌或調整腸道微生物群可以改善老犬的認知功能。這是因為人們已經發現了腸—腦軸（Gut-Brain Axis）的關係，這意味著大腸健康與神經系統健康之間有密切的聯繫。
+研究表明，調整腸道微生物群落可以幫助改善老年犬的認知功能。添加特定的益生菌或調節腸道微生物群落可能有助於減少老年犬認知退行性變化的風險。
 
-研究表明，益生菌可以幫助調整腸道微生物群，從而改善認知功能。 [Experience: https://www.facebook.com/share/p/19XTRfUdmd/]
+這個選擇是基於研究表明，腸道-大腦軸（Gut-Brain Axis）與認知功能息息相關。調整腸道微生物群落可以改善腸道健康和降低老年犬的認知退行性變化風險。
 
-請注意：這個選項是根據已發表的研究和經驗所做出的推斷，具體的細節可能需要進一步的深入研究以確認。",C,1
-54,選擇,"文獻中提到犬隻認知功能障礙 (CCD) 與中樞神經免疫反應的關聯，下列哪種細胞或炎症小體常被視作潛在研究重點？
+參考文獻：Cognitive Dysfunction Syndrome A Disease of Canine and Feline Brain Aging.pdf",C,1
+54,multiple_choice,"文獻中提到犬隻認知功能障礙 (CCD) 與中樞神經免疫反應的關聯，下列哪種細胞或炎症小體常被視作潛在研究重點？
 A. Osteoclast 骨細胞
 B. Microglia 與 NLRP3 inflammasome
 C. 肌肉纖維與 CK (Creatine Kinase)
 D. 紅血球大小 (MCV)",B,Microglia、NLRP3 inflammasome、神經發炎、CCD,醫療,"B
 
+Microglia是一種中央神經系統中的免疫細胞，負責維持神經元的健康和清除異物質。NLRP3 inflammasome是一種感染和炎症反應相關的蛋白質複合體，涉及到自體免疫性疾病的發生。這兩個選項與中樞神經系統的免疫反應有直接關係，因此是與犬認知功能障礙綜合症（CCD）相關的研究優先事項。
 
-文獻中提到犬隻認知功能障礙 (CCD) 與中樞神經免疫反應的關聯，微膠細胞（Microglia）與 NLRP3 炎症小體被視作潛在研究重點，因為它們參與中樞神經系統的炎症反應，並可能與 CCD 的發生有所關聯。NLRP3 是一種調節炎症反應的分子，微膠細胞活化後會表達 NLRP3，促進炎症小體的形成。
+參考來源：[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",B,1
+55,true_false,犬隻服用人類認知增強藥物（如前驅膽鹼類、抗氧化劑等）已被證實能完全逆轉老犬的 CCD 症狀，正確嗎。,False,認知增強藥物、前驅膽鹼、完全逆轉、臨床效果有限,醫療,"判斷依據：
 
-參考資料：[Reference: some_link]",B,1
-55,是非,犬隻服用人類認知增強藥物（如前驅膽鹼類、抗氧化劑等）已被證實能完全逆轉老犬的 CCD 症狀，正確嗎。,False,認知增強藥物、前驅膽鹼、完全逆轉、臨床效果有限,醫療,"True
+1. 對犬認知功能障礙綜合症（CCD）的理解
+2. 猫的神經生物學和生理學研究結果
+3. 可靠的臨床證據
 
-犬隻服用人類認知增強藥物如前驅膽鹼類或抗氧化劑已被證實能夠逆轉老犬的CCD症狀。根據多個研究和經驗報告，這些藥物可以改善犬隻的認知功能，提高其生活品質。例如，前驅膽鹼類藥物如 donepezil 和 rivastigmine 已被證實能夠改善犬隻的記憶力、注意力和學習能力。
+結論：False
 
-[Experience: https://www.facebook.com/share/p/1E3G66Ncs5/]",True,0
-56,是非,針對犬隻失智 (CCD) 的診斷，是否可以單靠 MRI 或 CT 等影像學觀察大腦萎縮或斑塊沉積，即可準確區分 CCD 與其他神經退化疾病。,False,影像學輔助、MRI、CT、無法百分百區分、臨床量表,醫療,"True
+根據提供的文獻，目前尚未有科學證據支持犬類服用人類認知增強藥物（如procholines、抗氧化劑等）能夠完全逆轉CCD症狀。
 
-單靠 MRI 或 CT 等影像學觀察大腦萎縮或斑塊沉積不足以準確區分犬隻失智（CCD）與其他神經退化疾病。因為許多疾病都可能導致大腦損傷，例如阿茲海默症、帕金森氏症等，而影像學檢查無法判斷受影響的特定領域或神經元損傷程度。
+參考資料：
+[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]
+[reference: The canine model of human cognitive aging and dementia_Pharmacological validity of the model for assessment of human cognitive-enhancing drugs.pdf]",False,1
+56,true_false,針對犬隻失智 (CCD) 的診斷，是否可以單靠 MRI 或 CT 等影像學觀察大腦萎縮或斑塊沉積，即可準確區分 CCD 與其他神經退化疾病。,False,影像學輔助、MRI、CT、無法百分百區分、臨床量表,醫療,"判斷依據：
 
-此外，影像學結果也需要由獸醫進行綜合評估與臨床表現來確診。",True,0
+1. MRI 或 CT掃描可能會顯示出犬隻的大腦有受損或退行性變化，但這些成像技術並不能精確區分犬認知功能障礙綜合症（CCD）與其他神經退行性疾病。
+2. CCD 的臨床表現和診斷標準，包括行為、認知功能評估等。
+3. 血液檢查和免疫學檢測可能會對 CCD 有所幫助，但不是決定性的。
+
+結論：False
+
+參考來源：[reference: Under diagnosis of canine cognitive dysfunction_A cross-sectional survey of older companion dogs.pdf]",False,1
