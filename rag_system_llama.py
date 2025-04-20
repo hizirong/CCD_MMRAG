@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[78]:
+# In[98]:
 
 
 get_ipython().system('jupyter nbconvert --to script rag_system_llama.ipynb')
@@ -9,7 +9,7 @@ get_ipython().system('jupyter nbconvert --to script rag_system_llama.ipynb')
 
 # ### import
 
-# In[79]:
+# In[1]:
 
 
 import os
@@ -19,6 +19,7 @@ from pathlib import Path
 from typing import List, Dict, Optional, Tuple
 import pandas as pd
 import numpy as np
+import re
 
 # Display and Image handling
 from IPython.display import display
@@ -49,7 +50,7 @@ Path('chroma_db').mkdir(exist_ok=True)
 Path('image').mkdir(exist_ok=True)
 
 
-# In[80]:
+# In[2]:
 
 
 import sys
@@ -86,7 +87,7 @@ def transcribe_file(file_path, model_size="base"):
 
 # ### 圖片處理
 
-# In[82]:
+# In[3]:
 
 
 from typing import Union  # 添加 Union 导入
@@ -169,10 +170,12 @@ class ImageProcessor:
 
 # ### Embedding 處理模組
 
-# In[83]:
+# In[ ]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
+from transformers import AutoProcessor, AutoModel
+import torch
 # from IPython.display import display, Image
 class ClipEmbeddingProcessor:
     # 初始化 embedding processor
@@ -189,8 +192,11 @@ class ClipEmbeddingProcessor:
         self.image_processor = ImageProcessor(image_dir) 
         
         # ====== 1) 初始化 CLIP ======
-        self.clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
-        self.clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
+        # self.clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+        # self.clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
+        SIGLIP_NAME = "google/siglip-base-patch16-224"   # 也可以換 small / large
+        self.processor   = AutoProcessor.from_pretrained(SIGLIP_NAME)
+        self.siglip      = AutoModel.from_pretrained(SIGLIP_NAME).eval().to("cuda")  # 沒 GPU 改 "cpu"
 
         # 測試一下,取得image特徵維度(通常是512)
         with torch.no_grad():
@@ -210,7 +216,7 @@ class ClipEmbeddingProcessor:
 
         # 建立無embedding_function的collection,因為我們手動算embedding
         self.clip_collection = self.chroma_client.create_collection(
-            name="clip_collection",
+            name="ccd_docs_siglip",
             metadata={"dimension": self.clip_dim}
         )
         print(f">> Created single 'clip_collection' in {persist_directory} with dimension={self.clip_dim}.")
@@ -221,10 +227,12 @@ class ClipEmbeddingProcessor:
         用 CLIP 的 text encoder 將文字轉為512維向量
         """
         try:
-            inputs = self.clip_processor(text=[text], return_tensors="pt", truncation=True)
+            # inputs = self.clip_processor(text=[text], return_tensors="pt", truncation=True)
+            inputs = self.processor(text=[text], return_tensors="pt", padding=True).to(siglip.device)
             with torch.no_grad():
-                text_feat = self.clip_model.get_text_features(**inputs)
-            return text_feat.detach().cpu().numpy()[0]
+                # text_feat = self.clip_model.get_text_features(**inputs)
+                embs = self.siglip.get_text_features(**inputs)
+            return (embs / embs.norm(dim=-1, keepdim=True)).cpu().numpy()
         except Exception as e:
             print(f"Error in process_text_with_clip: {str(e)}")
             return None
@@ -312,10 +320,10 @@ class ClipEmbeddingProcessor:
                     return None
 
                 image = PILImage.open(processed_path)
-                inputs = self.clip_processor(images=image, return_tensors="pt")
+                inputs = processor(images=pil_imgs, return_tensors="pt").to(siglip.device)
                 with torch.no_grad():
-                    img_feat = self.clip_model.get_image_features(**inputs)
-                return img_feat.detach().cpu().numpy()[0]
+                    embs = siglip.get_image_features(**inputs)
+                return (embs / embs.norm(dim=-1, keepdim=True)).cpu().numpy()
             except Exception as e:
                 print(f"Error in process_image_with_clip: {str(e)}")
                 return None
@@ -403,7 +411,7 @@ class ClipEmbeddingProcessor:
 
 # ### 資料處理模組
 
-# In[84]:
+# In[5]:
 
 
 class DataProcessor:
@@ -659,7 +667,7 @@ class DataProcessor:
 
 # ##### code
 
-# In[94]:
+# In[158]:
 
 
 from deep_translator import GoogleTranslator
@@ -744,22 +752,19 @@ class QASystem:
                     structured["images"]["paths"].append(path)
                     structured["images"]["relevance"].append(dist)
 
-                # 你也可以做 else: pass 之類
+                else:
+                    # 將未知 type 全丟 professional，或依需求改 social
+                    meta.setdefault("type", "professional")
+                    structured["professional"]["metadata"].append(meta)
+                    structured["professional"]["documents"].append(doc_text)
+
 
         return structured
 
 
-    def translate_en_to_zh(self,chinese_text: str) -> str:
-        try:
-            # 指定原文語言為 'zh'（中文），目標語言為 'en'（英文）
-            translator = GoogleTranslator(source='en', target='zh-TW')
-            result = translator.translate(chinese_text)
-            return result
-        except Exception as e:
-            print(f"翻譯錯誤：{e} - 對應中文問題：{chinese_text}")
-            return chinese_text  # 若翻譯失敗，返回原文
 
-    def determine_question_type(query: str) -> str:
+
+    def determine_question_type(self,query: str) -> str:
         """
         回傳: "multiple_choice" | "true_false" | "qa"
         支援中英文 & 各種標點
@@ -769,8 +774,7 @@ class QASystem:
         # --- Multiple‑choice --------------------------------------------------
         # 1) 行首或換行後出現  A～D / 全形Ａ～Ｄ / 「答」，
         #    後面接　. ． : ： 、)
-        mc_pattern = re.compile(
-            r'(?:^|\n)\s*(?:[a-dａ-ｄ]|答)\s*[\.．:：、)]', re.IGNORECASE)
+        mc_pattern = re.compile(r'(?:^|\n)\s*(?:[a-dａ-ｄ]|答)[:\.．:：、\)]', re.I)
         # 2) or 句子帶 "which of the following"
         mc_keywords_en = ["which of the following", "which one of the following",
                         "which option", "choose one of"]
@@ -780,8 +784,8 @@ class QASystem:
 
         # --- True / False -----------------------------------------------------
         tf_keywords_zh = ["是否", "是嗎", "對嗎", "正確嗎"]
-        tf_keywords_en = ["is this", "is it true", "is it correct",
-                        "true or false", "correct or not"]
+        tf_keywords_en = ['true or false', 'is it', 'is this', 'is that', 
+             'is it possible', 'correct or not']
 
         if any(k in q for k in tf_keywords_zh + tf_keywords_en):
             return "true_false"
@@ -793,6 +797,10 @@ class QASystem:
         """
         從 search_results 中擷取 PDF 檔名/社群連結，並組成一個字串
         """
+        if not isinstance(search_results, dict):
+            logger.error("search_results 格式錯誤: %s", type(search_results))
+            return ""
+
         references = []
 
         # 處理 social
@@ -813,6 +821,7 @@ class QASystem:
 
     def get_prompt_by_type(self,query: str, context: str, question_type: str, references_str: str = "") -> str:
         # print('[DEBUG]:query in get_prompt_by_type',query)
+        # logger.info("prompt type:",question_type)
         
         # role
         base_system = (
@@ -859,13 +868,15 @@ class QASystem:
                                 來源：
                                     {references_str}
 
-                                請依以下格式回答：
-                                1. 一定先指出「True」或「False」(僅能擇一)，若遇到無法確定或證據不足的情況，一律為False，並說明原因
-                                2. 再以 2～3 句話說明原因
-                                3. 請在答案最後顯示你參考的來源連結或論文名稱，
+                                請按照下列格式回答是非題：
+                                Step‑by‑step：
+                                1. 先列出判斷依據（可條列）
+                                2. 請在答案最後顯示你參考的來源連結或論文名稱，
                                     如果來源中包含「(經驗) some_link」，請在回答中以 [Experience: some_link] 形式標示；
                                     若包含「(文獻) some.pdf」，就 [reference: some.pdf]。
-                                4.  若有相關圖片，在回答中自然地說明圖片內容跟回答的關係
+                                3.  若有相關圖片，在回答中自然地說明圖片內容跟回答的關係
+                                4. 最後再給出結論，只能寫「True」或「False」
+
 
                                 限制：
                                 - 請將整體回答限制在 200 字以內
@@ -906,8 +917,20 @@ class QASystem:
         # 若 question_type 未包含在定義的 prompts 中，就預設使用 "qa"。
         return prompts.get(question_type, prompts["qa"])
 
-    def generate_response(self, query: str) -> Tuple[str, List[str]]:
+
+    def translate_en_to_zh(self,chinese_text: str) -> str:
         try:
+            # 指定原文語言為 'zh'（中文），目標語言為 'en'（英文）
+            translator = GoogleTranslator(source='en', target='zh-TW')
+            result = translator.translate(chinese_text)
+            return result
+        except Exception as e:
+            print(f"翻譯錯誤：{e} - 對應中文問題：{chinese_text}")
+            return chinese_text  # 若翻譯失敗，返回原文
+
+    def generate_response(self, query: str,question_type: Optional[str] = None) -> Tuple[str, List[str]]:
+        try:
+
             raw_result = self.embedding_processor.search(query)  
             # raw_result 是 clip_collection 的資料
             # 用後處理
@@ -918,8 +941,19 @@ class QASystem:
             context = self.format_context(search_results)
             references_str = self.gather_references(search_results)
             # link應該用傳參數的會成功 可能用context.link之類的抓題目的reference
-            question_type = self.determine_question_type(query)
-            prompt = self.get_prompt_by_type(query, context, question_type, references_str)
+            
+            zh_query = self.translate_en_to_zh(query)
+            
+
+            # --- ① 題型 --------------------------------------------------------
+            if question_type:          # 呼叫端已經給我，就直接用
+                q_type = question_type
+            else:                      # 否則退回舊邏輯自動判斷
+                q_type = self.determine_question_type(query)
+            # question_type = self.determine_question_type(zh_query)
+            prompt = self.get_prompt_by_type(query, context, q_type, references_str)
+        
+            
             message = {
                 'role':'user',
                 'content': prompt
@@ -953,7 +987,8 @@ class QASystem:
 
         except Exception as e:
             logger.error(f"Error generating response: {str(e)}")
-            return f"出現問題，檢查ollama連線或是generate_response", []
+            # return f"出現問題，檢查ollama連線或是generate_response", []
+            raise
 
     def format_context(self, search_results: Dict) -> str:
         """Format context from search results"""
@@ -1007,12 +1042,15 @@ class QASystem:
                     
 
 
-    def display_response(self, query: str):
+    def display_response(self, query: str,question_type: Optional[str] = None):
             """Display response with text and images"""
             try:
                 logger.info("Starting to generate response...")
-
-                response_text, image_paths = self.generate_response(query)
+                try:
+                    response_text, image_paths = self.generate_response(query,question_type)
+                except Exception as e:
+                    response_text = f"[ERROR] {e}"
+                    image_paths = []
                 
                 print("Question:", query)
                 print("\nSystem Response:")
@@ -1040,21 +1078,7 @@ class QASystem:
 
 # ### 系統初始化和資料處理
 
-# In[95]:
-
-
-from pathlib import Path
-
-# 初始化 embedding processor
-embedding_processor = ClipEmbeddingProcessor(
-    image_size=(224, 224)  # 設定圖片處理的目標尺寸
-)
-
-# 初始化數據處理器
-data_processor = DataProcessor(embedding_processor)
-
-
-# In[87]:
+# In[160]:
 
 
 from pathlib import Path
@@ -1085,7 +1109,7 @@ num_texts, num_images = data_processor.process_all(
 
 # ### 系統測試
 
-# In[96]:
+# In[161]:
 
 
 qa_system = QASystem(
@@ -1096,7 +1120,7 @@ qa_system = QASystem(
 
 # #### 個別題目測試
 
-# In[97]:
+# In[112]:
 
 
 # 測試查詢
@@ -1142,11 +1166,12 @@ for query in test_queries:
 
 # #### test questions 
 
-# In[93]:
+# In[162]:
 
 
-import pandas as pd
+import string
 import re
+import pandas as pd
 from deep_translator import GoogleTranslator
 
 def translate_zh_to_en(chinese_text: str) -> str:
@@ -1167,14 +1192,11 @@ def parse_llm_answer(llm_response: str, q_type: str) -> str:
     """
 
     # 把回覆都轉小寫，以便搜尋
-    text_lower = llm_response.lower().strip()
+    q_type = q_type.strip().lower()        # 保險起見
     cleaned = llm_response.strip()
     
-    # 定義對應字典
-    positive_responses = {'yes', '是', '對', 'true','True','Yes'}
-    negative_responses = {'no', '否', '不對', 'false','False','No'}
     
-    if q_type == "選擇":
+    if q_type == "multiple_choice":
        
         # 1) 先去除可能的全形/半形混雜、移除多餘符號等（可選）
         #    下面先做個最基本的 strip() 處理
@@ -1193,18 +1215,33 @@ def parse_llm_answer(llm_response: str, q_type: str) -> str:
         else:
             return "UNKNOWN"
     
-    elif q_type == "是非":
-        # 將輸入的回應斷詞，檢查是否包含正向或負向的關鍵詞
-        words = re.findall(r'\w+', text_lower)  # 取出所有單字
-        
-        # 如果找到任何正面回應
-        if any(word in positive_responses for word in words):
-            return "True"
-        
-        # 如果找到任何負面回應
-        if any(word in negative_responses for word in words):
-            return "False"
-        
+    elif q_type == "true_false":
+
+        for line in reversed(llm_response.splitlines()):
+            line = line.strip().lower()
+            if line.startswith(("結論", "答案")):
+                if "true" in line or "是" in line:
+                    return "True"
+                if "false" in line or "否" in line or "不" in line:
+                    return "False"
+                
+        negative_phrases = [
+            "不是", "否", "不對", "false", "no", "不可以",
+            "不能", "不行", "never", "cannot"
+        ]
+        positive_phrases = [
+            "是", "對", "true", "yes", "可以",
+            "能", "行", "可以的", "沒問題"
+        ]
+       # 去掉標點
+        text_nopunct = re.sub(f"[{re.escape(string.punctuation)}]", " ", cleaned)
+
+        for phrase in negative_phrases:
+            if phrase in text_nopunct:
+                return "False"
+        for phrase in positive_phrases:
+            if phrase in text_nopunct:
+                return "True"
         return "UNKNOWN"
     
     else:
@@ -1215,10 +1252,10 @@ def main():
     # 讀取題目資料
     df = pd.read_excel("test_questions.xlsx")
     
-    # 篩選 type = 選擇 或 是非
-    # test_df = df[df["type"].isin(["選擇","是非"])].copy()
-    test_df = df[df["type"].isin(["選擇"])].copy()
-    test_df = test_df.head(4)
+    # 篩選 type = multiple_choice 或 true_false 或 qa
+    test_df = df[df["type"].isin(["multiple_choice","true_false"])].copy()
+    # test_df = df[df["type"].isin(["true_false"])].copy()
+    # test_df = test_df.head(4)
     
     # 新增欄位來存儲系統的回覆 & 預測答案
     test_df["llm_response"] = ""
@@ -1233,7 +1270,7 @@ def main():
         
         # llm_resp = qa_system.display_response(q)
         try:
-            response_text, _ = qa_system.display_response(en_q)
+            response_text, _ = qa_system.display_response(en_q,q_type)
 
         except Exception as e:
             print(f"Error with query {en_q}: {e}")
@@ -1261,7 +1298,7 @@ def main():
     print(test_df[["id","type","answers","predicted","is_correct"]])
     print(f"\n共 {total} 題，正確 {correct_count} 題，Accuracy = {accuracy:.2f}")
     
-    # 若需要將回覆結果輸出 CSV
+    # 若需要將回覆結果輸出 CSV 
     test_df.to_csv("test_result.csv", index=False, encoding='utf-8')
     print("結果已儲存 test_result.csv")
 
