@@ -3,3 +3,25 @@ key
 image
 chroma_db
 RAG_data
+RAG_data_test
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+env/
+.venv/
+
+# OS files
+.DS_Store
+
+# IDE files
+.idea/
+.vscode/
+
+# Logs and local data
+*.log
+data/
+__pycache__
