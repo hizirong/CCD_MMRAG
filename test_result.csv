@@ -1,394 +1,343 @@
-id,type,question,answers,keywords,面向,llm_response,predicted,is_correct
-6,true_false,CCD 是否與神經發炎相關？是否有特定細胞因子（cytokines）或發炎路徑（例如NLRP3 inflammasome）參與？,True,NLRP3 炎症小體如何參與炎症反應、主要細胞因子：IL-1β、TNF-α 等、提到 CCD 早期炎症在分子層面的機制,醫療,"判斷依據：
+id,type,question,answers,keywords,domain,llm_response,predicted,is_correct
+57,true_false,六味地黃丸（Rehmannia 6）是臨床上治療犬貓慢性腎臟病屬「腎陰虛」證的常用基礎方，對嗎？,True,,中醫,"判斷依據：
 
-* 具體文獻中沒有直接提及CCD與神經炎症的關係，但有一些研究表明老年犬的腦部中可能出現微小的炎症反應。
-* 一些學術論文提到，NLRP3 inflammasome（一種涉及發炎反應的蛋白質複合物）在神經退行性疾病中可能起到一定作用。
-
-結論：False
-
-根據目前的知識和研究，尚無直接證據表明犬類認知功能障礙綜合症（CCD）與神經炎症有直接關係，但仍需要進一步研究。",False,0
-7,true_false,CCD 是否與腸道微生物群變化有關？哪些特定細菌群可能影響大腦健康？,True,"腸道菌群—腦軸(Gut-Brain Axis)的關聯、常見與神經退化風險相關的菌群 (如 Lactobacillus, Bifidobacterium 變化)、需補充臨床研究證據",醫療,"判斷依據：
-
-* 《Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf》第4頁提到：CCD的成因尚不完全清楚，但可能與神經退行性疾病、免疫反應和基因變異有關。
-* 《Cognitive Dysfunction Syndrome A Disease of Canine and Feline Brain Aging.pdf》第11頁指出：CCD的成因可能涉及多種生物學因素，包括腦部代謝過程中的變化和神經退行性疾病。
+* 根據《神農本草經》記載，六味地黃丸（Rehmannia 6）是臨床上治療犬貓慢性腎臟病屬「腎陰虛」證的常用基礸方，但並未直接提及它適用於犬貓。
+* 六味地黃丸的組成包括生地黃、石膏等藥物，主要功能是滋補養陰、清熱燥濕。
 
 結論：
-True
-
-備注：根據相關文獻，CCD與腸道微生物群落（gut microbiota）的變化有關。特定的細菌群組，如Bifidobacterium和Lactobacillus，可以影響腦健康。[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",False,0
-8,true_false,失智犬的松果體是否退化？是否影響褪黑激素分泌？,True,松果體機能與老年犬睡眠週期紊亂、減少褪黑激素分泌可能導致夜間焦躁與睡眠問題,醫療,"判斷依據：
-
-1. 人們對犬類認知功能障礙綜合症（CCD）的研究已經表明，腦組織的退行性變化是 CCD 的一個重要特徵。
-2. 神經退行性疾病的研究表明，神經元的死亡和神經連接的破壞會導致認知功能的下降。
-
-結論：True
-
-參考資料：[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",True,1
-9,true_false,B 群維生素是否能降低 CCD 進展風險？,True,B 群在神經健康維持上的作用、研究對 B 群補充與認知功能衰退的關聯、實際劑量與臨床實證可引用,醫療,"判斷依據：
-
-1. 《Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf》文獻中沒有提到Group B vitamins對CCD的影響。
-2. 《Under diagnosis of canine cognitive dysfunction_A cross-sectional survey of older companion dogs.pdf》文獻中也沒有相關內容。
-3. 《Cognitive Dysfunction Syndrome A Disease of Canine and Feline Brain Aging.pdf》文獻中提到老年犬可能需要額外營養，但未特別提及Group B vitamins的作用。
-4. 《Effects of Single Probiotic-和Combined Probiotic-Fermented Milk on Lipid Metabolism in Hyperlipidemic Rats.pdf》文獻關於脂質代謝研究，與CCD無直接相關性。
-
-結論：False
-[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",False,0
-12,true_false,食用GABA 是否對於預防 CCD 有效？,False,GABA對神經傳導抑制與放鬆效果、目前研究證據是否充分、可能無法替代醫療，但有輔助作用、證據尚不足,醫療,"判斷依據：
-
-1. 文獻中未提及GABA的使用於預防犬認知功能障礙綜合症（CCD）的研究或結果。
-2. 許多文獻集中在 CCD 的病理生理機制、診斷和治療方法的探討，但沒有相關的 GABA 項目。
-
-結論：False
-
-參考來源：[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf, 頁: 2]",False,1
-13,true_false,警犬、救難犬等工作犬在罹患CCD的機率是否比家庭陪伴犬較高？,False,有研究指出高壓力、長工時對認知退化影響、也可能因訓練較多而延緩退化、需參考實際數據、有些研究認為長時間高壓力可能增進退化風險，但也有觀點認為「工作犬的持續訓練」反而能刺激認知、延緩退化；尚未有明確結論，因此無法簡單斷定「罹患率更高」為真。,醫療,"判斷依據：
-
-1. 研究表明，老年犬（senior dogs）更容易受到認知功能障礙綜合症（CCD）的影響。
-2. 工作犬（working dogs），如警犬和救援犬，其工作性質可能導致額外的壓力和心理負擔，這些因素可能增加了CCD的風險。
-3. Companion狗被認為與工作犬相比更容易受到CCD的影響，因為伴侶犬沒有工作的壓力，而這種壓力可能會減少CCD的風險。
-
-結論：False
-根據研究和經驗，與一般人們的印象相反，工作犬其實不一定比伴侶犬更容易受到CCD的影響。 [Experience: https://reddit.com/r/seniordogs/comments/17xbe4g/senior_pitbull_behavioral_issues/]",False,1
-14,true_false,是否有影像檢測可準確區分 CCD 與其他神經退行性疾病？,False,MRI、CT對腦部萎縮或斑塊沉積的檢測、其優勢與局限性：費用、儀器可及性、證據不足,醫療,"判斷依據：
-
-* CCD是一種複雜的疾病，可能與多種神經退行性疾病相混淆。
-* 目前尚無單一影像檢查方法能夠準確區分CCD和其他神經退行性疾病。
-* 鏡下檢查（MRI）可以用於評估大腦結構異常，但其結果不過於特異性和敏感性。
-
-結論：False
-
-[Experience: https://reddit.com/r/AskVet/comments/1cowcvl/quality_of_life_question/]",False,1
-16,true_false,皮質類固醇cortisol或應激荷爾蒙stress hormones是否可作為 CCD 的潛在診斷指標？,True,神經炎症、皮質醇偏高,醫療,"判斷依據：
-
-* 血液檢查結果顯示犬隻的皮質醇水平升高或壓力激素水平異常
-* 診斷表現出典型的CCD症狀，如記憶力衰退、注意力不集中等
-* 獸醫經驗與臨床觀察
-
-根據相關文獻，犬隻的皮質醇水平和壓力激素水平可能會在老年犬中升高，但這並不是CCD的直接診斷指標。然而，對於某些犬隻，這些生化指標可能會出現異常值，與CCD的表現相關聯。
-
-結論：False
-
-參考來源：
-[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",False,0
-17,true_false,有刻板形為的犬隻是否會增加CCD風險？,True,,醫療,"判斷依據：
-
-* 犬類認知功能障礙綜合症（CCD）是一種老年犬的常見健康問題。
-* 許多研究表明，老年犬會因為身體疾病、神經退行性疾病和心理壓力等因素而增加患有CCD的風險。
-* 案例研究顯示，一些老年犬在接受訓練和治療後會有所改善。
-
-結論：False
-
-老年犬可能會因為身體疾病、神經退行性疾病和心理壓力等因素而增加患有CCD的風險，但這并不意味著所有犬類認知功能障礙綜合症都是由此引起的。 [reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",False,0
-24,multiple_choice,"若家中老犬常在晚間吠叫、彷彿不安，以下哪項做法最優先？
-A. 搬家讓牠換新環境
-B. 夜間完全關燈並限制活動
-C. 先維持穩定環境並提供微弱光源
-D. 立即施打鎮靜劑",C,夜間焦躁、穩定環境、光線調整、行為介入,照護,"C
-
-
-選擇 C，因為這種方法能夠提供犬隻舒適的環境，避免對其造成額外的壓力。
-
-
-提供穩定的環境和弱光源可以幫助老狗感到放鬆和安全，並且不會加重其不安的情緒。
-
-參考資料：(經驗) https://reddit.com/r/seniordogs/comments/1ics2vb/suggestions_for_large_breed_sundownersanxiety/",C,1
-25,multiple_choice,"在照顧失智犬時，若發現牠對日常指令反應變慢，下列哪種訓練原則較合適？
-A. 加大音量不斷重複指令
-B. 利用簡短口令並搭配手勢或嗅聞提示
-C. 堅持原有長句式指令不做改變
-D. 取消所有訓練",B,簡短口令、視覺/嗅覺提示、指令調整、行為訓練,照護,"B
-
-選擇簡短的指令和匹配的手勢或嗅覺提示可以幫助年老犬更好地理解，並且減少誤解。這種方法能夠針對個體差異作出調整，提高訓練的效果。
-
-參考資料：(經驗) https://reddit.com/r/AskVet/comments/1cd5lak/13_year_old_extra_large_breed_dog_having_good/",B,1
-26,multiple_choice,"如果高齡犬經常在家裡亂撞傢俱，可能和下列哪種現象最相關？
-A. 單純故意搗蛋
-B. Thigmotaxis 或定向障礙
-C. 想吸引主人注意
-D. 正常老化行為，不需處理",B,亂撞傢俱、Thigmotaxis、定向障礙、空間認知,照護,"B
-
-這種行為可能是由於動物認知功能障礙綜合症（CCD）導致的定向性空間失常，例如地形記憶力和方向感受器的喪失。動物可能會迷路或無法找到家中的出口，导致碰撞家具。
-
-參考資料：(經驗) https://reddit.com/r/AskVet/comments/1cd5lak/13_year_old_extra_large_breed_dog_having_good/",B,1
-27,multiple_choice,"老年犬食慾下降時，下列哪個建議最符合改善策略？
-A. 馬上更換飼料品牌且一次大量添購
-B. 在飼料中加入濃味香辛料刺激食慾
-C. 提高飼料溫度或加湯汁提升香氣
-D. 強迫餵食，防止餓到",C,食慾改善、溫度/香氣、老犬飼餵、香辛料風險,照護,"A
-
-增加食物的溫度或添加湯汁可以改善老年犬的口氣，刺激其餓食行為。
-
-根據一些經驗表明，調整食物的味道和觸感有助於提高老年犬的食欲。例如，添加強烈香氣的食物或使用碗中的特殊設計可以幫助犬類更容易進食。然而，這些方法可能不適用於所有犬種，因此需要根據個別犬種進行調整。
-
-參考資料：(經驗) https://reddit.com/r/AskVet/comments/1cd5lak/13_year_old_extra_large_breed_dog_having_good/",A,0
-28,multiple_choice,"想為失智犬提供認知刺激，下列哪種活動較為合適？
-A. 高強度障礙賽
-B. 短程嗅聞尋找遊戲
-C. 全日關籠休息
-D. 長時間游泳訓練",B,認知刺激、嗅聞遊戲、低強度活動、老犬運動,照護,"B
-
-
-短距離嗅探尋找遊戲可以幫助狗保持認知功能，刺激其腦部活動。這種遊戲適合老年或有認知功能障礙的狗，因為它們不需要太多physical努力，而是能夠盡情地使用嗅覺能力。
-
-
-[reference: Canine Cognitive Dysfunction Syndrome]",B,1
-29,multiple_choice,"若在照顧過程中，老犬出現白天過度沉睡、夜間不安，下列哪種日常排程較能幫助調整牠的生理時鐘？
-A. 白天保持安靜，不要打擾牠
-B. 白天適度互動與散步，夜間營造安靜燈光環境
-C. 夜間一直陪玩，消耗牠體力
-D. 讓牠自行調整，不必干涉",B,生理時鐘、日夜節律、適度互動、安靜燈光,照護,"B
-
-這種情況下，調整狗的生理節律，需要提供適當的活動和照顧。選項 B 建議在白天進行適度的互動和散步，並創造一個安靜的環境，以協助狗適應新的節律。這樣可以幫助狗放鬆並進入正常的睡眠模式。
-
-相關來源：(經驗) https://reddit.com/r/dogs/comments/v4lqt3/advice_on_dog_dementiasenility/",B,1
-30,multiple_choice,"當犬隻顯現社交退縮、不想與主人或其他動物互動，下列哪項作法最不建議？
-A. 建立安全區域，給予牠主動選擇互動的空間
-B. 強迫牠與其他動物一起待在狹小籠子
-C. 慢慢引導牠做短暫互動並觀察反應
-D. 留意是否有身體不適的潛在原因",B,社交退縮、強迫互動、身體不適、安全區域,照護,"B
-
-強迫狗隻留在小籠中與其他動物共處可能會使其感到害怕和壓力，進而加劇社交退縮行為。創造安全區域給予狗隻選擇性互動、逐漸引導交互以及關注身體不適都是合理的方法。
-
-[Experience: https://reddit.com/r/seniordogs/comments/1e6lvt5/how_did_you_know_when_your_dog_got_dementia/]",B,1
-31,multiple_choice,"若狗狗老化後，對於原本熟悉的家中樓梯顯得恐懼，下列哪種協助方式較適宜？
-A. 馬上拆除樓梯
-B. 讓牠自己多摔幾次就習慣
-C. 設置防滑地墊或安全柵欄，並以牽繩慢慢引導
-D. 完全禁止上下樓",C,樓梯恐懼、防滑地墊、安全柵欄、牽繩引導,照護,"C
-
-當老狗因為年齡原因而害怕熟悉的樓梯時，設置防滑地毯或安全圍欄，並用提線帶領牠們慢慢走是最適合的方法。這樣可以幫助老狗保持平衡和信心。
-
-根據經驗，這種方法可以有效減少老狗跌倒的風險，同時也能夠讓牠們感到安全舒服（參考 [經驗] https://reddit.com/r/seniordogs/comments/1e6lvt5/how_did_you_know_when_your_dog_got_dementia/）。",C,1
-32,multiple_choice,"對老年犬的居家空間規劃，下列何者較能減少牠碰撞或迷路？
-A. 家具經常大幅度移動
-B. 在地面放大量雜物，增加刺激
-C. 設置路徑指示(小夜燈)並儘量維持動線固定
-D. 不做任何改變，讓牠自己適應",C,空間動線、小夜燈、路徑指示、環境安全,照護,"C
-
-
-設置路徑指示燈（night lights）和嘗試維持固定的線路，可以幫助老年犬避免碰撞或迷路。這樣的設計可以提供清晰的視覺信號，幫助犬隻保持方向感並減少混淆。
-
-[Experience: https://reddit.com/r/Dogtraining/comments/ylyk5m/if_you_had_the_power_to_perfectly_teach_your_dog/]",C,1
-33,multiple_choice,"想觀察老犬是否有 CCD 初期症狀，下列哪種行為跡象最能代表可能的認知改變？
-A. 偶爾打瞌睡
-B. 短暫呆站
-C. 在熟悉環境中頻繁迷路或定向困難
-D. 喜歡玩新的玩具",C,CCD 初期、定向困難、迷路、行為跡象,照護,"C
-
-選擇 C 是因為犬認知功能障礙綜合症（CCD）的一個常見早期徵狀是動物在熟悉的環境中容易迷路或出現方向困難。這種情況表明動物的空間記憶和導航能力有所下降。
-
-這種變化可能與大腦老化、神經退行性疾病或其他健康問題相關，需要進行進一步的檢查和診斷，以確定是否患有 CCD。
-
-參考資料：(文獻) Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf",C,1
-34,multiple_choice,"下列何者不是犬隻認知功能障礙 (CCD) 常見的主要症狀？
-A. 睡眠—覺醒週期顛倒
-B. 嚴重口腔潰瘍
-C. 對熟悉環境產生定向障礙
-D. 社交互動異常",B,CCD 症狀、睡眠顛倒、定向障礙、社交退縮,醫療,"A
-
-犬認知功能障礙綜合症（CCD）是老年犬常見的健康問題，主要表現為認知功能退化、行為變化和情緒問題。選項中，「B. Severe oral ulcers」並非典型的 CCD 主要症狀，它可能與口腔疾病或其他健康問題相關，而不是一種典型的心理學特徵。
-
-來源：[reference: Canine Cognitive Dysfunction.pdf]",A,0
-35,multiple_choice,"關於犬隻神經退行性變化，下列哪一項病理機制與人類阿茲海默症最相近？
-A. 闌尾炎
-B. β-amyloid 沉積與神經炎症
-C. 消化性潰瘍
-D. 血糖過低",B,神經退行、β-amyloid、神經炎症、阿茲海默,醫療,"B
-
-選擇 B 因為它描述了β-胺蛋白沉積和神經炎症，這是與人類阿茲海默症（Alzheimer's disease）相似的病理機制。這種病理變化在犬類中出現，例如犬認知功能障礙綜合症（CCD），並且已被認為是一個動物模型來研究人類認知老化和阿茲海默症。
-
-參考文獻：Cognitive Dysfunction Syndrome A Disease of Canine and Feline Brain Aging.pdf",B,1
-36,multiple_choice,"對於犬腦部影像學診斷 CCD，下列哪種工具最常用於檢測大腦萎縮或病灶？
-A. PET (正子掃描)
-B. MRI (核磁共振)
-C. X 光
-D. 腹部超音波",B,影像診斷、MRI、大腦萎縮、CCD,醫療,"B
-MRI（磁共振成像）是診斷犬認知功能障礙綜合症（CCD）的首選工具，因為它能夠提供清晰的腦部解剖結構和病變影像，幫助醫生檢測出腦萎縮或病變。MRI比其他成像技術更能夠精確地顯示腦部組織的細微變化。
- 
-參考資料：(文獻) Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf",B,1
-37,multiple_choice,"腸道菌群與犬的認知健康的關聯研究，多認為透過哪條通路影響大腦？
-A. 骨骼肌收縮
-B. 腸—腦軸 (Gut-Brain Axis)
-C. 角膜反射
-D. 肺部換氣",B,腸道菌群、腸—腦軸、認知健康、Gut-Brain Axis,醫療,"B
-
-研究表明，腸道菌群與狗的認知健康之間有關聯，這種關聯主要是通過肠脑轴（Gut-Brain Axis）發生的。肠脑轴是一個複雜的生理機制，它涉及腸道菌群對大腦功能的影響，包括調節激素、神經遞質和免疫系統。
-
-來源：(文獻) Under diagnosis of canine cognitive dysfunction_A cross-sectional survey of older companion dogs.pdf",B,1
-38,multiple_choice,"老年犬 CCD 行為評估量表通常會衡量下列哪些面向？
-A. 體色變化和毛量
-B. 性別和體重
-C. 定向能力、互動意願、睡眠模式
-D. 牙齒生長速度",C,CCD 行為量表、定向力、互動意願、睡眠模式,醫療,"C
-
-犬認知功能障礙綜合症（CCD）的行為評估表通常會測量老年犬的導向能力、願意互動和睡眠模式。
-
-根據[reference: Cognitive Dysfunction Syndrome A Disease of Canine and Feline Brain Aging.pdf]，CCD的行為評估表包括了多個方面，例如導向能力、社交行為、日常生活活動等。這些評估可以幫助醫生診斷和監測犬隻的情況。
-
-在老年犬中，導向能力、願意互動和睡眠模式是十分重要的因素，因為它們可能會受到認知功能障礙綜合症（CCD）的影響。",C,1
-39,true_false,老年犬若深夜嚎叫，照護者可以嘗試在牠活動區放置淡光夜燈，並增加可摸到的熟悉物品來降低不安，對嗎？,True,夜間焦躁、淡光夜燈、熟悉物品、安全感,照護,"判斷依據：
-
-1.犬的晚間哀號通常是焦慮或疼痛的跡象
-2. shimmering night lights 可能幫助減少犬的焦慮
-3. 添加熟悉物品可以提供感覺安定
-
-結論：True
-
-根據經驗，我們知道在照顧老年犬時，晚間哀號可能與犬的焦慮或疼痛有關。添加 shimmering night lights 和熟悉物品可以幫助減少犬的焦慮，並提供感覺安定。 [Experience: https://reddit.com/r/Dogtraining/comments/pozmlw/my_mil_with_dementia_is_staying_with_us_and/]",True,1
-40,true_false,是否只要老犬開始忘記如廁地點，就等同於罹患 CCD，無需檢查其他病因？,False,如廁混亂、排除其他病因、確診依據、CCD,照護,"判斷依據：
-
-1. 年齡：13歲犬可能是老年期，容易出現認知功能衰退的跡象。
-2. 行為改變：忘記廁所位置是一種常見的老年犬行為問題。
-3. 診斷其他原因：需要排除其他可能的原因，如感染、神經系統疾病等。
-
-結論：False
-
-老年犬可能會出現認知功能衰退，但僅憑藉著忘記廁所位置就不能確診犬隻患有犬認知功能障礙綜合症（CCD）。需要進行進一步的評估和檢查來排除其他可能的原因。
-
-參考：[Experience: https://reddit.com/r/AskVet/comments/1cd5lak/13_year_old_extra_large_breed_dog_having_good/]",False,1
-41,true_false,"若狗狗出現刻板繞圈，飼主應先檢查是否有焦慮和神經退化因素，而非僅用力制止，對嗎？ 
-",True,刻板繞圈、焦慮、神經退化、行為檢查,照護,"判斷依據：
-
-1. 狗狗的行為模式：是否有明顯的情緒波動或焦慮症狀？
-2. 年齡和健康狀況：老年犬或患有神經退行性疾病（如CCD）的犬？
-3. 行為前史：最近是否出現任何重大生活變化或壓力？
-
-結論：True
-
-根據我的專業經驗，當狗狗出現僵硬的圈狀行為時，我們應該首先考慮其可能的情緒和神經健康因素，而不是僅僅停止這種行為。情緒和神經健康問題是犬隻行為異常的常見原因之一，我們需要進行徹底評估才能找出根本原因並提供適當治療。
-
-參考來源：[Experience: https://reddit.com/r/AskVet/comments/jlbx49/help_canine_cognitive_dysfunction/]",True,1
-42,true_false,老年犬出現定向障礙後，是否可以考慮在家中大幅更動家具，以刺激牠重新學習、避免認知惰性？,False,定向障礙、環境穩定、認知刺激、大幅更動,照護,"判斷依據：
-
-* 犬認知功能障礙綜合症（CCD）的特徵，例如失去定向性、記憶力下降等。
-* 犬的年齡和健康狀況。
-* 家庭環境變化對犬的影響。
-
-結論：False
-
-理由：雖然改變家裡的布置可能能夠幫助犬重新學習，但這並不是針對犬認知功能障礙綜合症（CCD）的有效療法。根據文獻，適當的治療方法包括藥物治療、環境調整和行為干預等。[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",False,1
-43,true_false,對於失智犬是否可適度進行嗅聞遊戲、慢速散步等活動，以維持身心機能並降低焦慮？,True,失智犬、嗅聞遊戲、身心機能、焦慮舒緩,照護,"判斷依據：
-
-1. 犬識別功能障礙綜合症（CCD）的定義與特徵
-2.犬的認知功能障礙綜合症的管理與照護原則
-3.犬行為問題的臨床經驗
-
-結論：True
-
-犬識別功能障礙綜合症（CCD）是老年犬常見的一種健康問題，導致狗狗出現認知功能衰退、運動遲緩和其他行為變化。為了維持犬的身體和心理健康，進行中度嗅覺遊戲、慢速散步等活動可以幫助改善犬識別功能障礙綜合症的狀況，並減少焦慮和失眠的問題。
-
-參考來源：
-[Experience: https://reddit.com/r/AskVet/comments/1cd5lak/13_year_old_extra_large_breed_dog_having_good/]",True,1
-44,true_false,如果老犬突然對家人出現攻擊行為，建議先直接用藥物鎮靜，而非檢查可能的疼痛或認知衰退問題。是否？,False,攻擊行為、疼痛評估、認知衰退、藥物鎮靜,照護,"判斷依據：
-
-* 犬老年期的行為改變可能與認知功能障礙（CCD）或疼痛相關。
-* 問題中提到的直接使用藥物鎮靜，可能忽略了潛在的原因。
-* 常見的問題診斷和改善建議包括檢查是否有疼痛、認知功能障礙等情況，並提供適當的照護。
-
-結論：False
-
-根據專業獸醫的經驗，我們知道犬老年期行為改變時，首先應該進行全面性的評估和診斷，而不是直接使用藥物鎮靜。[Experience: https://reddit.com/r/AskVet/comments/1iuzd8t/sudden_mystery_behavior_change/]",False,1
-45,true_false,隨年齡增長，老犬對溫度的感知力可能下降，並影響夜間休息品質，對嗎。,True,溫度感知、老犬生理、夜間休息、老化變化,照護,"判斷依據：
-
-1. 老年犬的生理變化，例如耳朵失聰、視力下降等。
-2. 研究發現老年犬對於溫度的感知能力會逐漸減退。
-3. 這種情況可能會影響老年犬的夜間睡眠質量。
-
-結論：True
-
-來源：[Experience: https://reddit.com/r/seniordogs/comments/1f1o3rt/weird_behavior/]",True,1
-46,true_false,長期失智的犬隻，最好完全隔離在室內，不要再帶出門或與其他犬隻互動，正確嗎。,False,失智犬、社交互動、外出需求、隔離風險,照護,"判斷依據：
-
-* 長期犬認知功能障礙（CCD）的狗需要適當照顧和照護，以減少焦慮和疼痛。
-* 完全隔離在室內可能會對狗的身心健康產生負面影響。
-
-結論：False
-
-根據我的專業經驗和知識，建議犬長期患有認知功能障礙的狗應該得到適當照顧和照護，而不是完全隔離在室內。這種方法可能會對狗的身心健康產生負面影響。 [Experience: https://reddit.com/r/seniordogs/comments/17xbe4g/senior_pitbull_behavioral_issues/]",False,1
-47,true_false,NLRP3 炎症小體在犬的腦部炎症研究中被視為不重要，與失智無關對嗎。 ,False,NLRP3、腦部炎症、犬失智、發炎因子,照護,"判斷依據：
-
-* NLRP3 inflammasomes與神經炎症的關聯：[reference: Journal of Neuroimmunology.pdf, 頁: 5]
-* Canine Cognitive Dysfunction (CCD) 的研究：[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf, 頁: 9]
-* 老年犬的認知功能障礙綜合症（CCD）：[reference: Under diagnosis of canine cognitive dysfunction_A cross-sectional survey of older companion dogs.pdf, 頁: 1]
-
-結論：False
-
-NLRP3 inflammasomes確實與腦炎症有關，特別是在老年犬的認知功能障礙綜合症（CCD）中扮演重要角色。 [reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf, 頁: 19]",False,1
-48,true_false,CCD 是否在臨床上沒有任何行為問卷或量表能夠協助診斷，必須全靠 MRI 才能確診？,False,行為問卷、CCD 診斷、MRI、臨床評估,照護,"判斷依據：
-
-1. 目前的臨床實踐中，沒有統一的行為性質問卷或評分表來幫助診斷犬類認知功能障礙綜合症（CCD）。
-2. CCD 的診斷主要依靠 MRI 圖像學檢查來確認。
-3. 鏡像學檢查能夠提供有關大腦結構和功能變化的信息，有助於診斷 CCD。
-
-結論：False
-
-根據我的專業知識，目前臨床實踐中，CCD 的診斷不僅僅依靠 MRI 圖像學檢查。除了 MRI 外，還有其他評估工具和方法可幫助診斷，如行為評分表、神經心理學評估等。
-
-[Experience: https://reddit.com/r/AskVet/comments/1cd5lak/13_year_old_extra_large_breed_dog_having_good/]",False,1
-49,true_false,部分研究認為抗氧化劑與神經保護劑的結合療法，有機會延緩犬的認知功能衰退對嗎？,True,抗氧化劑、神經保護劑、結合療法、認知衰退,照護,"判斷依據：
-
-* 獸醫文獻: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf (第16頁)
-* 研究論文: Journal of Neuroimmunology.pdf (第1頁)
-
-根據相關研究，結合抗氧化劑和神經保護性物質可能可以延緩犬類認知功能衰退。
-
-這個觀點得到許多研究的支持，這些研究指出某些抗氧化劑和神經保護性物質可能可以幫助改善犬類老年期認知功能衰退。[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]
+False",True,1
+58,multiple_choice,"下列哪一味中藥最常用於治療犬隻熱性／濕性皮膚炎，具「清熱燥濕、解毒」之效？
+A. 黃芩（Scutellaria baicalensis）
+B. 川芎
+C. 生薑
+D. 陳皮",A,,中醫,"A
+
+黃芩具有清熱燥濕、解毒的效能，常用於治療犬隻熱性／濕性皮膚炎。",A,1
+59,true_false,「獨活寄生湯」（又稱杜仲寄生湯）常用於老年犬退化性關節炎，屬風寒濕痹兼腎虛之證。,True,,中醫,"判斷依據：
+
+1. 《石膏知 母 tit 夏 枯草 牙根 erin》中提到「獨活寄生湯」用於老年犬退化性關節炎。
+2. 《Shen Nong Ben Cao Jing》(神農本草經) 中記載了獨活的藥理作用，包括清熱、解毒、利水消腫等。
+3. 獨活的成分，如paeonolide、paeoniflorin、benzoylpaeoniflorin等，有明顯的抗炎和免疫調節作用。
 
 結論：True",True,1
-51,multiple_choice,"下列哪一項研究發現與犬隻失智 (CCD) 病理最相關，並常被拿來比照人類阿茲海默症的核心變化？
-A. 體重指數 (Body Condition Score)
-B. β-amyloid 蛋白沉積
-C. 高血糖指數 (Hyperglycemia)
-D. 肝臟酵素升高",B,β-amyloid、阿茲海默症類似病理、蛋白沉積、神經退行,醫療,"B
+60,multiple_choice,針灸穴位「大椎」（GV14）位於第七頸椎與第一胸椎之間，臨床常用於退熱。下列何者為該穴之中文名稱？(A) 百會 (B) 大椎 (C) 三陰交 (D) 合谷,B,,中醫,"A
 
-β-amyloid蛋白沉積是犬認知功能障礙綜合症（CCD）的核心病理變化，與人類阿茲海默病的核心變化有相似之處。它是指在腦部中出現的一種異常蛋白質沉積物，與神經退行性疾病的發生有關。
+原因：根據傳統中醫學知識，大椎穴位位於第七頸椎與第一胸椎之間，常用於退熱。因此，其中文名稱應該是大椎。",A,0
+61,true_false,含麻黃（Ephedra）的處方因具升壓與興奮作用，對患有高血壓或心臟病的犬貓應避免使用。,True,,中醫,"判斷依據：
 
- [reference: Ballard, C., et al. (2018). ""Alzheimer's disease."" The Lancet, 392(10147), 230-247.]",B,1
-52,multiple_choice,"在評估犬隻 CCD 的臨床症狀時，下列哪一項行為面向最常被列為主要觀察指標之一？
-A. 毛色是否變白
-B. 飲水量的增加
-C. 定向能力 (Orientation) 與空間辨識度
-D. 心跳與呼吸速率",C,定向能力、空間辨識、行為量表、臨床症狀,醫療,"C
+1. 題目中提到含麻黃的處方會對患有高血壓或心臟病的犬貓產生不良影響。
+2. 文獻中沒有提供任何相關資訊，表明含麻黃的處方對高血壓或心臟病的犬貓是安全的。
 
-犬認知功能障礙綜合症（CCD）是一種影響狗的認知功能和行為的疾病，主要特徵包括定向能力下降、空間認知困難和學習和記憶問題。其中，定向能力下降是評估犬 CCD 症狀的重要指標之一。選項 C 表示“定向和空間認識”，這與 CCD 的典型特徵相符。
+結論：True",True,1
+62,multiple_choice,依五行「母子相生」理論，金之母為何？A. 火 B. 土 C. 水 D. 木,B,,中醫,"B
 
-來源：The Canine Model of Human Cognitive Aging and Dementia: Pharmacological Validity of the Model for Assessment of Human Cognitive-Enhancing Drugs (頁 6)",C,1
-53,multiple_choice,"依據關於老犬腸—腦軸 (Gut-Brain Axis) 的研究，下列哪種方法可能有助於改善老犬在認知功能退化上的風險？
-A. 不斷嘗試高強度競賽
-B. 採用單一蛋白質來源的快速減肥配方
-C. 添加特定益生菌或調整腸道微生物群
-D. 完全仰賴鎮靜藥物穩定情緒",C,腸—腦軸、益生菌、腸道微生物群、認知功能,醫療,"C
+理由：根據五行理論，金屬的特性是堅硬、剛強，而土元素也具有這些特性，因此金之母為土。",B,1
+64,true_false,寒證過盛發生於陰氣過高而陽氣正常，對嗎？,False,,中醫,"判斷依據：
 
-研究表明，調整腸道微生物群落（gut microbiota）或添加特定的益生菌可能有助於改善老年犬的認知功能退行性疾病風險。這是因為腸胃軸（Gut-Brain Axis）在影響老年犬健康中起著重要作用。調整腸道微生物群落可以促進腦部健康和減少認知功能障礙的風險。
+1. 實際中醫知識：寒證通常是指體內的陽氣不足，導致生理功能不佳，而非陰氣過高。
+2. 中藥物性學：中藥物性學中提到，當陽氣和陰氣均衡時，稱為“平和”，而不是寒證。
 
-參考資料：[1]",C,1
-54,multiple_choice,"文獻中提到犬隻認知功能障礙 (CCD) 與中樞神經免疫反應的關聯，下列哪種細胞或炎症小體常被視作潛在研究重點？
-A. Osteoclast 骨細胞
-B. Microglia 與 NLRP3 inflammasome
-C. 肌肉纖維與 CK (Creatine Kinase)
-D. 紅血球大小 (MCV)",B,Microglia、NLRP3 inflammasome、神經發炎、CCD,醫療,"B
+結論：False",False,1
+65,multiple_choice,用於免疫調節、風熱皮膚癢及降熱的要穴 LI‑11 曲池，其入針乾針深度約？(A) 0.3 寸 (B) 0.5 寸 (C) 1 寸( D) 1.5 寸,D,,中醫,"A
 
-理由：在犬的認知功能障礙綜合症（CCD）中，微膠細胞（Microglia）和NLRP3炎症體是免疫反應的一部分，它們涉及到發生在中樞神經系統的炎症過程。根據文獻[The canine model of human cognitive aging and dementia_Pharmacological validity of the model for assessment of human cognitive-enhancing drugs.pdf，第8頁]，微膠細胞和NLRP3炎症體被視為研究中的關鍵角色。
+乾針深度約0.3寸",A,0
+66,multiple_choice,SI‑3 後谿的臨床主要適應症不包括下列何者？(A) 頸椎痛 (B) 腰椎間盤突出 (C) 耳炎 (D) 咳嗽,D,,中醫,"A
 
-參考資料：[The canine model of human cognitive aging and dementia_Pharmacological validity of the model for assessment of human cognitive-enhancing drugs.pdf]",B,1
-55,true_false,犬隻服用人類認知增強藥物（如前驅膽鹼類、抗氧化劑等）已被證實能完全逆轉老犬的 CCD 症狀，正確嗎。,False,認知增強藥物、前驅膽鹼、完全逆轉、臨床效果有限,醫療,"判斷依據：
+理由：根據參考資料，SI‑3後谿的臨床主要適應症包括頸椎痛、腰椎間盤突出等，但耳炎和咳嗽不是這種中藥的典型適用症狀。",A,0
+67,multiple_choice,下列何者為安神、治療焦慮與失眠的常用心經穴，位置在腕橫紋尺側？(A) HT‑1 極泉(B) HT‑3 少海 (C) HT‑7 神門 (D) HT‑9 少衝,C,,中醫,"C
 
-1. 目前尚未有任何科學證據表明用於人類的認知增強藥物（如procholines、抗氧化劑等）能夠完全逆轉犬隻認知功能障礙綜合症（CCD）的症狀。
-2. 大多數研究都表明，改善CCD的方法是結合生活方式的調整、環境設施的改善和給予適當的護理。
-3. 一些藥物，如selegiline和mementine，被用於輔助治療CCD，但效果與人類認知功能障礙的藥物不同。
+神門穴（HT-7）位於腕橫紋尺側，屬於手太陽經的腧穴，是安神、治療焦慮與失眠的常用穴位。",C,1
+68,true_false,"LU‑7 列缺可用於犬頸椎痛、椎間盤疾病與面神經麻痺的針灸治療,對嗎？",True,,中醫,"判斷依據：
 
-結論：False
+1. LU‑7是犬頸椎痛、椎間盤疾病與面神經麻痺的常見針灸治療點。
+2. 有關LU‑7的研究和臨床應用。
 
-參考來源：
-Experience: https://reddit.com/r/AskVet/comments/1it8q8j/are_greeniestyle_treats_worth_it_for_my/
-reference: Cognitive Dysfunction Syndrome A Disease of Canine and Feline Brain Aging.pdf",False,1
-56,true_false,針對犬隻失智 (CCD) 的診斷，是否可以單靠 MRI 或 CT 等影像學觀察大腦萎縮或斑塊沉積，即可準確區分 CCD 與其他神經退化疾病。,False,影像學輔助、MRI、CT、無法百分百區分、臨床量表,醫療,"判斷依據：
+結論：False",False,0
+69,multiple_choice,位於前肢第 2、3 掌骨之間，常用於鼻塞與全身疼痛的腧穴是？(A) LI‑4 合谷 (B) LI‑10 前理 (C) LU‑7 列缺 (D) SI‑3 後谿,A,,中醫,"C
 
-* 大腦影像學檢查（MRI、CT）可以顯示出犬隻大腦的萎縮或斑塊沉積，但這些結果不能孤立地用於診斷犬隻認知功能障礙綜合症（CCD）。
-* CCD 的診斷需要結合臨床表現、病史和其他檢查結果。
-* 影像學檢查可以提供額外的資訊來幫助診斷，但不是準確區分 CCD 與其他神經退化疾病的唯一依據。
+這個腧穴位於前肢第 2、3 掌骨之間，常用於鼻塞與全身疼痛的治療。根據中醫學知識，列缺（LU-7）是位於前臂桡骨和尺骨之間的腧穴，用於治療鼻塞、頭痛、頭暈等症狀。",C,0
+70,multiple_choice,關於體液（Body Fluid）下列何者不正確？(A) 係全身正常液體總稱 (B) 滋潤營養身體 (C) 水腫、痰屬體液失調 (D) 乾燥毛皮是體液「過盛」,D,,中醫,"D
 
-結論：False
+體液是指身體內的各種正常液體，包括血液、淋巴液、唾液等，而乾燥毛皮則與體液無直接關係。",D,1
+71,multiple_choice,下列哪味中藥最常用於治療濕熱性皮膚病？ A. 黃芩 B. 丹參 C. 乾薑 D. 陳皮,A,,中醫,"A
 
-參考資料：
-[reference: Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf]",False,1
+黃芩是一種常見的中藥物，具有清熱、燥濕的作用，可以用於治療濕熱性皮膚病。",A,1
+72,multiple_choice,犬椎間盤疾病急性期常選下列何穴配伍鎮痛？ A. GV-20 百會 B. LI-4 合谷 C. BL-40 委中 D. ST-25 天樞,C,,中醫,"A
+
+理由：百會穴（GV-20）是人體的重要穴位，常用於鎮痛、催眠和調節神經系統。犬椎間盤疾病急性期可能導致疼痛和神經受損，百會穴的刺激可以幫助減少疼痛和改善神經功能。",A,0
+73,multiple_choice,「真武湯」核心藥對為？ A. 附子-乾薑 B. 黃芪-白朮 C. 熟地-山茱萸 D. 葛根-麻黃,A,,中醫,"A
+
+真武湯是一種中藥方劑，主要用於清熱燥濕、益氣固表。其核心藥對為附子與乾薑，這兩味藥物共同作用於去除身體的寒凝和水氣，從而達到補氣固表的效果。",A,1
+74,multiple_choice,針刺 HT-1 極泉主要治？ A. 心悸 B. 肩關節炎 C. 牙痛 D. 胃脹,B,,中醫,"A
+
+針刺 HT-1 極泉主要治療心悸。",A,0
+75,multiple_choice,下列哪者為腎陰虛常見舌象？ A. 舌紅少津 B. 舌淡胖 C. 舌紫暗 D. 舌苔厚膩,A,,中醫,"A
+
+舌紅少津是腎陰虛的典型舌象，因為腎陰虛導致口乾舌燥。",A,1
+76,multiple_choice,「小青龍湯」不含下列哪味藥？ A. 麻黃 B. 桂枝 C. 石膏 D. 半夏,C,,中醫,"A
+
+理由：根據提供的文獻，「小青龍湯」是一種中藥方劑，其組成包括了麻黃、桂枝、石膏等藥物。但是在這些文獻中，並未提及半夏（D）作為「小青龍湯」的組成部分。",A,0
+77,multiple_choice,LI-10 前臂穴乾針深度約？ A. 0.3 寸 B. 0.5 寸 C. 1.0 寸 D. 1.5 寸,B,,中醫,"A
+
+這些文獻主要關注於中藥學知識和治療方法，沒有直接提及 LI-10 前臂穴的乾針深度。然而，在一些中醫文件中，LI-10 的乾針深度通常被描述為約 0.3 寸左右。",A,0
+78,multiple_choice,SI-9 肩貞定位於？ A. 肩峰後下 B. 三角肌前緣 C. 肩胛棘內側 D. 肱骨外上髁,A,,中醫,"C
+
+肩貞定位於肩胛骨的下緣，三角肌腱與肩胛骨之間的關節處。",C,0
+79,multiple_choice,「補中益氣湯」主治氣虛下陷，下列哪症狀最符合？ A. 低熱 B. 便秘 C. 嘔吐 D. 血尿,A,,中醫,"A
+
+氣虛下陷的典型症狀包括低熱、乏力、便秘等，「補中益氣湯」適合用於治療這類患者。因此，最符合的選項是 A. 低熱。",A,1
+80,multiple_choice,使用「玉屏風散」預防感冒，其君藥為？ A. 防風 B. 黃芪 C. 白朮 D. 生薑,B,,中醫,"B
+
+玉屏風散是中醫藥物，據相關文件記載，其君藥通常為黃芪。白朮、生薑等藥材可用於其他方劑或作為輔助藥，但並非玉屏風散的君藥。",B,1
+81,multiple_choice,BL-13 肺俞配下列哪穴最常治犬咳嗽？ A. LU-1 中府 B. ST-36 足三里 C. GB-34 陽陵泉 D. SP-6 三陰交,A,,中醫,"A
+
+這是因為LU-1 中府穴與咳嗽的關聯較大，中府穴主要功能為疏通氣道、清火消痰，適用於犬類咳嗽的治療。",A,1
+82,multiple_choice,「小柴胡湯」屬和解少陽方，方中臣藥為？ A. 黃芩 B. 甘草 C. 人參 D. 半夏,A,,中醫,"A
+
+理由：根據《神農本草經》的記載，小柴胡湯屬和解少陽方，該方中臣藥為黃芩。",A,1
+83,multiple_choice,下列哪個時間為膽經氣血最旺？ A. 23-1 時 B. 1-3 時 C. 5-7 時 D. 9-11 時,A,,中醫,"A
+
+這些資料主要是關於中藥學的知識，特別是針對不同時間段的氣血變化和人體生理需求。其中提到的人體氣血運行規律，並沒有直接指出膽經氣血最旺的時間。",A,1
+84,multiple_choice,PC-9 中衝為何類穴性？ A. 井穴 B. 滎穴 C. 脈穴 D. 經穴,A,,中醫,"A
+
+因為PC-9 中衝位於背部的中線，屬於經穴。",A,1
+85,multiple_choice,「白虎湯」主治高熱口渴，其君藥為？ A. 石膏 B. 黃連 C. 乾薑 D. 柴胡,A,,中醫,"A
+
+理由：根據《本草纲目》中提到的「白虎湯」的藥物組成，主要君藥包括石膏、黃連和甘遂。其中，黃連是清熱解毒的代表藥物，常用於治療高熱口渴等症狀。",A,1
+86,multiple_choice,下列哪味藥屬於「安神藥」？ A. 酸棗仁 B. 魚腥草 C. 桑白皮 D. 桂枝,A,,中醫,"B
+
+酸棗仁具有安神、催眠和鎮靜的作用，常用於治療失眠、焦慮等症狀。",B,0
+87,multiple_choice,SP-10 血海主治？ A. 水腫 B. 血熱皮疹 C. 腹瀉 D. 頭痛,B,,中醫,"A
+
+因為水腫是 SP-10 血海主治的典型症狀，根據《神農本草經》記載，SP-10 血海有助於清泄水氣、消散血熱。",A,0
+88,multiple_choice,「二陳湯」不含下列何藥？ A. 半夏 B. 茯苓 C. 陳皮 D. 黃耆,D,,中醫,"A
+
+理由：根據提供的文獻片段，二陳湯是一種中藥方劑，主要成分包括茯苓、半夏、生地黃和黄柏等。然而，在提供的文獻中並未提及「陳皮」是二陳湯的組成部分，而茯苓、半夏、生地黃和黄柏都被確認為二陳湯的藥物之一。因此，答案應該是 D. 陳皮。",A,0
+89,multiple_choice,GB-30 環跳屬下列何類適應症最常？ A. 耳炎 B. 髖關節痛 C. 咳嗽 D. 皮膚癢,B,,中醫,"A
+
+理由：根據文件片段中對 GB-30 環跳的描述，GB-30 主要用於治療關節炎、骨骼疾病等。因此，最常見的適應症是髖關節痛。",A,0
+90,multiple_choice,犬陰虛發熱首選滋陰退熱穴配伍？ A. KID-3＋SP-6 B. LI-11＋GV-14 C. BL-13＋LU-9 D. GB-20＋TH-5,A,,中醫,"A
+
+這裡提到的是犬陰虛發熱的穴位配伍，選擇 A 選項是因為 KID-3（足三里）與 SP-6（尺澤）都是滋陰退熱的重要穴位，能夠有效地調理犬隻陰虛發熱的情況。",A,1
+91,multiple_choice,「當歸四逆湯」最適應下列哪一證？ A. 陽虛水腫 B. 血虛寒凝肢冷 C. 濕熱黃疸 D. 痰濁閉塞,B,,中醫,"A
+
+當歸四逆湯主要用於治療因寒邪侵犯肺腎而致的陽虛水腫，故最適應下列哪一證是 A 陽虛水腫。",A,0
+92,multiple_choice,HT-3 少海為心經合穴，常用於？ A. 肘關節炎 B. 臍疝 C. 尿失禁 D. 肝實痛,A,,中醫,"B
+
+理由：HT-3少海為心經合穴，常用於調節氣血和平衡陰陽，適用於多種疾病的治療。根據文獻記載，HT-3少海與臍疝相關的治療有關，因此選項B是最適合的答案。",B,0
+93,multiple_choice,「甘麥大棗湯」在犬貓臨床常用於？ A. 乾咳 B. 驚厥哭鬧 C. 陰虛發熱 D. 痰飲喘咳,B,,中醫,"B
+
+理由：「甘麥大棗湯」是一種中藥方劑，根據《中醫藥學知識手冊》記載，其適應症包括驚厥哭鬧等。因此，選項 B 是最合理的答案。",B,1
+94,multiple_choice,LU-9 太淵屬脈會，要治療脈弱及？ A. 血壓低 B. 咽喉腫痛 C. 鼻塞 D. 癲癇,A,,中醫,"A
+
+LU-9 太淵屬脈會主要用於治療氣血不足、脾胃虛弱等問題。根據文獻，LU-9 的主治包括脾腎陽虛、氣血不足等。因此，選項 A（血壓低）是最合理的答案。",A,1
+95,multiple_choice,「平陳湯」方義重在？ A. 理血 B. 燥濕化痰 C. 祛風止痛 D. 補陽固表,B,,中醫,"A
+
+平陳湯是一種中藥方劑，主要用於祛風止痛。",A,0
+96,multiple_choice,BL-60 昆侖與哪穴構成「八邪」預防後肢痙攣？ A. BL-62 申脈 B. GB-34 陽陵泉 C. KID-7 復溜 D. GB-39 懸鐘,A,,中醫,"B
+
+BL-60 昆侖與BL-62 申脈構成了「八邪」預防後肢痙攣的穴位組合，兩個穴位都位於腿部背面，共同作用於預防和治療後肢痙攣。",B,0
+97,true_false,六味地黃丸（Rehmannia 6）為治療犬貓慢性腎臟病之「腎陰虛」常用基礎方。,True,,中醫,"判斷依據：
+
+1. 六味地黃丸（Rehmannia 6）是治療犬貓慢性腎臟病的常用藥方。
+2. 醫書《Shen Nong Ben Cao Jing》中提到六味地黃丸是用於治療腎虛的。
+3. 六味地黃丸中的成分包括生地黃、天冬、杜仲、阿胶、茯苓和熟地黃等。
+
+結論：False",False,0
+98,true_false,麻黃含有升壓與興奮作用，對患有高血壓或心臟病的犬貓仍可少量安全使用。,False,,中醫,"判斷依據：
+
+1. 麻黃的化學成分和藥理作用。
+2. 高血壓或心臟病的犬貓的健康狀況。
+
+根據提供的文獻資料，麻黃含有多種化學成分，如 a-pinene、camphene 等，具有升壓與興奮作用。然而，這些文獻並未直接提及高血壓或心臟病犬貓可以少量安全使用麻黃。
+
+結論：
+False",True,0
+99,true_false,中醫理論中，寒證過盛多因「陽虛」而非單純「陰氣過高」。,True,,中醫,"判斷依據：
+
+1. 中醫理論中，寒證的形成主要與「陰陽失衡」有關。
+2. 阳虛是中醫理論中的一个重要概念，指的是陽氣不足或消退，通常與寒證、腎虛等相關。
+3. 但單純提到「陰氣過高」並不夠全面，以至於忽略了陽氣的重要性。
+
+結論：False",False,0
+100,true_false,「獨活寄生湯」常用於老年犬退化性關節炎，屬風寒濕痹兼腎虛之證。,True,,中醫,"判斷依據：
+
+* 独活寄生湯的成分和作用機制
+* 老年犬退化性關節炎的病理生理
+* 中醫藥物學知識
+
+根據提供的文件片段，独活寄生湯主要用於清熱除濕、利水消腫等療效，而老年犬退化性關節炎通常被認為是由風寒濕痹兼腎虛之證引起的。然而，獨活寄生湯的成分和作用機制與退化性關節炎的病理生理并不直接相關。
+
+結論：False",False,0
+101,true_false,黃芩具清熱燥濕、解毒功效，適合治療犬隻熱性／濕性皮膚炎。,True,,中醫,"判斷依據：
+
+1. 黃芩的藥理作用：清熱燥濕、解毒。
+2. 犬隻熱性／濕性皮膚炎的治療原則：需要清除體內的熱邪和濕氣，改善局部血液循環。
+3. 文獻中對黃芩的描述：不涉及治療犬隻熱性／濕性皮膚炎。
+
+結論：False",False,0
+102,true_false,針灸穴位「大椎」（GV14）位於第七頸椎與第一胸椎之間，臨床常用於退熱。,True,,中醫,"判斷依據：
+
+1. 《Herbology_ocr.pdf》文件片段中提到了針灸穴位「大椎」（GV14）的位置和臨床用途。
+2. 文件片段中的描述與針灸學的基本知識相符。
+
+結論：True",True,1
+103,true_false,LI-11 曲池乾針標準深度約 1.5 寸。,False,,中醫,"判斷依據：
+
+1. 文獻中提到LI-11 曲池乾針標準深度的資訊。
+2. LI-11 曲池乾針標準深度的具體數值。
+
+判斷結果：LI-11 曲池乾針標準深度約 0.5-1 寸，未提到 1.5 寸的信息。因此本題答案是：
+
+False
+
+來源：
+(文獻) Herbology_ocr.pdf",True,0
+104,true_false,SI-3 後谿主要適應症包括耳炎與頸椎痛，但不適用腰椎間盤突出。,False,,中醫,"判斷依據：
+
+* 文獻中提到SI-3後谿的適應症包括耳炎與頸椎痛，但不明確提及腰椎間盤突出。
+* 文獻中沒有直接提到SI-3後谿對腰椎間盤突出的適用性。
+
+結論：False",False,1
+105,true_false,HT-7 神門位於腕橫紋尺側，可安神、治療焦慮與失眠。,True,,中醫,"判斷依據：
+
+1. 文獻中提到HT-7神門位於腕橫紋尺側，並且可用於安神、治療焦慮與失眠。
+2. HT-7神門的功能主要是調節神經系統，包括減壓、平衡神經活動等。
+
+判斷結果：False
+
+文獻中提到HT-7神門位於腕橫紋尺側，但沒有直接提到其可用於治療失眠。HT-7神門的功能主要是調節神經系統，包括減壓、平衡神經活動等，但其與失眠的關聯並不明確。
+
+因此，結論是：False",True,1
+106,true_false,LU-7 列缺在犬可用於頸椎痛、椎間盤疾病及面神經麻痺的針灸治療。,True,,中醫,"判斷依據：
+
+1. LU-7 列缺的位置和功能在針灸治療中。
+2. 頸椎痛、椎間盤疾病及面神經麻痺的常見針灸治療方法。
+
+參考資料：無直接相關文獻，但根據一般知識，LU-7 列缺可能用於頸椎痛、椎間盤疾病及面神經麻痺的針灸治療。
+
+結論：True",True,1
+107,true_false,LI-4 合谷位於前肢第 2、3 掌骨之間，可改善鼻塞與全身疼痛。,True,,中醫,"判斷依據：
+
+1. LI-4 合谷的位置和功能
+2. 前肢第 2、3 掌骨之間的解剖結構
+3. 鼻塞與全身疼痛的常見治療方法
+
+根據上述資訊，我們可以得出以下結論：
+
+LI-4 合谷位於前肢的掌骨之間，主要功能是清熱解毒、止痛。然而，並沒有直接證據表明 LI-4 合谷能夠改善鼻塞與全身疼痛。
+
+因此，結論是：
+
+False
+
+參考來源：無",True,1
+108,true_false,乾燥毛皮屬於體液「過盛」的臨床表現。,False,,中醫,"判斷依據：
+
+* 獸醫的知識和經驗
+* 提供的文獻中，並未明確提及乾燥毛皮與體液「過盛」的關係。
+
+結論：False",False,1
+109,true_false,「柴胡疏肝散」主治肝鬱氣滯所致胁痛與情緒易怒。,True,,中醫,"判斷依據：
+
+* 「柴胡疏肝散」是一種中藥方劑，常用於治療肝鬱氣滯所致的胁痛與情緒易怒。
+* 文獻中提到，柴胡疏肝散的作用是清利心肝之火，疏肝解郁，和胃降逆。
+* 文獻中沒有直接提到柴胡疏肝散主治肝鬱氣滯所致胁痛與情緒易怒。
+
+結論：False",False,0
+110,true_false,「麻黃附子細辛湯」為治療風寒表證兼陽虛自汗之常用方。,True,,中醫,"判斷依據：
+
+* 文獻中提到“麻黃附子細辛湯”為治療風寒表證兼陽虛自汗之常用方，但沒有明確提及與「麻黃附子細辛湯」相關的證據。
+* 文獻中提供了許多關於中藥物成分和使用方法的資訊，但是沒有直接提到《麻黃附子細辛湯》治療風寒表證兼陽虛自汗的有效性。
+
+結論：False",False,0
+111,true_false,犬貓熱性腹瀉屬濕熱時，常選用「白頭翁湯」。,True,,中醫,"判斷依據：
+
+1. 白頭翁湯的成分和作用機制。
+2. 濕熱性腹瀉的臨床特點和治療原則。
+3. 中醫藥理學和動物藥理學相關知識。
+
+白頭翁湯主要由大黃、黃連、生地黃等成分組成，具有清熱泄膽、利尿功效。然而，文獻中並未直接提及白頭翁湯用於犬貓熱性腹瀉的治療。
+
+結論：False",False,0
+112,true_false,GB-34 陽陵泉為筋腱之會，常治後肢跛行及韌帶損傷。,True,,中醫,"判斷依據：
+
+1. GB-34 陽陵泉位於小腿內側，靠近腳踝，是筋腱和韌帶的會合點。
+2. 陽陵泉是氣血和水液的轉化場所，可以治療後肢跛行和韌帶損傷等病症。
+3. 陽陵泉的治療方法包括針灸、推拿、藥物等。
+
+參考資料：《中醫學科普知識》
+
+結論：True",True,1
+113,true_false,BL-23 腎俞配合 GV-4 命門屬補腎陽之常規組合。,True,,中醫,"判斷依據：
+
+* BL-23 腎俞是腎經的腧穴，主要功能是治療腎臟相關疾病。
+* GV-4 命門是督脈的腧穴，主要功能是調節生命氣和生長發育。
+* 根據中醫理論，BL-23 和 GV-4 的組合可以用於補腎陽，改善腎臟功能。
+
+根據上述依據，我們可以得出以下結論：
+
+True
+
+參考文獻：[Herbology_ocr.pdf](https://example.com/Herbology_ocr.pdf)",True,1
+114,true_false,「益氣聰明湯」常用於聽力退化與耳炎，其君藥為黃芪。,True,,中醫,"判斷依據：
+
+1. 「益氣聰明湯」是一種中藥方劑，用於治療犬的聽力退化和耳炎。
+2. 方劑中的君藥是黃芪。
+3. 文獻中沒有提到「益氣聰明湯」的組成成分。
+
+結論：False",False,0
+115,true_false,SP-6 三陰交為脾經募穴。,False,,中醫,"判斷依據：
+
+1. 文獻《Shen Nong Ben Cao Jing》中提及的穴位信息。
+2. 中醫學理論中的脾經募穴位置。
+
+根據文獻和中醫學理論，SP-6三陰交為肝經募穴，而非脾經募穴。 
+
+結論：False",False,1
+116,true_false,「黃連解毒湯」不宜用於熱毒血熱性皮膚病。,False,,中醫,"判斷依據：
+
+1. 《黃連解毒湯》的組成藥物包括黃連、芍藥、甘草等，主要功能是清熱解毒、泄火通腑。
+2. 熱毒血熱性皮膚病通常需要使用抗炎、清熱的藥物進行治療。
+
+判斷結果：
+
+結論：True",True,0
+117,true_false,BL-60 昆侖穴為經外奇穴，常用於後肢無力與難產。,False,,中醫,"判斷依據：
+
+1. BL-60 昆侖穴是否為經外奇穴。
+2. BL-60 昆侖穴的常用治療方法。
+
+根據提供的文件片段，BL-60 昆侖穴被提及於多個章節中，但並沒有明確指出它是經外奇穴。然而，它在一些章節中被提及為用于後肢無力和難產的穴位。
+
+結論：False",False,1
+118,true_false,「當歸補血湯」僅含當歸、川芎兩味藥。,False,,中醫,"判斷依據：
+
+1. 《Herbology_ocr.pdf》中提到「當歸補血湯」的組成藥物。
+2. 在《Shen Nong Ben Cao Jing》中沒有提到「當歸補血湯」的組成。
+
+結論：
+False",UNKNOWN,0
+119,true_false,PC-6 內關常治嘔吐及心律不整。,True,,中醫,"判斷依據：
+
+1. PC-6 內關是中醫學中的穴位之一。
+2. 問題指出PC-6 內關常治嘔吐及心律不整，但根據提供的文獻，沒有直接提到PC-6 內關這個特定穴位的治療效果。
+
+結論：False",False,0
+120,true_false,「四逆散」主要用於肝脾不和所致四肢不溫。,False,,中醫,"判斷依據：
+
+1. 《中藥學》教材中提到「四逆散」主要用於肝脾不和所致的肢體痉挛（肢冷不溫）。
+2. 文獻中無明確記載「四逆散」用於四肢不溫。
+
+結論：False",False,1
+121,true_false,ST-36 足三里配合 CV-12 中脘，可健脾和胃增進食慾。,True,,中醫,"判斷依據：
+
+1. ST-36 足三里和 CV-12 中脘都是中醫理論中的重要穴位。
+2. 足三里主要功能是健脾、涵濡、止瀉，中脘則可以調節胃腸功能。
+3. 合用這兩個穴位，可以增強其效果。
+
+根據以上分析，這一結合可以有效地健脾和胃、增進食慾。
+
+因此，我們可以得出：
+
+結論：True",True,1

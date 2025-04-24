@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[98]:
+# In[50]:
 
 
 get_ipython().system('jupyter nbconvert --to script rag_system_llama.ipynb')
@@ -9,7 +9,7 @@ get_ipython().system('jupyter nbconvert --to script rag_system_llama.ipynb')
 
 # ### import
 
-# In[1]:
+# In[247]:
 
 
 import os
@@ -50,7 +50,7 @@ Path('chroma_db').mkdir(exist_ok=True)
 Path('image').mkdir(exist_ok=True)
 
 
-# In[2]:
+# In[248]:
 
 
 import sys
@@ -87,7 +87,7 @@ def transcribe_file(file_path, model_size="base"):
 
 # ### 圖片處理
 
-# In[3]:
+# In[249]:
 
 
 from typing import Union  # 添加 Union 导入
@@ -170,19 +170,26 @@ class ImageProcessor:
 
 # ### Embedding 處理模組
 
-# In[ ]:
+# In[250]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
 from transformers import AutoProcessor, AutoModel
 import torch
-# from IPython.display import display, Image
+import sentencepiece as spm 
+
 class ClipEmbeddingProcessor:
+
+    MAX_TOKEN = 56          # 56 + BOS + EOS = 58 < 64, 絕對安全
+    OVERLAP   = 16
+    DEFAULT_COLLECTION = "ccd_docs_siglip"
+
     # 初始化 embedding processor
     def __init__(self, 
                 persist_directory: str = "chroma_db",
                 image_dir: str = "image",
                 image_size: tuple = (224, 224),
+                collection_name:str = DEFAULT_COLLECTION
                 ):
         """
         初始化: 建立clip_collection,使用CLIP(or OpenCLIP)做embedding
@@ -190,53 +197,91 @@ class ClipEmbeddingProcessor:
         self.image_dir = Path(image_dir)
         self.image_size = image_size
         self.image_processor = ImageProcessor(image_dir) 
+        self.collection_name = collection_name
         
         # ====== 1) 初始化 CLIP ======
-        # self.clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
-        # self.clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
+
         SIGLIP_NAME = "google/siglip-base-patch16-224"   # 也可以換 small / large
         self.processor   = AutoProcessor.from_pretrained(SIGLIP_NAME)
-        self.siglip      = AutoModel.from_pretrained(SIGLIP_NAME).eval().to("cuda")  # 沒 GPU 改 "cpu"
+        self.siglip      = AutoModel.from_pretrained(SIGLIP_NAME)  # 沒 GPU 改 "cpu"
 
         # 測試一下,取得image特徵維度(通常是512)
         with torch.no_grad():
             dummy = torch.zeros((1, 3, 224, 224))
-            dim_out = self.clip_model.get_image_features(dummy).shape[1]
+            dim_out = self.siglip.get_image_features(dummy).shape[1]
         self.clip_dim = dim_out
 
-        # ====== 2) 建立Chroma,只做一個collection: clip_collection ======
+        # ====== 2) 建立Chroma ======
         logger.info(f"Initializing Chroma with directory: {persist_directory}")
         self.chroma_client = chromadb.PersistentClient(path=persist_directory)
 
         # 先刪除舊的 collection(若存在)
         try:
-            self.chroma_client.delete_collection("clip_collection")
-        except:
+            self.chroma_client.delete_collection(self.collection_name)
+            print(f"Deleted collection: {self.collection_name}")
+        except (chromadb.errors.NotFoundError, ValueError):
+            print(f"No collection named {self.collection_name}, nothing to delete.")
             pass
 
         # 建立無embedding_function的collection,因為我們手動算embedding
-        self.clip_collection = self.chroma_client.create_collection(
-            name="ccd_docs_siglip",
+        self.clip_collection = self.chroma_client.get_or_create_collection(
+            name=self.collection_name,
             metadata={"dimension": self.clip_dim}
         )
-        print(f">> Created single 'clip_collection' in {persist_directory} with dimension={self.clip_dim}.")
+        print(f">> Created '{self.collection_name}' in {persist_directory} with dimension={self.clip_dim}.")
 
+
+    def to_2d(self,x):
+        if isinstance(x, torch.Tensor):
+            x = x.detach().cpu().numpy()
+        elif isinstance(x, list):
+            x = np.asarray(x, dtype=np.float32)
+        if x.ndim == 1:        # (512,) → (1,512)
+            x = x[None, :]
+        elif x.ndim != 2:
+            raise ValueError(f"embedding ndim should be 1 or 2, got {x.shape}")
+        return x.tolist()      # List[List[float]]
+
+    def split_into_chunks(
+            self,
+            text:str,
+            max_tokens=MAX_TOKEN, 
+            overlap=OVERLAP)-> list[str]:
+
+        ids    = self.processor.tokenizer(text).input_ids
+        chunks = []
+        step   = max_tokens - overlap
+        for i in range(0, len(ids), step):
+            seg = ids[i : i + max_tokens]
+            chunks.append(
+                self.processor.tokenizer.decode(
+                    seg, skip_special_tokens=True
+                )
+            )
+        return chunks
 
     def process_text_with_clip(self, text: str) -> Optional[np.ndarray]:
         """
         用 CLIP 的 text encoder 將文字轉為512維向量
         """
         try:
-            # inputs = self.clip_processor(text=[text], return_tensors="pt", truncation=True)
-            inputs = self.processor(text=[text], return_tensors="pt", padding=True).to(siglip.device)
-            with torch.no_grad():
-                # text_feat = self.clip_model.get_text_features(**inputs)
-                embs = self.siglip.get_text_features(**inputs)
-            return (embs / embs.norm(dim=-1, keepdim=True)).cpu().numpy()
+            chunks = self.split_into_chunks(text)
+            if not chunks:
+                logger.error("No valid chunks generated for the text.")
+                return None
+            all_vecs = []
+            for ch in chunks:
+                inp = self.processor(text=[ch], return_tensors="pt").to(self.siglip.device)
+                with torch.no_grad():
+                    vec = self.siglip.get_text_features(**inp)
+                all_vecs.append(vec)
+            # 這裡可取平均或直接回傳多條向量
+            embs = torch.stack(all_vecs).mean(dim=0)
+            emb = embs / embs.norm(dim=-1, keepdim=True)
+            return emb.squeeze(0).cpu().tolist()   
         except Exception as e:
-            print(f"Error in process_text_with_clip: {str(e)}")
+            logger.error(f"Error in process_text_with_clip: {e}")
             return None
-
     def add_qa_pairs(self,
                 questions: List[str],
                 answers: List[str],
@@ -320,9 +365,9 @@ class ClipEmbeddingProcessor:
                     return None
 
                 image = PILImage.open(processed_path)
-                inputs = processor(images=pil_imgs, return_tensors="pt").to(siglip.device)
+                inputs = self.processor(images=[image], return_tensors="pt").to(self.siglip.device)
                 with torch.no_grad():
-                    embs = siglip.get_image_features(**inputs)
+                    embs = self.siglip.get_image_features(**inputs)
                 return (embs / embs.norm(dim=-1, keepdim=True)).cpu().numpy()
             except Exception as e:
                 print(f"Error in process_image_with_clip: {str(e)}")
@@ -354,42 +399,61 @@ class ClipEmbeddingProcessor:
         # 1) 對文字做embedding
         if texts:
             for i, txt in enumerate(texts):
-                emb = self.process_text_with_clip(txt)
+                emb = self.process_text_with_clip(txt)         
                 if emb is not None:
-                    all_embeddings.append(emb.tolist())
-                    # 若metadatas!=None且有對應,i則metadata[i],加上"type":"text"
-                    md = {"type":"text","content":txt}
-                    if metadatas and i < len(metadatas):
-                        md.update(metadatas[i])  # 合併使用者自定屬性
-                    all_metadatas.append(md)
-                    all_ids.append(f"text_{idx}")
-                    idx+=1
+                    for vec in self.to_2d(emb):                 # ← 一次可能回傳多條向量
+                        all_embeddings.append(vec)
+                        all_metadatas.append({
+                            "type": "text",
+                            "content": txt,
+                            **(metadatas[i] if i < len(metadatas) else {})
+                        })
+                        all_ids.append(f"text_{idx}")
+                        idx += 1
 
         # 2) 對圖片做embedding
         if images:
             for j, img_path in enumerate(images):
                 full_path = str(self.image_dir / img_path)
                 emb = self.process_image_with_clip(full_path)
-                if emb is not None:
-                    all_embeddings.append(emb.tolist())
-                    md = {"type":"image","path":img_path}
+                if emb is  None:
+                    continue
+
+                for vec in self.to_2d(emb):              # ← 無論 1‑D / 2‑D 都 OK
+                    all_embeddings.append(vec)
+                    md = {"type": "image", "path": img_path}
                     if metadatas and j < len(metadatas):
                         md.update(metadatas[j])
                     all_metadatas.append(md)
                     all_ids.append(f"img_{idx}")
-                    idx+=1
+                    idx += 1
+
 
         # 3) 寫入 clip_collection
         if len(all_embeddings) > 0:
+            print(np.asarray(all_embeddings).shape)   # 應該是 (N, 512)
+
+            #準備與 embedding 對齊長度的文件列表
+            docs = []
+            for i, md in enumerate(all_metadatas):
+               # 只把圖片排除，其餘一律當文字
+                if md.get("type") == "image":
+                    docs.append("")                # 圖片沒有文字
+                else:
+                    docs.append(md.get("content", texts[i] if i < len(texts) else ""))
+
+            assert all(len(doc) > 0 or md["type"] == "image" for doc, md in zip(docs, all_metadatas))
+
             self.clip_collection.add(
                 embeddings = all_embeddings,
                 metadatas = all_metadatas,
+                documents  = docs, 
                 ids = all_ids
             )
-            print(f"Added {len(all_embeddings)} items to 'clip_collection'.")
+            print(f"Added {len(all_embeddings)} items to '{self.collection_name}'.")
 
 
-    def search(self, query: str, k=5) -> Dict:
+    def search(self, query: str, k=25,domain: Optional[str] = None  ) -> Dict:
         """
         對query做CLIP text embedding後,在clip_collection裡找最相似的k筆
         """
@@ -397,12 +461,13 @@ class ClipEmbeddingProcessor:
             emb = self.process_text_with_clip(query)
             if emb is None:
                 return {"metadatas":[],"documents":[],"distances":[],"ids":[]}
-
+            where_clause = {"domain": domain} if domain else None
+        
             results = self.clip_collection.query(
-                query_embeddings=[emb],
-                n_results=k
+                    query_embeddings=[emb],
+                    n_results=k,
+                    where=where_clause 
             )
-
             return results
         except Exception as e:
             print(f"Error in search: {str(e)}")
@@ -411,7 +476,7 @@ class ClipEmbeddingProcessor:
 
 # ### 資料處理模組
 
-# In[5]:
+# In[251]:
 
 
 class DataProcessor:
@@ -537,11 +602,19 @@ class DataProcessor:
         try:
             with open(pdf_path, 'rb') as file:
                 pdf_reader = PyPDF2.PdfReader(file)
-                
+                is_formula = self.detect_domain(pdf_name) == "中醫方劑"
+                is_acu = self.detect_domain(pdf_name) == "針灸學"
+
+
                 for page_num, page in enumerate(pdf_reader.pages):
                     text = page.extract_text()
                     print(f"Page {page_num+1} raw text:", repr(text))
-                    paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
+                    if is_formula:
+                        paragraphs = self.split_formula_blocks(text)
+                    # elif is_acu:
+                    #     paragraphs = self.split_acu_blocks(text)
+                    else:
+                        paragraphs = text.split('\n\n')
                     
                     
                     # 處理每個段落
@@ -557,6 +630,7 @@ class DataProcessor:
                                 'answers': [c],
                                 'metadata': {
                                     'type': 'professional',
+                                    'domain':self.detect_domain(pdf_name),
                                     'source_file': pdf_name,  # 添加文件名
                                     'page': str(page_num + 1),
                                     'content_length': str(len(c))
@@ -570,16 +644,58 @@ class DataProcessor:
         except Exception as e:
             logger.error(f"Error processing PDF {pdf_name}: {str(e)}")
             return []
+        
+    def detect_domain(self, pdf_name: str) -> str:
+        lower = pdf_name.lower()
+
+        if "針灸" in pdf_name or "acupuncture" in lower:
+            return "針灸學"
+        if "herbal" in lower or "herbology" in lower or "方劑" in pdf_name:
+            return "中醫方劑"
+        return "其他"
+    
+    def split_formula_blocks(self,text: str) -> list[str]:
+        """
+        用正則抓出『● 六味地黃丸』或『Liu Wei Di Huang Wan』開頭，
+        每遇下一個方名就結束上一塊
+        """
+        pattern = re.compile(r"(?:●|\s)([\u4e00-\u9fffA-Za-z\- ]{3,40}(?:湯|丸|飲|散|膏))")
+        blocks = []
+        cur_block = []
+        for line in text.splitlines():
+            if pattern.search(line):
+                # 遇到下一帖藥 → 先收前一帖
+                if cur_block:
+                    blocks.append("\n".join(cur_block).strip())
+                    cur_block = []
+            cur_block.append(line)
+        if cur_block:
+            blocks.append("\n".join(cur_block).strip())
+        return [b for b in blocks if len(b) > 60]    
+
+    def split_acu_blocks(self,text: str) -> list[str]:
+        # 範例代碼：LI‑11、HT-7、SI 3
+        pattern = re.compile(r"\b([A-Z]{1,2}[ -‑]\d{1,3})\b")
+        blocks, cur = [], []
+        for line in text.splitlines():
+            if pattern.search(line):
+                if cur: blocks.append("\n".join(cur).strip()); cur = []
+            cur.append(line)
+        if cur: blocks.append("\n".join(cur).strip())
+        return [b for b in blocks if len(b) > 40]
 
     def process_all(self, csv_path: str, pdf_paths: List[str]):
         """綜合處理社群 CSV + PDFs"""
         try:
+            social_qa_pairs, images = [], []  
             # 1. 处理社群数据
-            social_qa_pairs, images = self.process_csv_with_images(csv_path)
-            logger.info(f"\nProcessed social data:")
-            logger.info(f"- Social QA pairs: {len(social_qa_pairs)}")
-            logger.info(f"- Images found: {len(images)}")
-            
+            if csv_path: 
+                social_qa_pairs, images = self.process_csv_with_images(csv_path)
+                logger.info(f"\nProcessed social data:")
+                logger.info(f"- Social QA pairs: {len(social_qa_pairs)}")
+                logger.info(f"- Images found: {len(images)}")
+            else:
+                logger.info("Skip social CSV, only處理 PDFs")
             # 检查图片文件
             valid_images = []
             for img in images:
@@ -626,6 +742,15 @@ class DataProcessor:
             logger.info(f"- Professional content: {len(all_professional_pairs)} paragraphs")
             
             # 5. 全部寫進clip_collection
+            
+            
+            # (C) professional paragraphs
+            prof_texts  = [qa["answers"][0] for qa in all_professional_pairs]
+            prof_metas  = [qa["metadata"]   for qa in all_professional_pairs]
+
+            self.embedding_processor.add_data(texts=prof_texts,
+                                            metadatas=prof_metas)
+            
             # (A) 先加所有 question
             self.embedding_processor.add_data(
                 texts = questions,
@@ -633,11 +758,12 @@ class DataProcessor:
             )
 
             # (B) 再加所有 answers
-            self.embedding_processor.add_data(
-                texts = answers,
-                metadatas = answer_metas
-            )
-            # (C) 再加 images
+            # self.embedding_processor.add_data(
+            #     texts = answers,
+            #     metadatas = answer_metas
+            # )
+            
+            # (D) 再加 images
             # 沒有對應metadata？可以簡單做
             # [{"type":"image","source":"facebook"} ...] 或
             # 想知道它屬於哪個QApair? 就要自己對應
@@ -667,7 +793,7 @@ class DataProcessor:
 
 # ##### code
 
-# In[158]:
+# In[252]:
 
 
 from deep_translator import GoogleTranslator
@@ -762,8 +888,6 @@ class QASystem:
         return structured
 
 
-
-
     def determine_question_type(self,query: str) -> str:
         """
         回傳: "multiple_choice" | "true_false" | "qa"
@@ -825,7 +949,7 @@ class QASystem:
         
         # role
         base_system = (
-            "您是一名專業獸醫，擅長：1.犬認知功能障礙綜合症（CCD）的診斷和護理 2.常見問題診斷及改善建議"
+            "您是一名專業獸醫，擅長：1.犬認知功能障礙綜合症（CCD）的診斷和護理 2.豐富的寵物中醫知識 3.常見問題診斷及改善建議" 
         )
 
         prompts = {
@@ -930,8 +1054,12 @@ class QASystem:
 
     def generate_response(self, query: str,question_type: Optional[str] = None) -> Tuple[str, List[str]]:
         try:
-
-            raw_result = self.embedding_processor.search(query)  
+            TARGET_DOMAIN = "中醫方劑" 
+            raw_result = self.embedding_processor.search(
+                query,
+                k=25,
+                domain=TARGET_DOMAIN)  
+            print(raw_result["metadatas"])
             # raw_result 是 clip_collection 的資料
             # 用後處理
             # search_results = self.embedding_processor.search(raw_result)
@@ -1078,7 +1206,9 @@ class QASystem:
 
 # ### 系統初始化和資料處理
 
-# In[160]:
+# #### 正式embedding(之後刪)
+
+# In[57]:
 
 
 from pathlib import Path
@@ -1109,7 +1239,7 @@ num_texts, num_images = data_processor.process_all(
 
 # ### 系統測試
 
-# In[161]:
+# In[64]:
 
 
 qa_system = QASystem(
@@ -1166,7 +1296,7 @@ for query in test_queries:
 
 # #### test questions 
 
-# In[162]:
+# In[160]:
 
 
 import string
@@ -1253,7 +1383,11 @@ def main():
     df = pd.read_excel("test_questions.xlsx")
     
     # 篩選 type = multiple_choice 或 true_false 或 qa
-    test_df = df[df["type"].isin(["multiple_choice","true_false"])].copy()
+    # test_df = df[df["type"].isin(["multiple_choice","true_false"])].copy()
+    test_df = df.loc[
+        (df["domain"] == "中醫") &
+        (df["type"].isin(["multiple_choice", "true_false"]))
+    ].copy()
     # test_df = df[df["type"].isin(["true_false"])].copy()
     # test_df = test_df.head(4)
     
@@ -1304,4 +1438,92 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# #### test data
+
+# In[253]:
+
+
+from pathlib import Path
+TEST_MODE = True                           # ← 切換開關
+COLLECTION_NAME = "clip_collection_test_v3"   # 測試用向量庫
+
+# 1) 初始化 embedding_processor，傳入新的 collection_name
+embedding_processor = ClipEmbeddingProcessor(
+    image_size=(224, 224) ,
+    collection_name=COLLECTION_NAME    # ★若 __init__ 沒這參數，改下方註解方法
+)
+
+# 2) 初始化資料處理器
+data_processor = DataProcessor(embedding_processor)
+
+# 3) 指定測試或正式資料夾
+rag_data_dir = Path("RAG_data_test" if TEST_MODE else "RAG_data")
+pdf_paths = list(rag_data_dir.glob("*.pdf"))
+
+
+print("找到以下 PDF：")
+for p in pdf_paths: print(" -", p.name)
+
+# 4) 處理資料 （CSV 你可以傳 None 代表不處理社群資料）
+_ = data_processor.process_all(
+    csv_path=None,           # 只測 PDF，可先不管社群
+    pdf_paths=pdf_paths
+)
+
+
+# In[224]:
+
+
+sample = embedding_processor.clip_collection.get(include=["documents","metadatas"], limit=1)
+print("DOC 前 120 字:", sample["documents"][0][:120])
+
+
+# In[254]:
+
+
+# 建立 QA 系統，沿用同一個 embedding_processor
+qa_system = QASystem(
+    embedding_processor=embedding_processor,
+    model_name='llama3.2-vision'
+)
+TARGET_DOMAIN = "中醫方劑"   # 想測哪個就填哪個
+qa_system.TARGET_DOMAIN = TARGET_DOMAIN   # 若你寫成屬性
+
+
+# In[257]:
+
+
+# 1. 讀檔 + 題型篩選
+df = pd.read_excel("test_questions.xlsx")
+# test_df = df[df["type"].isin(["multiple_choice", "true_false"])].copy()
+test_df = df[df["type"].isin(["multiple_choice"])].copy()
+
+# 2. ★ 建立欄位（一定要在後面的篩選前先加）
+test_df["llm_response"] = ""
+test_df["predicted"]    = ""
+test_df["is_correct"]   = 0
+
+# 3. 再依 domain 篩子集合
+test_df = test_df[test_df["domain"] == "中醫"].copy()
+test_df=test_df.head(3)
+
+# 4. 迴圈計分
+for idx, row in test_df.iterrows():
+    q  = row["question"]
+    q_type = row["type"]
+    gt = str(row["answers"]).strip()
+
+    resp, _ = qa_system.display_response(q, q_type)
+    pred = parse_llm_answer(resp, q_type)
+
+    test_df.at[idx, "llm_response"] = resp
+    test_df.at[idx, "predicted"]    = pred
+    test_df.at[idx, "is_correct"]   = int(pred.upper() == gt.upper())
+
+# 5. 計算 Accuracy
+accuracy = test_df["is_correct"].mean()
+print(test_df[["id","type","answers","predicted","is_correct"]])
+print(f"[{TARGET_DOMAIN}] Accuracy = {accuracy:.2%}")
 
