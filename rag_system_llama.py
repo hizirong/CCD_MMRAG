@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[50]:
+# In[260]:
 
 
 get_ipython().system('jupyter nbconvert --to script rag_system_llama.ipynb')
@@ -9,7 +9,7 @@ get_ipython().system('jupyter nbconvert --to script rag_system_llama.ipynb')
 
 # ### import
 
-# In[247]:
+# In[2]:
 
 
 import os
@@ -50,7 +50,7 @@ Path('chroma_db').mkdir(exist_ok=True)
 Path('image').mkdir(exist_ok=True)
 
 
-# In[248]:
+# In[3]:
 
 
 import sys
@@ -87,7 +87,7 @@ def transcribe_file(file_path, model_size="base"):
 
 # ### 圖片處理
 
-# In[249]:
+# In[4]:
 
 
 from typing import Union  # 添加 Union 导入
@@ -170,7 +170,7 @@ class ImageProcessor:
 
 # ### Embedding 處理模組
 
-# In[250]:
+# In[5]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -189,46 +189,50 @@ class ClipEmbeddingProcessor:
                 persist_directory: str = "chroma_db",
                 image_dir: str = "image",
                 image_size: tuple = (224, 224),
-                collection_name:str = DEFAULT_COLLECTION
+                collection_name:str = DEFAULT_COLLECTION,
+                reset: bool = False 
                 ):
         """
         初始化: 建立clip_collection,使用CLIP(or OpenCLIP)做embedding
         """
+        # ---------- 路徑 & 基本設定 ----------
         self.image_dir = Path(image_dir)
         self.image_size = image_size
-        self.image_processor = ImageProcessor(image_dir) 
         self.collection_name = collection_name
-        
-        # ====== 1) 初始化 CLIP ======
+        self.image_processor = ImageProcessor(image_dir)
 
-        SIGLIP_NAME = "google/siglip-base-patch16-224"   # 也可以換 small / large
-        self.processor   = AutoProcessor.from_pretrained(SIGLIP_NAME)
-        self.siglip      = AutoModel.from_pretrained(SIGLIP_NAME)  # 沒 GPU 改 "cpu"
-
-        # 測試一下,取得image特徵維度(通常是512)
-        with torch.no_grad():
-            dummy = torch.zeros((1, 3, 224, 224))
-            dim_out = self.siglip.get_image_features(dummy).shape[1]
-        self.clip_dim = dim_out
-
-        # ====== 2) 建立Chroma ======
+        # ---------- 1) 建立 Chroma client ----------
         logger.info(f"Initializing Chroma with directory: {persist_directory}")
         self.chroma_client = chromadb.PersistentClient(path=persist_directory)
 
-        # 先刪除舊的 collection(若存在)
-        try:
-            self.chroma_client.delete_collection(self.collection_name)
-            print(f"Deleted collection: {self.collection_name}")
-        except (chromadb.errors.NotFoundError, ValueError):
-            print(f"No collection named {self.collection_name}, nothing to delete.")
-            pass
+        # ---------- 2) reset (= 刪掉舊庫) ----------
+        if reset:
+            try:
+                self.chroma_client.delete_collection(self.collection_name)
+                logger.info(f"Deleted collection: {self.collection_name}")
+            except (chromadb.errors.NotFoundError, ValueError):
+                logger.info("No old collection to delete")
 
-        # 建立無embedding_function的collection,因為我們手動算embedding
+        
+        # ---------- 3) 初始化 SigLIP ----------
+        SIGLIP_NAME = "google/siglip-base-patch16-224"
+        self.processor = AutoProcessor.from_pretrained(SIGLIP_NAME)
+        self.siglip    = AutoModel.from_pretrained(SIGLIP_NAME)
+
+        # 取輸出向量長度 (base = 768)
+        with torch.no_grad():
+            dummy = torch.zeros((1, 3, 224, 224))
+            self.clip_dim = self.siglip.get_image_features(dummy).shape[1]
+
+        # ---------- 4) 取得或建立 collection ----------
         self.clip_collection = self.chroma_client.get_or_create_collection(
-            name=self.collection_name,
-            metadata={"dimension": self.clip_dim}
+            name     = self.collection_name,
+            metadata = {"dimension": self.clip_dim}
         )
-        print(f">> Created '{self.collection_name}' in {persist_directory} with dimension={self.clip_dim}.")
+        logger.info(
+            f"Using collection '{self.collection_name}' "
+            f"(dimension={self.clip_dim}, reset={reset})"
+        )
 
 
     def to_2d(self,x):
@@ -242,22 +246,72 @@ class ClipEmbeddingProcessor:
             raise ValueError(f"embedding ndim should be 1 or 2, got {x.shape}")
         return x.tolist()      # List[List[float]]
 
+    
+
     def split_into_chunks(
             self,
-            text:str,
-            max_tokens=MAX_TOKEN, 
-            overlap=OVERLAP)-> list[str]:
+            text: str,
+            max_tokens: Optional[int] = None,
+            overlap: Optional[int] = None
+        ) -> List[str]:
+        CH_SENT_SPLIT = re.compile(r'([。！？；\n])')
+        """句號優先斷句；任何子句最終都 ≤ 56 token"""
+        max_tokens = max_tokens or self.MAX_TOKEN      # 56
+        overlap    = overlap    or self.OVERLAP        # 16
 
-        ids    = self.processor.tokenizer(text).input_ids
+        # --- 1) 以中文標點切成子句 ---
+        sentences, buf, parts = [], "", CH_SENT_SPLIT.split(text)
+        for frag in parts:
+            if CH_SENT_SPLIT.match(frag):
+                buf += frag          # 把標點加回來
+                sentences.append(buf.strip())
+                buf = ""
+            else:
+                buf += frag
+        if buf: sentences.append(buf.strip())
+
+        # --- 2) 任何 >56 token 的句子再滑窗切 ---
         chunks = []
-        step   = max_tokens - overlap
-        for i in range(0, len(ids), step):
-            seg = ids[i : i + max_tokens]
-            chunks.append(
-                self.processor.tokenizer.decode(
-                    seg, skip_special_tokens=True
-                )
-            )
+        for s in sentences:
+            ids = self.processor.tokenizer(s).input_ids
+            if len(ids) <= max_tokens:
+                chunks.append(s)
+            else:
+                step = max_tokens - overlap
+                for i in range(0, len(ids), step):
+                    seg_ids = ids[i:i + max_tokens]
+                    seg = self.processor.tokenizer.decode(seg_ids,
+                                                        skip_special_tokens=True)
+                    chunks.append(seg)
+        return chunks
+
+
+    def smart_split(self, text:str, max_tokens=MAX_TOKEN) -> list[str]:
+
+        CH_SENT_SPLIT = re.compile(r'([。！？；\n])')
+        # 1) 先用中文標點斷句
+        parts, sent, out = CH_SENT_SPLIT.split(text), "", []
+        for frag in parts:
+            if CH_SENT_SPLIT.match(frag):
+                sent += frag          # 把標點加回去
+                out.append(sent.strip())
+                sent = ""
+            else:
+                sent += frag
+        if sent: out.append(sent.strip())
+
+        # 2) 句子太長再二次切 token
+        chunks, buf = [], ""
+        for s in out:
+            if len(self.processor.tokenizer(s).input_ids) > max_tokens:
+                # 超長句用滑窗
+                ids = self.processor.tokenizer(s).input_ids
+                for i in range(0, len(ids), max_tokens):
+                    seg = self.processor.tokenizer.decode(ids[i:i+max_tokens],
+                                                        skip_special_tokens=True)
+                    chunks.append(seg)
+            else:
+                chunks.append(s)
         return chunks
 
     def process_text_with_clip(self, text: str) -> Optional[np.ndarray]:
@@ -282,6 +336,7 @@ class ClipEmbeddingProcessor:
         except Exception as e:
             logger.error(f"Error in process_text_with_clip: {e}")
             return None
+        
     def add_qa_pairs(self,
                 questions: List[str],
                 answers: List[str],
@@ -322,9 +377,6 @@ class ClipEmbeddingProcessor:
 
                     if img_emb is not None:
                         all_embeddings.append(img_emb.tolist())
-                        # img_embeddings_list = img_embeddings.tolist()
-                        # all_metadatas.append(img_embeddings_list)
-                        # valid_images.append(img_path)
                         all_metadatas.append({
                             "type": "image", 
                             "path": img_path,
@@ -374,84 +426,79 @@ class ClipEmbeddingProcessor:
                 return None
 
 
-    def add_data(self, 
-                texts: Optional[List[str]] = None, 
-                metadatas: Optional[List[Dict]] = None,
-                images: Optional[List[str]] = None):
+    def add_data(
+        self,
+        texts: Optional[List[str]] = None,
+        metadatas: Optional[List[Dict]] = None,
+        images: Optional[List[str]] = None
+    ):
         """
-        統一方法:把text or image加到 clip_collection
-        你可以自行拆成add_text/add_image,或像這樣合併都行
-        需確保 texts與metadatas數量相同, 或 images與metadatas數量相同(可依需求調整)
-        """
-        all_embeddings = []
-        all_metadatas = []
-        all_ids = []
+        統一把文字／圖片寫進 clip_collection。
+        - texts：原始全文（list[str]）
+        - metadatas：與 texts 或 images 對應的 metadata（list[dict]）
+        - images：圖片檔名（list[str]）
 
+        四大欄位說明
+        ┌───────────┬─────────────────────────────┐
+        │ embeddings │ 512-d 向量 (text / image)   │
+        │ metadatas  │ 結構化屬性，**不放全文**      │
+        │ documents  │ 原始全文；若是圖片放空字串     │
+        │ ids        │ 唯一鍵，text_x / img_x      │
+        └───────────┴─────────────────────────────┘
+        """
+        texts      = texts or []
+        images     = images or []
+        metadatas  = metadatas or []
+
+        all_embeddings, all_metadatas, docs, all_ids = [], [], [], []
         idx = 0
 
-        if texts is None:
-            texts = []
-        if images is None:
-            images = []
-        if metadatas is None:
-            metadatas = []
+        # ---------- 文字 ----------
+        for i, txt in enumerate(texts):
+            emb = self.process_text_with_clip(txt)
+            if emb is None:
+                continue
 
-        # 1) 對文字做embedding
-        if texts:
-            for i, txt in enumerate(texts):
-                emb = self.process_text_with_clip(txt)         
-                if emb is not None:
-                    for vec in self.to_2d(emb):                 # ← 一次可能回傳多條向量
-                        all_embeddings.append(vec)
-                        all_metadatas.append({
-                            "type": "text",
-                            "content": txt,
-                            **(metadatas[i] if i < len(metadatas) else {})
-                        })
-                        all_ids.append(f"text_{idx}")
-                        idx += 1
+            for vec in self.to_2d(emb):
+                all_embeddings.append(vec)
+                # 只存 preview，全文放 documents
+                preview = txt[:60] + "…" if len(txt) > 60 else txt
+                md = {"type": "text", "preview": preview}
+                if i < len(metadatas):
+                    md.update(metadatas[i])
+                all_metadatas.append(md)
 
-        # 2) 對圖片做embedding
-        if images:
-            for j, img_path in enumerate(images):
-                full_path = str(self.image_dir / img_path)
-                emb = self.process_image_with_clip(full_path)
-                if emb is  None:
-                    continue
+                docs.append(txt)          # ← 放全文
+                all_ids.append(f"text_{idx}")
+                idx += 1
 
-                for vec in self.to_2d(emb):              # ← 無論 1‑D / 2‑D 都 OK
-                    all_embeddings.append(vec)
-                    md = {"type": "image", "path": img_path}
-                    if metadatas and j < len(metadatas):
-                        md.update(metadatas[j])
-                    all_metadatas.append(md)
-                    all_ids.append(f"img_{idx}")
-                    idx += 1
+        # ---------- 圖片 ----------
+        for j, img_name in enumerate(images):
+            full_path = str(self.image_dir / img_name)
+            emb = self.process_image_with_clip(full_path)
+            if emb is None:
+                continue
 
+            for vec in self.to_2d(emb):
+                all_embeddings.append(vec)
+                md = {"type": "image", "path": img_name}
+                if j < len(metadatas):
+                    md.update(metadatas[j])
+                all_metadatas.append(md)
 
-        # 3) 寫入 clip_collection
-        if len(all_embeddings) > 0:
-            print(np.asarray(all_embeddings).shape)   # 應該是 (N, 512)
+                docs.append("")            # ← 佔位，保持長度一致
+                all_ids.append(f"img_{idx}")
+                idx += 1
 
-            #準備與 embedding 對齊長度的文件列表
-            docs = []
-            for i, md in enumerate(all_metadatas):
-               # 只把圖片排除，其餘一律當文字
-                if md.get("type") == "image":
-                    docs.append("")                # 圖片沒有文字
-                else:
-                    docs.append(md.get("content", texts[i] if i < len(texts) else ""))
-
-            assert all(len(doc) > 0 or md["type"] == "image" for doc, md in zip(docs, all_metadatas))
-
+        # ---------- 寫入 Chroma ----------
+        if all_embeddings:
             self.clip_collection.add(
                 embeddings = all_embeddings,
-                metadatas = all_metadatas,
-                documents  = docs, 
-                ids = all_ids
+                metadatas  = all_metadatas,
+                documents  = docs,
+                ids        = all_ids
             )
-            print(f"Added {len(all_embeddings)} items to '{self.collection_name}'.")
-
+            logger.info(f"Added {len(all_embeddings)} items to '{self.collection_name}'")
 
     def search(self, query: str, k=25,domain: Optional[str] = None  ) -> Dict:
         """
@@ -460,23 +507,24 @@ class ClipEmbeddingProcessor:
         try:
             emb = self.process_text_with_clip(query)
             if emb is None:
-                return {"metadatas":[],"documents":[],"distances":[],"ids":[]}
+                return {"metadatas":[],"documents":[],"distances":[]}
             where_clause = {"domain": domain} if domain else None
         
             results = self.clip_collection.query(
                     query_embeddings=[emb],
                     n_results=k,
-                    where=where_clause 
+                    where=where_clause,
+                    include=["distances", "metadatas", "documents"]
             )
             return results
         except Exception as e:
             print(f"Error in search: {str(e)}")
-            return {"metadatas":[],"documents":[],"distances":[],"ids":[]}
+            return {"metadatas":[],"documents":[],"distances":[]}
 
 
 # ### 資料處理模組
 
-# In[251]:
+# In[6]:
 
 
 class DataProcessor:
@@ -592,7 +640,7 @@ class DataProcessor:
             start += (chunk_size - overlap)
 
         return chunks
-
+  
 
     def process_pdf(self, pdf_path: str) -> List[Dict]:
         logger.info(f"Processing PDF: {pdf_path}")
@@ -611,8 +659,8 @@ class DataProcessor:
                     print(f"Page {page_num+1} raw text:", repr(text))
                     if is_formula:
                         paragraphs = self.split_formula_blocks(text)
-                    # elif is_acu:
-                    #     paragraphs = self.split_acu_blocks(text)
+                    elif is_acu:
+                        paragraphs = self.split_acu_blocks(text)
                     else:
                         paragraphs = text.split('\n\n')
                     
@@ -793,7 +841,7 @@ class DataProcessor:
 
 # ##### code
 
-# In[252]:
+# In[23]:
 
 
 from deep_translator import GoogleTranslator
@@ -943,105 +991,21 @@ class QASystem:
         return "\n".join(unique_refs)
 
 
-    def get_prompt_by_type(self,query: str, context: str, question_type: str, references_str: str = "") -> str:
-        # print('[DEBUG]:query in get_prompt_by_type',query)
-        # logger.info("prompt type:",question_type)
-        
-        # role
-        base_system = (
-            "您是一名專業獸醫，擅長：1.犬認知功能障礙綜合症（CCD）的診斷和護理 2.豐富的寵物中醫知識 3.常見問題診斷及改善建議" 
+
+    def build_user_prompt(
+        self,
+        query: str,
+        context: str,
+        references_str: str = ""
+        ) -> str:
+        # 不含任何格式規範！只給題目與資料
+        return (
+            f"{query}\n\n"
+            "參考資料：\n" + context +
+            "\n來源：\n" + references_str
         )
 
-        prompts = {
-            "multiple_choice": f"""<|begin_of_text|><|start_header_id|>system<|end_header_id|>
-                                    {base_system}
-                                    <|eot_id|><|start_header_id|>user<|end_header_id|>
-                        
-                                    這是一題選擇題：{query}
-
-                                    請以以下格式回答：
-                                    1. 第一行只能回答 A/B/C/D (請勿帶任何標點、文字)
-                                    2. 第二行才是說明，以 2~3 句話簡述理由
-                                    3. 若同時出現多個選項，請只選一個最適合的
-                                    4. 請在答案最後顯示你參考的來源連結或論文名稱，
-                                    如果來源中包含「(經驗) some_link」，請在回答中以 [Experience: some_link] 形式標示；
-                                    若包含「(文獻) some.pdf」，就 [reference: some.pdf]。
-                                    5.  若有相關圖片，在回答中自然地說明圖片內容跟回答的關係
-
-                                    限制：
-                                    - 請將整體回答限制在 200 字以內
-                                    - 直接切入重點
-                                    - 保持客觀和專業
-
-                                    參考資料：
-                                    {context}
-
-                                    來源：
-                                    {references_str}
-
-                                    <|eot_id|><|start_header_id|>assistant<|end_header_id|>
-                                    """,
-            "true_false": f"""<|begin_of_text|><|start_header_id|>system<|end_header_id|>
-                                {base_system}
-                                <|eot_id|><|start_header_id|>user<|end_header_id|>
-
-                                問題：{query}
-
-                                參考資料：
-                                {context}
-                                來源：
-                                    {references_str}
-
-                                請按照下列格式回答是非題：
-                                Step‑by‑step：
-                                1. 先列出判斷依據（可條列）
-                                2. 請在答案最後顯示你參考的來源連結或論文名稱，
-                                    如果來源中包含「(經驗) some_link」，請在回答中以 [Experience: some_link] 形式標示；
-                                    若包含「(文獻) some.pdf」，就 [reference: some.pdf]。
-                                3.  若有相關圖片，在回答中自然地說明圖片內容跟回答的關係
-                                4. 最後再給出結論，只能寫「True」或「False」
-
-
-                                限制：
-                                - 請將整體回答限制在 200 字以內
-                                - 直接切入重點
-                                - 保持客觀和專業
-
-                                <|eot_id|><|start_header_id|>assistant<|end_header_id|>
-                                """,
-            "qa": f"""<|begin_of_text|><|start_header_id|>system<|end_header_id|>
-                                {base_system}
-                                <|eot_id|><|start_header_id|>user<|end_header_id|>
-
-                                問題：{query}
-
-                                參考資料：
-                                {context}
-                                來源：
-                                    {references_str}
-
-                                請依以下格式回答：
-                                1. 針對問題提供具體答案
-                                2. 若遇到無法確定或證據不足的情況可以補充說明研究不足
-                                3. 提供實用的建議或解釋
-                                4. 請在答案最後顯示你參考的來源連結或論文名稱，
-                                    如果來源中包含「(經驗) some_link」，請在回答中以 [Experience: some_link] 形式標示；
-                                    若包含「(文獻) some.pdf」，就 [reference: some.pdf]。
-                                5. 若有相關圖片，在回答中說明圖片內容
-
-                                限制：
-                                - 請將整體回答限制在 400 字以內
-                                - 使用平易近人的語言
-                                - 避免過度技術性術語
-
-                                <|eot_id|><|start_header_id|>assistant<|end_header_id|>
-                                """
-        }
-
-        # 若 question_type 未包含在定義的 prompts 中，就預設使用 "qa"。
-        return prompts.get(question_type, prompts["qa"])
-
-
+       
     def translate_en_to_zh(self,chinese_text: str) -> str:
         try:
             # 指定原文語言為 'zh'（中文），目標語言為 'en'（英文）
@@ -1052,21 +1016,75 @@ class QASystem:
             print(f"翻譯錯誤：{e} - 對應中文問題：{chinese_text}")
             return chinese_text  # 若翻譯失敗，返回原文
 
+
+    
+
+    def merge_adjacent(self, metas, docs, k_keep: int = 5) -> str:
+        """
+        將同檔同頁且 _id 連號的片段合併，回傳前 k_keep 段文字。
+        參數
+        ----
+        metas : list[dict]    # raw_result["metadatas"][0]
+        docs  : list[str]     # raw_result["documents"][0]
+        """
+        ID_NUM_RE = re.compile(r"_(\d+)$")   # 尾碼取數字：text_123 → 123
+        merged, buf = [], ""
+        last_src, last_idx = ("", ""), -999
+
+        for md, doc in zip(metas, docs):
+            src_key = (md.get("source_file", ""), md.get("page", ""))
+
+            # 取 _id 尾碼；若不存在則設 -1
+            _id = md.get("_id", "")
+            m = ID_NUM_RE.search(_id)
+            cur_idx = int(m.group(1)) if m else -1
+
+            # 同檔同頁且連號 → 視為相鄰
+            if src_key == last_src and cur_idx == last_idx + 1:
+                buf += doc
+            else:
+                if buf:
+                    merged.append(buf)
+                buf = doc
+            last_src, last_idx = src_key, cur_idx
+
+        if buf:
+            merged.append(buf)
+
+        return "\n\n".join(merged[:k_keep])
+
+
+
     def generate_response(self, query: str,question_type: Optional[str] = None) -> Tuple[str, List[str]]:
         try:
-            TARGET_DOMAIN = "中醫方劑" 
+            TARGET_DOMAIN = "" 
             raw_result = self.embedding_processor.search(
                 query,
                 k=25,
                 domain=TARGET_DOMAIN)  
             print(raw_result["metadatas"])
-            # raw_result 是 clip_collection 的資料
+            # ← 新增保險
+            if not raw_result["documents"] or len(raw_result["documents"][0]) == 0:
+                logger.warning("No hits for query → 改用 k=50 再試一次")
+                raw_result = self.embedding_processor.search(query, k=50)
+
+            if not raw_result["documents"] or len(raw_result["documents"][0]) == 0:
+                # 還是空，直接回覆 [NoRef]
+                return "[NoRef] 無足夠證據判斷", []
+            
             # 用後處理
-            # search_results = self.embedding_processor.search(raw_result)
             search_results = self._classify_collection_results(raw_result)
             logger.info("SEARCH RESULT(structured): %s",search_results)
 
-            context = self.format_context(search_results)
+
+            metas = raw_result["metadatas"][0]
+            docs  = raw_result["documents"][0]
+
+            # context = self.format_context(search_results)
+            raw_ctx = self.merge_adjacent(metas, docs, k_keep=5)[:1500]
+            #raw_ctx = self.merge_adjacent(raw_result, k_keep=5)
+            context = raw_ctx[:1500]          # 最多 1500 字
+
             references_str = self.gather_references(search_results)
             # link應該用傳參數的會成功 可能用context.link之類的抓題目的reference
             
@@ -1074,19 +1092,56 @@ class QASystem:
             
 
             # --- ① 題型 --------------------------------------------------------
-            if question_type:          # 呼叫端已經給我，就直接用
-                q_type = question_type
-            else:                      # 否則退回舊邏輯自動判斷
-                q_type = self.determine_question_type(query)
+            q_type = question_type or self.determine_question_type(query)
             # question_type = self.determine_question_type(zh_query)
-            prompt = self.get_prompt_by_type(query, context, q_type, references_str)
-        
-            
-            message = {
-                'role':'user',
-                'content': prompt
-            }
+            # prompt = self.get_prompt_by_type(query, context, q_type, references_str)
 
+            user_prompt = self.build_user_prompt(
+                query=query,
+                context=context[:1500],
+                references_str=references_str
+            )
+            # ---------- ② 根據題型動態組 system 指令 ----------
+            if q_type == "multiple_choice":
+                format_rules = (
+                    "這是一題選擇題，回答格式如下：\n"
+                    "先用 2-3 句話說明理由。\n"
+                    "請在答案最後顯示你參考的來源連結或論文名稱，如果來源中包含「(經驗) some_link」，請在回答中以 [Experience: some_link] 形式標示；若包含「(文獻) some.pdf」，就 [reference: some.pdf]\n"
+                    "如檢索結果仍無相關資訊，請以[NoRef]標示並根據臨床常識回答。"
+                    "最後再回答答案，只能回答 A或B或C或D (請勿帶任何標點、文字)\n"
+                    "若同時出現多個選項，請只選一個最適合的\n"
+                    "問題如下：\n"
+                )
+            elif q_type == "true_false":
+                format_rules = (
+                    "這是一題是非題\n"
+                    "請按照下列格式回答是非題：\n"
+                    "先列出判斷依據（可條列）。\n"
+                    "請在答案最後顯示你參考的來源連結或論文名稱，如果來源中包含「(經驗) some_link」，請在回答中以 [Experience: some_link] 形式標示；若包含「(文獻) some.pdf」，就 [reference: some.pdf]\n"
+                    "如檢索結果仍無相關資訊，請以[NoRef]標示並根據臨床常識回答。\n"
+                    "最後再給出結論，只能寫「True」或「False」\n"
+                    "問題如下：\n"
+                )
+            else:   # qa
+                format_rules = (
+                    "請依以下格式回答：\n"
+                    "針對問題提供具體答案 \n"
+                    "請在答案最後顯示你參考的來源連結或論文名稱，如果來源中包含「(經驗) some_link」，請在回答中以 [Experience: some_link] 形式標示；若包含「(文獻) some.pdf」，就 [reference: some.pdf]\n"
+                    "若遇到無法確定或證據不足的情況可以補充說明研究不足，請以[NoRef]標示並根據臨床常識回答。\n"
+                    "問題如下：\n"
+                )
+
+            system_prompt = (
+                "您是一名專業獸醫，擅長：1.犬認知功能障礙綜合症（CCD）的診斷和護理 2.豐富的寵物中醫知識 3.常見問題診斷及改善建議\n"
+                + format_rules
+            )
+        
+            message = [
+                {"role": "system", "content": system_prompt},
+                {"role": "user",   "content": user_prompt}
+            ]
+            # print("=======sys prompt =======",system_prompt)
+            # print("=======user prompt =======",user_prompt)
             # 處理圖片
             image_paths = []
             # 2) 從 social metadata 把圖片撈出
@@ -1109,7 +1164,7 @@ class QASystem:
             # 生成响应
             response = ollama.chat(
                 model=self.model_name,
-                messages=[message]
+                messages=message
             )
             return response['message']['content'], image_paths
 
@@ -1237,7 +1292,7 @@ num_texts, num_images = data_processor.process_all(
 )
 
 
-# ### 系統測試
+# #### 系統測試
 
 # In[64]:
 
@@ -1296,7 +1351,7 @@ for query in test_queries:
 
 # #### test questions 
 
-# In[160]:
+# In[ ]:
 
 
 import string
@@ -1313,37 +1368,29 @@ def translate_zh_to_en(chinese_text: str) -> str:
     except Exception as e:
         print(f"翻譯錯誤：{e} - 對應中文問題：{chinese_text}")
         return chinese_text  # 若翻譯失敗，返回原文
-
-
-
+    
 def parse_llm_answer(llm_response: str, q_type: str) -> str:
     """
     根據題型 (選擇 or 是非)，從 LLM 的回覆字串中解析出可能的最終答案。
     """
+    if not llm_response or not llm_response.strip():
+        return "" 
 
     # 把回覆都轉小寫，以便搜尋
     q_type = q_type.strip().lower()        # 保險起見
     cleaned = llm_response.strip()
+    lines = [ln.strip() for ln in llm_response.splitlines() if ln.strip()]
     
     
     if q_type == "multiple_choice":
        
-        # 1) 先去除可能的全形/半形混雜、移除多餘符號等（可選）
-        #    下面先做個最基本的 strip() 處理
-        cleaned = llm_response.strip()
-
-        # 2) 建立 Regex：
-        #    - `^[ \t]*(A|B|C|D)[ \t]*$`：代表這一行(含前後空白)只有 A/B/C/D
-        #    - (?m) 代表 MULTILINE 模式，使 ^ 和 $ 可以匹配每一行的開頭與結尾
-        pattern = re.compile(r'^[ \t]*(A|B|C|D)[ \t]*$', re.MULTILINE)
-
-        # 3) 搜尋
-        match = pattern.search(cleaned)
-        if match:
-            # group(1) 會是 'A' or 'B' or 'C' or 'D'
-            return match.group(1)
-        else:
-            return "UNKNOWN"
+         # 先抓最後一行
+        last = lines[-1]
+        if re.fullmatch(r"[ABCDabcd]", last):
+            return last.upper()
+        # fallback：找 '答案：B'
+        m = re.search(r"答案[:：\s]*([ABCDabcd])", llm_response)
+        return m.group(1).upper() if m else ""
     
     elif q_type == "true_false":
 
@@ -1376,6 +1423,9 @@ def parse_llm_answer(llm_response: str, q_type: str) -> str:
     
     else:
         return "UNKNOWN"
+
+
+# In[ ]:
 
 
 def main():
@@ -1442,7 +1492,7 @@ if __name__ == "__main__":
 
 # #### test data
 
-# In[253]:
+# In[8]:
 
 
 from pathlib import Path
@@ -1452,7 +1502,8 @@ COLLECTION_NAME = "clip_collection_test_v3"   # 測試用向量庫
 # 1) 初始化 embedding_processor，傳入新的 collection_name
 embedding_processor = ClipEmbeddingProcessor(
     image_size=(224, 224) ,
-    collection_name=COLLECTION_NAME    # ★若 __init__ 沒這參數，改下方註解方法
+    collection_name=COLLECTION_NAME,    # ★若 __init__ 沒這參數，改下方註解方法
+    reset=True
 )
 
 # 2) 初始化資料處理器
@@ -1473,14 +1524,7 @@ _ = data_processor.process_all(
 )
 
 
-# In[224]:
-
-
-sample = embedding_processor.clip_collection.get(include=["documents","metadatas"], limit=1)
-print("DOC 前 120 字:", sample["documents"][0][:120])
-
-
-# In[254]:
+# In[24]:
 
 
 # 建立 QA 系統，沿用同一個 embedding_processor
@@ -1488,17 +1532,17 @@ qa_system = QASystem(
     embedding_processor=embedding_processor,
     model_name='llama3.2-vision'
 )
-TARGET_DOMAIN = "中醫方劑"   # 想測哪個就填哪個
-qa_system.TARGET_DOMAIN = TARGET_DOMAIN   # 若你寫成屬性
+# TARGET_DOMAIN = ""   # 想測哪個就填哪個
+# qa_system.TARGET_DOMAIN = TARGET_DOMAIN   # 若你寫成屬性
 
 
-# In[257]:
+# In[25]:
 
 
 # 1. 讀檔 + 題型篩選
-df = pd.read_excel("test_questions.xlsx")
-# test_df = df[df["type"].isin(["multiple_choice", "true_false"])].copy()
-test_df = df[df["type"].isin(["multiple_choice"])].copy()
+df = pd.read_excel("dev10.xlsx")
+test_df = df[df["type"].isin(["multiple_choice", "true_false"])].copy()
+# test_df = df[df["type"].isin(["multiple_choice"])].copy()
 
 # 2. ★ 建立欄位（一定要在後面的篩選前先加）
 test_df["llm_response"] = ""
@@ -1506,8 +1550,8 @@ test_df["predicted"]    = ""
 test_df["is_correct"]   = 0
 
 # 3. 再依 domain 篩子集合
-test_df = test_df[test_df["domain"] == "中醫"].copy()
-test_df=test_df.head(3)
+# test_df = test_df[test_df["domain"] == "中醫"].copy()
+# test_df=test_df.head(10)
 
 # 4. 迴圈計分
 for idx, row in test_df.iterrows():
@@ -1516,6 +1560,10 @@ for idx, row in test_df.iterrows():
     gt = str(row["answers"]).strip()
 
     resp, _ = qa_system.display_response(q, q_type)
+
+    if not resp.strip():
+        print(f"[WARN] id={row['id']}  LLM 回傳空白")
+
     pred = parse_llm_answer(resp, q_type)
 
     test_df.at[idx, "llm_response"] = resp
@@ -1523,7 +1571,32 @@ for idx, row in test_df.iterrows():
     test_df.at[idx, "is_correct"]   = int(pred.upper() == gt.upper())
 
 # 5. 計算 Accuracy
-accuracy = test_df["is_correct"].mean()
+overall_acc = test_df["is_correct"].mean()
+
+print("\n=== 每個 domain 的 Accuracy ===")
+domain_stats = (
+    test_df.groupby("domain")["is_correct"]
+           .agg(["count", "sum"])
+           .reset_index()
+           .rename(columns={"sum": "correct"})
+)
+domain_stats["accuracy"] = domain_stats["correct"] / domain_stats["count"]
+print(domain_stats.to_string(index=False, 
+      formatters={"accuracy": "{:.2%}".format}))
+
+print(f"\nOVERALL Accuracy = {overall_acc:.2%}")
+
+
+# In[329]:
+
+
+print("=== 測試結果 ===")
+total = len(test_df)
+correct_count = test_df["is_correct"].sum()
 print(test_df[["id","type","answers","predicted","is_correct"]])
-print(f"[{TARGET_DOMAIN}] Accuracy = {accuracy:.2%}")
+print(f"\n共 {total} 題，正確 {correct_count} 題，Accuracy = {accuracy:.2f}")
+    
+ # 若需要將回覆結果輸出 CSV 
+test_df.to_csv("test_result.csv", index=False, encoding='utf-8')
+print("結果已儲存 test_result.csv")
 
