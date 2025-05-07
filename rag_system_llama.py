@@ -3,7 +3,7 @@
 
 # #### 轉py
 
-# In[49]:
+# In[307]:
 
 
 get_ipython().system('jupyter nbconvert --to script rag_system_llama.ipynb')
@@ -183,7 +183,7 @@ class ImageProcessor:
 
 # #### EmbeddingProcessor
 
-# In[249]:
+# In[328]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -467,17 +467,44 @@ class EmbeddingProcessor:
             if not isinstance(src_meta, dict):
                 src_meta = {"note": str(src_meta)}
 
-            md = {
+            # --- 2-1 圖片向量 ---
+            img_meta = {
                 "type": "image",
                 "path": img_name,
                 **src_meta,
             }
-            for vec in self.to_2d(emb):
-                all_embs.append(vec)
-                all_metas.append(md)
-                docs.append("")          # 占位
-                all_ids.append(f"img_{uuid.uuid4().hex}")#(f"img_{idx}")
-                idx += 1
+            all_embs.append(self.to_2d(emb)[0])
+            all_metas.append(img_meta)
+            docs.append("")                         # 圖片沒有 document
+            img_id = f"img_{uuid.uuid4().hex}"
+            all_ids.append(img_id)
+
+            # --- 2-2 caption 向量（若有）---
+            cap = src_meta.get("caption") or src_meta.get("image_description")
+            if cap:
+                cap_emb = self.encode_text_to_vec(cap)
+                if cap_emb is not None:
+                    all_embs.append(self.to_2d(cap_emb)[0])
+                    all_metas.append({
+                        "type": "caption",          # 方便前端辨識
+                        "ref_image": img_name,      # 日後可聚合
+                        "content": cap,
+                        **src_meta,
+                    })
+                    docs.append(cap)
+                    all_ids.append(f"{img_id}_cap")
+
+            # md = {
+            #     "type": "image",
+            #     "path": img_name,
+            #     **src_meta,
+            # }
+            # for vec in self.to_2d(emb):
+            #     all_embs.append(vec)
+            #     all_metas.append(md)
+            #     docs.append("")          # 占位
+            #     all_ids.append(f"img_{uuid.uuid4().hex}")#(f"img_{idx}")
+            #     idx += 1
 
         # -------------------- 寫入 Chroma --------------------
         if all_embs:
@@ -919,7 +946,7 @@ class QASystem:
                 elif src_type in ("acupoint", "herb", "ccd", "professional"):
                     structured["professional"]["metadata"].append(meta)
                     structured["professional"]["documents"].append(doc_text)
-                elif src_type == "image":
+                elif src_type ("image","images","herb_img"): #== "image":
                     structured["images"]["metadata"].append(meta)
                     # 放 path
                     path = meta.get("path","")
@@ -1114,34 +1141,19 @@ class QASystem:
                 + format_rules
             )
         
-            message = [
-                {"role": "system", "content": system_prompt},
-                {"role": "user",   "content": user_prompt}
-            ]
-            # print("=======sys prompt =======",system_prompt)
-            # print("=======user prompt =======",user_prompt)
 
             # 處理圖片
             image_paths = []
             # 2) 把圖片撈出
             # -- (a) 先掃 retrieved_contexts --
             for meta in search_results.get("images", {}).get("metadata", []):
-                print("in 1")
-                if meta.get("type") == "herb_img" and meta.get("path"):
+                if meta.get("type") in ("image", "herb_img") and meta.get("path"):
                     full_path = self.embedding_processor.image_dir / meta["path"]
                     if full_path.exists():
                         image_paths.append(str(full_path.resolve()))
 
-            # for meta in search_results["metadatas"]:
-            #     print('in 2')
-            #     if meta.get("type") == "herb_img" and meta.get("path"):
-            #         full_path = self.embedding_processor.image_dir / meta["path"]
-            #         if full_path.exists():
-            #             image_paths.append(str(full_path.resolve()))
-
             # -- (b) 保留舊的 social.images 規則 (若還需要) --
             for md in search_results.get("social", {}).get("metadata", []):
-                print('in 3')
                 if md.get("images"):
                     for img_name in md["images"].split(","):
                         full_path = self.embedding_processor.image_dir / img_name.strip()
@@ -1152,7 +1164,16 @@ class QASystem:
                 print("We found images: ", image_paths)
             else:
                 logger.info("No images to display")
+            
+            
 
+            message = [
+                {"role": "system", "content": system_prompt},
+                {"role": "user",   "content": user_prompt},
+                # {'images': image_paths[:1]}
+            ]
+            # print("=======sys prompt =======",system_prompt)
+            # print("=======user prompt =======",user_prompt)
             # 生成响应
             response = ollama.chat(
                 model=self.model_name,
@@ -1307,7 +1328,7 @@ for query in test_queries:
 
 # Embedding processor
 
-# In[302]:
+# In[332]:
 
 
 from pathlib import Path
@@ -1322,7 +1343,7 @@ embedding_processor = EmbeddingProcessor(
 )
 
 
-# In[301]:
+# In[ ]:
 
 
 manifest = pd.read_excel("herb_image_manifest.xlsx")
@@ -1340,14 +1361,58 @@ for row in manifest.itertuples(index=False):
     )
 
 
-# In[306]:
+# In[337]:
+
+
+col      = qa_system.embedding_processor.clip_collection
+manifest = pd.read_excel("herb_image_manifest.xlsx")
+
+for row in manifest.itertuples(index=False):
+    path      = row.filename
+    herb_name = row.herb_name
+    caption   = str(row.caption) if pd.notna(row.caption) else ""
+
+    # --- 用 get() 判斷是否已有該圖 ---
+    exists = bool(col.get(where={"path": path})["ids"])
+
+    if exists:
+        # 庫裡已有圖片向量 → 只補 caption（768-dim text）
+        qa_system.embedding_processor.add_vectors(
+            texts=[caption],
+            metadatas=[{
+                "type":      "caption",
+                "ref_image": path,
+                "herb":      herb_name,
+                "path":      path
+            }]
+        )
+    else:
+        # 圖片 + caption 一起加（各 1 筆向量，都是 768-dim）
+        qa_system.embedding_processor.add_vectors(
+            images   =[path],
+            metadatas=[{
+                "type":     "image",
+                "herb":     herb_name,
+                "caption":  caption,
+                "path":     path
+            }]
+        )
+
+print("✅ herb 圖片與 caption 完成同步（仍為 768 維向量空間）")
+
+
+# In[335]:
+
+
+raw = embedding_processor.similarity_search("What does GanCao look like?", k=30)
+print(raw)  # 輸出完整的回傳資料
+print(raw["metadatas"])  # 確保其中有"image"或你設定的type
+
+
+# In[336]:
 
 
 resp, imgs = qa_system.display_response("What does GanCao look like?", "qa")
-print(imgs) 
-if imgs:
-    img = PILImage.open(imgs[0])
-    display(IPyImage(filename=imgs[0]))
 
 
 # ##### 重建DB
@@ -1375,7 +1440,7 @@ _ = data_processor.process_all(
 
 # ##### Initialized QA System
 
-# In[303]:
+# In[333]:
 
 
 # 建立 QA 系統，沿用同一個 embedding_processor
