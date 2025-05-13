@@ -1,4 +1,4 @@
-from embedding import ClipEmbeddingProcessor
+from embedding import EmbeddingProcessor
 from logger import logger
 from typing import List, Dict, Tuple
 import PyPDF2
@@ -6,11 +6,21 @@ from pathlib import Path
 import pandas as pd
 import re
 
+TYPE_MAP = {
+    "acupoint"    : ["針灸", "acupuncture"],
+    "herb"        : ["herbology", "herbal", "方劑"],
+    "ccd"         : ["ccd", "認知", "cognition"],
+    "social"      : [],                   # csv 直接指定
+    "professional": [],
+    "image":[]                                       # 其他未分類
+}
+
+
 class DataProcessor:
-    def __init__(self, embedding_processor: 'ClipEmbeddingProcessor'):
+    def __init__(self, embedding_processor: 'EmbeddingProcessor'):
         self.embedding_processor = embedding_processor
         
-    def process_csv_with_images(self, csv_path: str) -> Tuple[List[Dict], List[str]]:
+    def extract_social_posts(self, csv_path: str) -> Tuple[List[Dict], List[str]]:
         """处理 CSV 并提取问答对和图片"""
         logger.info(f"Processing CSV: {csv_path}")
         qa_pairs = []
@@ -32,7 +42,7 @@ class DataProcessor:
                         'answers': current_responses.copy(),
                         'images': current_images.copy(),
                         'metadata': {
-                            'type': 'social_qa',
+                            'type': 'social',
                             'source': 'facebook',
                             'images': ','.join(current_images) if current_images else '',
                             'answer_count': len(current_responses),
@@ -119,9 +129,9 @@ class DataProcessor:
             start += (chunk_size - overlap)
 
         return chunks
+  
 
-
-    def process_pdf(self, pdf_path: str) -> List[Dict]:
+    def process_pdf(self, pdf_path: str,row_type: str) -> List[Dict]:
         logger.info(f"Processing PDF: {pdf_path}")
         professional_qa_pairs = []
         pdf_name = Path(pdf_path).name  # 获取文件名
@@ -138,8 +148,8 @@ class DataProcessor:
                     print(f"Page {page_num+1} raw text:", repr(text))
                     if is_formula:
                         paragraphs = self.split_formula_blocks(text)
-                    # elif is_acu:
-                    #     paragraphs = self.split_acu_blocks(text)
+                    elif is_acu:
+                        paragraphs = self.split_acu_blocks(text)
                     else:
                         paragraphs = text.split('\n\n')
                     
@@ -156,12 +166,11 @@ class DataProcessor:
                                 'question': c[:50] + "...",  
                                 'answers': [c],
                                 'metadata': {
-                                    'type': 'professional',
-                                    'domain':self.detect_domain(pdf_name),
+                                    'type': row_type,
                                     'source_file': pdf_name,  # 添加文件名
                                     'page': str(page_num + 1),
                                     'content_length': str(len(c))
-                                }
+                                } #'domain':self.detect_domain(pdf_name),
                             }
                             professional_qa_pairs.append(qa_pair)
                 
@@ -173,9 +182,11 @@ class DataProcessor:
             return []
         
     def detect_domain(self, pdf_name: str) -> str:
-        if "針灸" in pdf_name or "acupuncture" in pdf_name.lower():
+        lower = pdf_name.lower()
+
+        if "針灸" in pdf_name or "acupuncture" in lower:
             return "針灸學"
-        if "herbal" or "herbology" in pdf_name.lower() or "方劑" in pdf_name:
+        if "herbal" in lower or "herbology" in lower or "方劑" in pdf_name:
             return "中醫方劑"
         return "其他"
     
@@ -215,7 +226,7 @@ class DataProcessor:
             social_qa_pairs, images = [], []  
             # 1. 处理社群数据
             if csv_path: 
-                social_qa_pairs, images = self.process_csv_with_images(csv_path)
+                social_qa_pairs, images = self.extract_social_posts(csv_path)
                 logger.info(f"\nProcessed social data:")
                 logger.info(f"- Social QA pairs: {len(social_qa_pairs)}")
                 logger.info(f"- Images found: {len(images)}")
@@ -231,7 +242,14 @@ class DataProcessor:
             # 2. 处理所有 PDF
             all_professional_pairs = []
             for pdf_path in pdf_paths:
-                pdf_qa_pairs = self.process_pdf(pdf_path)
+                pdf_name = pdf_path.name.lower()
+                for t, keys in TYPE_MAP.items():
+                    if any(k in pdf_name for k in keys):
+                        row_type = t; break
+                else:
+                    row_type = "professional"
+                pdf_qa_pairs = self.process_pdf(pdf_path, row_type=row_type)
+                #pdf_qa_pairs = self.process_pdf(pdf_path)
                 all_professional_pairs.extend(pdf_qa_pairs)
                 logger.info(f"\nProcessed {Path(pdf_path).name}:")
                 logger.info(f"- Extracted paragraphs: {len(pdf_qa_pairs)}")
@@ -239,7 +257,7 @@ class DataProcessor:
             # 3. 合并 => all_qa_pairs
             all_qa_pairs = social_qa_pairs + all_professional_pairs
             
-            # 4. 準備 texts + metadatas => 你就能一次或多次呼叫 add_data
+            # 4. 準備 texts + metadatas => 你就能一次或多次呼叫 add_vectors
             questions = []
             answers = []
             question_metas = []
@@ -257,6 +275,11 @@ class DataProcessor:
                     am = qa_pair['metadata'].copy()
                     am['parent_question'] = qa_pair['question']
                     answer_metas.append(am)
+
+            # ------------- 這裡才開始組 professional texts / metas -------------
+            prof_texts = [qa["answers"][0] for qa in all_professional_pairs]
+            prof_metas = [qa["metadata"]   for qa in all_professional_pairs]
+
             
             # 输出处理结果
             logger.info(f"\nFinal processing summary:")
@@ -266,32 +289,27 @@ class DataProcessor:
             logger.info(f"- Social content: {len(social_qa_pairs)} QA pairs")
             logger.info(f"- Professional content: {len(all_professional_pairs)} paragraphs")
             
-            # 5. 全部寫進clip_collection
-            
-            
-            # (C) professional paragraphs
-            prof_texts  = [qa["answers"][0] for qa in all_professional_pairs]
-            prof_metas  = [qa["metadata"]   for qa in all_professional_pairs]
 
-            self.embedding_processor.add_data(texts=prof_texts,
+
+            # --------- 🔧 把 3 組 metadata 都保證是 dict (放在此處) ---------
+            question_metas = [m if isinstance(m, dict) else {"note": str(m)}
+                            for m in question_metas]
+            prof_metas     = [m if isinstance(m, dict) else {"note": str(m)}
+                            for m in prof_metas]
+            # 若要用 answer_metas 也一併處理
+            answer_metas   = [m if isinstance(m, dict) else {"note": str(m)}
+                            for m in answer_metas]
+
+
+            self.embedding_processor.add_vectors(texts=prof_texts,
                                             metadatas=prof_metas)
             
             # (A) 先加所有 question
-            self.embedding_processor.add_data(
+            self.embedding_processor.add_vectors(
                 texts = questions,
                 metadatas = question_metas
             )
 
-            # (B) 再加所有 answers
-            # self.embedding_processor.add_data(
-            #     texts = answers,
-            #     metadatas = answer_metas
-            # )
-            
-            # (D) 再加 images
-            # 沒有對應metadata？可以簡單做
-            # [{"type":"image","source":"facebook"} ...] 或
-            # 想知道它屬於哪個QApair? 就要自己對應
             if valid_images:
                 meta_for_imgs = []
                 for img_name in valid_images:
@@ -301,13 +319,13 @@ class DataProcessor:
                         "filename": img_name
                     })
 
-                self.embedding_processor.add_data(
+                self.embedding_processor.add_vectors(
                     images=valid_images,
                     metadatas=meta_for_imgs
                 )
 
             logger.info("All data added to clip_collection.")
-            return len(questions), len(valid_images)
+            return len(questions), len(valid_images) #return questions, question_metas, all_professional_pairs, valid_images
                 
         except Exception as e:
             logger.error(f"Error processing documents: {str(e)}")

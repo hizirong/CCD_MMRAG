@@ -7,9 +7,9 @@ from typing import Union  # 添加 Union 导入
 from pathlib import Path
 
 class ImageProcessor:
-    def __init__(self, IMAGE_DIR: str = "image"):
-        self.IMAGE_DIR = Path(IMAGE_DIR)
-        self.IMAGE_DIR.mkdir(exist_ok=True)
+    def __init__(self, image_dir: str = "image"):
+        self.image_dir = Path(image_dir)
+        self.image_dir.mkdir(exist_ok=True)
         
     def process_and_save(
         self,
@@ -22,8 +22,8 @@ class ImageProcessor:
         try:
             # 确保 image_path 是 Path 对象
             image_path = Path(image_path)
-            if not str(image_path).startswith(str(self.IMAGE_DIR)):
-                image_path = self.IMAGE_DIR / image_path
+            if not str(image_path).startswith(str(self.image_dir)):
+                image_path = self.image_dir / image_path
                 
             # 检查图片是否存在
             if not image_path.exists():
@@ -56,7 +56,7 @@ class ImageProcessor:
             new_image.paste(image, (x, y))
             
             # 生成输出路径
-            output_path = self.IMAGE_DIR / f"{image_path.name}" #output_path = self.image_dir / f"{prefix}{image_path.name}"
+            output_path = self.image_dir / f"{image_path.name}" #output_path = self.image_dir / f"{prefix}{image_path.name}"
             # 保存处理后的图片
             new_image.save(output_path, quality=quality)
             logger.info(f"Saved processed image to: {output_path}")

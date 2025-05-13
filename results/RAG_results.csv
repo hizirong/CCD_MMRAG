@@ -1,0 +1,110 @@
+﻿id,actor,type,domain,question,answers,question_en,RAG,pdf_file,page,query_for_embed,llm_response,predicted,is_correct
+100,獸醫師,true_false,CCD,Levetiracetam 僅在人類 AD 有效，犬無佐證。,false,"LevetiracetamisonlyvalidinhumanAD, andnoevidenceisavailabletodogs.",Levetiracetam improves cognitive performance in dogs and AD models.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,12,"Levetiracetam is only valid in human AD, and no evidence is available to dogs.","根據題目中的參考資料，我們可以看到Levetiracetam是一種抗癲癇藥物，已經被用於治療人類的Alzheimer病（AD），但是文獻中沒有提到它在犬類上是否有效。
+
+然而，在另一份文獻「Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf」中，我們可以看到犬類認知功能障礙綜合症（CCD）與人類Alzheimer病（AD）具有相似之處，且有研究表明某些藥物，如Levetiracetam，可以用於治療犬類的CCD。
+
+因此，根據檢索結果，我們可以得出以下結論：
+
+答案：False
+
+[1] unknown.pdf
+[2] Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf",FALSE,1
+101,獸醫師,true_false,CCD,MRI 腦室擴大亦見於正常老犬，非 CCD 專一指標。,true,"MRIventricularenlargementisalsoseeninnormalolddogs, nota CCD-specificindicator.",Ventricular enlargement can be found without evidence of CCD.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,8,"MRI ventricular enlargement is also seen in normal old dogs, not a CCD-specific indicator.","根據參考資料，我們知道在CCD的MRI檢查中，腦部變化如腦萎縮、腦室擴大和中線頂間膜厚度減少等，並非CCD特有的指標。文獻中提到，正常老年犬也可能出現腦室擴大的情況，因此MRI腦室擴大並不是CCD的特異性指標。
+
+因此，我們可以確定答案是：
+
+False
+
+［常識］一般來說，老年犬可能會出現一些神經系統變化，但這些變化並非總是與CCD有關。才檢查和診斷需要考慮多個因素，包括臨床表現、MRI結果等。
+
+參考資料：
+[1] unknown.pdf
+[2] Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf",FALSE,0
+102,獸醫師,true_false,CCD,老年小型犬較大型犬更易出現微出血。,true,Smallelderlydogsaremorelikelytoexperienceminorbleedingthanlargedogs.,Older small-breed dogs were over-represented in micro-haemorrhage cases.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,8,Small elderly dogs are more likely to experience minor bleeding than large dogs.,"根據提供的參考資料，我們可以得出以下結論：
+
+在文獻中提到，gs of short-lived breeds were signiﬁcantly younger than those of long-lived breeds（短命犬種的個體年齡較長命犬種年輕）。然而，並沒有明確指出小型老犬更容易出現minor bleeding的情況。
+
+文獻中提到了一張圖片（Fig. 3），但是該圖片描述的是「macrohemorrhages in several elderly dogs」，這意味著是大規模的出血，而不是minor bleeding。
+
+綜上所述，我們無法從提供的參考資料中得出證據支持小型老犬更容易出現minor bleeding的情況。因此，答案是：
+
+False
+
+參考文獻：
+[1] Under diagnosis of canine cognitive dysfunction_A cross-sectional survey of older companion dogs.pdf
+[2] Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf
+[3] Cognitive Dysfunction Syndrome A Disease of Canine and Feline Brain Aging.pdf",FALSE,0
+103,獸醫師,true_false,CCD,T2* 序列有助偵測腦內微出血。,true,TheT2* sequencehelpsdetectmicro-hemorrhagesinthebrain.,T2*-weighted imaging is useful for detecting cerebral micro-haemorrhage.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,8,The T2* sequence helps detect micro-hemorrhages in the brain.,"根據題目所給的參考資料，我們可以發現T2*-weighted gradient recalled echo sequence（簡稱T2*）序列是用於磁振影像學（MRI）檢查腦部時的技術之一。根據文獻42中的描述，T2*序列能夠幫助診斷和觀察腦部微出血（micro-hemorrhages）。
+
+所以答案是：
+
+True
+
+［1］42.Hodshon AW, Hecht S, Thomas WB. Use of the T2*-weighted gradient recalled echo sequence for magnetic resonance imaging of the canine and feline brain.
+
+參考資料：
+[1] 42.Hodshon AW, Hecht S, Thomas WB. Use of the T2*-weighted gradient recalled echo sequence for magnetic resonance imaging of the canine and feline brain.
+[2] unknown.pdf",TRUE,1
+104,獸醫師,true_false,CCD,Selegiline 可能僅產生非特異性活躍而非真正改善認知。,true,Selegilinemayonlyproducenonspecificactivityratherthantrulyimprovecognition.,Selegiline may produce nonspecific hyperactivity rather than true cognitive improvement.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,12,Selegiline may only produce nonspecific activity rather than truly improve cognition.,"根據參考資料，我發現Selegiline的確可能會導致非特異性的低水平興奮，從而使得其效果不夠可靠。因此，這個問題的答案是：
+
+True［1］
+
+最後整理的source_file如下：
+[1] Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf",TRUE,1
+105,飼主,true_false,CCD,環境刺激增加可延緩 CCD 退化。,true,IncreasedenvironmentalstimulationcandelayCCDdegeneration.,Cognitive enrichment has been shown to delay cognitive decline.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,13,Increased environmental stimulation can delay CCD degeneration.,"根據檢索結果中提到的資訊，增加環境刺激（Environmental enrichment）確實可以幫助延緩犬類認知功能障礙綜合症（CCD）的惡化，並改善動物的生活質量。文獻中提到：exercise, and novel toys can help to maintain cognitive function (ie, use it or lose it)。這與人類研究一致，表明增加腦部活動和身體運動可以延緩認知功能衰退的出現。
+
+因此，我們可以確定答案是：
+
+True
+
+[1] unknown.pdf
+[2] Cognitive Dysfunction Syndrome A Disease of Canine and Feline Brain Aging.pdf",TRUE,1
+106,飼主,true_false,CCD,若犬夜吠屬 CCD，一定無法改善。,false,IfthegenusCCDofthegenusgenusisdefinitelynotimproved.,Sleep-wake disturbances可透過多種治療策略改善.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,12,If the genus CCD of the genus genus is definitely not improved.,"根據題目中的資訊，我們可以看出犬類認知功能障礙綜合症（CCD）是一種與人類阿茲海默病（AD）相似的疾病。然而，題目中提到的“genus”這個詞彙其實是生物學中用來分類生物的術語，而不是與 CCD 或 AD 有直接關係的詞彙。
+
+因此，我們可以將問題視為一個逻辑性的問句：“如果犬類認知功能障礙綜合症（CCD）的改善是不確定的話，那麼它的genus是否一定不會改善？”根據題目的設定，這個問題其實是沒有直接意義的，因為genus是一種生物學上的分類術語，而不是與疾病改善有關的術語。
+
+但如果我們將目光投向題目的最後一句話，那麼它的答案就是“False”，因為題目中提到的 CCD 的改善其實是可能的，雖然題目中的資訊沒有直接提到改善的方法或機會，但從題目的文本中，我們可以看出文章在探討 CCD 的診斷和治療等相關知識。
+
+因此，最好的答案應該是“False”。
+
+[1] unknown.pdf
+[2] Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf",FALSE,1
+107,飼主,true_false,CCD,狗在水碗前發呆可能是 CCD 警訊之一。,true,ThedogisdazedinfrontofthewaterbowlmaybeoneoftheCCDwarnings.,Standing over the water bowl but not drinking is a recognised sign.,‎Under diagnosis of canine cognitive dysfunction.pdf,4,The dog is dazed in front of the water bowl may be one of the CCD warnings.,"根據參考資料，我們可以知道犬隻認知功能障礙綜合症（CCD）是一種與人類阿茲海默病（AD）相似的老年化疾病，影響老年犬隻的認知功能。這種疾病可能會導致犬隻出現的一些跡象，如：
+
+* 行為改變
+* 變得容易激動或焦慮
+* 失去學習和記憶能力
+* 難以定時排泄或飲食不當
+* 增加的聲音和步態
+
+其中，犬隻在水盆前迷惑不清可能是CCD的一個跡象之一。
+
+因此，我們可以得出以下結論：
+
+True
+
+［1］Under diagnosis of canine cognitive dysfunction_A cross-sectional survey of older companion dogs.pdf
+［2］Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf
+［3］Cognitive Dysfunction Syndrome A Disease of Canine and Feline Brain Aging.pdf",TRUE,1
+108,飼主,true_false,CCD,CCD 只會在 14 歲以上犬隻才出現。,false,CCDonlyappearsindogsovertheageof 14.,Prevalence 3.4 % already seen in 8–10-year-old dogs.,‎Under diagnosis of canine cognitive dysfunction.pdf,3,CCD only appears in dogs over the age of 14.,"根據題目中的參考資料，我們可以知道CCD（犬認知功能障礙綜合症）是與老年相關的認知功能障礙，但它不只出現在狗的某個特定年齡組別。文獻中提到，研究發現14.2%的狗在8歲以上就有CCD的症狀，但是沒有提及CCD只出現在狗的14歲以上。
+
+因此，我們可以得出結論：
+
+False
+
+［1］Under diagnosis of canine cognitive dysfunction_A cross-sectional survey of older companion dogs.pdf",FALSE,1
+109,飼主,true_false,CCD,犬迷路卡在家具後一定是視力喪失，與 CCD 無關。,false,"Ifa doggetsstuckinthefurniture, itmustbea lossofvisionandhasnothingtodowithCCD.","Getting stuck behind furniture is a CCD indicator, not solely vision loss.",‎Under diagnosis of canine cognitive dysfunction.pdf,3,"If a dog gets stuck in the furniture, it must be a loss of vision and has nothing to do with CCD.","根據參考資料，我們知道犬類認知功能障礙綜合症（CCD）是一種與人類阿茲海默病（AD）類似的疾病，但在犬類中沒有發現神經纖維球蛋白質（NFTs）的存在。這可能是因為犬類不像人類那樣活得足夠長，以便於tau蛋白轉變成NFTs。
+
+然而，研究表明CCD的預後與失智症在人類中相似，包括記憶力下降、注意力和學習能力衰退等。犬類CCD也可能導致行為問題，如吠叫、排泄異常、性格變化等。
+
+另外，研究還表明犬類CCD的預valence大約在14%到35%之間，而隨著年齡增長，這個比例會逐漸增加。因此，如果一隻狗出現吠叫、排泄異常或性格變化等行為問題，可能與CCD有關。
+
+根據文獻[1]和[2]，犬類CCD的症狀包括記憶力下降、注意力和學習能力衰退、吠叫、排泄異常、性格變化等。文獻[3]中提到犬類CCD可能導致行為問題，如吠叫、排泄異常等。
+
+因此，答案是：False
+
+原因：犬類CCD的症狀包括記憶力下降、注意力和學習能力衰退、吠叫、排泄異常等，狗出現這些症狀時可能與CCD有關，而不是單純的視力減退。
+
+[1] Under diagnosis of canine cognitive dysfunction_A cross-sectional survey of older companion dogs.pdf
+[2] unknown.pdf
+[3] Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf",FALSE,1

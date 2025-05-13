@@ -1,4 +1,4 @@
-from embedding import ClipEmbeddingProcessor
+from embedding import EmbeddingProcessor
 from logger import logger
 from reranker import rerank
 from typing import List, Dict, Optional, Tuple
@@ -9,39 +9,36 @@ from IPython.display import display
 from IPython.display import Image as IPyImage 
 
 from deep_translator import GoogleTranslator
+
+
 class QASystem:
-    def __init__(self, embedding_processor: 'ClipEmbeddingProcessor',
+    def __init__(self, embedding_processor: 'EmbeddingProcessor',
                  model_name: str = 'llama3.2-vision'):
         self.embedding_processor = embedding_processor
         self.model_name = model_name
         logger.info(f"Initialized QA System with Ollama model: {model_name}")
 
     def _classify_collection_results(self, raw_result) -> Dict:
-        """
-        將 clip_collection 的檢索結果 (metadatas/documents...) 
-        轉換成 { 'social': {...}, 'professional': {...}, 'images': {...} } 
-        的結構，便於後續 gather_references / format_context。
-        """
-        # 預設空結構
+
         structured = {
             "social": {
                 "metadata": [],
                 "link": [],
                 "content": [],
                 "documents":[]
-                # 你也可以放 'documents':[], 'relevance':[]... 視需要
             },
             "professional": {
                 "metadata": [],
                 "content": [],
                 "documents":[]
-                # ...
             },
             "images": {
                 "metadata": [],
                 "paths": [],
-                "relevance":[]
-            }
+                "relevance":[],
+                "description":[]
+            },
+            
         }
 
         # raw_result["metadatas"] 是個 2D list => [ [meta0, meta1, ...] ]
@@ -57,45 +54,27 @@ class QASystem:
                 doc_id = ids_list[i] if i < len(ids_list) else ""
                 doc_text = doc_list[i] if i < len(doc_list) else ""
 
-                # 判斷 metadata 是屬於哪個來源
-                # 例如 meta.get("type") == "social_qa" => 放到 social
-                #     meta.get("type") == "professional" => 放到 professional
-                #     meta.get("type") == "image" => 放到 images
                 src_type = meta.get("type","")
 
-                if src_type in ["social_qa"]:
-                    # 純文字 chunk => 放social
+                if src_type == "social":
                     structured["social"]["metadata"].append(meta)
                     structured["social"]["documents"].append(doc_text)
-                    # 若 meta 裡有 link => structured["social"]["link"].append(meta["link"])
-                    link_str = meta.get("link","")
-                    if link_str:
-                        structured["social"]["link"].append(link_str)
-                    # content or question
-                    if "post_content" in meta:
-                        structured["social"]["content"].append(meta["post_content"])
-
-                elif src_type in ["professional"]:
+                elif src_type in ("acupoint", "herb", "ccd", "professional"):
                     structured["professional"]["metadata"].append(meta)
                     structured["professional"]["documents"].append(doc_text)
-                    # 可能把段落文字塞到 "content"
-                    # (這需要你當初 add_data 時有在 documents/metadata 寫 para)
-                    # 這裡只是示例
-                    # ...
-                
-                elif src_type == "image":
+                elif src_type in ("image", "images", "caption"):
                     structured["images"]["metadata"].append(meta)
-                    # 放 path
-                    path = meta.get("path","")
+                    path = meta.get("path") or meta.get("ref_image", "") or ""
                     structured["images"]["paths"].append(path)
                     structured["images"]["relevance"].append(dist)
+                    doc_text = meta.get("content", "")
+                    structured["images"]["description"].append(doc_text)
 
                 else:
                     # 將未知 type 全丟 professional，或依需求改 social
                     meta.setdefault("type", "professional")
                     structured["professional"]["metadata"].append(meta)
                     structured["professional"]["documents"].append(doc_text)
-
 
         return structured
 
@@ -129,6 +108,7 @@ class QASystem:
         # --- Default ----------------------------------------------------------
         return "qa"
 
+    
     def gather_references(self, search_results: Dict) -> str:
         """
         從 search_results 中擷取 PDF 檔名/社群連結，並組成一個字串
@@ -155,175 +135,201 @@ class QASystem:
         return "\n".join(unique_refs)
 
 
-    def get_prompt_by_type(self,query: str, context: str, question_type: str, references_str: str = "") -> str:
-        # print('[DEBUG]:query in get_prompt_by_type',query)
-        # logger.info("prompt type:",question_type)
-        
-        # role
-        base_system = (
-            "您是一名專業獸醫，擅長：1.犬認知功能障礙綜合症（CCD）的診斷和護理 2.豐富的寵物中醫知識 3.常見問題診斷及改善建議" 
+    def build_user_prompt(
+        self,
+        query: str,
+        context: str,
+        references_str: str = ""
+        ) -> str:
+        # 不含任何格式規範！只給題目與資料
+        return (
+            f"""
+            【參考資料】
+            {context}\n
+            【資料來源】
+            {references_str}\n    
+            【問題】
+            {query}\n
+            """
+            # "參考資料：\n" + context +
+            # "\n來源：\n" + references_str +
+            # "問題："＋query
         )
 
-        prompts = {
-            "multiple_choice": f"""<|begin_of_text|><|start_header_id|>system<|end_header_id|>
-                                    {base_system}
-                                    <|eot_id|><|start_header_id|>user<|end_header_id|>
-                        
-                                    這是一題選擇題：{query}
 
-                                    請以以下格式回答：
-                                    1. 第一行只能回答 A/B/C/D (請勿帶任何標點、文字)
-                                    2. 第二行才是說明，以 2~3 句話簡述理由
-                                    3. 若同時出現多個選項，請只選一個最適合的
-                                    4. 請在答案最後顯示你參考的來源連結或論文名稱，
-                                    如果來源中包含「(經驗) some_link」，請在回答中以 [Experience: some_link] 形式標示；
-                                    若包含「(文獻) some.pdf」，就 [reference: some.pdf]。
-                                    5.  若有相關圖片，在回答中自然地說明圖片內容跟回答的關係
+    def merge_adjacent(self, metas, docs, k_keep: int = 5) -> str:
+        """
+        將同檔同頁且 _id 連號的片段合併，回傳前 k_keep 段文字。
+        參數
+        ----
+        metas : list[dict]    # raw_result["metadatas"][0]
+        docs  : list[str]     # raw_result["documents"][0]
+        """
+        ID_NUM_RE = re.compile(r"_(\d+)$")   # 尾碼取數字：text_123 → 123
+        merged, buf = [], ""
+        last_src, last_idx = ("", ""), -999
 
-                                    限制：
-                                    - 請將整體回答限制在 200 字以內
-                                    - 直接切入重點
-                                    - 保持客觀和專業
+        for md, doc in zip(metas, docs):
+            src_key = (md.get("source_file", ""), md.get("page", ""))
 
-                                    參考資料：
-                                    {context}
+            # 取 _id 尾碼；若不存在則設 -1
+            _id = md.get("_id", "")
+            m = ID_NUM_RE.search(_id)
+            cur_idx = int(m.group(1)) if m else -1
 
-                                    來源：
-                                    {references_str}
+            # 同檔同頁且連號 → 視為相鄰
+            if src_key == last_src and cur_idx == last_idx + 1:
+                buf += doc
+            else:
+                if buf:
+                    merged.append(buf)
+                buf = doc
+            last_src, last_idx = src_key, cur_idx
 
-                                    <|eot_id|><|start_header_id|>assistant<|end_header_id|>
-                                    """,
-            "true_false": f"""<|begin_of_text|><|start_header_id|>system<|end_header_id|>
-                                {base_system}
-                                <|eot_id|><|start_header_id|>user<|end_header_id|>
+        if buf:
+            merged.append(buf)
 
-                                問題：{query}
+        return "\n\n".join(merged[:k_keep])
 
-                                參考資料：
-                                {context}
-                                來源：
-                                    {references_str}
-
-                                請按照下列格式回答是非題：
-                                Step‑by‑step：
-                                1. 先列出判斷依據（可條列）
-                                2. 請在答案最後顯示你參考的來源連結或論文名稱，
-                                    如果來源中包含「(經驗) some_link」，請在回答中以 [Experience: some_link] 形式標示；
-                                    若包含「(文獻) some.pdf」，就 [reference: some.pdf]。
-                                3.  若有相關圖片，在回答中自然地說明圖片內容跟回答的關係
-                                4. 最後再給出結論，只能寫「True」或「False」
-
-
-                                限制：
-                                - 請將整體回答限制在 200 字以內
-                                - 直接切入重點
-                                - 保持客觀和專業
-
-                                <|eot_id|><|start_header_id|>assistant<|end_header_id|>
-                                """,
-            "qa": f"""<|begin_of_text|><|start_header_id|>system<|end_header_id|>
-                                {base_system}
-                                <|eot_id|><|start_header_id|>user<|end_header_id|>
-
-                                問題：{query}
-
-                                參考資料：
-                                {context}
-                                來源：
-                                    {references_str}
-
-                                請依以下格式回答：
-                                1. 針對問題提供具體答案
-                                2. 若遇到無法確定或證據不足的情況可以補充說明研究不足
-                                3. 提供實用的建議或解釋
-                                4. 請在答案最後顯示你參考的來源連結或論文名稱，
-                                    如果來源中包含「(經驗) some_link」，請在回答中以 [Experience: some_link] 形式標示；
-                                    若包含「(文獻) some.pdf」，就 [reference: some.pdf]。
-                                5. 若有相關圖片，在回答中說明圖片內容
-
-                                限制：
-                                - 請將整體回答限制在 400 字以內
-                                - 使用平易近人的語言
-                                - 避免過度技術性術語
-
-                                <|eot_id|><|start_header_id|>assistant<|end_header_id|>
-                                """
-        }
-
-        # 若 question_type 未包含在定義的 prompts 中，就預設使用 "qa"。
-        return prompts.get(question_type, prompts["qa"])
-
-
-    def translate_en_to_zh(self,chinese_text: str) -> str:
-        try:
-            # 指定原文語言為 'zh'（中文），目標語言為 'en'（英文）
-            translator = GoogleTranslator(source='en', target='zh-TW')
-            result = translator.translate(chinese_text)
-            return result
-        except Exception as e:
-            print(f"翻譯錯誤：{e} - 對應中文問題：{chinese_text}")
-            return chinese_text  # 若翻譯失敗，返回原文
 
     def generate_response(self, query: str,question_type: Optional[str] = None) -> Tuple[str, List[str]]:
         try:
-            TARGET_DOMAIN = "中醫方劑" 
-            raw_result = self.embedding_processor.search(
-                query,
-                k=25,
-                domain=TARGET_DOMAIN)  
-            print(raw_result["metadatas"])
-            # raw_result 是 clip_collection 的資料
+            # raw_result = self.embedding_processor.similarity_search(
+            #     query,
+            #     k=25) 
+            raw_result = self.embedding_processor.similarity_search_with_images(
+                 query, k_mix=40, img_threshold=0.35, max_images=2)
+ 
+
+            # print(raw_result["metadatas"])
+            # logger.info("raw RESULT(structured): %s",raw_result)
+            
+            if not raw_result["documents"] or len(raw_result["documents"][0]) == 0:
+                logger.warning("No hits for query → 改用 k=50 再試一次")
+                raw_result = self.embedding_processor.similarity_search(query, k=50)
+
+            if not raw_result["documents"] or len(raw_result["documents"][0]) == 0:
+                return "[NoRef] 無足夠證據判斷", [],[]
+            
             # 用後處理
-            # search_results = self.embedding_processor.search(raw_result)
             search_results = self._classify_collection_results(raw_result)
             logger.info("SEARCH RESULT(structured): %s",search_results)
 
-            context = self.format_context(search_results)
+            context = self.merge_adjacent(raw_result["metadatas"][0],
+                              raw_result["documents"][0])[:1500]
+
+            context = context[:1500]          # 最多 1500 字
+
             references_str = self.gather_references(search_results)
             # link應該用傳參數的會成功 可能用context.link之類的抓題目的reference
-            
-            zh_query = self.translate_en_to_zh(query)
-            
 
             # --- ① 題型 --------------------------------------------------------
-            if question_type:          # 呼叫端已經給我，就直接用
-                q_type = question_type
-            else:                      # 否則退回舊邏輯自動判斷
-                q_type = self.determine_question_type(query)
-            # question_type = self.determine_question_type(zh_query)
-            prompt = self.get_prompt_by_type(query, context, q_type, references_str)
+            q_type = question_type or self.determine_question_type(query)
+            # 取前 2 張圖的 caption
+            caption_snips = [
+                m.get("content", "")[:120]
+                for m in search_results["images"]["metadata"][:1]
+                if m.get("content")
+            ]
+            caption_block = "\n".join(caption_snips)
+
+            user_prompt = self.build_user_prompt(
+                query=query,
+                context=caption_block + "\n" + context[:1500],
+                references_str=references_str
+)
+
+            # user_prompt = self.build_user_prompt(
+            #     query=query,
+            #     context=context[:1500],
+            #     references_str=references_str
+            # )
+
+            # ---------- ② 根據題型動態組 system 指令 ----------
+            if q_type == "multiple_choice":
+                format_rules = (
+                    "這是一題選擇題，回答格式如下：\n"
+                    "先根據題目整理參考資訊、你的理解與常識\n"
+                    "用 2-3 句話說明理由。\n"
+                    "最後再給出答案，只能回答 A/B/C/D (請勿帶任何標點、文字、也不要只回答選項內容)\n"
+                    "若同時出現多個選項，請只選一個最適合的\n"
+                )
+            elif q_type == "true_false":
+                format_rules = (
+                    "這是一題是非題，請按照下列格式回答：\n"
+                    "先根據題目整理參考資訊、你的理解與常識\n"
+                    "最後再給出答案，只能寫「True」或「False」\n"
+                )
+            else:   # qa
+                format_rules = (
+                    "請依以下格式回答：\n"
+                    "針對問題提供具體答案並詳細說明 \n"
+                )
+
+            #"您是一名專業獸醫，1.擅長犬認知功能障礙綜合症（CCD）的診斷和護理 2.擁有豐富的寵物中醫知識 3.常見問題診斷及改善建議\n" "請在答案最後顯示你參考的來源連結或論文名稱，如果來源中包含「(經驗) some_link」，請在回答中以 [Experience: some_link] 形式標示；若包含「(文獻) some.pdf」，就 [reference: some.pdf]\n""如檢索結果仍無相關資訊，請以[NoRef]標示並根據你的常識回答。\n"
+            system_prompt = (
+                """你是資深獸醫，擅長犬認知功能障礙綜合症（CCD）的診斷和護理並擁有豐富的寵物中醫知識，必須遵守以下規則回答問題：
+                    1. 先根據【檢索結果】內容作答;若資訊不足，才可依照你的常識回答。
+                    2. 若檢索結果中含有圖片，在回答中自然的帶入圖片說明
+                    3. 若需補充一般臨床常識，請將該句放在段落最後並標註［常識］。
+                    4. 每一句結尾必須標註引用來源編號，如［1］或［1,3］。
+                    5. 並在最後面整理列出每個編號的source_file，如[1] ...pdf 或 [2] Chinese Veterinary Materia Medica """
+                + format_rules
+            )
         
-            
-            message = {
-                'role':'user',
-                'content': prompt
-            }
 
             # 處理圖片
             image_paths = []
-            # 2) 從 social metadata 把圖片撈出
-            for md in search_results["social"]["metadata"]:
-                if md.get("images"):  # e.g. "image12.jpg,image02.jpg"
+            # for meta in search_results.get("images", {}).get("metadata", []):
+            #     if meta.get("type") in ("image", "images", "caption", "herb_img"):
+            #         p = meta.get("path") or meta.get("ref_image")
+            #         if p:
+            #             logger.info("got image ib a!", p)
+            #             full = self.embedding_processor.image_dir / p
+            #             if full.exists():
+            #                 image_paths.append(str(full.resolve()))
+
+            # -- (b) 保留舊的 social.images 規則 (若還需要) --
+            for md in search_results.get("social", {}).get("metadata", []):
+                if md.get("images"):
                     for img_name in md["images"].split(","):
-                        img_name = img_name.strip()
-                        if img_name:
-                            full_path = self.embedding_processor.image_dir / img_name
-                            if full_path.exists():
-                                image_paths.append(str(full_path.resolve()))
+                        full_path = self.embedding_processor.image_dir / img_name.strip()
+                        if full_path.exists():
+                            image_paths.append(str(full_path.resolve()))
+            for mm in search_results.get("images", {}).get("metadata", []):#["images"]["metadata"]:
+                p = mm.get("path") or mm.get("ref_image")
+                if p and (self.embedding_processor.image_dir / p).exists():
+                    image_paths.append(str((self.embedding_processor.image_dir / p).resolve()))
             # 3) OLlama 只允許一張, 你可取 image_paths[:1] => message["images"] = ...
             if image_paths:
                 print("We found images: ", image_paths)
-                # 你可以先隨便取一張
-                # or 全部 inject to prompt
             else:
                 logger.info("No images to display")
+            
 
+
+            message = [
+                {"role": "system", "content": system_prompt},
+                {"role": "user",   "content": user_prompt},
+                # {'images': image_paths[:1]}
+            ]
+            # print("=======sys prompt =======",system_prompt)
+            # print("=======user prompt =======",user_prompt)
             # 生成响应
             response = ollama.chat(
                 model=self.model_name,
-                messages=[message]
+                messages=message
             )
-            return response['message']['content'], image_paths
+
+
+            # 取得檢索段落（文字即可）
+            retrieved_contexts = search_results["professional"]["documents"] + \
+                                search_results["social"]["documents"]
+
+            # 把三樣都回傳 ----------------------------------▼ 新增
+            response_text = response["message"]["content"]
+
+            return response_text, retrieved_contexts, image_paths #response['message']['content'], image_paths
 
         except Exception as e:
             logger.error(f"Error generating response: {str(e)}")
@@ -379,15 +385,13 @@ class QASystem:
             logger.error(f"Error formatting context: {str(e)}")
             return "Unable to retrieve reference materials"
 
-                    
-
 
     def display_response(self, query: str,question_type: Optional[str] = None):
             """Display response with text and images"""
             try:
                 logger.info("Starting to generate response...")
                 try:
-                    response_text, image_paths = self.generate_response(query,question_type)
+                    response_text, _ , image_paths = self.generate_response(query,question_type)
                 except Exception as e:
                     response_text = f"[ERROR] {e}"
                     image_paths = []

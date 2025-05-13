@@ -3,7 +3,7 @@
 
 # #### 轉py
 
-# In[307]:
+# In[262]:
 
 
 get_ipython().system('jupyter nbconvert --to script rag_system_llama.ipynb')
@@ -13,11 +13,9 @@ get_ipython().system('jupyter nbconvert --to script rag_system_llama.ipynb')
 
 # ##### import
 
-# In[161]:
+# In[3]:
 
 
-import os
-import json
 import logging
 from pathlib import Path
 from typing import List, Dict, Optional, Tuple
@@ -49,20 +47,7 @@ Path('chroma_db').mkdir(exist_ok=True)
 Path('image').mkdir(exist_ok=True)
 
 
-# In[22]:
-
-
-import sys
-import torch
-import transformers
-import accelerate
-# print(f"Python version: {sys.version}")
-# print(f"PyTorch version: {torch.__version__}")
-# print(f"Transformers version: {transformers.__version__}")
-# print(f"Accelerate version: {accelerate.__version__}")
-
-
-# In[162]:
+# In[4]:
 
 
 # 放在檔案最上方 (import 之後)
@@ -100,7 +85,7 @@ def transcribe_file(file_path, model_size="base"):
 
 # #### ImageProcessor
 
-# In[163]:
+# In[5]:
 
 
 from typing import Union  # 添加 Union 导入
@@ -183,7 +168,7 @@ class ImageProcessor:
 
 # #### EmbeddingProcessor
 
-# In[328]:
+# In[29]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -207,7 +192,7 @@ class EmbeddingProcessor:
                 reset: bool = False 
                 ):
         """
-        初始化: 建立clip_collection,使用CLIP(or OpenCLIP)做embedding
+        初始化: 建立collection
         """
         # ---------- 路徑 & 基本設定 ----------
         self.image_dir = Path(image_dir)
@@ -365,7 +350,7 @@ class EmbeddingProcessor:
                             "path": img_path,
                             "associated_question": question_text
                         })
-                        all_ids.append(f"img_{i}")
+                        all_ids.append(f"img_{uuid.uuid4().hex}")
                     if txt_emb is not None:
                         all_embeddings.append(txt_emb.tolist())  
                         all_metadatas.append({
@@ -373,7 +358,7 @@ class EmbeddingProcessor:
                             "text": question_text,
                             "related_image": img_path
                         })
-                        all_ids.append(f"txt_{i}")
+                        all_ids.append(f"txt_{uuid.uuid4().hex}") # all_ids.append(f"txt_{i}")
 
                 if len(all_embeddings)>0:
                     logger.info(f"Adding {len(all_embeddings)} total embeddings to collection")
@@ -388,10 +373,8 @@ class EmbeddingProcessor:
             raise
 
     def encode_image_to_vec(self, image_path: str) -> Optional[np.ndarray]:
-            """
-            用 CLIP image encoder 將圖片轉為512維向量
-            """
-            try:
+
+        try:
                 # 先做基礎處理,縮放或另存
                 processed_path = self.image_processor.process_and_save(
                     image_path, self.image_size
@@ -404,7 +387,7 @@ class EmbeddingProcessor:
                 with torch.no_grad():
                     embs = self.siglip.get_image_features(**inputs)
                 return (embs / embs.norm(dim=-1, keepdim=True)).cpu().numpy()
-            except Exception as e:
+        except Exception as e:
                 print(f"Error in encode_image_to_vec: {str(e)}")
                 return None
 
@@ -453,7 +436,7 @@ class EmbeddingProcessor:
                 all_embs.append(vec)
                 all_metas.append(md)
                 docs.append(txt)
-                all_ids.append(f"text_{idx}")
+                all_ids.append(str(uuid.uuid4())) #(f"text_{idx}")
                 idx += 1
 
         # -------------------- 圖片 --------------------
@@ -466,6 +449,7 @@ class EmbeddingProcessor:
             src_meta = metadatas[j] if j < len(metadatas) else {}
             if not isinstance(src_meta, dict):
                 src_meta = {"note": str(src_meta)}
+            src_meta.pop("type", None) 
 
             # --- 2-1 圖片向量 ---
             img_meta = {
@@ -517,6 +501,20 @@ class EmbeddingProcessor:
             logger.info(f"Added {len(all_embs)} items to '{self.collection_name}'")
 
 
+    def detect_weight(self,q: str):
+        ACU_REGEX = r"[A-Za-z]{2,3}-\d{1,2}"
+        ql = q.lower()
+        if re.search(ACU_REGEX, ql) or "穴位" in ql:
+            # 題目在問針灸穴位 → 降 herb / ccd 權重
+            return {"herb": 0.3, "ccd": 0.3}
+        elif re.search(r"(柴胡|黃芩|清熱|甘草|當歸)", ql):
+            return {"acupoint": 0.3, "ccd": 0.3}
+        elif re.search(r"(認知|cognitive|nlrp3|失智犬|ccd)", ql):
+            # 題目在問 CCD → 降 herb / acupoint 權重
+            return {"herb": 0.3, "acupoint": 0.3}
+        else:
+            return {}          # 不調權重
+        
     def similarity_search(self, query: str, k=25) -> Dict:
         """
         對query做CLIP text embedding後,在clip_collection裡找最相似的k筆
@@ -532,16 +530,16 @@ class EmbeddingProcessor:
                     include=["documents","metadatas","distances","embeddings"] #include=["distances", "metadatas", "documents"]
             ) 
             # ---------- ▌動態降權 + re-rank ----------------
-            q = query.lower()
-            if re.search(r"(st|cv|gv|bl|pc)-\d{1,2}|穴位", q):
-                weight = {"herb": 0.3, "ccd": 0.3}     # acupoint = 1.0
-            elif any(w in q for w in ["柴胡", "黃芩", "清熱"]):
-                weight = {"acupoint": 0.3, "ccd": 0.3}
-            elif any(w in q for w in ["認知", "nlrp3", "發炎"]):
-                weight = {"herb": 0.3, "acupoint": 0.3}
-            else:
-                weight = {}
-
+            # q = query.lower()
+            # if re.search(r"(st|cv|gv|bl|pc)-\d{1,2}|穴位", q):
+            #     weight = {"herb": 0.3, "ccd": 0.3}     # acupoint = 1.0
+            # elif any(w in q for w in ["柴胡", "黃芩", "清熱"]):
+            #     weight = {"acupoint": 0.3, "ccd": 0.3}
+            # elif any(w in q for w in ["認知", "nlrp3", "發炎"]):
+            #     weight = {"herb": 0.3, "acupoint": 0.3}
+            # else:
+            #     weight = {}
+            weight = self.detect_weight(query)
             metas = results["metadatas"][0]
             dists = results["distances"][0]
             docs  = results["documents"][0]
@@ -553,20 +551,76 @@ class EmbeddingProcessor:
             scored.sort(key=lambda x: x[0])
 
             idxs = [i for _, i in scored][:k]       # 取前 k
-            # idxs = list(range(len(metas)))[:k]
+
+            #-----------不降權用的-----------------
+            # metas = results["metadatas"][0]
+            # idxs  = list(range(len(metas)))[:k]
+            #-------------------------------------
             
             for key in ["metadatas", "distances", "documents"]:
                 results[key][0] = [results[key][0][i] for i in idxs]
 
-                return results
+            return results
+            
         except Exception as e:
             print(f"Error in search: {str(e)}")
             return {"metadatas":[],"documents":[],"distances":[]}
 
+    # ------------------------------------------------------------
+    #  新增：similarity_search_with_images()
+    # ------------------------------------------------------------
+    def similarity_search_with_images(
+        self,
+        query: str,
+        k_mix: int = 40,
+        img_threshold: float = 0.45,
+        max_images: int = 1,
+    ):
+        """
+        先取前 k_mix 名混合結果，再把距離 < img_threshold 的
+        image / caption 補到結果中（最多 max_images 張）。
+        回傳值格式與 similarity_search 相同。
+        """
+        emb = self.encode_text_to_vec(query)
+        if emb is None:
+            return {"metadatas": [], "documents": [], "distances": []}
+
+        # ① 混合前 k_mix
+        raw = self.clip_collection.query(
+            query_embeddings=[emb],
+            n_results=k_mix,
+            include=["metadatas", "documents", "distances"],
+        )
+
+        # ② 把圖片候選抓出來（距離小於門檻）
+        metas    = raw["metadatas"][0]
+        dists    = raw["distances"][0]
+        docs     = raw["documents"][0]
+        good_idx = [
+            i for i, (m, d) in enumerate(zip(metas, dists))
+            if m.get("type") in ("image", "images", "caption") and d < img_threshold
+        ]
+
+        # ③ 若不足 max_images，再專搜圖片補足
+        if len(good_idx) < max_images:
+            need   = max_images - len(good_idx)
+            imgraw = self.clip_collection.query(
+                query_embeddings=[emb],
+                n_results=need,
+                where={"type": {"$in": ["image", "images", "caption"]}},
+                include=["metadatas", "documents", "distances"],
+            )
+            for key in ["metadatas", "documents", "distances"]:
+                raw[key][0].extend(imgraw[key][0])
+
+        return raw
+
+    
+
 
 # #### DataProcessor
 
-# In[165]:
+# In[9]:
 
 
 class DataProcessor:
@@ -887,7 +941,7 @@ class DataProcessor:
 
 # #### QA System
 
-# In[ ]:
+# In[10]:
 
 
 from deep_translator import GoogleTranslator
@@ -899,12 +953,7 @@ class QASystem:
         logger.info(f"Initialized QA System with Ollama model: {model_name}")
 
     def _classify_collection_results(self, raw_result) -> Dict:
-        """
-        將 clip_collection 的檢索結果 (metadatas/documents...) 
-        轉換成 { 'social': {...}, 'professional': {...}, 'images': {...} } 
-        的結構，便於後續 gather_references / format_context。
-        """
-        # 預設空結構
+
         structured = {
             "social": {
                 "metadata": [],
@@ -920,7 +969,8 @@ class QASystem:
             "images": {
                 "metadata": [],
                 "paths": [],
-                "relevance":[]
+                "relevance":[],
+                "description":[]
             },
             
         }
@@ -946,19 +996,19 @@ class QASystem:
                 elif src_type in ("acupoint", "herb", "ccd", "professional"):
                     structured["professional"]["metadata"].append(meta)
                     structured["professional"]["documents"].append(doc_text)
-                elif src_type ("image","images","herb_img"): #== "image":
+                elif src_type in ("image", "images", "caption"):
                     structured["images"]["metadata"].append(meta)
-                    # 放 path
-                    path = meta.get("path","")
+                    path = meta.get("path") or meta.get("ref_image", "") or ""
                     structured["images"]["paths"].append(path)
                     structured["images"]["relevance"].append(dist)
+                    doc_text = meta.get("content", "")
+                    structured["images"]["description"].append(doc_text)
 
                 else:
                     # 將未知 type 全丟 professional，或依需求改 social
                     meta.setdefault("type", "professional")
                     structured["professional"]["metadata"].append(meta)
                     structured["professional"]["documents"].append(doc_text)
-
 
         return structured
 
@@ -1080,8 +1130,9 @@ class QASystem:
         try:
             raw_result = self.embedding_processor.similarity_search(
                 query,
-                k=25)  
-            print(raw_result["metadatas"])
+                k=25) 
+            # raw_result = self.embedding_processor.similarity_search_with_images(
+            #      query, k_mix=40, img_threshold=0.45, max_images=1)
             
             if not raw_result["documents"] or len(raw_result["documents"][0]) == 0:
                 logger.warning("No hits for query → 改用 k=50 再試一次")
@@ -1104,12 +1155,26 @@ class QASystem:
 
             # --- ① 題型 --------------------------------------------------------
             q_type = question_type or self.determine_question_type(query)
+            # 取前 2 張圖的 caption
+#             caption_snips = [
+#                 m.get("content", "")[:120]
+#                 for m in search_results["images"]["metadata"][:1]
+#                 if m.get("content")
+#             ]
+#             caption_block = "\n".join(caption_snips)
+
+#             user_prompt = self.build_user_prompt(
+#                 query=query,
+#                 context=caption_block + "\n" + context[:1500],
+#                 references_str=references_str
+# )
 
             user_prompt = self.build_user_prompt(
                 query=query,
                 context=context[:1500],
                 references_str=references_str
             )
+
             # ---------- ② 根據題型動態組 system 指令 ----------
             if q_type == "multiple_choice":
                 format_rules = (
@@ -1128,44 +1193,41 @@ class QASystem:
             else:   # qa
                 format_rules = (
                     "請依以下格式回答：\n"
-                    "針對問題提供具體答案並用2-3句話說明 \n"
+                    "針對問題提供具體答案並詳細說明 \n"
                 )
 
             #"您是一名專業獸醫，1.擅長犬認知功能障礙綜合症（CCD）的診斷和護理 2.擁有豐富的寵物中醫知識 3.常見問題診斷及改善建議\n" "請在答案最後顯示你參考的來源連結或論文名稱，如果來源中包含「(經驗) some_link」，請在回答中以 [Experience: some_link] 形式標示；若包含「(文獻) some.pdf」，就 [reference: some.pdf]\n""如檢索結果仍無相關資訊，請以[NoRef]標示並根據你的常識回答。\n"
             system_prompt = (
                 """你是資深獸醫，擅長犬認知功能障礙綜合症（CCD）的診斷和護理並擁有豐富的寵物中醫知識，必須遵守以下規則回答問題：
-                    1. 只能根據【檢索結果】內容作答；若資訊不足，請回答「資料不足」，並依照你的常識回答。
-                    2. 若需補充一般臨床常識，請將該句放在段落最後並標註［常識］。
-                    3. 每一句結尾必須標註引用來源編號，如［1］或［1,3］。
-                    4. 並在最後面整理列出每個編號的source_file，如[1] ...pdf 或 [2] Chinese Veterinary Materia Medica """
+                    1. 先理解問題，判斷解題所需資訊，並根據【檢索結果】內容找尋相關資料，若有相關請採用並以檢索結果為準
+                    2. 若資訊不相關，就不要理會檢索內容，依照你的常識回答。
+                    3. 若檢索結果中含有圖片，在回答中自然的帶入圖片說明
+                    4. 若需補充一般臨床常識，請將該句放在段落最後並標註［常識］。
+                    5. 每一句結尾必須標註引用來源編號，如［1］或［1,3］。
+                    6. 並在最後面整理列出每個編號的source_file，如[1] ...pdf 或 [2] Chinese Veterinary Materia Medica """
                 + format_rules
             )
         
 
             # 處理圖片
             image_paths = []
-            # 2) 把圖片撈出
-            # -- (a) 先掃 retrieved_contexts --
-            for meta in search_results.get("images", {}).get("metadata", []):
-                if meta.get("type") in ("image", "herb_img") and meta.get("path"):
-                    full_path = self.embedding_processor.image_dir / meta["path"]
-                    if full_path.exists():
-                        image_paths.append(str(full_path.resolve()))
-
-            # -- (b) 保留舊的 social.images 規則 (若還需要) --
             for md in search_results.get("social", {}).get("metadata", []):
                 if md.get("images"):
                     for img_name in md["images"].split(","):
                         full_path = self.embedding_processor.image_dir / img_name.strip()
                         if full_path.exists():
                             image_paths.append(str(full_path.resolve()))
+            for mm in search_results.get("images", {}).get("metadata", []):#["images"]["metadata"]:
+                p = mm.get("path") or mm.get("ref_image")
+                if p and (self.embedding_processor.image_dir / p).exists():
+                    image_paths.append(str((self.embedding_processor.image_dir / p).resolve()))
             # 3) OLlama 只允許一張, 你可取 image_paths[:1] => message["images"] = ...
             if image_paths:
                 print("We found images: ", image_paths)
             else:
                 logger.info("No images to display")
             
-            
+
 
             message = [
                 {"role": "system", "content": system_prompt},
@@ -1281,59 +1343,14 @@ class QASystem:
 
 # ### 題目測試
 
-# ##### 單一題目測試
-
-# In[ ]:
-
-
-# 測試查詢
-test_queries = [
-# "CCD 是否與神經發炎相關？有無特定細胞因子（cytokines）或發炎路徑（例如NLRP3 inflammasome）參與？",
-# "CCD 是否與腸道微生物群變化有關？是否有特定細菌群落會影響大腦健康？",
-# " 失智犬的松果體是否退化",
-# " 有刻板形為的犬隻是否會增加CCD風險？",
-# " 失智犬分泌褪黑激素的能力是否退化？",
-# " 皮質類固醇cortisol或應激荷爾蒙stress hormones是否可作為 CCD 的潛在診斷指標？",
-# " 如何區分正常老化與CCD的早期徵兆？ ",
-# " B 群維生素是否能降低 CCD 進展風險？",
-# " 食用GABA是否對於預防CCD有效？",
-# " 警犬、救難犬等工作犬在罹患CCD的機率比較家庭陪伴犬",
-# " 目前是否有影像學檢測可以準確區分 CCD 與其他神經退行性疾病？",
-# " 如果CCD進展到最後階段，哪些症狀最需要關注？如何平衡狗狗的生活質量與疼痛管理，並且決定狗狗未來的方向",
-
-# "根據資料中對犬認知功能障礙（CCD）神經發炎機制的探討，NLRP3炎症小體在分子層面上如何參與CCD進程？該過程涉及哪些關鍵細胞因子與調控機制？",
-# "資料提到腸道微生物群與CCD之間可能存在聯繫，請問文中如何闡述腸道菌群失衡影響神經傳導與免疫反應的分子機制？哪些特定細菌群落的變化被認為與CCD進展相關？",
-# "在探討CCD的診斷策略中，該資料對於利用影像學技術（如MRI與CT）區分CCD與其他神經退行性疾病的應用提出了哪些見解？這些技術的優勢與局限性分別是什麼？",
-# "資料中對失智犬松果體退化與褪黑激素分泌減少之間的關聯有詳細論述，請問該研究如何描述這一生理變化的分子機制以及其對犬隻睡眠-覺醒週期的影響？",
-# "針對CCD的治療策略，資料中提出了哪些基於分子機制的治療方法？請分析這些方法在臨床應用上的現狀、潛在優勢及未來研究中亟待解決的挑戰。",
-
-# "哪種犬容易失智？",
-# "大中小型狗的失智照顧方式有什麼不同？"
-# "我的狗狗有失智症，晚上總是繞圈圈而且叫個不停，有什麼方法能幫助牠安靜下來睡覺嗎？有人推薦過褪黑激素，這真的有效嗎？",
-# "我的老狗有認知障礙，經常卡在角落或家具間不知道如何脫困，有什麼環境安排和居家照護措施可以幫助牠更舒適地生活？其他飼主都是怎麼處理這種情況的？有相關照片嗎？",
-# "給我一些照護環境的圖片",
-# "針對年長犬隻可能出現的神經病理變化，哪些關鍵指標常被用來對比阿茲海默類型的退化症狀，並且與臨床觀察到的行為衰退有何關聯？",
-# "除了藥物介入之外，平時飼養管理與環境調整方面有哪些具體作法，能同時有助於失智犬與失智貓維持較佳的生活品質，並為何多種方式並用的照護策略往往更能延緩認知退化？",
-# "若以老犬作為模擬人類老化與失智的實驗模型，進行認知增益或治療性藥物的評估時，最常採用哪些評量方法來確認藥物對行為和神經功能的影響，並且在哪些神經傳導路徑上通常會看到較明顯的指標性變化？",
-# "In older dogs, which key indicators are commonly used to compare with Alzheimer-type degeneration, and how do these indicators relate to clinically observed behavioral decline?",
-# "Beyond pharmacological intervention, which specific management and environmental adjustments help senior dogs and cats with cognitive impairment maintain a higher quality of life, and why does combining multiple caregiving strategies often slow cognitive decline more effectively?",
-# "When using senior dogs as a model for human aging and dementia to evaluate cognitive-enhancing or therapeutic drugs, what assessment methods are most commonly employed to gauge the drug’s effects on behavior and neurological function, and in which neurotransmission pathways are the most prominent changes typically observed?"
-"在評估犬隻 CCD 的臨床症狀時，下列哪一項行為面向最常被列為主要觀察指標之一? A. 毛色是否變白 B. 飲水量的增加 C. 定向能力 (Orientation) 與空間辨識度 D. 心跳與呼吸速率"
-
-                    ]
-
-for query in test_queries:
-    qa_system.display_response(query)
-
-
 # Embedding processor
 
-# In[332]:
+# In[11]:
 
 
 from pathlib import Path
 TEST_MODE = False                           # ← 切換開關
-COLLECTION_NAME = "clip_collection_0504"   
+COLLECTION_NAME = "clip_collection_0504"
 
 # 1) 初始化 embedding_processor，傳入新的 collection_name
 embedding_processor = EmbeddingProcessor(
@@ -1343,81 +1360,9 @@ embedding_processor = EmbeddingProcessor(
 )
 
 
-# In[ ]:
-
-
-manifest = pd.read_excel("herb_image_manifest.xlsx")
-
-for row in manifest.itertuples(index=False):
-    qa_system.embedding_processor.add_vectors(
-        images=[row.filename],
-        metadatas=[{
-            "type":      "images",
-            "herb":      row.herb_name,
-            "caption":   row.caption,
-            "path":      row.filename,      # ★ 確保有 path
-            "source_file":"herb_images"
-        }]
-    )
-
-
-# In[337]:
-
-
-col      = qa_system.embedding_processor.clip_collection
-manifest = pd.read_excel("herb_image_manifest.xlsx")
-
-for row in manifest.itertuples(index=False):
-    path      = row.filename
-    herb_name = row.herb_name
-    caption   = str(row.caption) if pd.notna(row.caption) else ""
-
-    # --- 用 get() 判斷是否已有該圖 ---
-    exists = bool(col.get(where={"path": path})["ids"])
-
-    if exists:
-        # 庫裡已有圖片向量 → 只補 caption（768-dim text）
-        qa_system.embedding_processor.add_vectors(
-            texts=[caption],
-            metadatas=[{
-                "type":      "caption",
-                "ref_image": path,
-                "herb":      herb_name,
-                "path":      path
-            }]
-        )
-    else:
-        # 圖片 + caption 一起加（各 1 筆向量，都是 768-dim）
-        qa_system.embedding_processor.add_vectors(
-            images   =[path],
-            metadatas=[{
-                "type":     "image",
-                "herb":     herb_name,
-                "caption":  caption,
-                "path":     path
-            }]
-        )
-
-print("✅ herb 圖片與 caption 完成同步（仍為 768 維向量空間）")
-
-
-# In[335]:
-
-
-raw = embedding_processor.similarity_search("What does GanCao look like?", k=30)
-print(raw)  # 輸出完整的回傳資料
-print(raw["metadatas"])  # 確保其中有"image"或你設定的type
-
-
-# In[336]:
-
-
-resp, imgs = qa_system.display_response("What does GanCao look like?", "qa")
-
-
 # ##### 重建DB
 
-# In[ ]:
+# In[205]:
 
 
 # 2) 初始化資料處理器
@@ -1440,7 +1385,7 @@ _ = data_processor.process_all(
 
 # ##### Initialized QA System
 
-# In[333]:
+# In[12]:
 
 
 # 建立 QA 系統，沿用同一個 embedding_processor
@@ -1450,25 +1395,40 @@ qa_system = QASystem(
 )
 
 
-# ##### 翻譯
-
-# In[ ]:
+# In[237]:
 
 
-def translate_zh_to_en(chinese_text: str) -> str:
-    try:
-        # 指定原文語言為 'zh'（中文），目標語言為 'en'（英文）
-        translator = GoogleTranslator(source='zh-TW', target='en')
-        result = translator.translate(chinese_text)
-        return result
-    except Exception as e:
-        print(f"翻譯錯誤：{e} - 對應中文問題：{chinese_text}")
-        return chinese_text  # 若翻譯失敗，返回原文
+qa_system.display_response("What does 甘草GanCao look like?")
+
+
+# In[261]:
+
+
+qa_system.display_response("the benefits of MCT Oil")
+
+
+# In[235]:
+
+
+emb = embedding_processor.encode_text_to_vec("What does RenShen look like?")
+hits = embedding_processor.clip_collection.query(
+            query_embeddings=[emb],
+            n_results=10,
+            where={"type": {"$in": ["image", "images","caption"]}},   # ★只要圖像類
+            include=["metadatas", "documents", "distances"])
+print(hits["metadatas"][0])
+
+
+# In[227]:
+
+
+raw = qa_system.embedding_processor.similarity_search("甘草", k=25)
+print(raw["metadatas"][0][0])     # 應該看到 {'type': 'caption', 'ref_image': 'GanCao.png', ...}
 
 
 # ##### 判斷正確答案
 
-# In[ ]:
+# In[270]:
 
 
 import re
@@ -1502,13 +1462,13 @@ def parse_llm_answer(resp: str, q_type: str) -> str:
 
 # 測試
 
-# In[274]:
+# In[351]:
 
 
 # 1. 讀檔 + 題型篩選
-df = pd.read_excel("test_questions_en.xlsx")#test_questions #test_questions_withANS
-# test_df = df[df["type"].isin(["multiple_choice", "true_false"])].copy()
-test_df = df[df["type"].isin(["qa"])].copy()
+df = pd.read_excel("test_questions_en_fixed.xlsx")#test_questions_en #test_questions_withANS
+test_df = df[df["type"].isin(["multiple_choice", "true_false"])].copy()
+# test_df = df[df["type"].isin(["qa"])].copy()
 
 # 2. ★ 建立欄位（一定要在後面的篩選前先加）
 test_df["llm_response"] = ""
@@ -1516,18 +1476,25 @@ test_df["predicted"]    = ""
 test_df["is_correct"]   = 0
 
 # 3. 再依 domain 篩子集合
-# test_df = test_df[test_df["domain"] == "中醫"].copy()
-test_df=test_df.head(5)
+test_df = test_df[test_df["domain"] == "中醫"].copy()
+test_df=test_df.head(10)
 
 
 # In[ ]:
+
+
+test_df
+
+
+# In[352]:
 
 
 dataset = [] # for ragas
 
 # 4. 迴圈計分
 for idx, row in test_df.iterrows():
-    q  = row["question_en"]
+    q_row  = row["query_for_embed"]#["question_en"]
+    q = expand_query(q_row)
     q_type = row["type"]
     gt = str(row["answers"]).strip()
     ref_ctx   = [ str(row["RAG"]) ] 
@@ -1556,7 +1523,7 @@ for idx, row in test_df.iterrows():
     })
 
 
-# In[ ]:
+# In[353]:
 
 
 # 5. 計算 Accuracy
@@ -1576,7 +1543,7 @@ print(domain_stats.to_string(index=False,
 print(f"\nOVERALL Accuracy = {overall_acc:.2%}")
 
 
-# In[ ]:
+# In[354]:
 
 
 # 先挑出答錯的資料列
@@ -1590,120 +1557,364 @@ print("=== 答錯題目一覽 ===")
 print(wrong_df.to_string(index=False))
 
 
+# In[337]:
+
+
+# ==== 建立輸出資料夾 ====
+from pathlib import Path
+OUT_DIR = Path("results")
+OUT_DIR.mkdir(exist_ok=True)
+
+# ==== 存檔 ====
+csv_path = OUT_DIR / "RAG_results.csv"
+test_df.to_csv(csv_path, index=False, encoding="utf-8-sig")
+print(f"✅ RAG 結果已存到 {csv_path}")
+
+
 # #### 檢查
 
+# In[368]:
+
+
+# 拉大 k 看排名
+hits = qa_system.embedding_processor.similarity_search("Wan Ying San", k=200)
+for i, txt in enumerate(hits, 1):
+    if "Wan Ying San" in txt:
+        print("rank =", i)
+        print(txt[:120], "...\n")
+        break
+
+
+# In[27]:
+
+
+from rank_bm25 import BM25Okapi
+from chromadb import PersistentClient
+client = PersistentClient(path="./chroma_db")
+col    = client.get_collection("clip_collection_0504")
+
+all_texts = col.get(include=["documents"])["documents"]
+# ── 建 BM25 索引（一次即可） ──
+
+bm25      = BM25Okapi([t.lower().split() for t in all_texts])
+embedder = qa_system.embedding_processor.encode_text_to_vec
+
+def hybrid_search(query, k_dense=100, k_final=8):
+    q_vec   = embedder(query)
+    dense   = qa_system.embedding_processor.similarity_search(query, k=k_dense)
+    lexical = bm25.get_top_n(query.lower().split(), all_texts, n=k_dense)
+
+    scores = {}
+    for t in dense:   scores[t] = scores.get(t, 0) + 1          # dense +1
+    for t in lexical: scores[t] = scores.get(t, 0) + 1.5        # BM25 +1.5
+
+    top = sorted(scores, key=scores.get, reverse=True)[:k_final]
+    return top
+
+
+# In[28]:
+
+
+top_docs = hybrid_search("Wan Ying San", k_dense=100)
+print(top_docs[0])        # 應該就能看到 Always Responsive 句
+
+
+# In[339]:
+
+
+# fix_questions.py  ── 直接 python fix_questions.py 即可
+import re, json, pandas as pd
+
+# === 0. 讀檔 ===
+df = pd.read_excel("test_questions_en.xlsx")
+
+# === 1. 修復 OCR 斷字（e.g. "Defi ciency" -> "Deficiency") ===
+def fix_split_words(text:str) -> str:
+    # 英文字母中間只要是單一空白且兩側皆小寫就視為斷字
+    return re.sub(r'([a-z])\s+([a-z])', r'\1\2', str(text), flags=re.I)
+df["question_en"] = df["question_en"].apply(fix_split_words)
+
+# === 2. 套用人工翻譯更正 ===
+manual_patch = {
+    14: """In the composition of a Chinese herbal formula, which of the following is NOT a function of the “Adjuvant (Zuo)” herb?
+A) Address the minor cause of a disease or a secondary Pattern
+B) Suppress the toxicity or overly harsh action of the King/Minister herbs
+C) Assist or enhance the action of the King herb
+D) Balance the overall energy of the whole prescription""",
+    15: '"Ge Jie San" is an important classical formula for treating chronic cough in horses caused by Lung Yin and Kidney Qi deficiency.',
+    16: """In the clinical study of the modified “Di Tan Tang” for treating hyperlipidemia, was the lipid-lowering effect of the treatment group significantly different from the control group?
+A) Not significant (P > 0.05)
+B) Significant (P < 0.01)
+C) Significance level not provided
+D) This clinical study is not mentioned in the sources"""
+}
+df["question_en"] = df.apply(lambda r: manual_patch.get(r["id"], r["question_en"]), axis=1)
+
+# === 3. 建立最小 alias 字典（可自行擴充） ===
+alias_dict = {
+    "LI-11": ["LI-11", "Large Intestine 11", "Quchi", "曲池"],
+    "HT-7" : ["HT-7", "Heart 7", "Shenmen", "神門"],
+    "Bai He": ["Bai He", "Lily bulb", "百合"],
+    "Di Gu Pi": ["Di Gu Pi", "Lycium Root Bark", "地骨皮", "枸杞根皮"],
+    # ……自行加碼……
+}
+
+# === 4. 在送進 embed 前自動把 alias 貼到 query ===
+def expand_query(q:str) -> str:
+    q_low = q.lower()
+    for alts in alias_dict.values():
+        if any(a.lower() in q_low for a in alts):
+            q += " " + " ".join(alts)   # 等於 OR 查詢
+    return q
+
+df["query_for_embed"] = df["question_en"].apply(expand_query)
+
+# === 5. 輸出修正版 ===
+out_path = "test_questions_en_fixed.xlsx"
+df.to_excel(out_path, index=False)
+print(f"✅  已儲存：{out_path}")
+
+
+# In[344]:
+
+
+q_test = "Where is LI-11 located?"
+print(expand_query(q_test))
+
+
 # In[ ]:
 
 
-coll = qa_system.embedding_processor.clip_collection
-# 抽 200 筆看 metadata 出現哪些 type
-sample = coll.get(limit=1000, include=["metadatas"])
-types  = [m.get("type") for m in sample["metadatas"]]
-print(set(types))
+caps = ep.clip_collection.get(
+    where   = {"type":"caption"},
+    include = ["metadatas"]
+)
+print("caption 向量數 :", len(caps["metadatas"]))
+print("前 3 筆示例    :", [m.get("ref_image") for m in caps["metadatas"][:3]])
 
 
-# In[ ]:
+# 加入草藥圖片
+
+# In[226]:
 
 
-import numpy as np, pandas as pd, re
+# === 匯入腳本 =========================================
+from pathlib import Path
+import pandas as pd, uuid, os
 
-coll = qa_system.embedding_processor.clip_collection
+ep      = qa_system.embedding_processor
+df      = pd.read_excel("herb_image_manifest.xlsx")
 
-# ----- 1. similarity_search() -----
-raw = qa_system.embedding_processor.similarity_search(
-"some Canine behavior", k=20)
+img_paths, cap_texts, all_metas = [], [], []
 
-# ----- 2. 安全攤平工具 -----
-def safe_flat(val):
-    if val is None:
-        return []
-    if isinstance(val, list):
-        flat = []
-        for v in val:
-            flat.extend(v if isinstance(v, list) else [v])
-        return flat
-    return [val]
+for _, row in df.iterrows():
+    # 1. 圖片 -------------------------------------------------
+    img_file = Path(row["filename"]).name          # 只留檔名
 
-flat_ids        = safe_flat(raw.get("ids"))
-flat_metas      = safe_flat(raw.get("metadatas"))
-flat_docs       = safe_flat(raw.get("documents"))
-flat_embeds     = safe_flat(raw.get("embeddings"))
-
-# 若 embeddings 沒回傳，確保長度對齊
-if not flat_embeds:
-    flat_embeds = [None] * len(flat_ids)
-
-# ----- 3. 只看前 5 筆 -----
-rows = []
-for _id, meta, doc, emb in zip(flat_ids[:5], flat_metas, flat_docs, flat_embeds):
-    if emb is None:                              # 沒帶回向量就額外 get
-        emb = coll.get(ids=[_id], include=["embeddings"])["embeddings"][0]
-    norm = np.linalg.norm(emb)
-
-    if isinstance(meta, dict):                   # 有些版本 meta 可能空
-        src = meta.get("source_file", "?")
-        pg  = meta.get("page", "?")
-    else:
-        src = pg = "?"
-
-    rows.append({
-        "id":      _id,
-        "norm":    round(norm, 4),
-        "source":  src,
-        "page":    pg,
-        "preview": str(doc).replace("\n", " ")[:60] + "…"
+    img_paths.append(str(img_file))
+    all_metas.append({
+        "id"      : str(uuid.uuid4()),             # 唯一 id
+        "type"    : "image",
+        "category": "herb",
+        "path"    : img_file                       # 沒有 image/
     })
 
-print("🔍 LI-11 向量 L2-norm 檢查")
-display(pd.DataFrame(rows))
+    # 2. Caption ---------------------------------------------
+    cap_texts.append(f"{row['herb_name']} : {row['caption']}")
+    all_metas.append({
+        "id"        : str(uuid.uuid4()),
+        "type"      : "caption",
+        "category"  : "herb",
+        "ref_image" : img_file
+    })
 
+print(f"匯入 {len(img_paths)} 張圖、{len(cap_texts)} 則 caption…")
+ep.add_vectors(images=img_paths, texts=cap_texts, metadatas=all_metas)
+print("✅ 完成")
+
+
+# 社群圖片
 
 # In[ ]:
 
 
-# pip install deep_translator openpyxl pandas
-from deep_translator import GoogleTranslator
-import pandas as pd, hashlib, sqlite3, time
+# === 匯入社群圖片（有 image_description 才匯入） =============
+from pathlib import Path
+import pandas as pd, uuid, requests, shutil, os
 
-# --- 1.  建快取 DB    -----------------------
-conn = sqlite3.connect("trans_cache.sqlite")
-conn.execute("""CREATE TABLE IF NOT EXISTS cache
-                (h TEXT PRIMARY KEY, en TEXT)""")
-translator = GoogleTranslator(source='zh-TW', target='en')
+ep        = qa_system.embedding_processor
+IMG_DIR   = Path("image")                 # 與草藥圖共用同一資料夾
+IMG_DIR.mkdir(exist_ok=True)
 
-def zh2en(text):
-    if not isinstance(text, str):
-        return str(text)
-    h = hashlib.md5(text.encode()).hexdigest()
-    row = conn.execute("SELECT en FROM cache WHERE h=?", (h,)).fetchone()
-    if row:           # 命中快取
-        return row[0]
-    # 呼叫 Google 翻譯
+df = pd.read_excel("post_response_filtered.xlsx")
+
+img_paths, img_metas = [], []
+cap_texts, cap_metas = [], []
+
+def download_to_image(url: str) -> str:
+    """Download url to image/ and return filename; raise if not jpg/png."""
+    fname = url.split("/")[-1].split("?")[0]
+    if not fname.lower().endswith((".jpg", ".png")):
+        raise ValueError("非 jpg / png 檔，跳過")
+    local = IMG_DIR / fname
+    if not local.exists():
+        r = requests.get(url, timeout=10, stream=True)
+        r.raise_for_status()
+        with local.open("wb") as f:
+            shutil.copyfileobj(r.raw, f)
+    return fname               # 只回檔名
+
+for _, row in df.iterrows():
+    # --------------- 1. 先檢查 caption --------------------------
+    cap = str(row.get("image_descrption", "")).strip()
+    if cap == "" or cap.lower() == "nan":
+        continue  # 必須有 image_description 才匯入
+
+    # --------------- 2. 解析 images 欄 --------------------------
+    raw = str(row["images"]).strip()
+    if raw == "" or raw.lower() == "nan":
+        continue
+
     try:
-        en = translator.translate(text)
-    except Exception:
-        print("[WARN] Google 翻譯失敗，睡 2 秒重試…")
-        time.sleep(2)
-        try:
-            en = translator.translate(text)
-        except Exception as e:
-            print("仍失敗，回傳原文 >", e)
-            en = text
-    conn.execute("INSERT OR REPLACE INTO cache VALUES (?,?)", (h, en))
-    conn.commit()
-    return en
+        if raw.startswith("http"):
+            img_file = download_to_image(raw)            # → 下載
+        else:
+            img_file = Path(raw).name
+            if not img_file.lower().endswith((".jpg", ".png")):
+                continue
+            if not (IMG_DIR / img_file).exists():
+                print(f"⚠️ 找不到本機檔：{IMG_DIR/img_file}")
+                continue
+    except Exception as e:
+        print(f"❌ 跳過 {raw}，原因：{e}")
+        continue
 
-# --- 2.  讀題庫，加翻譯 ---------------------
-df = pd.read_excel("test_questions_withANS.xlsx")
+    # --------------- 3. 圖片向量 meta --------------------------
+    img_paths.append(str(img_file))            # 真實路徑
+    img_metas.append({
+        "id":       str(uuid.uuid4()),
+        "type":     "image",
+        "category": "social_img",
+        "path":     img_file,                            # 只存檔名
+        "caption":  cap,
+        "post_id":  row.get("post_id", "")
+    })
 
-df["question_en"]   = df["question"].apply(zh2en)
-df["reference_en"]  = df["reference"].apply(zh2en)  if "reference" in df.columns else ""
-df["answers_en"]    = df["answers"].apply(zh2en)    if "answers"   in df.columns else ""
+    # --------------- 4. caption 文字向量 -----------------------
+    cap_texts.append(cap)
+    cap_metas.append({
+        "id":        str(uuid.uuid4()),
+        "type":      "caption",
+        "category":  "social_img",
+        "ref_image": img_file,
+        "post_id":   row.get("post_id", "")
+    })
 
-# --- 3.  存檔 --------------------------------
-out_path = "test_questions_en.xlsx"
-df.to_excel(out_path, index=False)
-print("✅ 翻譯完成，已存", out_path)
+print(f"📸  即將匯入：{len(img_paths)} 張圖、{len(cap_texts)} 則 caption")
+
+# --------------- 5. 寫入 Chroma ------------------------------
+if img_paths:
+    ep.add_vectors(images=img_paths, metadatas=img_metas)
+if cap_texts:
+    ep.add_vectors(texts=cap_texts,  metadatas=cap_metas)
+
+print("✅ 社群圖片與 caption 已完成匯入")
+
+
+# In[233]:
+
+
+ep = qa_system.embedding_processor
+df = pd.read_excel("herb_image_manifest.xlsx")
+
+img_paths, img_metas = [], []
+cap_texts, cap_metas = [], []
+
+for _, row in df.iterrows():
+    img_file = Path(row["filename"]).name
+
+    # 1) 圖片 --------------------------
+    img_paths.append(img_file)
+    img_metas.append({
+        "id":       str(uuid.uuid4()),
+        "type":     "image",
+        "category": "herb",
+        "herb":     row["herb_name"],
+        "path":     img_file,
+        "caption":  row["caption"]
+    })
+
+    # 2) caption 文字 -------------------
+    cap_texts.append(f"{row['herb_name']} : {row['caption']}")
+    cap_metas.append({
+        "id":        str(uuid.uuid4()),
+        "type":      "caption",
+        "category":  "herb",
+        "herb":      row["herb_name"],
+        "ref_image": img_file
+    })
+
+print(f"匯入 {len(img_paths)} 張圖，{len(cap_texts)} 則 caption")
+
+# ✦ 先匯圖片
+ep.add_vectors(images=img_paths, metadatas=img_metas)
+
+# ✦ 再匯 caption 文字
+ep.add_vectors(texts=cap_texts,  metadatas=cap_metas)
+
+print("✅ 完成，圖片 & caption 已正確對齊")
+
+
+# 檢查資料庫裡的type
+
+# In[287]:
+
+
+docs = clip.get(limit=50000, include=["metadatas"])
+print(set(m.get("type") for m in docs["metadatas"]))
+# 預期輸出：{'image', 'caption', 'acupoint'}
+
+
+# 圖片搜尋測試
+
+# In[ ]:
+
+
+# ① 直接手動 query clip_collection
+vec = ep.encode_text_to_vec("gancao")
+raw = clip.query(query_embeddings=[vec], n_results=100, include=["distances","metadatas"])
+print(len(raw["metadatas"][0]))
+for md, dist in zip(raw["metadatas"][0][:100], raw["distances"][0][:100]):
+    print(dist, md.get("type"), md.get("path") or md.get("ref_image"))
+
+
+# 刪除特定資料
+
+# In[243]:
+
+
+import chromadb
+
+COLLECTION = "clip_collection_0504"
+client = chromadb.PersistentClient(path="chroma_db")
+coll   = client.get_collection(COLLECTION)
+
+# where 支援 $in，直接把三種 type 一口氣刪光
+coll.delete(where={"category": {"$in": ["social_img"]}})
+print("✅ 已清除所有圖片／caption 向量")
+
+
+# 刪除DB
+
+# In[220]:
+
+
+client = chromadb.PersistentClient(path="chroma_db")
+try:
+    client.delete_collection("clip_collection_0509")
+    print("已刪")
+except (chromadb.errors.NotFoundError, ValueError):
+    pass
 
 
 # #### RAGAS
@@ -1714,6 +1925,8 @@ print("✅ 翻譯完成，已存", out_path)
 
 
 from dotenv import load_dotenv
+import os
+
 env_path = Path("key") / ".env"
 load_dotenv(dotenv_path=env_path, override=False)
 
@@ -1762,4 +1975,34 @@ result = evaluate(
 
 
 result
+
+
+# 結果存檔
+
+# In[ ]:
+
+
+# ==== 這段加在 5. 計算 Accuracy 前後皆可 ====
+from pathlib import Path, PurePath
+OUT_DIR = Path("results")
+OUT_DIR.mkdir(exist_ok=True)
+
+# 判斷目前跑的是哪一種模式
+# 你可以用 flag 或簡單用檔名手動分流
+RUN_TAG = "rag_text"   # 或 "rag_mm"、"rag_mc_tf" …自己定義
+
+# 1) 主結果 CSV
+csv_path = OUT_DIR / f"{RUN_TAG}_results.csv"
+test_df.to_csv(csv_path, index=False, encoding="utf-8-sig")
+
+# 2) RAGAS JSON（若有跑 evaluate）
+if 'result' in globals():          # 確定 evaluate() 已執行
+    import json
+    json_path = OUT_DIR / f"{RUN_TAG}_ragas.json"
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(result, f, ensure_ascii=False, indent=2)
+
+print(f"✅ {RUN_TAG} 結果已存到 {csv_path}")
+if 'result' in globals():
+    print(f"✅ RAGAS 分數已存到 {json_path}")
 
