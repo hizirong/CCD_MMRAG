@@ -3,7 +3,7 @@
 
 # #### 轉py
 
-# In[262]:
+# In[30]:
 
 
 get_ipython().system('jupyter nbconvert --to script rag_system_llama.ipynb')
@@ -13,7 +13,7 @@ get_ipython().system('jupyter nbconvert --to script rag_system_llama.ipynb')
 
 # ##### import
 
-# In[3]:
+# In[32]:
 
 
 import logging
@@ -37,6 +37,11 @@ import ollama
 
 # PDF处理
 import PyPDF2
+
+# --- Hybrid 檢索套件 ---
+from rank_bm25 import BM25Okapi
+import uuid
+
 
 # 设置日志
 logging.basicConfig(level=logging.INFO)
@@ -168,7 +173,7 @@ class ImageProcessor:
 
 # #### EmbeddingProcessor
 
-# In[29]:
+# In[188]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -232,6 +237,19 @@ class EmbeddingProcessor:
             f"Using collection '{self.collection_name}' "
             f"(dimension={self.clip_dim}, reset={reset})"
         )
+        # ---------- 5) 初始化「文字向量化」與 BM25 ----------
+        # 5-1 文字 embedder：沿用你現成的 encode_text_to_vec
+        self.text_embedder = self.encode_text_to_vec          # callable
+
+        # 5-2 拉出所有文件文字（只做一次）
+        self._all_texts = self.clip_collection.get(
+            include=["documents"])["documents"]               # list[str]
+
+        # 5-3 建 BM25 索引
+        from rank_bm25 import BM25Okapi
+        self._bm25 = BM25Okapi([t.lower().split() for t in self._all_texts])
+
+        
 
     def to_2d(self,x):
         if isinstance(x, torch.Tensor):
@@ -506,9 +524,11 @@ class EmbeddingProcessor:
         ql = q.lower()
         if re.search(ACU_REGEX, ql) or "穴位" in ql:
             # 題目在問針灸穴位 → 降 herb / ccd 權重
-            return {"herb": 0.3, "ccd": 0.3}
+            return {"herb": 0.3, "ccd": 0.2}
         elif re.search(r"(柴胡|黃芩|清熱|甘草|當歸)", ql):
-            return {"acupoint": 0.3, "ccd": 0.3}
+            return {"acupoint": 0.3, "ccd": 0.2}
+        elif re.search(r"TCVM", ql):
+            return {"ccd": 0.1}
         elif re.search(r"(認知|cognitive|nlrp3|失智犬|ccd)", ql):
             # 題目在問 CCD → 降 herb / acupoint 權重
             return {"herb": 0.3, "acupoint": 0.3}
@@ -530,15 +550,6 @@ class EmbeddingProcessor:
                     include=["documents","metadatas","distances","embeddings"] #include=["distances", "metadatas", "documents"]
             ) 
             # ---------- ▌動態降權 + re-rank ----------------
-            # q = query.lower()
-            # if re.search(r"(st|cv|gv|bl|pc)-\d{1,2}|穴位", q):
-            #     weight = {"herb": 0.3, "ccd": 0.3}     # acupoint = 1.0
-            # elif any(w in q for w in ["柴胡", "黃芩", "清熱"]):
-            #     weight = {"acupoint": 0.3, "ccd": 0.3}
-            # elif any(w in q for w in ["認知", "nlrp3", "發炎"]):
-            #     weight = {"herb": 0.3, "acupoint": 0.3}
-            # else:
-            #     weight = {}
             weight = self.detect_weight(query)
             metas = results["metadatas"][0]
             dists = results["distances"][0]
@@ -616,11 +627,71 @@ class EmbeddingProcessor:
         return raw
 
     
+    def hybrid_search(self, query: str,
+                  k_dense: int = 150,
+                  k_final: int = 8,w_dense=1.0, w_bm25=3.0) -> list[str]:
+        """
+        Dense + BM25 hybrid 檢索；回傳 top-k_final 段落 (list[str])
+        """
+        # 1) Dense 相似度
+        q_vec = self.text_embedder(query)                 # numpy array
+
+        result = self.clip_collection.query(
+            query_embeddings=[q_vec],
+            n_results=k_dense,
+            include=["documents", "metadatas", "distances"]
+        )
+        dense_docs  = result["documents"][0]
+        dense_metas = result["metadatas"][0]
+        dense_dists = result["distances"][0]
+
+
+        import re
+        def _clean(s:str) -> str:
+            return re.sub(r'\s+', ' ', s).strip().lower()
+        # ② BM25
+        lexical_docs = self._bm25.get_top_n(
+                query.lower().split(), self._all_texts, n=k_dense)
+        lexical_clean = {_clean(t) for t in lexical_docs}
+
+        # ③ 把 BM25 前 20 條補進候選（避免完全 miss）
+        for t in lexical_docs[:20]:
+            if t not in dense_docs:
+                dense_docs.append(t)
+                dense_metas.append({})
+                dense_dists.append(1.0)              # 固定距離
+
+        # ④ 加權 + 排序
+        weight_by_type = self.detect_weight(query) 
+
+        scores = []
+        for i,(doc, meta, dist) in enumerate(zip(dense_docs, dense_metas, dense_dists)):
+            # 4-1 Dense 距離先做全域縮放
+            score = dist * w_dense
+            # 4-2 BM25 命中 → 再減分
+            if _clean(doc) in lexical_clean:
+                score -= w_bm25 
+            # 4-3 metadata 類型再乘權重
+            doc_type = meta.get("type", "")
+            score *= weight_by_type.get(doc_type, 1.0)
+            scores.append((score, i))
+
+            # w = w_bm25 if _clean(doc) in lexical_clean else 0
+            # scores.append((dist - w, i))
+        scores.sort(key=lambda x: x[0])
+
+        idxs = [i for _, i in scores][:k_final]
+
+        return {
+            "documents" : [[dense_docs[i]  for i in idxs]],
+            "metadatas" : [[dense_metas[i] for i in idxs]],
+            "distances" : [[dense_dists[i] for i in idxs]]
+        }
 
 
 # #### DataProcessor
 
-# In[9]:
+# In[78]:
 
 
 class DataProcessor:
@@ -941,7 +1012,7 @@ class DataProcessor:
 
 # #### QA System
 
-# In[10]:
+# In[154]:
 
 
 from deep_translator import GoogleTranslator
@@ -1128,18 +1199,22 @@ class QASystem:
 
     def generate_response(self, query: str,question_type: Optional[str] = None) -> Tuple[str, List[str]]:
         try:
-            raw_result = self.embedding_processor.similarity_search(
-                query,
-                k=25) 
+            # raw_result = self.embedding_processor.similarity_search(
+            #     query,
+            #     k=25) 
+
             # raw_result = self.embedding_processor.similarity_search_with_images(
             #      query, k_mix=40, img_threshold=0.45, max_images=1)
-            
-            if not raw_result["documents"] or len(raw_result["documents"][0]) == 0:
-                logger.warning("No hits for query → 改用 k=50 再試一次")
-                raw_result = self.embedding_processor.similarity_search(query, k=50)
 
-            if not raw_result["documents"] or len(raw_result["documents"][0]) == 0:
-                return "[NoRef] 無足夠證據判斷", [],[]
+            raw_result = self.embedding_processor.hybrid_search(query) 
+
+            
+            # if not raw_result["documents"] or len(raw_result["documents"][0]) == 0:
+            #     logger.warning("No hits for query → 改用 k=50 再試一次")
+            #     raw_result = self.embedding_processor.similarity_search(query, k=50)
+
+            # if not raw_result["documents"] or len(raw_result["documents"][0]) == 0:
+            #     return "[NoRef] 無足夠證據判斷", [],[]
             
             # 用後處理
             search_results = self._classify_collection_results(raw_result)
@@ -1345,7 +1420,7 @@ class QASystem:
 
 # Embedding processor
 
-# In[11]:
+# In[173]:
 
 
 from pathlib import Path
@@ -1385,7 +1460,7 @@ _ = data_processor.process_all(
 
 # ##### Initialized QA System
 
-# In[12]:
+# In[174]:
 
 
 # 建立 QA 系統，沿用同一個 embedding_processor
@@ -1426,9 +1501,20 @@ raw = qa_system.embedding_processor.similarity_search("甘草", k=25)
 print(raw["metadatas"][0][0])     # 應該看到 {'type': 'caption', 'ref_image': 'GanCao.png', ...}
 
 
+# In[109]:
+
+
+docs = qa_system.embedding_processor.hybrid_search("Wan Ying San")
+for i, d in enumerate(docs, 1):
+    if "Wan Ying San" in d:
+        print(f"hit rank {i}")
+        print(d[:180], "...\n")
+        break
+
+
 # ##### 判斷正確答案
 
-# In[270]:
+# In[112]:
 
 
 import re
@@ -1462,7 +1548,7 @@ def parse_llm_answer(resp: str, q_type: str) -> str:
 
 # 測試
 
-# In[351]:
+# In[181]:
 
 
 # 1. 讀檔 + 題型篩選
@@ -1476,17 +1562,17 @@ test_df["predicted"]    = ""
 test_df["is_correct"]   = 0
 
 # 3. 再依 domain 篩子集合
-test_df = test_df[test_df["domain"] == "中醫"].copy()
-test_df=test_df.head(10)
+# test_df = test_df[test_df["domain"] == "中醫"].copy()
+# test_df=test_df.tail(10)
 
 
-# In[ ]:
+# In[176]:
 
 
 test_df
 
 
-# In[352]:
+# In[182]:
 
 
 dataset = [] # for ragas
@@ -1497,33 +1583,32 @@ for idx, row in test_df.iterrows():
     q = expand_query(q_row)
     q_type = row["type"]
     gt = str(row["answers"]).strip()
-    ref_ctx   = [ str(row["RAG"]) ] 
+    
 
-    resp, _ = qa_system.display_response(q, q_type)
-
-    if not resp.strip():
-        print(f"[WARN] id={row['id']}  LLM 回傳空白")
-
+    # resp, _ = qa_system.display_response(q, q_type)
 
     resp, ctxs, _ = qa_system.generate_response(q, q_type)
+    print(f"\nQuestion: {row['question']}\nSystem Response:\n{resp}\n")
+
     pred = parse_llm_answer(resp, q_type)
 
     test_df.at[idx, "llm_response"] = resp
     test_df.at[idx, "predicted"]    = pred
     test_df.at[idx, "is_correct"]   = int(pred.upper() == gt.upper())
     
-    ctxs = [str(c) for c in ctxs]
+    # ctxs = [str(c) for c in ctxs]
+    ref_ctx   = [ str(row["RAG"]) ] 
 
     dataset.append({
         "user_input":           str(q),           # question
         "response":             str(resp),        # llm response
-        "retrieved_contexts":   ctxs,             # llm檢索到的資料
+        "retrieved_contexts":   [c["text"] if isinstance(c, dict) else str(c) for c in ctxs],#ctxs,             # llm檢索到的資料
         "reference_contexts":   ref_ctx,          # 出題段落
         "reference":            gt                # answers
     })
 
 
-# In[353]:
+# In[185]:
 
 
 # 5. 計算 Accuracy
@@ -1543,13 +1628,13 @@ print(domain_stats.to_string(index=False,
 print(f"\nOVERALL Accuracy = {overall_acc:.2%}")
 
 
-# In[354]:
+# In[189]:
 
 
 # 先挑出答錯的資料列
 wrong_df = (
     test_df.loc[test_df["is_correct"] == 0,
-                ["id", "question", "answers", "predicted"]]
+                ["id", "question", "answers", "predicted","RAG","llm_response"]]
             .sort_values("id")          # 依題號排序方便查看
 )
 
@@ -1557,7 +1642,7 @@ print("=== 答錯題目一覽 ===")
 print(wrong_df.to_string(index=False))
 
 
-# In[337]:
+# In[187]:
 
 
 # ==== 建立輸出資料夾 ====
@@ -1572,6 +1657,42 @@ print(f"✅ RAG 結果已存到 {csv_path}")
 
 
 # #### 檢查
+
+# In[151]:
+
+
+docs = qa_system.embedding_processor.hybrid_search("Wan Ying San", k_final=12,k_dense=200)
+# 取第一段文字
+# print(docs["documents"][0][0])
+# # 取第一段的 metadata
+# print(docs["metadatas"][0][0])
+
+chunks = docs["documents"][0]          # list[str]，長度 = k_final
+for i, txt in enumerate(chunks, 1):
+    if "Wan Ying San" in txt:
+        print(f"hit rank {i}")
+        print(txt[:180], "...\n")
+        break
+
+
+# In[139]:
+
+
+test_q ='In the TCVM "Eight Principles" method, which pair of concepts describes the depth of a disease, such as "Exterior" and "Interior"?\
+A) Cold and Heat\
+B) Deficiency and Excess\
+C) Exterior and Interior\
+D) Yin and Yang'
+
+s = qa_system.embedding_processor.similarity_search(test_q,k=25) 
+h = qa_system.embedding_processor.hybrid_search(test_q) 
+
+s_results = qa_system._classify_collection_results(s)
+logger.info("SEARCH RESULT(s): %s \n",s_results)
+
+h_results = qa_system._classify_collection_results(h)
+logger.info("SEARCH RESULT(h): %s \n",h_results)
+
 
 # In[368]:
 
@@ -1619,7 +1740,7 @@ top_docs = hybrid_search("Wan Ying San", k_dense=100)
 print(top_docs[0])        # 應該就能看到 Always Responsive 句
 
 
-# In[339]:
+# In[53]:
 
 
 # fix_questions.py  ── 直接 python fix_questions.py 即可
@@ -1656,6 +1777,7 @@ alias_dict = {
     "HT-7" : ["HT-7", "Heart 7", "Shenmen", "神門"],
     "Bai He": ["Bai He", "Lily bulb", "百合"],
     "Di Gu Pi": ["Di Gu Pi", "Lycium Root Bark", "地骨皮", "枸杞根皮"],
+    "Wan Ying San": ["Wan Ying San", "Always Responsive", "Always Responsive to Parasites","萬應散"],
     # ……自行加碼……
 }
 
