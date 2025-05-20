@@ -1,0 +1,480 @@
+﻿id,actor,type,domain,question,query_for_embed,answers,RAG,llm_response,score(1-5),factual_correctness
+120,飼主,qa,中醫,在中藥材山藥（Shan Yao）的故事中，這種植物一開始被軍隊命名為什麼？後來這個名稱如何改變？,"In the story about the Chinese herb Shan Yao, what was the plant initially named by the army, and how did this name change later?",一開始被命名為「山遇」（Shan Yu），後來改為「山藥」（Shao Yao/Shan Yao）,"26 Part 1: Chinese Veterinary Materia Medica
+a
+c
+b
+4. Urinary leakage due to Kidney Defi ciency Combine with : Alpinia Yi Zhi Ren and Mantidis Sang
+Piao Xiao
+History and Comments: 1. The City of Jiao Zuo in the Henan Province was
+the home of the Kingdom of Ye in the early Ming Dynasty (1368 – 1644 CE). The Kingdom Ye was often bullied by its neighbors. In one winter battle, Ye ’ s army was heavily outnumbered by the enemy and was chased deep into the mountains. The weather was bitterly cold, snow swirled through the air, and the provisions had run out. Despair began growing in the troops. Out of des-peration, a soldier dug up some roots from a snow - covered fi eld and gulped them down. To his surprise, the roots were sweet, juicy, and quite delicious. This news was greeted with cheers as it spread quickly through the army. The soldiers consumed the roots for several days, and they found their strength and vigor had returned. Many wounded soldiers had healed. Even the horses that had eaten the vines of the plant became much sturdier than before. The army rushed down from the mountain like lions, broke though the enemy ’ s encirclement, and recovered their lost lands. At the celebration dinner, the soldiers named the plant Shan ( , “ mountain ” ) Yu ( , “ encounter ” ). Somehow this later changed into Shao Yao because Yao means medicine and sounds more proper. Today, Jiao Zuo still produces the best quality Shan Yao in the world. This area was also famous for its Rehmannia Sheng Di Huang , Achyranthes Huai Niu Xi (Cyathula Chuan Niu Xi ) and Chrysanthemum Ju Hua production.","根據《神農本草經》的記載，山藥（Shan Yao）原名為「冬葵」，後來被改名為「山藥」。
+
+［常識］山藥（Shan Yao）是一種常見的中藥植物，具有滋補、固表、益腎等功效。
+
+
+　　[1] 《神農本草經》",1,0.25
+121,飼主,qa,中醫,中藥材麥門冬（Ophiopogon japonicus）的中文名稱翻譯成英文是什麼意思？ ,What does the Chinese name for the herb Ophiopogon japonicus translate to in English? ,Wheat Door of Winter,"Form and Preparation: Powder or decoction; stirring with honey enhances its effect to moisten the Lung.
+Dosage: Horses and Cattle: 30 – 60 g Camels: 35 – 75 g
+48 Part 1: Chinese Veterinary Materia Medica
+a
+b
+Ophiopogon Mai Men Dong
+Original Reference: Shen Nong Ben Cao Jing ( Shen Nong ’ s Materia Medica , 1st century BCE)
+Part Used: Root (tuber); sliced tuber with core removed
+Name: Pharmaceutical: Ophiopogonis Japonici, Tuber Botanical: Ophiopogon japonicus Common: Ophiopogon tuber Wade - Giles: Mai - Men - T ’ ung Translation: Wheat Door of Winter","根據我的知識，Ophiopogon japonicus 的中文名稱是 ""美髯草""，意思是 ""美髯草"" 的中文翻譯為 ""美髯草""，意思是 ""美髯草"" 可以用來美髯或美容。
+
+［常識］在中藥學中，美髯草是用來美髯和美容的藥材，具有清肺定喘、降火解毒等作用。
+
+參考資料：
+[1] 《中藥藥學》教科書，第 4 版，中醫藥學出版社，2017 年。",1,0
+122,飼主,qa,中醫,中藥材茯神（Fu Shen）的主要功效是什麼？,What are the main actions of the Chinese herb Fu Shen?,安神（Pacify the Heart and calm Shen）、健脾利尿 (Tonify the Spleen and benefi t urination),"Part Used: Central part of the fungus
+Name: Pharmaceutical: Poriae Cocos, Sclerotium Botanical: Poria Cocos Common: Tuckahoe, Hoelen, Indian Bread Wade - Giles: Fu - Shen Translation: Poria Spirit
+Energy/Taste: Neutral, sweet, bland
+Channel - Organ: Heart, Spleen
+Actions: 1. Pacify the Heart and calm Shen 2. Tonify the Spleen and benefi t urination
+Form and Preparation: Powder, decoction, or pill
+Dosage: Horses and Cattle: 20 – 60 g Llamas, Alpacas, Goats, Sheep, and Pigs: 5 – 15 g Dogs: 2 – 5 g Cats and Rabbits: 0.5 – 1 g Birds: 0.2 – 2 g","Fu Shen是一種常見的中藥，主要用於滋補肾氣，強肺氣，降氣，平肝，抑制腎上腺素，減少腎上腺素的分泌，改善睡眠質量等。它也被用來治療多種疾病，包括中風、痴呆、失眠、記憶力下降等。 [1] 
+
+常識：中藥 Fu Shen 的作用機制複雜，需要根據個體情況和醫生指導進行使用。
+
+參考來源：
+[1] 《中藥學》(中醫藥學出版社出版)
+
+整理：[1] 《中藥學》(中醫藥學出版社出版)",1,0
+123,飼主,qa,中醫,中藥材合歡皮（He Huan Pi）主要用於治療什麼情緒問題？它的中文名稱翻譯成英文是什麼意思？ ,"What emotional issue is the Chinese herb Albizzia Bark (He Huan Pi) primarily used for, and what does its Chinese name translate to in English?",緩解抑鬱（Relieve depression）；中文名稱翻譯過來是「集合幸福的樹皮」（Collective Happiness Bark）,"Cautions and Contraindications: None known
+Side Effects: May cause polyuria
+Albizzia He Huan Pi Original Reference: Shen Nong Ben Cao Jing ( Shen Nong ’ s Materia Medica , 1st century BCE)
+Part Used: Bark
+Name: Pharmaceutical: Albizziae Julibrissin, Cortex Botanical: Albizzia Julibrissin; A. Kalkora Common: Albizzia Bark Wade - Giles: Ho - Huan - Pi Translation: Collective Happiness Bark
+Energy/Taste: Neutral, sweet
+Channel - Organ: Heart, Liver, Lung
+Actions: 1. Calm Shen and relieve depression 2. Invigorate Blood and eliminate swelling","He Huan Pi（阿比齡皮）是一種中藥材，主要用於治療精神病和神經疾病，特別是焦慮和抑鬱症。它的英文名稱為Albizzia Bark，中文名稱He Huan Pi，直譯為「阿比齡皮」。
+
+其主要用途是治療焦慮和抑鬱症，還有助於改善睡眠質量和降低壓力。 [1]
+
+常識：中藥材的用途和作用機制需要根據實際臨床使用和科學研究進行調查和驗證。[2]
+
+參考資料：
+[1] 中藥學教材：He Huan Pi
+[2] 中藥學文獻：He Huan Pi 的用途和作用機制",2,0.17
+124,學生,qa,中醫,"中藥材百合（Lilii, Bulbus）的原始參考文獻是哪部古籍？ ","What is the original reference text for the Chinese herb Lily bulb (Lilii, Bulbus)?",《神農本草經》（Shen Nong Ben Cao Jing），約公元前一世紀著成,"History and Comments: 1. Bai ( ), means a hundred, He ( ) means harmony.
+The name Bai He means everything has peace and harmony. Bai He has had an important role in several societies. In China, the Bai He fl ower is often given to family members and friends as a gift during happy events or festivals. In ancient France, Bai He repre-sented the majesty of the royal house. In the United States, the Indians in Utah survived a famine by eating Bai He bulbs. In many other countries, Bai He is also regarded as the symbol of innocence and purity.","根據中藥學的典籍《神農本草經》中的記載，Lily bulb（Lilii, Bulbus）被稱為「百合」，是用於治療心悸、失眠、神經衰弱等症狀的中藥材。百合的藥用部位是百合花的根莖。
+
+根據《神農本草經》的記載，百合的藥用效果包括「清心定志、安神定志、平肝息風、補心益脾、益氣補血、清熱除痰」等。百合被用於治療的心悸、失眠、神經衰弱、心血不足、神經衰弱、頭痛、頭暈、眼目無明、口眼㖞斜等症狀。
+
+[常識] 《神農本草經》是中國古代中藥典籍之一，記載了中國中藥的藥用植物、藥物的藥用效果、用法和配伍等知識。《神農本草經》是中國中醫學的重要文獻之一，對中國中醫學的發展有重要影響。
+
+[1] 《神農本草經》",5,0.62
+125,學生,qa,中醫,根據五行理論，肺經（LU Channel）的母穴（mother point）是哪個穴位？ ,"According to the Five Element theory, what is the mother point for the Lung Channel? ",LU-9,"its full power deficiency renal failure Yang points for GI ST-36 and GB-34 for vomiting
+conditions
+LU CHANNEL (METAL)
+LU-9, Shu-stream point (earth) LU-5, He-sea point (water)
+As the mother of metal, earth supports
+a deficient lung
+As the son of metal, water drains the
+excess from the lung
+Use for Lung Deficiency
+Chronic cough/asthma Weak voice Thready pulse Pale tongue
+Use for Lung Excess
+Acute cough Coarse voice Forceful pulse Red tongue
+2.1. The mother and child point of LU Channel.
+PC/HT CHANNEL (FIRE)","根據五行學說，肺經的母點是中焦（Middle Jiao），也就是中焦的氣血和津液的生成和储存的場所。中焦位於脊柱的下段，包括脊柱的下端、臀部和下肢的前側。
+
+中焦的氣血和津液是肺經的重要組成部分，影響到全身的氣血和津液的生成和運行。中焦的調理可以通過調整飲食、運動和針灸等方法來實現。
+
+［常識］：五行學說是中國古代醫學的基本理論之一，描述了人體的五個經脈（肺經、心經、脾經、肝經、腎經）和五個臟腑（肺、心、脾、肝、腎）的關係和相互作用。五行學說認為，人體的五個經脈和五個臟腑都有自己的特點和功能，各自負責不同的生理和病理過程。",1,0.75
+126,學生,qa,中醫,中藥材天麻（Gastrodia Elata）生長需要與哪種共生真菌獲取營養？,What symbiotic fungus does the Chinese herb Gastrodia Elata need to obtain nutrition for growth? ,蜜環菌（Armillariella mellea Mi Huan Jun）,"2. Because Tian Ma has no leaves, it is unable to use photosynthesis for its energy needs. It obtains its nutrition through a symbiotic relationship with the photosynthesis fungus, Armillariella mellea Mi Huan Jun . The highest-quality Tian Ma is collected during winter.
+3. Recent discoveries suggest that Armillariella mellea Mi Huan Jun , the symbiotic fungus necessary for Gastrodia ’ s growth, can be used as a much less expensive substitute for Tian Ma because the essen-tial active ingredients are also found in the fungus.","根據相關研究，Gastrodia Elata是一種真菌的寄生植物，它需要與真菌Rhizoctonia utiformis進行共生關係來獲得營養和養分。這種共生關係是Gastrodia Elata生長和發育的必要條件。 
+
+　　[1] 《中藥新藥研究與開發》
+
+　　[2] 《中國藥用植物圖譜》",1,0
+127,學生,qa,中醫,中藥材黃芩（Scutellaria Baicalensis）的原始參考文獻是哪部古籍？,What is the original reference text for the Chinese herb Scutellaria Baicalensis? ,《神農本草經》（Shen Nong Ben Cao Jing）,"ba
+Scutellaria Huang Qin
+Original Reference: Shen Nong Ben Cao Jing ( Shen Nong ’ s Materia Medica , 1st century BCE)
+Part Used: Root
+Name: Pharmaceutical: Radix, Scutellariae Baicalensis Botanical: Scutellaria Baicalensis (Skullcap) Common: Scute, Skullcap Wade - Giles: Huang - Ch ’ in Translation: Yellow Root
+Energy/Taste: Cold, bitter
+Channel - Organ: Lung, Gallbladder, Stomach, Large Intestine
+Actions: 1. Clear Heat and dry Dampness 2. Drain Fire and release Toxins 3. Stop bleeding 4. Calm the fetus 5. Sedate ascendant Liver Yang","根據我的知識庫，Scutellaria Baicalensis（also known as Huangqin）是一種常用的中藥材，主要來自中國和東亞地區。它被用於治療多種疾病，包括感冒、咳嗽、腹瀉等。
+
+如果您要查詢Scutellaria Baicalensis的原始文獻，可能需要查詢中國古典醫學文獻，如《神農本草經》或《本草綱目》等。這些文獻提供了許多中藥材的使用、組成和藥理作用的信息。
+
+然而，我無法提供Scutellaria Baicalensis的原始文獻的具體資訊。您可以試試以下幾個選擇：
+
+1. 查詢中國古典醫學文獻，如《神農本草經》或《本草綱目》等。
+2. 查詢中醫學專書，如《中醫藥學大辭典》或《中醫藥學教科書》等。
+3. 查詢中醫學網站或論壇，可能有相關資訊或文獻。
+
+［常識］中藥材的使用和組成需要根據中醫學的理論和實踐進行，中藥材的藥理作用需要通過實驗和研究來證實。
+
+參考文獻：
+
+* 《神農本草經》：中國古典醫學文獻，記載了許多中藥材的使用和組成。
+* 《本草綱目》：中國古典醫學文獻，記載了許多中藥材的藥理作用和使用方法。
+* 《中醫藥學大辭典》：中醫學專書，記載了許多中藥材的組成、使用和藥理作用。
+* 《中醫藥學教科書》：中醫學專書，記載了許多中藥材的組成、使用和藥理作用。",3,0.85
+128,獸醫師,qa,中醫,關於方劑四物湯（Si Wu Tang）的研究有哪些發現？,What are some research findings regarding the formula Si Wu Tang? ,研究顯示它可以促進產生新的T細胞，改善受損的T細胞活性，恢復免疫系統強度；在模擬更年期骨質流失的大鼠實驗中，能有效預防骨質流失，效果與激素替代療法相當；在小鼠實驗中，能顯著減緩纖維肉瘤生長並延長壽命；在預防小鼠子宮內膜癌發生中，顯示能降低某些腫瘤前驅蛋白水平並抑制腫瘤形成,"[""38. Ma ZC , Gao Y , Liu YX , Tan HL , Lu XQ , Zhang L . The research of Si Wu Tang on hematopoietic cell of blood defi cient mice caused by cyclophosphamide . Chinese Journal of Experimental Traditional Medical Formula 2001 ; 5 : 13 – 15 .
+39. Deng CL . The effect of Si Wu Tang on tissue factor excreted by vascular endothelial cell and its inhibitor . Journal of Nanhua University (Medical Edition) 2001 ; 2 : 120 – 121 .
+40. Huang SL , Peng T , Gong CM , Guan XW . The effect of Si Wu Tang on HDL - C and LDL - C of normal animal . Journal of Liberation Army Medical High Training School 1999 ; 1 : 37 – 38 .],[""47. Hsu HY , Ho YH , Lin CC . Protection of mouse bone marrow by Si Wu Tang against whole body irradiation . Journal of Ethnopharmacology 1996 ; 52 : 113 – 117 .
+48. Wang HL , Song YJ , Zhao GD , Feng X , Gong CM . Research of Si Wu Tang on toxicity of lidocaine . Pharmacology and Clinics of Chinese Materia Medica 1997 ; 3 : 7 – 8 .
+49. Yang Y , Rong R , Lu YW , Yuan JY . The comparative study of Si Wu Tang and its components on the free radical metabo-lism and immune action . Journal of Shandong University of Traditional Chinese Medicine 2002 ; 4 : 299 – 300 .""]","Si Wu Tang是一種傳統中藥方劑，主要用於調節女性生殖系統和調整月經周期。根據研究，Si Wu Tang的成分有以下幾個研究發現：
+
+1. **調節月經周期**：研究表明，Si Wu Tang能夠調節月經周期，改善女性的月經不調和其他相關問題。例如，一項研究發現，Si Wu Tang能夠改善女性月經不調的症狀，包括月經不規律和月經量過多或過少［1］。
+2. **減輕痛經**：研究還發現，Si Wu Tang能夠減輕痛經的症狀。例如，一項研究發現，Si Wu Tang能夠減輕痛經的疼痛和不適［2］。
+3. **調節免疫系統**：研究還發現，Si Wu Tang能夠調節免疫系統，改善女性的免疫功能。例如，一項研究發現，Si Wu Tang能夠增加女性的免疫細胞活性，改善免疫功能［3］。
+
+綜上所述，Si Wu Tang的研究發現表明它是一種有效的中藥方劑，能夠調節女性生殖系統和調整月經周期，減輕痛經和調節免疫系統。
+
+[常識]：中藥方劑的研究需要持續進行，以確保其安全性和有效性。中藥方劑的使用應遵守中藥學的原則和指南，且需在醫生或中醫師的指導下使用。
+
+參考文獻：
+
+[1] Zhang et al. (2018). Si Wu Tang improves menstrual irregularity in women with polycystic ovary syndrome. Journal of Ethnopharmacology, 211, 141-148.
+
+[2] Li et al. (2019). Si Wu Tang reduces menstrual pain in women with primary dysmenorrhea. Journal of Women's Health, 28(10), 1331-1338.
+
+[3] Wang et al. (2020). Si Wu Tang modulates immune function in women with polycystic ovary syndrome. Journal of Ethnopharmacology, 244, 112474.
+
+參考文獻：
+
+[1] Zhang et al. (2018). Si Wu Tang improves menstrual irregularity in women with polycystic ovary syndrome. Journal of Ethnopharmacology, 211, 141-148.
+[2] Li et al. (2019). Si Wu Tang reduces menstrual pain in women with primary dysmenorrhea. Journal of Women's Health, 28(10), 1331-1338.
+[3] Wang et al. (2020). Si Wu Tang modulates immune function in women with polycystic ovary syndrome. Journal of Ethnopharmacology, 244, 112474.
+
+Source_file：
+[1] Zhang et al. (2018). Si Wu Tang improves menstrual irregularity in women with polycystic ovary syndrome. Journal of Ethnopharmacology, 211, 141-148. pdf
+[2] Li et al. (2019). Si Wu Tang reduces menstrual pain in women with primary dysmenorrhea. Journal of Women's Health, 28(10), 1331-1338. pdf
+[3] Wang et al. (2020). Si Wu Tang modulates immune function in women with polycystic ovary syndrome. Journal of Ethnopharmacology, 244, 112474. pdf",2,0.65
+129,獸醫師,qa,中醫,使用新方劑蕭瘿散（Xiao Ying San）時，原方中的海馬（Hai Ma）需要被取代，主要考量是什麼？取代海馬的藥材是哪些？,"Dr. Xie's comments indicate that when using the new formula Xiao Ying San, the original formula's Hai Ma needs to be substituted. What is the main consideration for this, and which herbs substitute for Hai Ma?",主要考量是因為海馬（Hippocampus）是瀕危動物，不再使用。蕭瘿散中的肉蓯蓉（Rou Cong Rong）和菟絲子（Tu Si Zi）取代了原方（指蕭瘿散或其基礎方）中的海馬。,"Cautions and Contraindications: Do not use in patients with hypertension or Yin Defi ciency
+Dr. Xie ’ s Comments: Xiao Ying San can be used for both hyperthyroidism and hypothyroidism, especially in patients with renal failure. But Hai Ma (Hippocampus) in the original formula should be substituted with Rou Cong Rong (Cistanche) and Tu Si Zi (Cuscuta) because
+Hai Ma (Hippocampus) is a Seahorse, which is endan-gered and no longer used.
+Clinical and Pharmacological Studies: This formula is similar to Hai Zao Yu Hu Tang , but it has been adapted for patients with renal insuffi ciency. 16","根據Dr. Xie的評論，使用新配方的Xiao Ying San時，原配方中的Hai Ma需要被替換。替換的主要考慮是，Hai Ma的用量太高，可能會導致副作用。替換的草藥是：
+
+*   雪蛤（雪蛤粉）：替換Hai Ma的用量
+*   雪蛤：替換Hai Ma的用量
+
+[常識]：Hai Ma是中國中藥中的一個成分，通常用於治療腸胃疾病和腎臟疾病。然而，Hai Ma的用量太高可能會導致副作用，因此需要替換。[1]
+
+[常識]：雪蛤和雪蛤粉是中國中藥中的兩種成分，常用於治療腸胃疾病和腎臟疾病。雪蛤粉的用量較低，可能會導致副作用，因此需要替換。[2]
+
+[1] 中國中藥典（2010年版）
+[2] 中國中藥藥典（2015年版）",1,0.27
+130,獸醫師,qa,中醫,描述冷閉證（Cold Bi Syndrome）的主要臨床症狀。,Describe the main clinical signs of Cold Bi Syndrome,臨床症狀包括關節疼痛，運動困難（急性），疼痛在受熱時緩解，遇冷時加劇，舌質紫且舌苔淡白，脈象弦而遲,"Herbal Medicine. Fang Feng Tang (Siler powder)
+COLD BI SYNDROME
+Cold Bi is also called painful Bi (Tong Bi), which is charac-terized by severe pain. The condition is caused by a combina-tion of wind-cold-damp, but the primary pathogen is cold.
+Clinical Signs. Pain in joints, difficult movement (acute) Pain relief with exposure to heat Pain exacerbated with exposure to cold Tongue: Purple with slightly pale coating Pulse: Wiry and slow
+8
+Acupuncture for Treatment of Musculoskeletal and Neurological Disorders","冷痹證（Cold Bi Syndrome）的主要臨床表現包括：
+
+1. 病人常常感覺四肢冷，尤其是手足，甚至有時會出現寒顫。
+2. 病人的肌肉疼痛，尤其是在四肢和背部。
+3. 病人可能會有輕微的發燒，或者無明顯的發燒。
+4. 病人的神經系統可能會出現一些問題，例如頭痛、頭暈、耳鳴等。
+5. 病人可能會有食欲不振、嘔吐、腹瀉等消化系統的問題。
+
+［常識］冷痹證是一種中醫證名，根據中醫理論，冷痹證是由於肺腎兩脏功能失調，導致肺氣下降，腎氣不足，從而影響到全身的氣血運行，造成四肢冷、肌肉疼痛等症狀。
+
+參考來源：
+[1] 《中醫證名詞匯編》第 4 號，中國中醫學會，2004 年。
+
+[2] 《中醫內科學》第 3 章，中國中醫學會，2010 年。
+
+[3] 《中醫學基礎》第 5 章，中國中醫學會，2012 年。
+
+[4] 《中醫證名詞匯編》第 4 號，中國中醫學會，2004 年。
+
+[5] 《中醫內科學》第 3 章，中國中醫學會，2010 年。
+
+[6] 《中醫學基礎》第 5 章，中國中醫學會，2012 年。",2,0.45
+131,獸醫師,qa,中醫,在衛氣營血（Wei Qi Ying Xue）四個階段中，哪個階段被描述為最深層且最嚴重，與肝腎病理相關？,"Among the four stages of Wei Qi Ying Xue, which stage is described as the deepest and most severe, and is associated with Liver and Kidney pathology? ",血分證（Xue Stage）,"Xue Stage/Phase ( , Blood Stage Pattern): This is the deepest and most severe of the Wei Qi Ying Xue Patterns. It is associated with Liver and Kidney pathol-ogy. The main clinical signs are fever, coma, petechiae and ecchymosis, rash, bloody urine or feces, seizure, a deep - red tongue, and a thin or rapid pulse. The typical classical herbal formula for the treatment of Xue Stage is Xi Jiao Di Huang Tang .
+Ying Qi ( Nutrient Qi ). Ying Qi is derived from Gu Qi (Food Qi ). It circulates in the blood vessels, produces Blood, and nourishes the whole body. Hemoglobin and other serum proteins are a part of Ying Qi . It is also called Ying Xue (Nutrient Blood or Ying Blood) due to its association with Blood and its fl ow within blood vessels.","根據中醫理論，Wei Qi Ying Xue 的四個階段是：
+
+1. Shao Yang (少陽)：表現為表面症狀，如皮膚病變、頭痛等。
+2. Tai Yang (太陽)：表現為全身症狀，如發燒、頭痛、肌肉疼痛等。
+3. Shao Yin (少陰)：表現為內在症狀，如心悸、胸痛、脫屑等。
+4. Tai Yin (太陰)：表現為最深層的症狀，如肝腎功能衰竭、身體無力、智力下降等。
+
+根據這些描述，Tai Yin (太陰)階段是最深層的階段，與肝腎功能衰竭有關。因此，答案是 Tai Yin (太陰)階段。
+
+
+［常識］中醫理論中，Wei Qi Ying Xue 的四個階段是描述病理變化的階段，各階段的特徵和表現方式不同。
+
+
+參考資料：
+Wei Qi Ying Xue 的四個階段描述見於《金匱要略》等中醫經典著作。",1,0.96
+61,飼主,qa,中醫,如果家犬出現焦躁、夜間吠叫，簡單按壓哪一穴可助安神？其大略位置為何？,"If a domestic dog is anxious or barking at night, which a simple point can help calm the mind? What is its general location?",神門 (HT-7)：位於腕橫紋內側凹陷,"HT-7 (Shen-men) — location: on the transverse crease of the carpal joint, at the ulnar side of the flexor carpi ulnaris tendon; indications: anxiety, restlessness, insomnia. :contentReference[oaicite:0]{index=0}&#8203;:contentReference[oaicite:1]{index=1}","對於夜間的犬類焦慮或吠叫問題，簡單而有效的方法是按摩犬的「第三眼點」（Third Eye Point）。這個點位於犬的額頭上，約在額骨和鼻骨之間的中點。按摩這個點可以幫助犬類放鬆和鎮靜。
+
+按摩第三眼點的方法是用指尖輕輕地按摩這個點，約10-15秒，每天一次。這可以幫助犬類放鬆和鎮靜，減少夜間的焦慮和吠叫。
+
+［常識］按摩第三眼點可以幫助犬類放鬆和鎮靜，減少夜間的焦慮和吠叫。這種方法基於東方的動物按摩和治療技術，特別是在中國的中醫理論中有提及。[1]
+
+[1] Chinese Veterinary Materia Medica",1,0
+62,飼主,qa,中醫,鼻塞嚴重時可配合迎香 (LI-20) 之外，再加哪一肺經穴以增強通鼻效果？,"In severe nasal congestion, you can use Yingxiang (LI-20) in addition to adding which lung meridian point to enhance the effect of nasal clearance?",列缺 (LU-7)：橈腕關節上 1.5 寸,"LU-7 — indications: nasal obstruction, rhinitis; location: proximal to the styloid process of the radius, 1.5 cun above the wrist crease. :contentReference[oaicite:2]{index=2}&#8203;:contentReference[oaicite:3]{index=3}","根據中醫理論，Yingxiang (LI-20) 是一個重要的點位，常用於治療鼻塞和鼻炎。若要加強鼻塞清除的效果，可以在Yingxiang (LI-20) 的基礎上加用肺經點位。
+
+肺經是治療呼吸系統疾病的重要經脈，肺經點位可以幫助調節呼吸和清除鼻塞。常用的肺經點位包括：
+
+*   大椎 (GV-26)：位於頭頂正中，是肺經的重要點位，能夠調節呼吸和清除鼻塞。
+*   命門 (CV-6)：位於腹部的肚脐下方，是肺經的重要點位，能夠調節呼吸和清除鼻塞。
+
+在實際治療中，可以在Yingxiang (LI-20) 的基礎上加用大椎 (GV-26) 或命門 (CV-6) 等肺經點位，來加強鼻塞清除的效果。
+
+　　［常識］　中醫理論中，肺經是治療呼吸系統疾病的重要經脈，肺經點位可以幫助調節呼吸和清除鼻塞。　　［1］　中醫理論中，肺經是治療呼吸系統疾病的重要經脈，肺經點位可以幫助調節呼吸和清除鼻塞。　　［2］　中醫理論中，肺經是治療呼吸系統疾病的重要經脈，肺經點位可以幫助調節呼吸和清除鼻塞。　　［3］　中醫理論中，肺經是治療呼吸系統疾病的重要經脈，肺經點位可以幫助調節呼吸和清除鼻塞。　　［4］　中醫理論中，肺經是治療呼吸系統疾病的重要經脈，肺經點位可以幫助調節呼吸和清除鼻塞。　　［5］　中醫理論中，肺經是治療呼吸系統疾病的重要經脈，肺經點位可以幫助調節呼吸和清除鼻塞。　　［6］　中醫理論中，肺經是治療呼吸系統疾病的重要經脈，肺經點位可以幫助調節呼吸和清除鼻塞。　　［7］　中醫理論中，肺經是治療呼吸系統疾病的重要經脈，肺經點位可以幫助調節呼吸和清除鼻塞。　　［8］　中醫理論中，肺經是治療呼吸系統疾病的重要經脈，肺經點位可以幫助調節呼吸和清除鼻塞。　　［9］　中醫理論中，肺經是治療呼吸系統疾病的重要經脈，肺經點位可以幫助調節呼吸和清除鼻塞。　　［10］　中醫理論中，肺經是治療呼吸系統疾病的重要經脈，肺經點位可以幫助調節呼吸和清除鼻塞。
+
+　　　［1］　《中醫理論》第 5 章　　［2］　《中醫理論》第 5 章　　［3］　《中醫理論》第 5 章　　［4］　《中醫理論》第 5 章　　［5］　《中醫理論》第 5 章　　［6］　《中醫理論》第 5 章　　［7］　《中醫理論》第 5 章　　［8］　《中醫理論》第 5 章　　［9］　《中醫理論》第 5 章　　［10］　《中醫理論》第 5 章
+
+　　　source_file：《中醫理論》第 5 章.pdf",1,0.98
+63,飼主,qa,中醫,說明合谷 (LI-4) 在居家「萬用止痛」的簡易按摩重點。,"Explain the simple massage focus of Hegu (LI-4) at home ""universal pain relief"".",位置：第 2-3 掌骨間中點；功能：鎮痛解熱,LI-4 (He-gu) — master point for pain and fever; located between the first and second metacarpal bones; treats general pain and pyrexia. :contentReference[oaicite:4]{index=4}&#8203;:contentReference[oaicite:5]{index=5},"Hegu (LI-4) 是一種在中醫理論中非常重要的穴位，位於手部的第一指關節外側，是""四海""之一，負責疏通經絡、疏通氣血、調節腎臟功能等功能。 Hegu (LI-4) 的簡單按摩方法如下：
+
+1. 找到手指第一指關節外側的凹陷處，指尖向下壓，手掌向上抬起。
+2. 用指腹輕壓按摩，逐漸加重力道，按摩5-10分鐘。
+3. 可以在按摩過程中，將手掌向下壓，同時向前推，讓手指向前彎，增加按摩效果。
+
+按摩Hegu (LI-4) 的目的在於疏通經絡，調節氣血，疏通腎經，從而達到""全身痛症""的緩解效果。 Hegu (LI-4) 的按摩對於各種痛症都有幫助，包括頭痛、牙痛、頸痛、肩痛、背痛、腿痛等。
+
+[常識］按摩Hegu (LI-4) 可以疏通經絡，調節氣血，疏通腎經，達到""全身痛症""的緩解效果。 Hegu (LI-4) 的按摩對於各種痛症都有幫助，包括頭痛、牙痛、頸痛、肩痛、背痛、腿痛等。［2］
+
+參考來源：
+[1] 《中醫理論與實踐》. 中醫學會. 2022. 
+[2] 《中醫理論與實踐》. 中醫學會. 2022.",2,0.69
+64,獸醫師,qa,中醫,簡述治療風熱咳嗽時，為何選用 LI-4、LI-11、GV-14 與 LU-5 的組合？,"Briefly describe why LI-4, LI-11, GV-14 and LU-5 are used when treating wind-heat cough?",LI-4/LI-11/GV-14 清熱祛風；LU-5 清肺實熱，散肺止咳,"LI-4, LI-11 and GV-14 are major points to disperse exterior and interior heat, while LU-5 (He-sea, water) clears Lung excess heat and stops coughing. :contentReference[oaicite:6]{index=6}&#8203;:contentReference[oaicite:7]{index=7}","LI-4, LI-11, GV-14 和 LU-5 在治療風熱咳嗽時的使用主要是基於以下幾點：
+
+LI-4（合谷）和 LI-11（夾脊）都是外部經的重要穴位，常用於清熱、解毒、疏風等作用。LI-4 可以疏風、解毒、清熱， LI-11 可以疏風、清熱、解毒。這兩個穴位的使用可以幫助清除風熱邪氣，減輕咳嗽症狀。
+
+GV-14（大椎）是督脈的重要穴位，位於背部的中線，常用於疏風、清熱、解毒。GV-14 的使用可以幫助疏風、清熱、解毒，減輕咳嗽症狀。
+
+LU-5（陽池）是肺經的重要穴位，位於胸部的前胸，常用於清肺、解毒、疏風。LU-5 的使用可以幫助清肺、解毒、疏風，減輕咳嗽症狀。
+
+綜上所述，LI-4、LI-11、GV-14 和 LU-5 的使用在治療風熱咳嗽時，主要是基於清熱、解毒、疏風、清肺等作用，幫助減輕咳嗽症狀。
+
+［常識］風熱咳嗽是中醫典型的表現形式，主要是由於風邪、熱邪侵犯肺部所致，常見的治療方法包括疏風、清熱、解毒、清肺等。",4,0.97
+65,獸醫師,qa,中醫,肺氣虛犬常見臨床徵象及最重要的原穴是哪一個？,Which of the common clinical signs and most important original acupoints in dogs with lung qi deficiency?,徵象：久咳、聲弱、易疲；穴：LU-9 (太淵),"LU-9 (Tai-yuan) — Yuan-source point of Lung channel; treats chronic cough, weak voice, spontaneous sweating and fatigue due to Lung Qi deficiency. :contentReference[oaicite:8]{index=8}&#8203;:contentReference[oaicite:9]{index=9}","肺氣虛是犬的一種常見病理狀態，表現為呼吸困難、疲勞、食欲不振等症狀。以下是常見的臨床表現和重要的原穴：
+
+**常見的臨床表現：**
+
+1. 呼吸困難：犬可能會出現呼吸急促、氣短、喘息等症狀。
+2. 疲勞：犬可能會出現肌肉無力、步履不穩、易疲勞等症狀。
+3. 食欲不振：犬可能會出現食欲不振、吞咽困難等症狀。
+4. 肌肉無力：犬可能會出現肌肉無力、僵硬等症狀。
+
+**最重要的原穴：**
+
+1. **膈俞（Co 13）**：位於犬的胸骨下方，為肺氣虛的重要原穴，能夠疏通氣道、調節呼吸。
+2. **肺俞（Lu 7）**：位於犬的前胸，為肺氣虛的重要原穴，能夠調節肺氣、改善呼吸。
+3. **膻中（Co 17）**：位於犬的胸骨上方，為肺氣虛的重要原穴，能夠疏通氣道、調節呼吸。
+
+**[常識]**：肺氣虛的診斷和治療需要根據個體犬的臨床表現和體徵進行調整。獸醫應根據犬的病情進行調整，選擇合適的治療方法。
+
+
+源文件：[1] 《中藥獸醫學》(中醫獸醫學出版社)
+
+[2] 《犬獸醫學》(中醫獸醫學出版社)
+
+[3] 《中醫獸醫學》(中醫獸醫學出版社)",1,0.26
+66,獸醫師,qa,中醫,試舉至少兩個腧穴，可用於治療犬隻的免疫介導性皮膚疾病。,"Try to name at least two acupoints, which can be used to treat immune-mediated skin diseases in dogs.",LU-5、LI-4、LI-10（任選兩）,LU-5 — indicated for dermatitis and immune-mediated skin disease; LI-10 — strengthens immunity and treats skin disorders. :contentReference[oaicite:10]{index=10},"針對犬類的免疫介導皮膚疾病，以下兩個穴位可以被用來治療：
+
+1. **太沖穴（ST36）**：太沖穴位於大腿前外側，膝蓋下方約2寸處。太沖穴是全身經絡的重要穴位，能夠調節免疫系統，減少炎症反應，常被用來治療犬類的皮膚疾病，如過敏性皮膚炎、紅斑狼瘡等。太沖穴的作用機制包括調節T細胞活性、增加抗炎因子、抑制免疫介導的炎症反應等。[1]
+
+2. **風池穴（GB20）**：風池穴位於頭後部，枕骨下方約2寸處。風池穴是風水經的重要穴位，能夠調節全身經絡，減少炎症反應，常被用來治療犬類的皮膚疾病，如皮膚過敏、紅斑狼瘡等。風池穴的作用機制包括調節免疫系統、減少炎症反應、調節神經系統等。[2]
+
+　　［常識］：在使用中醫治療犬類免疫介導皮膚疾病時，應該根據個體情況進行調整，並與西醫治療合用，避免不當使用導致病情惡化。[3]
+
+　　參考文獻：
+[1] 中國中醫學會. (2010). 中醫藥學教材. 北京: 中國中醫學會出版社.
+[2] 中國中醫學會. (2010). 中醫藥學教材. 北京: 中國中醫學會出版社.
+[3] 中國中醫學會. (2010). 中醫藥學教材. 北京: 中國中醫學會出版社.",1,0.95
+67,學生,qa,中醫,說明 SI-8 屬性（五輸穴類別）及臨床主治。,Description of SI-8 attributes (Five Shu acupoint category) and clinical indications.,合穴（水）；主治肩肘痛、癲癇、頸痛,"SI-8 (Xiao-hai) — He-sea (water) point of the Small Intestine; used for shoulder and elbow pain, cervical stiffness and epilepsy. :contentReference[oaicite:11]{index=11}&#8203;:contentReference[oaicite:12]{index=12}","五會穴（SI-8）屬於五衝穴之一，位於大腸的下端，約在會陰前下方約1.5寸。五會穴的特點是具有調整五臟五官的功能，能夠調節身體的五臟五官之間的平衡，改善五臟五官的功能異常。
+
+五會穴的臨床指徵包括：
+1. 腹部不適、腸胃不調
+2. 腹部疼痛、腹部膨脹
+3. 腸胃腸炎、腸癌
+4. 腹部腫塊、腹部腫瘤
+5. 腸胃腸炎、腸癌
+
+五會穴的主治病症包括：
+1. 腸胃腸炎、腸癌
+
+五會穴的主治方法包括：
+1. 刺灸、針灸、刮灸、點灸
+
+五會穴的主治劑包括：
+1. 大腸腸胃藥、腸胃藥
+
+[常識]：五會穴的選擇應根據患者的個體情況和病症的具體情況進行，同時需要與其他穴位結合使用，以達到最佳的治療效果。",1,0.67
+68,學生,qa,中醫,LU-1 為何稱「肺之早期警報」？列舉兩項適應症。,"Why is LU-1 called ""early alarm of lungs""? List two indications.",為肺募穴，示警肺熱初期；適應症：咳嗽、呼吸困難、肩痛,"LU-1 (Zhong-fu) — alarm point (Mu) of the Lung; first to react in Lung disorders such as cough, dyspnea and shoulder pain. :contentReference[oaicite:13]{index=13}&#8203;:contentReference[oaicite:14]{index=14}","LU-1是十二部經中的一個穴位，位於額骨之上，額骨角下方約1寸，與額骨之上緣平。它被稱為“肺之会”或“肺之根”，而不是“早期警鐘”（early alarm of lungs）。
+
+然而，LU-1確實被用來檢測和治療呼吸系統的問題，包括咳嗽、氣喘和肺炎等。根據《黃帝內經》和《千金要方》等古典醫學文獻，LU-1的指腫和脈象變化可以用來診斷和評估肺部的功能和病變。
+
+以下是LU-1的兩個常見指腫和治療方法：
+
+1. LU-1指腫：當LU-1指腫時，通常表明肺部有病變或功能不全。這種指腫可以用來診斷和評估肺部的狀況。
+2. LU-1脈象變化：當LU-1的脈象變化時，通常表明肺部有病變或功能不全。這種脈象變化可以用來診斷和評估肺部的狀況。
+
+LU-1的治療方法包括針刺、灸、按摩和藥物等。針刺LU-1可以用來疏通氣道，減輕咳嗽和氣喘的症狀。灸LU-1可以用來強化肺部的功能和增強免疫系統。按摩LU-1可以用來疏通氣道和減輕咳嗽和氣喘的症狀。
+
+　　［常識］　　LU-1的指腫和脈象變化可以用來診斷和評估肺部的狀況，但不是所有的肺部病變都能夠通過LU-1的指腫和脈象變化來診斷和評估。　　［1］　　《黃帝內經》　　《千金要方》　　《內經釋義》　　《釋義》　",1,0.83
+69,學生,qa,中醫,列出「心包經」在風熱咳嗽配穴中常見的任意一穴，並簡述其用途。,"List any common acupoints in the ""pericardium meridian"" in the wind-heat cough acupoints, and briefly describe their uses.",PC-6：理氣鎮痛、止咳,"PC-6 (Nei-guan) — regulates Qi, relieves chest pain and cough; often combined with LI-4 and LU-5 for wind-heat cough. :contentReference[oaicite:15]{index=15}&#8203;:contentReference[oaicite:16]{index=16}","在風熱咳嗽的穴位選擇中，皮膚經（Pericardium Meridian）是常用的經脈之一。以下是其中一些常見的穴位及其用途：
+
+1. **Neiguan（內關）**：位於腕部的前臂，當中部點的兩側約2寸的位置。用於調節心血管系統，緩解胸闷、心悸等症狀。
+2. **Jianshi（肩滲）**：位於前臂的尺側，腕部的下1/3處，當中部點的下1寸處。用於調節氣血，緩解肩痛、手臂疼痛等症狀。
+3. **Chengjiang（承漲）**：位於前臂的尺側，腕部的下1/3處，當中部點的下2寸處。用於調節氣血，緩解肩痛、手臂疼痛等症狀。
+
+以上提到的穴位都是風熱咳嗽的常用穴位，尤其是在調節氣血、緩解胸闷、心悸等症狀方面有著顯著的效果。當然，具體的選擇和操作應根據個體情況和醫師的指導進行。
+
+［常識］：風熱咳嗽的治療主要依靠於清熱泄熱、平肺定喘等原則，選擇適當的穴位和針刺方法對於改善症狀有著重要作用。［1］
+
+Reference:
+[1] 《中醫藥學》(中醫藥學出版社出版)",1,0.87
+70,學生,qa,中醫,試解釋「母穴」概念並以肺經為例說明選穴原則。,"Try to explain the concept of ""mother acupoint"" and use the lung meridian as an example to illustrate the principle of selecting acupoints.",五行土生金，肺母穴為 LU-9；肺虛時補母,"According to the Five-Element generating sequence, Earth is the mother of Metal. LU-9, the earth point and Shu-stream on the Lung channel, is chosen to tonify Lung deficiency by supplementing the mother. :contentReference[oaicite:17]{index=17}&#8203;:contentReference[oaicite:18]{index=18}","""母點""（母點）是中醫理論中的重要概念，它指的是在一個經脈（或稱為""經""）中，具有特殊功能和重要意義的特定點。母點通常被認為是該經的起點或終點，也是該經的主要能量流通點。
+
+在選擇穴位（或稱為""穴""）時，母點是非常重要的參考點。它們可以用來調節該經的能量，改善該經的功能，甚至可以用來治療該經相關的疾病。
+
+以肺經（Lung Meridian）為例，肺經的母點是中脘（RN 17）。中脘位於腹部的中線，約在脐下3寸處。它是肺經的起點，也是肺經能量流通的重要點。
+
+選擇中脘作為肺經的母點的原因是它具有以下功能：
+
+1. 調節肺經的能量：中脘可以調節肺經的能量，改善肺經的功能，從而促進呼吸系統的正常運作。
+2. 促進肺經的流通：中脘可以促進肺經的能量流通，改善肺經的血液循環，從而促進肺經的正常功能。
+3. 治療肺經相關的疾病：中脘可以用來治療肺經相關的疾病，例如哮喘、氣喘、咳嗽等。
+
+總的來說，母點是中醫理論中的重要概念，它可以用來選擇穴位，調節經脈的能量，改善經脈的功能，甚至可以用來治療經脈相關的疾病。
+
+[常識］在中醫理論中，經脈是人體的生命能量流通系統，經脈中的穴位是中醫治療的關鍵點。選擇適當的穴位可以用來調節經脈的能量，改善經脈的功能，從而促進人體的健康。",1,0.84
+110,學生,qa,CCD,CCD 影像診斷常量測哪一結構厚度？,Which structural thickness is measured by CCD imaging diagnostic constant?,間丘黏連(interthalamic adhesion) 厚度 ≤ 5 mm 為支持指標,Interthalamic adhesion ≤ 5 mm is consistent with CCD diagnosis.,"CCD（犬認知功能障礙綜合症）是一種犬隻認知功能障礙的診斷和護理領域，CCD影像診斷常數（CCD imaging diagnostic constant）主要用於評估犬隻腦部結構的厚度。
+
+根據我的知識，CCD影像診斷常數主要用於評估犬隻腦部的某些結構的厚度，例如大腦半球的厚度、腦幹的厚度等。這些厚度的測量可以幫助診斷和評估犬隻的認知功能障礙情況。但是，我們需要注意的是，CCD影像診斷常數的具體用途和適用範圍可能會有所不同，可能需要根據個別案例和臨床情況進行調整。
+
+　　［常識］　　CCD影像診斷常數的具體用途和適用範圍可能會有所不同，可能需要根據個別案例和臨床情況進行調整。
+
+　　根據我的知識，CCD影像診斷常數主要用於評估犬隻腦部的某些結構的厚度，例如大腦半球的厚度、腦幹的厚度等。",1,0
+111,學生,qa,CCD,DISHA 中的 S 代表什麼？,What does S in DISHA stand for?,睡眠-覺醒週期失調 (Sleep-wake cycle disturbance),DISHA includes sleep-wake cycle disturbances.,"DISHA是犬認知功能障礙綜合症（CCD）的縮寫，S代表症狀（Symptoms）。
+
+　　DISHA是指犬的認知功能障礙綜合症的五個重要症狀，包括：動作異常（D）、社交異常（I）、認知異常（S）、激情異常（H）和自我維持異常（A）等。
+
+　　DISHA的五個症狀是犬認知功能障礙綜合症的核心特徵，對於診斷和護理犬認知功能障礙綜合症具有重要的指導意義。
+
+　　[常識］　　犬認知功能障礙綜合症（CCD）是一種常見的犬隻疾病，需要早期診斷和治療，才能有效控制症狀和改善犬隻的生活質量。　　［1］　　Kathryn Pruzansky, DVM, DACVB, CCD-Certified Veterinary Behaviorist, ""Canine Cognitive Dysfunction""，American Animal Hospital Association (AAHA)",1,0.8
+112,學生,qa,CCD,敘述 MCT 對老犬大腦的兩大作用。,Narrative of the two major effects of MCT on the brain of old dogs.,提供酮體替代能量；改善粒線體功能並降低 Aβ 前驅蛋白累積,MCTs supply alternative energy and may improve mitochondrial activity while reducing amyloid precursor protein.,"MCT（中鏈三酰甘油）是一種重要的能量來源，對老犬的腦部有兩個主要的影響：
+
+1. **提高腦部能量供應**：MCT可以快速被腦部吸收和利用，提供腦部所需的能量，從而改善老犬的認知功能和記憶力。研究表明，MCT可以增加老犬的大腦中膽鹼（acetylcholine）和多巴胺（dopamine）的濃度，這兩種神經傳遞物質對於老犬的認知功能和情緒調節非常重要［1］。
+2. **減少腦部氧化應激**：MCT還可以減少腦部氧化應激的產生，從而保護老犬的腦部免受損傷。研究表明，MCT可以增加老犬的大腦中抗氧化酶的活性，從而減少自由基的生成和損傷［2］。
+
+綜上所述，MCT對老犬的腦部有兩個主要的影響：提高腦部能量供應和減少腦部氧化應激。這些效果可以幫助改善老犬的認知功能和情緒調節，從而提高老犬的生活品質。
+
+[常識] MCT是一種重要的能量來源，對於老犬的腦部和整體健康都有重要影響。［3］
+
+[參考文獻]
+[1] 中鏈三酰甘油對老犬腦部的影響.pdf
+[2] 中鏈三酰甘油對老犬腦部氧化應激的影響.pdf
+[3] 中鏈三酰甘油的臨床應用.pdf",2,0.62
+113,學生,qa,CCD,請列舉兩項實驗室行為測試可評估犬隻認知。,Please list two laboratory behavior tests to evaluate dog cognition.,DNMP 測驗、注意力 (attention) 測驗,DNMP memory task and attention task are essential cognitive measures.,"以下是兩個用於評估犬隻認知功能的實驗室行為測試：
+
+1. **卡內基犬智力測試（Carnegie Dog Intelligence Test）**：這個測試評估犬隻的問題解決能力、記憶力和學習能力。測試人員會將食物放在不同的位置，要求犬隻找到食物，測試人員也會變更食物的位置和類型，以評估犬隻的適應能力和問題解決能力。
+2. **犬隻認知功能評估（Dognition Test）**：這個測試評估犬隻的問題解決能力、記憶力和溝通能力。測試人員會使用一系列的問題和活動，例如找食物、解題和溝通，以評估犬隻的認知功能和溝通能力。
+
+［常識］：認知功能評估是一種重要的工具，幫助獸醫和寵物擁有者了解犬隻的認知功能和行為模式，從而提供適當的照護和訓練。
+
+參考來源：
+[1] 類型未知
+
+整理的參考來源：
+[1] 未提供",1,0.88
+114,獸醫師,qa,CCD,臨床未及早發現 CCD 的主要障礙為何？,What are the main obstacles to clinical failure to detect CCD early?,缺乏標準化工具、飼主視為正常老化、就診意願低,Lack of a validated assessment tool and owner misinterpretation impede early diagnosis.,"CCD（犬認知功能障礙綜合症）的早期檢測可能會遇到幾個主要的障礙：
+
+1. **臨床表現的變異性**：CCD的臨床表現可以非常多樣，從輕微的行為改變到嚴重的認知功能障礙。這種變異性使得醫生難以識別早期的症狀。
+2. **無典型症狀**：一些犬隻可能沒有典型的症狀，例如失憶、認知功能障礙等。這使得醫生難以識別CCD的早期跡象。
+3. **誤診**：CCD的症狀可能與其他疾病的症狀相似，例如老年犬的行為改變可能被誤診為CCD，而實際上是由於其他疾病引起的。
+4. **缺乏早期檢測工具**：目前尚未有有效的早期檢測工具可用來識別CCD的早期跡象。
+5. **犬隻的行為變異**：犬隻的行為變異可能與CCD的早期跡象相混淆，例如老年犬的行為變異可能被誤診為CCD，而實際上是由於其他原因引起的。
+
+**[常識]**：CCD的早期檢測需要結合臨床表現、實驗室檢查和影像學檢查等多個方面來進行診斷和評估。
+
+**[參考資料]**：
+
+* [1] ""Canine Cognitive Dysfunction"" by American Animal Hospital Association (AAHA)
+* [2] ""Canine Cognitive Dysfunction: A Review"" by Journal of Veterinary Behavior
+* [3] ""Early detection of Canine Cognitive Dysfunction"" by Journal of Veterinary Internal Medicine",5,0.69
+115,獸醫師,qa,CCD,請給飼主三項居家認知豐富化建議。,Please give the owner three suggestions for enriching home cognition.,規律運動、社交互動、嗅聞尋寶或新玩具,"Cognitive enrichment such as exercise, social interaction and new toys improves cognition.","對於犬認知功能障礙綜合症（CCD）的家長，我們可以提供以下幾個方法來幫助家長為他們的寵物提供更豐富的環境和刺激：
+
+1. **提供多樣的玩具和活動**：使用多種不同形狀、大小和材料的玩具可以幫助寵物保持興趣和關注力。可以定期更換玩具或使用不同的玩具來保持寵物的興趣。
+2. **設計出寵物的遊戲區**：設置寵物的遊戲區可以幫助寵物保持身體和心理的健康。可以在室內或室外設置寵物的遊戲區，並提供寵物不同的玩具和活動。
+3. **提供寵物的視覺和聽覺刺激**：寵物的視覺和聽覺刺激可以幫助寵物保持興趣和關注力。可以使用寵物的視覺刺激，如視覺刺激球或寵物的聽覺刺激，如寵物的音樂播放器。
+
+［常識］：寵物的認知功能障礙綜合症（CCD）是一種常見的疾病，需要家長提供適當的照顧和照料來幫助寵物保持身體和心理的健康。
+
+參考來源：
+[1] American Veterinary Medical Association. (2020). Canine Cognitive Dysfunction.",5,0.91
+116,獸醫師,qa,CCD,列出兩項 MRI 所見能支持 CCD。,List two MRIs that can support CCD.,腦室擴大、間丘黏連變薄 (< 5 mm),Ventricular enlargement and thin interthalamic adhesion support CCD.,"對於犬認知功能障礙綜合症（CCD）的MRI檢查，以下兩個可能的結果可以支持診斷：
+
+1. **腦白質變薄**：MRI檢查可能顯示腦白質（白質）變薄，尤其是在腦幹和基底節區域。這是CCD的一個常見神經影像學特徵。［1］
+2. **腦血管變化**：MRI檢查也可能顯示腦血管變化，例如血管擴張或變窄。這些變化可能與CCD的神經退行性變化有關。［2］
+
+[常識]：MRI檢查在診斷CCD方面的重要性在於它能夠提供神經系統的詳細影像，幫助醫生評估腦部的變化和可能的原因。
+
+參考文獻：
+
+[1] Kamishita M, et al. (2018). Magnetic Resonance Imaging in Canine Cognitive Dysfunction. Journal of Veterinary Internal Medicine, 32(3), 631-638.
+
+[2] Buffington T, et al. (2016). Canine Cognitive Dysfunction: A Review of the Literature. Journal of Veterinary Behavior, 13, 1-11.",2,0
+117,飼主,qa,CCD,10 歲狗半夜醒來吠叫，飼主可以做什麼？,A 10-year-old dog wakes up and barks in the middle of the night. What can the owner do?,諮詢獸醫；環境豐富化；褪黑激素或費洛蒙輔助,"Therapy aims at calming the patient and normalising the sleep-wake cycle (e.g., melatonin, pheromone).","當一隻10歲的狗在夜間醒來並叫聲時，可能的原因包括:
+
+1. **年齡相關問題**：老年狗可能會有夜間叫聲的問題，可能與骨骼肌萎縮、神經系統退行性變化或其他老年相關問題有關。
+2. **疼痛**：狗可能會因為疼痛而醒來，例如牙痛、關節炎或其他慢性疼痛。
+3. **神經系統問題**：犬的神經系統問題，如帕金森病、多發性硬化症或其他神經退行性疾病，可能導致夜間叫聲。
+4. **情緒問題**：狗可能會因為情緒問題，如焦慮、恐懼或孤獨感而醒來叫聲。
+5. **環境因素**：環境變化，如新房客、寵物或人類的加入，可能會導致狗的夜間叫聲。
+
+針對這些可能的原因，以下是主人可以採取的行動：
+
+* **檢查狗的健康狀況**：主人應該將狗帶到獸醫師進行檢查，以排除任何可能的健康問題，如疼痛或神經系統問題。
+* **調整狗的生活習慣**：主人可以試著調整狗的生活習慣，例如增加運動量、提供適當的休息和放鬆時間。
+* **提供適當的照顧**：主人應該確保狗得到適當的照顧和關愛，包括提供適當的食物、水和住宿環境。
+* **使用寵物安定劑**：在某些情況下，獸醫師可能會建議使用寵物安定劑來幫助狗放鬆和睡眠。
+
+**[常識]**
+
+* 年齡是狗健康問題的重要因素，老年狗可能會有更多的健康問題和夜間叫聲問題。
+* 獸醫師的檢查和診斷是必需的，以確保狗的健康狀況。
+* 提供適當的照顧和關愛是保持狗健康和幸福的關鍵。
+
+**參考來源**
+
+* [1] ""Canine Cognitive Dysfunction"" by American Animal Hospital Association (AAHA)
+* [2] ""Nighttime Barking in Dogs"" by PetMD
+* [3] ""Old Dog, New Problems"" by Veterinary Partner",2,0.97
+118,飼主,qa,CCD,狗在熟悉環境迷路時應注意哪種疾病？,What disease should dogs pay attention to when they get lost when they are familiar with the environment?,可能為 CCD，需行為與健康檢查,Disorientation in familiar surroundings is a hallmark CCD sign needing evaluation.,"當狗熟悉環境卻失去時，需要注意的是犬認知功能障礙綜合症（CCD）。CCD是一種神經系統疾病，可能導致狗的認知功能、行為和情緒受影響，包括記憶力下降、學習能力減退、行為變異等。這種疾病可能是由於神經退行性變化、神經毒性、感染、代謝疾病等原因引起的。當狗熟悉環境卻失去時，可能會出現 CCD 的症狀，例如找不到回家的路、記憶力下降、不認識熟悉的環境等。
+
+［常識］：犬認知功能障礙綜合症（CCD）是一種常見的神經系統疾病，需要及早診斷和治療，以避免病情惡化。［1］
+
+根據 American College of Veterinary Behaviorists 的資料，CCD 可能是由於神經退行性變化、神經毒性、感染、代謝疾病等原因引起的。［2］
+
+CCD 的診斷通常需要進行神經系統檢查、血液檢查、影像檢查等，才能確定診斷。［3］
+
+在治療 CCD 時，需要根據狗的個體情況進行調整，可能包括藥物治療、行為治療、生活方式調整等。［4］
+
+最後，需要注意的是，CCD 是一種需要長期管理和監控的疾病，需要定期進行檢查和調整，以避免病情惡化。［5］
+
+參考資料：
+
+[1] American College of Veterinary Behaviorists. (2020). Canine Cognitive Dysfunction. Retrieved from <https://www.acvb.org/behavioral-problems/canine-cognitive-dysfunction/>
+
+[2] American Veterinary Medical Association. (2019). Canine Cognitive Dysfunction. Retrieved from <https://www.avma.org/public/animal-health/canine-cognitive-dysfunction>
+
+[3] Veterinary Information Network. (2020). Canine Cognitive Dysfunction. Retrieved from <https://veterinaryinformationnetwork.com/Article/Canine-Cognitive-Dysfunction>
+
+[4] American Animal Hospital Association. (2020). Canine Cognitive Dysfunction. Retrieved from <https://www.aaha.org/animal-care/canine-cognitive-dysfunction>
+
+[5] Veterinary Partner. (2020). Canine Cognitive Dysfunction. Retrieved from <https://veterinarypartner.vin.com/default.aspx?pid=19239&id=10267>",4,0.93
+119,飼主,qa,CCD,早期警訊提示應帶狗做 CCD 檢查有哪些？,What are the early warning prompts that the dog should be taken for CCD inspection?,迷向、互動改變、夜醒、家中失禁、活動量突變等 DISHA 行為,DISHA behaviour changes are classic early indicators prompting veterinary assessment.,"犬認知功能障礙綜合症（CCD）是一種常見的中年犬疾病，早期警告信號包括：
+
+*   意識狀態改變（例如嗜睡、嗜眠或異常醒覺）
+*   行為改變（例如焦慮、恐懼、躁動或逃避行為）
+*   認知功能下降（例如記憶力下降、學習能力下降或定向能力下降）
+*   語言和溝通能力下降（例如叫聲變化、耳朵不再回應或不再對聲音反應）
+*   行為變異（例如夜間行為異常、嗅覺異常或吞咽困難）
+*   運動功能下降（例如步態不穩、不願運動或無法跳躍）
+
+如果您觀察到任何這些早期警告信號，請立即與您的獸醫聯繫進行進一步的檢查和評估。
+
+[常識]：犬認知功能障礙綜合症（CCD）是一種中年犬疾病，可能由多種因素引起，包括遺傳、環境和健康問題。早期診斷和治療可以幫助改善犬的生活品質和延長其壽命。",5,0.91
+,,,,,,,,,1.96875,0.585625

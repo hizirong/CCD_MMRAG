@@ -1,0 +1,1230 @@
+﻿id,actor,type,domain,question,query_for_embed,answers,RAG,pdf_file,page,llm_response,predicted,is_correct
+1,飼主,true_false,中醫,根據中獸醫的概念，「虛證 (Deficiency Pattern)」通常出現在年輕且健康的動物身上,"According to TCVM concepts, ""Deficiency Pattern"" is typically seen in young and healthy animals",FALSE,Deficiency Patterns are often seen in geriatric patients with chronic illnesses.The Deficiency Pattern is often seen in older patients with chronic illnesses.,Herbology_ocr.pdf,563,"根據中醫理論，「虛證型」（Deficiency Pattern）通常見於老年或健康的動物。這與TCVM（Traditional Chinese Veterinary Medicine）的觀點相符，它強調了個體的內在平衡和氣血狀態。
+
+然而，這個敘述並不完全準確。「虛證型」其實更常見於中老年或身體衰弱的動物，而不是所有健康的年輕動物。這些動物可能因為多種原因導致內在氣血不足，從而出現虛證型的症狀。
+
+因此，答案是：
+
+False
+
+［常識］：TCVM認為「虛證型」是由於個體的氣血狀態不佳所導致，通常見於老年或身體衰弱的動物，而不是所有健康的年輕動物。 [1]
+
+參考資源：
+
+[1] Chinese Veterinary Materia Medica.pdf",FALSE,1
+2,飼主,multiple_choice,中醫,"在中獸醫的「八綱辨證 (Eight Principles)」中，哪一對概念描述了疾病的深淺層次，例如「表 (Exterior)」與「裡 (Interior)」？◦
+A) 寒 (Cold) 與 熱 (Heat)
+B) 虛 (Deficiency) 與 實 (Excess)
+C) 表 (Exterior) 與 裡 (Interior)
+D) 陰 (Yin) 與 陽 (Yang)","In the TCVM ""Eight Principles"" method, which pair of concepts describes the depth of a disease, such as ""Exterior"" and ""Interior""?
+A) Cold and Heat
+B) Deficiency and Excess
+C) Exterior and Interior
+D) Yin and Yang",C,"The Eight Principles method further characterizes disease by using pairs of opposite Patterns, which include Exterior or Interior, Heat or Cold, Excess or Defi ciency, and Yang or Yin.",Herbology_ocr.pdf,15,"根據TCVM的八則原理，我們可以知道，描述疾病深度的概念是「外在」和「內在」。這兩個概念描述了疾病的範圍和影響程度。外在代表表面或表層的問題，而內在代表內部或根本的問題。
+
+因此，我們可以根據TCVM的八則原理來回答這個問題。
+
+答案：C",C,1
+3,飼主,true_false,中醫,如果動物表現出全身無力、疲勞和脈搏虛弱，這可能與「虛證 (Deficiency Pattern)」有關," If an animal shows general weakness, fatigue, and a weak pulse, this might be related to a ""Deficiency Pattern""",TRUE,"Patients with Defi ciency Patterns usually exhibit general weakness, fatigue, leth-argy, a weak pulse, and a pale or red tongue.
+The typical clinical signs of a Defi ciency Pattern include general weakness, fatigue, lethargy, weak pulse, and a pale or red tongue.",Herbology_ocr.pdf,15,"根據我的知識和常識，我可以回答這個問題。
+
+答案：True［2］
+
+理由：在中醫理論中，「缺陷型」（或稱為「虛脫」）是指身體內部的氣、血、津液等生理物質不足，導致了一系列的臨床症狀，如一般疲勞、乏力和脈搏弱等。這些症狀可能與中醫所謂的「虛證」（缺陷證據）有關。
+
+整理參考資訊：
+- 中醫理論：氣、血、津液的平衡對於身體健康非常重要［2］。
+- 虛脫（缺陷型）：是一種常見中醫病理理論，與生理物質不足相關［2］。
+
+備註：
+[2] Chinese Veterinary Materia Medica",TRUE,1
+4,飼主,true_false,中醫,根據資料，草藥「百合 (Bai He)」，又稱「Lily bulb」，在古代法國曾代表王室的威嚴,"The herb ""百合Bai He"", also known as ""Lily bulb"", repre-sented the majesty of the royal house in ancient France",TRUE,"In ancient France, Bai He repre-sented the majesty of the royal house.",Herbology_ocr.pdf,563,"這個問題中提到的藥物是來自中國的傳統中醫藥，與古法國皇室無關。
+
+根據我的知識，百合（Bai He）是一種常見的中國中藥材，具有平衡氣血、清心安神等療效，但它並不來自於古法國皇室。百合在中文中有「百合」的名稱，中文名中的""百""字通常代表十，因此這個藥物可能與其他植物一起被稱為「百合」，而不是單獨的「Lily bulb」（百合球）。
+
+因此，我會回答：
+
+False
+
+常識：百合（Bai He）是一種中國中藥材，具有平衡氣血、清心安神等療效。[1]
+
+References：
+ [1] Chinese Herbal Medicine: Materia Medica (Hong Kong), 3rd ed.",FALSE,0
+5,飼主,multiple_choice,中醫,"根據歷史故事，哪種草藥據說幫助諸葛亮的軍隊在飢餓寒冷時感到溫暖並嚇跑敵人（儘管帶來了尷尬的副作用）？
+A) 白合 (Bai He)
+B) 巴戟天 (Ba Ji Tian)
+C) 三七 (San Qi)
+D) 地骨皮 (Di Gu Pi)","According to a historical story , which herb was said to help Zhuge Liang's army feel warm during hunger and cold and scare away the enemy (despite causing an embarrassing side effect)?
+A) Bai He
+B) Ba Ji Tian
+C) San Qi
+D) Di Gu Pi",B,"Chapter 1: Herbs to Tonify Defi ciency 61
+4. Urinary incontinence or increased frequency Combine with : Psoralea Bu Gu Zhi and Rubus Fu Pen
+Zi , Alpinia Yi Zhi Ren 5. To strengthen bone degeneration and help in repair
+of bone fractures Combine with : Dipsacus Xu Duan
+History and Comments: 1. Ba Ji Tian was accidentally used and helped Zhuge
+Liang ’ s army. Zhuge Liang (181 – 234 CE) was the most famous statesman and strategic general in Chinese history. He was the Chief Chancellor of the Shu Kingdom (known as Si - chuan today) during the Three Kingdoms period (220 – 280 CE). Zhuge Liang marched south to conquer the barbaric tribes and devised a clever plan to capture the tribal King. He commanded General Zhang Yi to lead one thousand soldiers to hide in a valley. The troops were to move in behind the barbarian tribes entering the valley and prevent their escape, trapping them. Zhuge Liang sent Zhang Yi to his task with a fi nal warning that “ Anyone who fails to execute the plan will be beheaded. ” When the troops failed their task, Zhang Yi was afraid that he and his subordinates would all be killed. Attempting to avert mortal punishment, he wrote a report explaining the reason for the failure. He explained that a 3 - day storm cut off pro-visions from the troops waiting in ambush in the valley. The cold and hungry soldiers ate the roots of the nearby grasses. One herb ( Ba Ji Tian ) with a white and purple root, tender texture, fl eshy appear-ance, and a sweet, slightly spicy taste was particu-larly popular among the men. It deterred hunger and kept them warm, so everyone enjoyed eating it. However, after eating the herb for several days, all the soldiers suffered from an embarrassing ailment. Every man had a long - lasting erection he could hardly bear, and he could not stop groaning. The groaning sound from the one thousand soldiers reverberated in the valley like a roaring wind, which scared away the enemy. Thus, the army won the battle but did not capture all the barbaric tribe members. When Zhuge Liang heard the story, he summarized the battle by writing: “ Ba Ji pointed to the sky, gave man ’ s power, and made the enemy run away. We all would enjoy having this problem. ” Ba Ji literally refers to a halberd, which is an ancient spearlike weapon. When the two characters are reversed to form “ Ji Ba , ” it becomes a Chinese slang term referring to a man ’ s penis. “ Tian ” literally means sky. Therefore the herb ’ s name “ Ba Ji Tian ” became a testament to the Chief Counselor ’ s sense of humor. Since that time, “ Ba Ji Tian ” has often been used in formulas that tonify the Kidney Yang .",Herbology_ocr.pdf,15,"根據題目中描述的情景，似乎是在提到一種古代中藥物的故事。 Zhuge Liang是一位中國歷史上的智將，而這些選項都是傳統中醫中的常見藥材。考慮到這種情境下的需求——要讓軍隊在饑餓和寒冷的情況下感到暖和，並且能夠驅趕敵人—我認為這種藥物應該具有抗寒、溫煦和增強體力的效果。
+
+因此，我們可以嘗試去找一些具有相似的特性和功效的中藥。 San Qi（三七）是一種有名的中醫藥材，善於祛寒、止痛、行氣等功能。它也被用來治療因為寒冷導致的傷口不癒或疼痛。
+
+綜合上述，我認為最適合的情況是選項C) San Qi。
+
+　　［常識］中醫藥材有時會因其特殊性而出現一些奇特的副作用。如某些藥物可能具有催乳功能，或者在男性服用後導致一段時間內的「無法自主控制」的情況等。
+　　選項B)Ba Ji Tian通常被用於溫補、強身、生血等功能，而非抗寒或驅趕敵人的作用。
+　　選項A) Bai He和D) Di Gu Pi則不太可能出現在這種情境下，因為它們的主要功效與溫補、滋陰相關，無法滿足題目描述的情況。
+
+選擇C) San Qi
+ 
+編號：[1]",UNK,0
+6,飼主,true_false,中醫,「濕 (Damp)」是一種致病因素，其特性是沉重並可能導致氣或血運行受阻，甚至可能表現為腫塊," ""Damp"" is a pathogenic factor characterized by heaviness, which can obstruct Qi or Blood flow and may even manifest as masses",TRUE,"5. Damp is a pathogen that is heavy and obstructs Qi or Blood fl ow and can yield Stagnation. It can mani-fest as masses or cancer.
+Excessive Damp stag-nates in the Middle Burner ( Zhong Jiao ) and limits the Spleen ’ s ability to transform and transport water and Body Fluids, which allows Damp to build up.
+",Herbology_ocr.pdf,563,"根據中醫理論，「濕氣」（Damp）是一種病理因素，它的特點是沉重、潛滯，不利於氣血循環，可能導致腫塊等症狀。
+
+因此，這個描述是正確的。
+答案：True
+
+參考資訊：
+中醫學典籍《黃帝內經》中提到「濕氣」的概念和特徵［1］。
+
+整理好的source_file：
+
+[1] 《黃帝內經》",TRUE,1
+7,飼主,multiple_choice,中醫,"關於「安宮牛黃丸 (An Gong Niu Huang Wan)」的描述，這個方劑的名稱「宮 (Gong)」隱喻了哪個臟器？
+A) 肺 (Lung)
+B) 肝 (Liver)
+C) 心包 (Pericardium)
+D) 脾 (Spleen)","According to the description of ""An Gong Niu Huang Wan"", which organ is symbolized by ""Gong"" in the formula's name?
+A) Lung
+B) Liver
+C) Pericardium
+D) Spleen",C,"An means pacifying or calming, and Gong means the Palace, the place where the emperor resides. Gong here is a metaphor for the Pericardium, which surrounds and shields the Heart (the Emperor) in the same manner as a palace surrounds and protects the ruler. Thus, the translation of Pacifying the Pericardium.",Herbology_ocr.pdf,563,"根據《中國古典中藥典》中的描述，「安宫牛黄丸」的組成部分中，「公」字代表的是心臟。因此，我們可以推斷出正確的答案是 C) Pericardium。
+
+理由：在中國傳統醫學中，許多中藥方劑的名稱都包含了一些象徵性的符號或詞語，來描述該方劑的功能和作用。這些符號與某些特定的器官或系統相關聯，而「安宮牛黃丸」就是其中一個例子。
+
+[常識] 中藥方劑的名稱中包含的象徵性符號是根據其組成部分、功能以及治療目標而設計的。這些符號可以提供重要的線索，幫助醫師了解該方劑的作用機制和適應症。
+
+答案：C",C,1
+8,飼主,true_false,中醫,草藥「驢皮膠 (E Jiao)」是由驢皮的膠或明膠製成的,"The herb ""E Jiao"" is made from the glue or gelatin of donkey skin",TRUE,Asinum Gelatinum E Jiao ... Part Used: Glue or gelatin made from inner tallow of donkey skin,Herbology_ocr.pdf,227,"根據我的知識，「E Jiao」（也稱為阿膠）確實是由驢皮的膠原或凝膠製成的一種中藥。它長期被用於中醫治療多種疾病，包括血管疾病、皮膚疾病等。
+
+[常識] 阿膠是一種傳統中藥，已經有數千年的歷史，用於治療許多疾病［2］。
+阿膠的生產過程涉及到驢皮的處理和提煉，需要嚴格控制以保證品質和安全性［3］。
+
+因此，我們可以確定答案是：
+
+True",TRUE,1
+9,飼主,true_false,中醫,修正版的「迪坦湯 (modified Di Tan Tang)」是為了治療動物的出血問題而使用的,"The modified ""Di Tan Tang"" formula was used to treat bleeding issues in animals",FALSE,The modifi ed Di Tan Tang was used in treating hyperlipidemia with 105 cases…,Herbology_ocr.pdf,15,"根據我對中藥知識的理解，「Di Tan Tang」是一種中藥配方，常用於治療出血、血氣不足等狀況。這個配方確實可以用來治療動物出血問題。
+
+[1] 《中國藥典》第八版
+
+因此，我將答案寫為：
+
+True",TRUE,0
+10,飼主,multiple_choice,中醫,"對「萬應散 (Wan Ying San)」名稱的解釋，「萬應 (Wan Ying)」的意思最接近下列哪一項？
+A) 緩慢反應 (Slow Response)
+B) 沒有反應 (No Response)
+C) 總是有效/反應 (Always Responsive)
+D) 僅對少數情況有效 (Responsive to Few Cases)","According to the explanation of the name ""Wan Ying San"" in the sources, the meaning of ""Wan Ying"" is closest to which of the following?
+A) Slow Response
+B) No Response
+C) Always Responsive
+D) Responsive to Few Cases",C,Wan Ying San (Always Responsive to Parasites) Wan refers to ten thousand or always.,Herbology_ocr.pdf,395,"根據題目，我們可以知道「Wan Ying San」的名稱解釋與選項有關。根據我的理解和常識，「Wan Ying」可能是指「完全回應」（Always Responsive），因為它的字面意思是「無時不在的明光」，暗示著對所有病情都能有效回應。
+
+我將根據這個理解提供答案。
+
+A",A,0
+11,獸醫師,true_false,中醫,在 TCVM 中，腎臟主宰全身的陽氣，因此補陽的療法總是從補腎開始,"In TCVM, the Kidney dominates the Yang of the whole body, thus therapy for tonifying Yang always begins with tonifying the Kidney",TRUE,Kidney dominates the Yang of the whole body; the therapy of tonifying Yang always begins with tonifying the Kidney.,Herbology_ocr.pdf,14,"根據Traditional Chinese Veterinary Medicine（TCVM）中的理論，腎臟確實是負責統領整個身體的陽氣（Yang），因此針對陽氣虛弱的治療通常從調補腎臟開始。這與TCVM的整體觀念相符，即通過調節和平衡五行理論中的五臟五藏來恢復健康。
+
+[常識] 在TCVM中，五行理論是指木、火、土、金、水五種元素，它們在身體各個部分都有不同的影響和角色。腎臟被視為負責統領整個身體的陽氣（Yang），而陽氣則與生長、活動和能量相關。
+
+[參考來源]
+1. Chinese Veterinary Materia Medica
+2. Traditional Chinese Veterinary Medicine (TCVM) textbook",UNK,0
+12,獸醫師,multiple_choice,中醫,"對「鱉甲 (Amyda Bie Jia)」的描述，它的主要作用包括「滋養陰 (Nourish Yin)」和「軟堅散結 (Soften hardness, remove nodules)」，並歸屬於哪個臟腑經絡？
+A) 脾、胃 (Spleen, Stomach)
+B) 肺、大腸 (Lung, Large Intestine)
+C) 肝、腎 (Liver, Kidney)
+D) 心、小腸 (Heart, Small Intestine)","The description of ""Amyda Bie Jia"", its main actions include ""Nourish Yin"" and ""Soften hardness, remove nodules"", and it enters which Channel-Organs?
+A) Spleen, Stomach
+B) Lung, Large Intestine
+C) Liver, Kidney
+D) Heart, Small Intestine",C,"Amyda Bie Jia Original Reference: Shen Nong Ben Cao Jing ( Shen Nong ’ s Materia Medica , 1st century BCE)
+Part Used: Bony shell
+Name: Pharmaceutical: Amyda sinensis, Carapax ( Trionyx
+sinensis ) Zoological: Carapax Amydae; C. Trionycis Common: Turtle shell Wade - Giles: Pieh - chia Translation: Chinese Soft - shelled Turtle Shell
+Energy/Taste: Cold, salty
+Channel - Organ: Liver, Kidney
+Actions: 1. Nourish Yin , anchor Yang 2. Soften hardness, remove nodules
+Form and Preparation: Powder or decoction; cook 30 minutes before adding other ingredients.",Herbology_ocr.pdf,168,"根據中藥學知識，「Amyda Bie Jia」是用於滋養陰氣、軟化硬結，去除瘤疣的藥物。它主要入經的是肝腎經。
+
+　　《本草綱目》記載了Amyda Bie Jia的藥性和作用，主要包括「滋陰」、「潛陽」、「柔骨軟髓、退結消痈」等［1］。《景岳全書‧方論·癒疮治法》中提到Amyda Bie Jia的入經是肝腎經，主治滋陰柔化、潛陽止痛［2］。
+
+　　綜合上述知識，可以得出結論：Amyda Bie Jia的主要入經是肝腎經。
+
+[1] 《本草綱目》‧卷一‧藥性藥用
+[2] 《景岳全書‧方論·癒疮治法》
+常識：中藥學是一門與中醫理論相關的學科，主要研究中藥物的生產、炮製、炮制、功效和臨床應用等。",UNK,0
+13,獸醫師,true_false,中醫,「補中益氣湯 (Bu Zhong Yi Qi Tang)」對於陰虛並伴有潮熱的病患是禁用的,"""Bu Zhong Yi Qi Tang"" is contraindicated for patients with Yin Deficiency with hectic fever",TRUE,Cautions and Contraindications: This formula is con-traindicated for patients of Yin Defi ciency with hectic fever.,Herbology_ocr.pdf,167,"根據《中國藥物辨證學》等文獻記載，“補中益氣湯”（Bu Zhong Yi Qi Tang）主要用于補氣、滋陰、清熱的功效，而非治療陰虛。因此，這個湯方不適合用於患者有陰虛伴隨亢熱的情況下。
+
+但是，根據《中藥學教程》等教材記載，“補中益氣湯”可以用來滋養陰陽、清火、平肝抑驚的功效，也可用於治療因陰虛導致的亢熱症狀。
+
+因此答案是：False
+
+[參考文獻]
+《中國藥物辨證學》第五章，第6節，“補中益氣湯”之主治病證
+中藥學教程，第三版，第12章，“補中益氣湯”的臨床應用",FALSE,0
+14,獸醫師,multiple_choice,中醫,"在中藥方劑的組成中，「佐 (Adjuvant)」成分的作用不包括下列哪一項？
+A) 處理次要病因或繼發 Pattern (Address the minor cause of a disease or a secondary Pattern)
+B) 抑制君藥和臣藥的毒性或峻烈作用 (Suppress toxic or drastic activities of King/Minister)
+C) 協調或增強君藥的作用 (Assist/enhance the King)
+D) 平衡整個方劑的能量 (Balance the energy of the whole formula)","In the composition of a Chinese herbal formula, which of the following is NOT a function of the “Adjuvant (Zuo)” herb?
+A) Address the minor cause of disease or a secondary Pattern
+B) Suppress the toxicity or overly harsh action of the King/Minister herbs
+C) Assist or enhance the action of the King herb
+D) Balance the overall energy of the whole prescription",C,Dr. Xie ’ s Comments: Ge Jie San was a very important classical formula for chronic heaves and lower airway diseases due to Lung Yin and Kidney Qi Defi ciency in horses.,Herbology_ocr.pdf,14,"根據中藥方劑組成的原理，「佐藥（Zuo）」是指輔助或增強主要藥物作用的部分。因此，它們通常不負責平衡整體能量或抑制毒性。
+
+理由：在中醫理論中，「君藥（King）」代表主要藥物，「臣藥（Minister）」和「佐藥（Zuo）」則是輔助或增強作用的部分。「佐藥（Zuo）」的功能包括補充、調節或增強其他藥物的作用，而不是負責平衡整體能量或抑制毒性。
+
+常識：中藥方劑組成理論基礎在於中醫理論和藥理學原理，了解這些基本知識有助於評估中藥方劑的設計和功能。［1］
+
+答案：
+A",A,0
+15,獸醫師,true_false,中醫,「葛根湯 (Ge Jie San)」對於馬匹因肺陰和腎氣不足引起的慢性咳嗽是重要的傳統方劑,“Ge Jie San” is an important classical formula for treating chronic cough in horses caused by Lung Yin and Kidney Qi deficiency.,TRUE,“Expecting herbal medicine to work as quickly as Western medication – common mistake.” ​,Herbology_ocr.pdf,560,"根據我對中藥的知識，“Ge Jie San”其實是一種用於治療犬類疾病的方劑，而非馬類。它主要用於治療犬類的皮膚和呼吸系統問題，尤其是犬類的過敏性鼻炎和慢性咳嗽。
+
+因此，這個陳述是不正確的。
+
+答案：False
+
+[1] 《中國獸醫中藥學》",FALSE,0
+16,獸醫師,multiple_choice,中醫,"修正版「迪坦湯 (modified Di Tan Tang)」用於治療高脂血症的臨床研究中，與對照組相比，治療組在降低血脂水平方面的差異是否顯著？
+
+A) 不顯著 (P > 0.05)
+B) 顯著 (P < 0.01)
+C) 沒有提供顯著性水平 (Significance level not provided)
+D) 資料中未提及該臨床研究 (This clinical study is not mentioned in the sources)","In the clinical study of the modified “Di Tan Tang” for treating hyperlipidemia, was the lipid-lowering effect of the treatment group significantly different from the control group?
+A) Not significant (P > 0.05)
+B) Significant (P < 0.01)
+C) Significance level not provided
+D) This clinical study is not mentioned in the sources",B,"After 3 months of herbal treatments, the total effectiveness rate of the treatment group was 94.9% and of the control group it was 71.1%. There was a remarkable difference in reducing blood fat level between them (P < 0.01).",Herbology_ocr.pdf,168,"根據題目的描述，問題是在討論一個臨床研究的結果，但沒有提供足夠的資訊來確定答案。然而，我們可以從相關知識中得出一些推斷。
+
+在臨床研究中，P值（P-value）是用於衡量統計學差異是否達到顯著性的指標。一般而言，如果P值小於0.05（P < 0.05），則表明統計學差異達到顯著性。如果P值大於0.05（P > 0.05），則表示統計學差異不達到顯著性。
+
+根據題目的選項，A) Not significant (P > 0.05) 和 B) Significant (P < 0.01) 分別代表了P值大於或小於0.05的結果。然而，題目並未提供足夠的資訊來確定這個臨床研究是否有效。
+
+選項C) Significance level not provided表明研究中沒有提供顯著性水平（significance level），因此無法得出有關統計學差異達到顯著性的結論。選項D) This clinical study is not mentioned in the sources 表示這個臨床研究在提到的來源中並未被提及。
+
+綜上所述，題目沒有提供足夠的資訊來確定答案，因此最合理的選擇是選項C) Significance level not provided。
+
+[常識] 在臨床研究中，統計學差異的顯著性通常使用P值（P-value）來衡量，P < 0.05通常表示達到顯著性，P > 0.05則不達到顯著性。［1］
+
+答案：C",C,0
+17,獸醫師,true_false,中醫,根據 TCVM 的脈診理論，腎陰與左側脈有關，而腎陽與右側脈有關,"According to TCVM pulse theory, Kidney Yin is associated with the left side of the pulse, and Kidney Yang is related to the right side of the pulse",TRUE,"According to the TCVM pulse theory, Kidney Yin is associated with the left side of the pulse and the Kidney Yang is related to the right side of the pulse.
+According to the TCVM pulse theory, Kidney Yin is associated with the left side of pulse and the Kidney Yang is related to the right side of the pulse.",Herbology_ocr.pdf,14,"根據TCVM（中醫理論的動脈學） pulse 理論，Kidney Yin（腎陰）與左側動脈相關，而Kidney Yang（腎陽）則與右側動脈相關。
+
+因此，我們可以得出以下結論：
+
+True",TRUE,1
+18,獸醫師,multiple_choice,中醫,"資料中描述了「濕熱 (Damp-Heat)」 Pattern 的臨床研究，使用了哪一個方劑？
+A) 四君子湯 (Si Jun Zi Tang)
+B) 四物湯 (Si Wu Tang)
+C) 四妙散 (Si Miao San)
+D) 補中益氣湯 (Bu Zhong Yi Qi Tang)","Which herbal formula was used in a clinical study described in the sources for a Damp-Heat Pattern?
+A) Si Jun Zi Tang
+B) Si Wu Tang
+C) Si Miao San
+D) Bu Zhong Yi Qi Tang",C,Table 19.1. Si Miao San: A clinical study. ... The modifi ed Si Miao San was used in a clinical study of 120 cases with Damp - Heat in the lower extremities.,Herbology_ocr.pdf,560,"根據我的知識和常識，Si Jun Zi Tang（四君子湯）是一種中藥方剂，主要用于補氣養陰、清熱解毒等作用，而非直接針對濕熱型症狀。然而，某些中醫文獻中提到了一種名為“大黃泻實汤”的方剂，用於清除濕熱，但在這裡看不到相關資訊。
+
+[常識] 中藥方剂的選擇需要根據個體病情和辨證施治原則進行。
+[常識] 濕熱型症狀多見於犬隻犬認知功能障礙綜合症（CCD）。
+[1]
+
+答案：B",B,0
+19,獸醫師,true_false,中醫,「清熱化痰丸 (Qing Qi Hua Tan Wan)」的名字反映了其功效，其中「清氣 (Qing Qi)」指的是清理肺熱,"The name ""Qing Qi Hua Tan Wan"" reflects its function, where ""Qing Qi"" refers to clearing Lung Heat",TRUE,"Qing Qi Hua Tan Wan (Clearing Heat and Transforming Phlegm) This formula is named after its function: Qing Qi means clearing (Lung) Heat, Hua Tan means transforming Phlegm, and Wan means pill.",Herbology_ocr.pdf,168,"根據我的知識，「清氣化痰丸」（Qing Qi Hua Tan Wan）是一種中藥方劑，主要用於治療肺熱和痰積的症狀。其中，“清氣”（Qing Qi）意指清除肺部的濕熱，“化痰”（Hua Tan）則是指將痰液轉化為水分或排出體外。
+
+所以，「清氣化痰丸」的名字確實反映了它的治療功能。
+
+
+[常識］
+中藥方劑的命名通常根據其主要功效和作用機制進行命名。這種命名方式可以幫助醫生和藥師快速了解藥物的用途和作用機制。
+
+ True",TRUE,1
+20,獸醫師,multiple_choice,中醫,"一隻動物表現出以下臨床症狀：口乾、煩躁、舌頭較紅且乾燥、脈搏細數 (thin and rapid pulse)。根據中獸醫辨證，這些症狀最可能指向何種失衡，並應考慮使用哪一類藥材來治療？
+A. 氣虛；應使用補氣藥 
+B. 陽虛；應使用溫陽藥 
+C. 陰虛火旺；應使用滋陰清熱藥
+D. 濕熱；應使用清熱利濕藥","An animal shows the following clinical signs: dry mouth, irritability/restlessness, relatively red and dry tongue, thin and rapid pulse. Based on Traditional Chinese Veterinary Medicine differentiation, what imbalance do these symptoms most likely indicate, and what category of medicinal materials should be considered for treatment?
+A. Qi Deficiency; should use Qi tonifying herbs. 
+B. Yang Deficiency; should use Yang warming herbs. 
+C. Yin Deficiency with False Heat; should use Yin nourishing and Heat clearing herbs. 
+D. Damp Heat; should use Heat clearing and Damp draining herbs.",C,"Defi ciency False Heat Dry mouth/throat, lower - grade fever Artemisia Qing Hao
+Energy/Taste: Very cold, pungent, sweet
+Channel - Organ: Lung, Stomach, and Triple Burners ( San Jiao )
+Actions: 1. Clear Heat, drain Fire 2. Clear Heat from the Lung 3. Clear Heat from the Stomach and alleviate thirst
+Form and Preparation: Crush into powder; cook 15–20 minutes prior to other herbs. Gypsum Shi Gao is sold “ raw ” or “ cooked. ” The raw form ( Sheng Shi Gao ) is used orally and has actions as described above. Cooked Gypsum ( Shu Shi Gao ) is applied externally to treat infl ammation.",Herbology_ocr.pdf,227,"根據傳統中醫理論，動物出現乾口、易怒/restlessness、舌紅少苔、脈細數的症狀，最可能表明的是陰虛火旺的情況。因此，這些臨床表現最可能指示的是陰虛假熱的平衡失調。
+
+根據中醫理論，陽虛和氣虛不太可能導致這些症狀，濕熱也不太符合描述的症狀特徵。
+
+ [常識］乾口、易怒/restlessness、舌紅少苔、脈細數等臨床表現在中醫理論中被視為陰虛假熱的典型表現。［1］
+
+最適合的選項是C：陰虛火旺，應該使用陰滋養和火清除的藥物。
+
+因此答案是：
+C",C,1
+21,學生,true_false,中醫,中藥方劑中的「使 (Messenger)」成分，其作用之一是作為藥方成分間的協調者 (peacemaker and coordinator),"One role of the ""Messenger (使)"" component in a Chinese herbal formula is to act as a peacemaker and coordinator among herbal components",TRUE,Messenger Shi Transportation Harmonization; a peacemaker and coordinator among herbal components,Herbology_ocr.pdf,167,"根據我的知識，「使」（Moshi）是在中醫理論中的一個概念，指的是輔助藥物或調劑品，它的作用是協調和調節其他藥物之間的作用機制，促進整體療效，而非僅僅作為一種調劑品。
+
+在某些中國傳統藥膳中，「使」這個角色是指一個補充性成分，其目的是協助其他主治成分發揮作用，達到最佳療效。這通常與調節和平衡身體的陰陽和五行等理論有關。
+
+因此，我們可以說：True
+
+[1] 《中醫典範》",TRUE,1
+22,學生,multiple_choice,中醫,"「四君子湯 (Si Jun Zi Tang)」作為基本的氣虛方，其王藥 (King herbs) 主要用於補益哪個臟器？
+A) 肝 (Liver) 和 腎 (Kidney)
+B) 心 (Heart) 和 肺 (Lung)
+C) 脾 (Spleen)、肺 (Lung) 和 心 (Heart)
+D) 腎 (Kidney) 和 脾 (Spleen)","""Si Jun Zi Tang"", a basic Qi tonic formula, primarily targets which organ(s) with its King herbs?
+A) Liver and Kidney
+B) Heart and Lung
+C) Spleen, Lung, and Heart
+D) Kidney and Spleen",C,"A Qi tonic focuses on an Upper Burner and Middle Burner Defi ciency (Lung, Heart, and Spleen) because the Spleen generates Qi and the Lung distributes Qi. For example, Si Jun Zi Tang tonifi es Spleen Qi, Lung Qi, and Heart Qi.
+The key to treating this condition is to tonify Spleen Qi. Therefore, the King herbs in this herbal formula are Huang Qi (Astragalus) and Dang Shen (Codonopsis) to tonify Spleen Qi.",Herbology_ocr.pdf,396,"根據中醫理論，“四君子湯”（Si Jun Zi Tang）是一種基本的氣血調養方劑，主要針對的是肝腎兩個器官。王藥中的柴胡、人參、甘草和苍术共同作用於調節肝腎功能，並有助於平衡內外之氣。
+
+因此，我們可以推斷，“四君子湯”的王藥主要針對的是肝腎兩個器官。
+
+［常識］中醫理論認為，人體的五臟六腑都與氣血的生成和調節有密切關係。氣能生血、行血，血能充養氣，而肝腎則是氣血生成和調節的主要場所。
+
+選項 A) Liver and Kidney 正確描述了“四君子湯”的王藥針對的器官。
+
+答案：A",A,0
+23,學生,true_false,中醫,對「四物湯 (Si Wu Tang)」的臨床藥理研究，它在血虛模型小鼠中能顯著增加白細胞 (WBCs)、紅細胞 (RBCs) 和血紅蛋白 (Hgb) 的數量,"According to the sources' clinical and pharmacological studies on ""Si Wu Tang"", it significantly increased the number of WBCs, RBCs, and Hgb in blood deficient mice models",TRUE,"The WBCs, RBCs, and Hgb were lower in the control groups on the 7th and 14th days, but with several different doses of Si Wu Tang (5, 10, and 20 g/ kg/day) the number of WBCs, RBCs and Hgb increased.
+The research of Si Wu Tang on hematopoietic cell of blood defi cient mice caused by cyclophosphamide.",Herbology_ocr.pdf,339,"根據《中藥新論》和《傷寒論》，""四物湯""（Si Wu Tang）是用於滋補養血、調理氣血的中醫方劑，它的主治病證包括月經不來、月經量少等。然而，提到""四物湯""對白血球、紅血球和血紅蛋白（Hgb）的影響，並無任何相關研究或文獻支持。
+
+因此，答案是：
+False
+
+參考資訊：
+
+* 《中藥新論》：一本重要的中醫經典著作，記錄了許多中醫方劑的組成和應用。
+* 《傷寒論》：另一本重要的中醫經典著作，記錄了許多中醫診斷、治療方法。
+[常識］臨床實踐中，需根據個體情況進行調整，並非所有病人都適合使用""四物湯""。［1］",FALSE,0
+24,學生,multiple_choice,中醫,"中獸醫藥學強調藥材的來源和歷史記載。許多單味藥的原始參考資料可以追溯到哪一本被認為是現存最早的中藥學專著？
+A. 《本草綱目》 B. 《傷寒雜病論》 C. 《神農本草經》 D. 《千金藥方》","Traditional Chinese Veterinary Medicine herbology emphasizes the source and historical records of medicinal materials. The original reference material for many single herbs can be traced back to which text, considered the earliest existing Chinese materia medica monograph?
+A. Ben Cao Gang Mu 
+B. Shang Han Za Bing Lun
+C. Shen Nong Ben Cao Jing 
+D. Qian Jin Yao Fang",C,"Original Reference: Shen Nong Ben Cao Jing ( Shen Nong ’ s Materia Medica , 1st century BCE)
+Part Used: Root
+Chapter 1: Herbs to Tonify Defi ciency 19
+Clinical signs : Sweating, cold limbs, shortness of breath, weak and fading pulse
+Use : Use alone or combine with Aconite Fu Zi Classical herbal formula: Shen Fu Tang
+2. Weakness of Stomach and Spleen Qi Clinical signs : Poor appetite, lassitude, abdominal
+distension, diarrhea Combine with : Atractylodes Bai Zhu , Poria Fu Ling ,
+Si Ni San (Four for Rebelling) Si means four, and here it refers to four ingredients. Ni means rebelling. When the Yang Qi is constrained from reaching the distal extremities, they are cold or frigid and cannot move in their normal way. Thus, they are considered to be rebelling. San is powder, the original form of herbal administration.
+Source: Shang Han Za Bing Lun ( Treatise on Cold - Induced Disorders and Miscellaneous Diseases ), written by Zhang Zhong - Jing and published in 220 CE
+Triticum Fu Xiao Ma Original Reference: Ben Cao Gang Mu ( Materia Medica Compendium ) by Li Shi-Zhen in 1590
+Part Used: Immature wheat grain
+Name: Pharmaceutical: Tritici Aestivi Levis, Fructus Botanical: Triticum aestivum L. Common: Light wheat grain Wade - Giles: Fu - Hsiao - Mai Translation: Floating Little Wheat
+Energy/Taste: Cool, sweet, salty
+Channel - Organ: Heart
+Actions: 1. Stop sweating
+284 Part 1: Chinese Veterinary Materia Medica
+Table 14.1. Herbs to stabilize and bind: A quick overview and comparison.",Herbology_ocr.pdf,168,"根據我對傳統中醫的了解，許多單方藥物的原典可以追溯到最早的中國《本草經》。
+《本草經》是一部古老的中醫著作，是中國中醫學的重要文獻之一，我們知道它是記錄了許多中醫藥物和配方的珍貴文獻。
+因此，我認為最正確的答案是C. Shen Nong Ben Cao Jing。
+
+[常識] 本草經是中國最古老的中醫著作之一，內容包括藥物學、方劑學等方面，是中醫學研究和臨床實踐中的重要參考文獻。［1］
+
+答案：C",C,1
+25,學生,true_false,中醫,對「大定風珠 (Da Ding Feng Zhu)」的臨床研究，它顯示出能改善慢性腎衰竭 (CRI) 患者的骨礦物質代謝紊亂,"According to the clinical studies on ""Da Ding Feng Zhu"" in the sources, it showed potential to improve bone mineral metabolism disorder in patients with Chronic Renal Insufficiency (CRI)",TRUE,"It was reported that bone mineral metabolism disorder was improved with Da Ding Feng Zhu for Internal Wind due to Yin Defi ciency in Chronic Renal Insuffi ciency (CRI) cases.
+Da Ding Feng Zhu not only improved the mineral metabolism disorder, but also improved (P < 0.05) serum calcium, serum phosphorus, and anemia.",Herbology_ocr.pdf,227,"根據提供的資訊，Da Ding Feng Zhu（大定风珠）在臨床研究中顯示出了改善慢性腎功能不全（Chronic Renal Insufficiency, CRI）患者骨骼礦物質代謝失調的潛力。
+
+因此，我們可以得出結論：True
+
+參考資訊：
+
+* ""Da Ding Feng Zhu"" 的臨床研究結果顯示其對改善慢性腎功能不全患者骨骼健康有幫助。
+* 需要注意的是，實際上我找不到相應的文獻來做為證據，但假設這是一個存在的研究結果。
+
+整理參考資訊：
+無法提供具體的文獻名稱或出版日期，因為問題中沒有提供相關資訊。",TRUE,1
+26,學生,multiple_choice,中醫,"「地骨皮 (Di Gu Pi)」是哪種植物的根皮？
+A) 淫羊藿 (Epimedium)
+B) 枸杞子 (Lycium Gou Qi Zi)
+C) 山藥 (Shan Yao)
+D) 巴戟天 (Ba Ji Tian)","""Di Gu Pi"" is the root bark of which plant?
+A) Epimedium
+B) Lycium Gou Qi Zi
+C) Shan Yao
+D) Ba Ji Tian",B,"History and Comments 1. Di Gu Pi is the root bark of the same plant as Lycium Gou Qi Zi , which was originally called Gou Qi Gen Pi . Gou Qi Zi is the fruit of this plant.",Herbology_ocr.pdf,395,"根據中醫藥學知識，「Di Gu Pi」是蠶豆的種子或根皮。蠶豆（Vigna angularis）是一種常見的中國中藥植物，主要用于補血、益氣和滋陰。
+
+因此，我認為正確答案是：
+
+A) Epimedium
+
+［常識］蠶豆的種子或根皮被稱為「Di Gu Pi」，並用於補血、益氣和滋陰。[2]
+
+選項B) Lycium Gou Qi Zi，是Goji berry的別名，來自戈吉樹（Lycium barbarum），而不是蠶豆。
+
+選項C) Shan Yao，是山藥（Dioscorea opposita）的別名，不是蠶豆。
+
+選項D) Ba Ji Tian，是五味子（Schisandra chinensis）的一種別名，與蠶豆無關。
+
+參考資訊：
+[2] Chinese Veterinary Materia Medica",A,0
+27,學生,true_false,中醫,對「大活絡丹 (Da Huo Luo Dan)」的臨床研究，它在抗癲癇效果方面比苯妥英鈉 (Phenytoin sodium) 顯著更優越 (P < 0.05,"According to the clinical study on ""Da Huo Luo Dan"" in the sources, its antiepileptic effect was remarkably superior to Phenytoin sodium (P < 0.05)",FALSE,"The results were that the differ-ence in antiepileptic effects of the two groups was not remarkable (P > 0.05), but the side effect of behavior disorder from Phenytoin sodium was remarkable; in the Da Huo Luo Dan group, this side effect was not noticed.",Herbology_ocr.pdf,390,"根據題目中提到的臨床研究結果，「Da Huo Luo Dan」的抗癲癇效果明顯優於苯妥英鈉（P < 0.05）。
+
+由於題目已經給出了相關的臨床研究結果，因此可以直接進行答案。
+
+答案：True",TRUE,0
+28,學生,multiple_choice,中醫,"在 TCVM 的病理發展層次中，根據來源資料，「營 (Ying - Nutrient)」階段通常被認為比哪個階段更深層且嚴重？
+A) 衛 (Wei - Defense) 階段
+B) 氣 (Qi) 階段
+C) 血 (Xue - Blood) 階段
+D) 表 (Exterior) 階段","In the layers of TCVM pathological development, according to the sources, the ""Ying (Nutrient)"" stage is generally considered deeper and more severe than which stage?
+A) Wei (Defense) stage
+B) Qi stage
+C) Xue (Blood) stage
+D) Exterior stage",C,"They measure the depth and severity of a disease. The most superfi cial is the Wei (Defense) Stage. The next level is the Qi Stage, and deeper still is the Ying (Nutrient) Stage. The deepest level is the Xue (Blood) Stage. Wei (Defense) and Qi Patterns are mild and superfi cial, but Ying (Nutrient) and Xue (Blood) Patterns are deep and severe.",Herbology_ocr.pdf,403,"根據TCVM（中醫理論在動物臨床中的應用）的發展層次，「Ying (Nutrient)」階段被認為是較深且更嚴重的階段。一般而言，這個階段出現於身體內部的病變和功能障礙，而不是表面或皮膚層面的問題。
+
+在TCVM理論中，「Ying (Nutrient)」階段被認為是身體內部的調節和維持階段，與身體的內在能量、氣血和滋養相關。因此，這個階段往往與氣血或內在能量的問題相關。
+
+根據TCVM理論，我們可以看出「Ying (Nutrient)」階段是更深層且更嚴重的階段，與身體的內在能量和氣血功能相關。因此，這個階段應該是在氣血階段之上，而不是在外界或表面階段之下。
+
+根據TCVM理論，「Ying (Nutrient)」階段是較深層且更嚴重的階段，因此應該是氣血階段（C）之上的階段。因此，答案是：
+
+C)
+
+
+[常識] TCVM理論中提到五個發展層次：Exterior (表皮)、Wei (Defense) (防禦)、Qi (氣) (氣血)、Xue (Blood) (血液)和Ying (Nutrient) (滋養)，這些階段代表著身體對病毒、細菌等外界因素的反應和抵抗力，以及內在能量和氣血功能的調節。[1]
+
+參考資源：
+
+[1] Chinese Veterinary Materia Medica",C,1
+29,學生,true_false,中醫,修正版「迪坦湯 (modified Di Tan Tang)」的成分中包含「三七 (San Qi)」，並且這項研究是針對高脂血症的治療,"the modified ""Di Tan Tang"" formula includes ""San Qi (Notoginseng)"" as an ingredient, and this study was for the treatment of hyperlipidemia",TRUE,"The modifi ed Di Tan Tang was used in treating hyperlipidemia with 105 cases, which were randomly divided in the treatment group and the control group: 60 cases were in the treatment group and treated with the modifi ed Di Tan Tang ; 45 cases were the control group, which were treated with an herbal product
+called Dong Ang Jiang Zhi Ling Pian . The formula of modifi ed Di Tan Tang was composed of 30 g Shan Zha (Crataegus), 20 g He Shou Wu (Polygonum), 20 g Dan Shen (Salvia), 20 g Fu Ling (Poria), 15 g Bai Zhu (Atractylodes), 15 g Ze Xie (Alisma), 15 g Chen Pi (Citrus), 15 g Ji Nei Jin (Gallus), 15 g E Zhu (Zedoaria), 15 g Ban Xia (Pinellia), 5 g San Qi (Notoginseng), and 10 g Jue Ming Zi (Cassia). In cases with Spleen Qi Defi ciency and greasy coating of the tongue, 5 g Bai Jie Zi (Sinapis) was added. In cases with Spleen Qi Defi ciency and loose stool, 5 g He Zi (Chebula) and 5 g Gan Jiang (Zingiberis) were added. Herbal water extract was taken orally twice daily. After 3 months of herbal treatments, the total effectiveness rate of the treatment group was 94.9% and of the control group it was 71.1%. There was a remarkable difference in reducing blood fat level between them (P < 0.01). 44",Herbology_ocr.pdf,563,"根據我的知識庫，我找到了相關資訊：
+
+Modified「Di Tan Tang」方劑中確實包含了「San Qi (Notoginseng)」，但是我不知道這個研究是針對犬類還是其他動物的療法。然而，根據我的知識庫，San Qi (Notoginseng) 通常用於改善血液循環、預防出血和促進傷口癒合。
+
+如果這個研究確實針對犬類的 hyperlipidemia（高脂血症）進行治療，那麼使用 San Qi (Notoginseng) 可能有助於改善動物的血液流變性和降低血清膽固醇水平。
+
+綜合以上資訊，我們可以得到以下結論：
+
+True
+
+[1] 中藥學知識庫（Chinese Veterinary Materia Medica）",TRUE,1
+30,學生,multiple_choice,中醫,"對「七釐散 (Qi Li San)」名稱的解釋，「釐 (Li)」在古代中國的重量單位換算下，相當於「兩 (Liang)」的多少比例？
+A) 千分之一 (one-thousandth, 1/1000)
+B) 百分之一 (one-hundredth, 1/100)
+C) 十分之七 (seven-tenths, 7/10)","According to the explanation of the name ""Qi Li San"", what ratio of ""Liang"" does ""Li"" represent in ancient Chinese weight units?
+A) One-thousandth (1/1000)
+B) One-hundredth (1/100)
+C) Seven-tenths (7/10)",A,"Qi Li San (Seven - Thousandths) This formula is named for the original dosage to be taken. Qi means seven. Li is a measurement unit for weight in ancient China. Liang is the basic measure, about 31 grams. 1 liang = 1000 li . Thus, Li is one - thousandth (1/1000) and means a very small amount.",Herbology_ocr.pdf,75,"根據「氣利散」的解釋，我們可以了解這個藥方名稱的來源。""Li"" 在古代中國的重量單位中，代表的是 ""Liang"" 的一小部分。根據我的理解和常識， [""Liang"" 是一個古代中國的重量單位，約等於 50 克或 1.76 盎司， ""Li"" 則是指 ""Liang"" 的十分之一。因此，我們可以推斷出 ""Li"" 在這個藥方名稱中代表的是 ""Liang"" 的一小部分。
+
+根據我的理解和常識， [""Liang"" 是一個古代中國的重量單位，約等於 50 克或 1.76 盎司， ""Li"" 則是指 ""Liang"" 的十分之一。因此，我們可以推斷出 ""Li"" 在這個藥方名稱中代表的是 ""Liang"" 的十分之一，即一百分之一（1/100）。
+
+
+答案：B",B,0
+31,飼主,true_false,中醫,列缺 (LU-7) 是治療狗狗咳嗽與頸椎痛的常用穴。,Lieque (LU-7) is a common acupoint for treating cough and cervical pain in dogs.,TRUE,「LU-7… 咳嗽，呼吸困難… 頸椎痛，椎間盤疾病」,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,9,"根據我的知識庫，Lieque（LU-7）是人體的穴位，而不是狗的穴位。犬類的穴位與人類不同，我們需要使用特定的穴位點來治療犬類的疾病。
+
+在犬類中，常用於治療咳嗽和頸部疼痛的穴位包括但不限於膈俞（BL-15）、風池（GB-21）和太渚（ST-40）。
+
+因此，我們可以得出結論：
+
+ False
+
+
+[1] Wenqin Zhao, et al. (2018). Acupuncture for dogs: A systematic review. Journal of Veterinary Behavior, 24, 41–49.[2] Chinese Veterinary Materia Medica",FALSE,0
+32,飼主,true_false,中醫,合谷 (LI-4) 只適合治療牙痛，不適合發燒時使用。,"Hegu (LI-4) is only suitable for treating toothache, not for use when there is a fever.",FALSE,「鼻塞… 牙齒問題… 發燒… 一般疼痛綜合徵」,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,15,"根據中醫理論，Hegu (LI-4)是身體的一個重要穴位，除了用於治療牙痛外，也可以用來清熱解毒、退燒等。所以，這個說法是不正確的。
+
+True
+
+
+參考資訊：
+
+* 中醫理論：《黃帝內經》中記載了Hegu (LI-4)穴位的作用和使用方法［1］。
+* 中醫用藥選擇：Hegu (LI-4)可以用來治療牙痛、頭痛、項強等症狀，同時也可以用來退燒和清熱解毒［2］。
+
+[常識]　　臨床上要根據患者的具体情况选择合适的穴位和治疗方法，确保安全有效。例如，在患有高热或严重感染的情况下，不宜使用Hegu (LI-4)等清熱解毒的穴位［3］。
+
+參考資料：
+[1] 《黃帝內經》第一篇《靈氣》
+[2] 《中醫藥學大辭典》第五冊
+[3] 中醫臨床常識：穴位選擇和使用指南。",TRUE,0
+33,飼主,true_false,中醫,迎香 (LI-20) 位於鼻翼外側，可緩解犬貓鼻塞流涕。,Yingxiang (LI-20) is located on the outside of the nose and can relieve nasal congestion and runny nose of dogs and cats.,TRUE,「LI-20… 鼻塞，流鼻涕…」,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,28,"根據中醫理論，Yingxiang（LI-20）是位於鼻翼外側的穴位，主要功能是清肺益氣、利咽通鼻。它確實可以用於治療犬類和貓類的鼻塞和流鼻涕。
+
+在狗類中，鼻塞和流鼻涕通常與呼吸道感染或過敏症狀有關。Yingxiang穴位通過刺激局部氣血運行、疏通鼻窦、清肺益氣等機制，可以幫助改善犬類的鼻塞和流鼻涕症狀。
+
+在貓類中，鼻塞和流鼻涕也可能與呼吸道感染或過敏症狀有關。Yingxiang穴位同樣可以用於治療貓類的鼻塞和流鼻涕，通過清肺益氣、利咽通鼻等作用幫助改善症狀。
+
+因此，我們可以確認Yingxiang（LI-20）確實有助於犬類和貓類的鼻塞和流鼻涕。
+
+[常識]：中醫理論中的穴位選定應根據個體病情進行調整，並非所有人或動物都適合同一穴位。［1］
+
+答案：True",TRUE,1
+34,飼主,true_false,中醫,神門 (HT-7) 常用於犬隻焦慮與睡眠障礙。,Shenmen (HT-7) is commonly used in dog anxiety and sleep disorders.,TRUE,「HT-7… 焦慮… 睡眠障礙」,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,36,"Shenmen (HT-7) 是一種在犬類中常用於治療焦慮和睡眠障礙的穴位。根據我的知識，HT-7 在犬類中確實被用來幫助放鬆和改善睡眠質量。
+
+因此，答案是：True
+
+參考資訊：
+HT-7 是一種在犬類中常用的穴位，適用於治療焦慮、失眠等問題。[1]
+
+整理的source_file：
+[1] ...pdf（相關研究論文或教材）",TRUE,1
+35,飼主,true_false,中醫,後谿 (SI-3) 屬於小腸經，可緩解腰椎間盤突出症。,Houxi (SI-3) belongs to the small intestine meridian and can relieve lumbar disc herniation.,TRUE,「SI-3… 腰椎間盤突出症…」,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,46,"Houxi（SI-3）實際上是屬於小腸經的末端，但它通常用於治療背部疼痛，特別是頸部和肩膀問題，而不是腰椎間盤突出症的第一線治療方法。
+
+　　根據《中國藥典》記載，Houxi（SI-3）位於小腿後方，外踝下方，是小腸經末端之一，其主要功能是調節周圍組織的血液循環和能量平衡，並用於治療頸部、肩膀、手臂等局部疼痛。
+
+　　關於腰椎間盤突出症，通常需要透過醫學影像檢查（如MRI或CT掃描）來診斷，而後續的治療可能會包括藥物治療、物理治療、手術等方法。雖然針灸治療可以用於輔助疼痛管理，但它並不是首選的治療方法。
+
+　　在實踐中，我們也可以根據個案的具體情況，結合其他穴位如Zhiyang（TE-6）、Tinghui（GB-9）等來進行針灸治療，以達到最佳效果。例如，Zhiyang（TE-6）是胸腔經的一部分，能夠調節全身的氣機和血液循環，並幫助緩解頸部和肩膀疼痛。
+
+　　因此，對於這個問題，我會回答為 FALSE。因為Houxi（SI-3）不直接用於治療腰椎間盤突出症，而是適用於其他部分的疼痛管理。
+
+　　根據《中國藥典》記載，Houxi（SI-3）的主治病症包括頸部、肩膀、手臂等局部疼痛，以及全身性的疲勞和乏力。因此，在針灸治療中，Houxi（SI-3）可以用於調節周圍組織的血液循環和能量平衡，並幫助緩解頸部、肩膀疼痛。
+
+　　[常識] 腰椎間盤突出症是一種常見的骨科疾病，主要表現為腰背部疼痛，可能還伴有下肢無力或麻木等症狀。診斷和治療需要醫師進行評估和確定。
+
+　　[1] 《中國藥典》",FALSE,0
+36,獸醫師,true_false,中醫,少海 (HT-3) 屬心經合穴，主治肘關節痛與胸痛。,"Shaohai (HT-3) belongs to the Heart Meridian He point, mainly treating elbow joint pain and chest pain.",TRUE,「HT-3… 肘關節疼痛，胸痛」,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,33,"根據我對中醫知識的了解，Shaohai（HT-3）其實屬於手太陰肺經的穴位，而不是心經的穴位。它主要用於治療咳嗽、哮喘等症狀，並不直接針對肩關節疼痛或胸痛。
+
+因此，我會回答：
+
+False
+
+［常識］中醫理論認為，手太陰肺經與心經是不同的經脈路徑，Shaohai（HT-3）屬於前者，而非後者。 [1]
+
+參考資訊：
+[1] 《中國藥典》第八版",FALSE,0
+37,獸醫師,true_false,中醫,曲池 (LI-11) 為水穴，清熱效果不如尺澤 (LU-5)。,"Quchi (LI-11) is a water hole, and its heat-clearing effect is not as good as Chize (LU-5).",FALSE,"「LI-11… 風熱… 發熱，高血壓」
+p.7 ​獸醫針灸學-肺LU_大腸LI_心HT_小腸SI…：「LU-5… 水穴，清肺實熱」",獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,21,"根據傳統中醫理論，Quchi（LI-11）和Chize（LU-5）都是重要的穴位。然而，提到Quchi是水穴，並且其清熱作用不如Chize，我們需要考慮這些穴位的特性和功能。
+
+Quchi（LI-11）確實被認為是一個水穴，它負責調節體內水分、排出體內多餘的水分，並能夠消除病理性的水氣。然而，清熱效果是中醫理論中的重要概念，涉及到體內的炎症和感染等狀況。
+
+Chize（LU-5）是一個主要負責疏通胸部氣機、平衡肺腑功能，並能夠宣散胸膈之病的穴位。它的清熱作用比較強，特別是在治療因為外邪導致的炎症和感染等狀況時。
+
+因此，如果只考慮Quchi（LI-11）的水穴特性，它可能不是最適合的選擇來清熱。但是，這兩個穴位都有其獨立的功能和作用，不能完全比較他們的效果。另外，中醫理論強調整體觀念、辨證施治，因此在臨床上會根據病人的具體情況、辨證結果等來選擇適當的治療方案。
+
+【常識】中醫理論中提到穴位之間有相互聯繫和制衡的關係，了解不同穴位的功能是重要的。［1］
+
+結合上述知識，我們可以得出以下答案：
+
+True（假設題目的問題為：Quchi (LI-11) 的清熱作用不如 Chize (LU-5))。
+
+理由：根據中醫理論，Chize (LU-5) 是一個主要負責疏通胸部氣機、平衡肺腑功能，並能夠宣散胸膈之病的穴位，它的清熱作用比較強。因此，如果只考慮Quchi (LI-11) 的水穴特性，它可能不是最適合的選擇來清熱。
+
+參考資訊：
+[1] 《黃帝內經》中醫理論書籍",TRUE,0
+38,獸醫師,true_false,中醫,腕骨 (SI-4) 臨床上常用於犬貓腕關節骨關節炎。,Carpal bone (SI-4) is commonly used in clinical practice for wrist osteoarthritis in dogs and cats.,TRUE,「SI-4… 腕疼痛和骨關節炎」,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,49,"對於這個問題，我的回答是：
+
+ False 
+
+根據《中國獸醫中藥學》一書，雖然carpal骨（SI-4）是臨床上常用的穴位，但其主要適用於人類的治療，而不是犬貓的標準穴位。對於犬貓的關節炎治療，通常會選擇其他穴位或整體中藥治療。
+
+　　[常識] 醫師需要根據個體情況進行調整和適應性治療。
+　　[2] Chinese Veterinary Materia Medica",FALSE,0
+39,獸醫師,true_false,中醫,在風熱咳嗽病例中，LI-4、LI-11 與 GV-14 組合可清熱祛風。,"In cases of wind-heat cough, LI-4, LI-11 and GV-14 can clear away heat and remove wind.",TRUE,"「LI-4, LI-11, GV-14 are the major points to clear heat and wind-heat」",xie’s-veterinary-acupuncture.pdf,269,"根據中醫理論，風熱咳嗽的治療方法包括清熱退風。選擇合適的穴位按摩可以幫助疏通氣道、解除呼吸困難。
+
+LI-4（神門）和LI-11（曲池）是常用的清熱退風穴位，而GV-14（大椎）則是清暑止咳的重要穴位。按摩這些穴位可以幫助清熱退風、解除咽喉不適等症狀。
+
+　　[1] 中醫理論與實踐 　　[2] 中西藥學會中草藥大辭典",UNK,0
+40,學生,true_false,中醫,LU-9 是肺經的原穴，亦為脈會穴。,LU-9 is the original point of the lung meridian and also the Maihui point.,TRUE,「LU-9… Yuan-source… influential point for pulse and vessels」,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,153,"根據中醫學的原理，LU-9（關元穴）是肺經的終點，而不是氣管腸俞穴（Maihui）的原始點。氣管腸俞穴是肺經的終點和脾經的起點。
+
+所以，答案是：
+False
+
+
+常識：中醫學中的各個經穴都有其特定的功能和位置，需要根據不同的病症進行選擇和運用［1］。
+
+
+參考資源：
+
+[1] Chinese Acupuncture and Moxibustion (2006). China Union of Traditional Chinese Medicine.",FALSE,0
+41,學生,true_false,中醫,LI-10 前臂痛時禁用，因其僅治免疫疾病。,LI-10 It is contraindicated when suffering from forearm pain because it only treats immune diseases.,FALSE,「LI-10… 肘關節疼痛，四肢跛行…」,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,18,"根據我的知識，LI-10（小關元）是全身腧穴之一，適用於多種疾病的治療，但它並不僅僅局限於免疫系統疾病。另外，小關元還被認為能夠疏通上肢的經氣和血液循環，有助於緩解外肩、手臂等部位的疼痛。
+
+因此，我的答案是：
+
+False
+
+
+根據我的理解與常識：
+LI-10 的治療適用範圍不僅限於免疫系統疾病，並且它還能夠幫助緩解外肩、手臂等部位的疼痛。
+
+
+標注［常識］：小關元（LI-10）是全身腧穴之一，適用於多種疾病的治療，包括疏通上肢的經氣和血液循環。［2］",FALSE,1
+42,學生,true_false,中醫,SI-16 (天窗) 位於第 2-3 頸椎旁 3 寸，主治耳聾與頸椎痛。,"SI-16 (Skylight) is located 3 inches next to the cervical spine of 2-3, and is mainly used to treat deafness and cervical pain.",TRUE,「SI-16… 耳聾，頸椎痛」,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,58,"根據我對中醫知識的理解和常見的中藥穴位位置，SI-16（天窗穴）位於肩胛骨下方約2-3寸處，與頸部有關，但不是主要用於治療聾盲和頸痛。天窗穴通常用於調節神經系統、清暢頭顱腦窩等功能。
+
+因此，我認為以下答案是正確的：
+
+ False
+
+
+常識：中醫學中的穴位位置可能會有個體差異，需要根據實際情況進行調整。同時，天窗穴的主治範圍也包括耳聾、頭暈、目眩等症狀，但不是主要用於治療頸痛。
+
+參考資源：《中國醫學古籍集成》、《中藥學大典》",FALSE,0
+43,學生,true_false,中醫,肺經 LU-5 為金穴，因此屬性「木」。,"LU-5 in the lung meridian is a gold point, so it is ""wood"".",FALSE,「LU-5… 和穴(水)」,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,7,"根據五行學說，LU-5（大陵穴）位於肩關節部位，是肺經的金點，應該與金相對應，而不是木（木：手太陰小腸經；火：手陽明大腸經；土：足陽明胃經；金：手太陰肺經；水：足太陰膀胱經）。因此，這個陳述是錯誤的。
+
+答案：False
+
+註記：
+［常識］五行學說是一種古老的中醫理論，認為人體各部位與外界環境都有相應的五行對應關係（木、火、土、金、水）。這個理論被用於中醫診斷和治療中。",FALSE,1
+44,學生,true_false,中醫,LI-15 (肩井) 適用肩部疼痛與頸椎痛。,LI-15 (Shoulder Well) is suitable for shoulder pain and cervical pain.,TRUE,「LI-15… 肩部疼痛… 頸椎痛」,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,24,"LI-15（肩井穴）主要適用於肩部疼痛和頸部疼痛的治療，不過在犬類動物中，使用這個穴位需要謹慎，並應該根據個體情況進行調整。犬類動物可能會因為手法操作而產生創傷或不適。
+
+LI-15 是一種重要的穴位，但它不是每種疾病都適用於所有寵物。任何治療方法都需要根據寵物的個體情況進行調整，並應該由資深獸醫進行指導。
+
+【常識】在犬類動物中，使用手法治療需要嚴格遵守適當的技術和安全措施，以避免造成傷害或創傷。這種知識不僅適用於穴位治療，也適用於一般的手法治療。
+
+真實答案：False",FALSE,0
+45,學生,true_false,中醫,HT-9 為心經木穴，可急救昏迷。,"HT-9 is a wood acupoint in the heart meridian, which can be cured for coma.",TRUE,「HT-9… 昏迷…」,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,43,"根據我的知識，HT-9不是一個木質穴位（wood acupoint），而是一個心經穴位（heart meridian）上的穴位。然而，我們的資源中並沒有相關信息表明HT-9可以治療昏迷（coma）。
+
+在我們的資源中，也沒有找到證據支持使用 acupuncture 可以治療犬類的昏迷（coma）。犬類的昏迷可能是由於多種原因引起的，包括但不限於神經系統疾病、感染、藥物過量等。
+
+因此，我們不能確認HT-9可以治療昏迷。這需要更進一步的研究和證據來支持此說法。
+
+常識：在臨床實踐中，acupuncture 可以用於治療多種疾病，但需要根據個體情況進行調整，並且需要與主治醫師溝通以確保安全性和有效性。［常識］
+
+答案：False",FALSE,0
+46,飼主,multiple_choice,中醫,"下列哪一穴位最常用來處理寵物的慢性咳嗽？
+A LU-1 中府 B LU-9 太淵 C LI-4 合谷","Which of the following acupoints is most commonly used to treat pets’ chronic cough?
+A LU-1 Zhongfu B LU-9 Taiyuan C LI-4 Hegu",B,"「LU-9… Lung deficiency, chronic cough」",xie’s-veterinary-acupuncture.pdf,153,"根據中醫理論，LU-1 Zhongfu是治療咽喉病、咳嗽的重要穴位。它位於颈部前方，咽喉交界處，對於調節咽喉腺體功能有較強的作用。因此，在中醫理論中，LU-1 Zhongfu是治療咳嗽的首選穴位。另外，LU-9 Taiyuan也可以用於治療咳嗽，但其主要作用是調節肺經和脾經之間的關係，而不是直接治療咳嗽。
+
+ LU-1 Zhongfu是治療咳嗽的首選穴位。
+
+
+常識：中醫理論認為，LU-1 Zhongfu能夠調節咽喉腺體功能，對於治療咳嗽有著重要作用［1］。
+ LU-9 Taiyuan也可以用於治療咳嗽，但其主要作用是調節肺經和脾經之間的關係，而不是直接治療咳嗽。
+
+選項：A
+
+參考資訊：
+[1] 《中醫學家》2017年第12期
+
+
+常識：中醫理論認為，LU-1 Zhongfu能夠調節咽喉腺體功能，對於治療咳嗽有著重要作用［1］。",A,0
+47,飼主,multiple_choice,中醫,狗狗鼻塞流鼻水，建議在鼻翼外側 0.1 吋針刺的穴位是？A LI-20 B LI-11 C LU-7,"If a dog has a congestion and runny nose, what is the acupoint that is recommended to acupuncture at 0.1 inch on the outside of the nose wing? A LI-20 B LI-11 C LU-7",A,LI-20 描述,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,28,"根據中醫理論，鼻翼外側的LI-20是清鼻、涕止的重要穴位，而不是LU-7。LI-20位於鼻翼外側，約0.1寸處，是用於治療鼻塞、鼻涕等症狀的重要穴位。
+
+ LU-7位於手陽明大肠經，其主要功能是調節呼吸和關節運動，不適合用來治療鼻塞和鼻涕。LI-11雖然也可以用於治療呼吸系統的疾病，但是它的位置是在前臂的橈骨外側，與鼻翼無直接關係。
+
+因此，我們可以推斷出正確答案是A： LI-20
+
+  [1] 中醫學大典.pdf",UNK,0
+48,飼主,multiple_choice,中醫,"神門 (HT-7) 位於前肢哪個區域？
+A 肘橫紋 B 腕橫紋外側凹陷 C 肩關節後緣","Which area is the forelimb of the Divine Gate (HT-7) located?
+A elbow crossbone B lateral depression of wrist crossbone C posterior edge of shoulder joint",B,「腕橫紋… 深凹陷」,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,36,"根據《中醫古籍整理》記載，神門穴（HT-7）位於腕骨的外側偏後處，是一種重要的腧穴，用於治療上肢疾病和疼痛。
+
+理由：神門穴是以其特殊解剖位置而聞名，位於腕骨的外側偏後處，使其成為一個理想的治療目標。
+
+
+選項中最正確的答案是：
+
+B",B,1
+49,獸醫師,multiple_choice,中醫,"風熱咳嗽配穴推薦 不 包含下列何者？
+A LI-11 B LU-5 C BL-23","Recommended for wind-heat cough and acupoint matching does not include which of the following?
+A LI-11 B LU-5 C BL-23",C,配穴列表無 BL-23,xie’s-veterinary-acupuncture.pdf,285,"根據中醫理論，風熱咳嗽的治療方法包括用藥和針灸兩種。針灸的選擇是基於五臟六腑經絡學說和病症的不同特點。
+
+風熱咳嗽多見於肺部疾患，LU-5是臨泣穴，也就是肺經的一個重要穴位，是治療風熱咳嗽的常用針灸點。LI-11是合谷穴，是氣血循行的主要通路之一，對於風熱咳嗽具有宣散風邪、疏通氣道的作用，因此也是適用於風熱咳嗽的針灸點。
+
+BL-23是肾經的一個重要穴位，主要功能是滋補肾陰，理肾氣。風熱咳嗽多見於表證，而不是肾虛所致，所以不太適合用BL-23來治療風熱咳嗽。
+
+因此，我們可以認為，選項C BL-23不適合用作風熱咳嗽的針灸點。
+
+［常識］
+
+風熱咳嗽是中醫學中的一個常見病症，用藥和針灸都是治療的方法。根據五臟六腑經絡學說，選擇針灸穴位時需要根據不同的病症特點進行區分。
+
+選項A LI-11和B LU-5是風熱咳嗽常用的針灸點，C BL-23主要功能是滋補肾陰，理肾氣，不太適合用於風熱咳嗽的治療。[2] Chinese Veterinary Materia Medica
+
+答案：C",C,1
+50,獸醫師,multiple_choice,中醫,"下列哪一穴 同時 為肺絡穴＋任脈八脈交會穴？
+A LU-7 B LU-1 C LU-5","Which of the following acupoints is simultaneously the Lung Luo-connecting point and a confluence point with the Ren Channel (Conception Vessel) of the Eight Extraordinary Channels? 
+A LU-7 B LU-1 C LU-5",A,"LU-7 Lie-que (Broken Sequence) A very commonly used point (fig. 3.3a, b)
+LOCATION
+On the craniomedial edge of radius, just cranial to the cephalic vein at the level of the distal border of the chestnut, 1.5 cun proximal to the transverse crease of the carpal joint
+METHOD
+Oblique insertion: dry-needle depth 1 cun
+INDICATION
+Master point for the head and neck, Luo-connecting point of the LU Channel, confluent point with CV Channel. Cervical stiffness and pain, headache, facial paralysis, cough, heaves",xie’s-veterinary-acupuncture.pdf,153,"根據中醫理論，LU-7（Yin Wen）是肺經的洛結點，也是八脈之中的繫金穴，它同時與任脈（Conception Vessel）會合。因此，這個問題的答案是A LU-7。
+
+理由： 
+中醫理論中， Luo 結點是指在一條經脈上有一個特殊的結構，作為該經脈與其他經脈之間的交接點，而繫金穴則是八脈之一，與任脈會合。LU-7 是肺經洛結點，也是繫金穴，因此它同時具有這兩種地位。
+
+常識： [1] Luo 結點和繫金穴都是中醫理論中的重要概念，它們在中醫治療和針灸治療中佔有重要地位。 [2] LU-7 是肺經洛結點，也是繫金穴之一，具有特殊的生理和病理功能。
+
+答案：A",A,1
+51,獸醫師,multiple_choice,中醫,"曲池 (LI-11) 的主要屬性為：
+A 水穴 B 火穴 C 地點屬「清熱要穴」","The main properties of Quchi (LI-11) are:
+A Water point B Fire point C The location is ""the key point to clear heat""",C,說明風熱／發熱,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,21,"根據中醫理論，Quchi（LI-11）是一個重要的穴位，它位於手肘外側，是小腸經的一個重要點。它的主要功能是清熱、除濕、解毒等，其特性為水分穴，因此被稱為“水分穴”或“水點”。
+
+根據中醫典籍《黃帝內經》的記載，Quchi（LI-11）確實具有水分之義，並被用來治療如濕熱、火痺等病症。［1］
+
+因此，我們可以結合中醫理論和典籍記載，得出以下結論：
+
+根據中醫理論和典籍記載，Quchi（LI-11）的主要特性是水分穴。［1］
+
+[常識] 中醫理論認為，人體的五臟六腑都有其對應的經絡系統，而手足部的穴位與身體內部各個器官的功能有關。
+
+[源文件] [1] 《黃帝內經》",UNK,0
+52,獸醫師,multiple_choice,中醫,"在犬心律失常配穴中，急救放血常取：
+A HT-9 B HT-1 C HT-3","In dog arrhythmia acupoints, emergency bloodletting is often taken:
+A HT-9 B HT-1 C HT-3",A,「HT-9… 昏迷… 心律失常」,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,43,"根據我的知識，HT-9是狗心律失常的常見穴位之一。Emergency bloodletting是指在緊急情況下進行血液排出，以穩定心律。
+
+我認為選項A HT-9是最合適的答案，因為HT-9是狗心律失常的重要穴位之一，經常用於緊急情況下的治療。
+
+
+理由：狗心律失常的治療中，HT-9是一個重要的穴位，經常用於穩定心律和改善血液循環。根據我之前的學習和實踐經驗，我認為選項A HT-9是最合適的答案。
+
+
+[常識]狗的心律失常治療中，HT-9是一個重要的穴位，經常用於穩定心律和改善血液循環。
+
+選項A",UNK,0
+53,獸醫師,multiple_choice,中醫,"下列何穴位屬 小腸經合穴，常治癲癇與肘痛？
+A SI-4 B SI-8 C SI-9","Which of the following acupoints belong to the small intestine meridian He point, which often treats epilepsy and elbow pain?
+A SI-4 B SI-8 C SI-9",B,說明風熱／發熱,獸醫針灸學-肺LU_大腸LI_心HT_小腸SI (1).pdf,52,"根據小腸經的走向和其He點的定義，SI-9是小腸經的He點。小腸經的He點通常位於小腸經的末端，與關節痛或神經系統疾病有關。因此，我們可以將選項C SI-9視為正確答案。
+
+理由：根據中醫理論，小腸經是人體的一個重要經絡，其He點位於末端，涉及關節痛和神經系統疾病的治療。小腸經的He點包括SI-7、SI-9等，SI-9是其中一個重要的He點。
+
+[常識] 小腸經的走向與其He點的定義對於中醫診斷和治療具有重要意義。
+[1] 《中醫學教材》第十二章小腸經
+
+答案：C",C,0
+54,獸醫師,multiple_choice,中醫,"肺經 母穴（五行）為：
+A LU-5 B LU-9 C LU-10","The mother point (five elements) of the lung meridian are:
+A LU-5 B LU-9 C LU-10",B,"“LU-9 is the shu-stream point that belongs to the earth element and is considered to be the mother point of the Lung Channel. Thus, using LU-9 can benefit conditions with deficiency of Lung Qi or Yin.”",xie’s-veterinary-acupuncture.pdf,17,"根據五行理論和經脈學說，肺經的母點（五行）是與木元素相關的 LU-7，即又名地院。LU-5、LU-9、LU-10 都是肺經上的穴位，但不是肺經的母點。
+
+根據《難經·金匱真言論》記載，「肺五行之本在脾」、「脾為木之根」，因此肺經的母點是與木元素相關的LU-7，也就是又名地院。 [2]
+
+所以，最正確的答案是：
+A LU-5
+
+參考資訊：
+[1] 《難經·金匱真言論》
+[2] 《脈經》",A,0
+55,學生,multiple_choice,中醫,"犬隻腧穴 SI-16 (天窗) 穴的主要位置描述，下列何者最為正確？
+A) 在第一頸椎 (C1) 的後緣 B) 在肩胛骨前緣的凹陷處 C) 在第二頸椎間隙 (C2-C3) 水平，肱頭肌的背側邊緣","Which of the following descriptions is the most correct for the main location of the canine acupoint SI-16 (Tian-chuang)?
+A) At the posterior border of the first cervical vertebra (C1) B) In the depression at the cranial border of the scapula C) At the level of the second cervical vertebral space (C2-C3), at the dorsal border of the brachiocephalicus muscle",C,"SI-16 Tian-chuang (Celestial Window) A most commonly used point (fig. 3.29)
+LOCATION
+Dorsal border of the brachiocephalicus muscle at the level of the second cervical vertebral space (C2-C3)
+METHOD
+Perpendicular insertion: dry-needle depth 1.5 cun
+INDICATION
+Diagnostic point (along with TH-15) for ligament or tendon injuries, cervical stiffness",xie’s-veterinary-acupuncture.pdf,52,"根據中醫學知識，犬的穴位SI-16（Tian-chuang）位於頸部，是一種重要的穴位。按照正確的解剖位置，SI-16應該位於第二頸椎水平（C2-C3），並且位於肩胛肌的背側邊緣。
+
+因此，最正確的選項是：
+C) At the level of the second cervical vertebral space (C2-C3), at the dorsal border of the brachiocephalicus muscle
+
+［常識］
+在中醫學中，穴位的位置通常根據人的解剖結構進行描述，並且有不同的名稱和位置。每個穴位都有一個特定的作用和功能。
+
+參考資訊：
+[1] 《中醫學基礎理論》第 23 章「犬的穴位」",C,1
+56,學生,multiple_choice,中醫,"下列何者不是 LU-5 的適應症？
+A 呼吸困難 B 免疫性皮膚病 C 黃疸","Which of the following is not an indication for LU-5?
+A dyspnea B Immune skin disease C Jaundice",C,"“LU-5 … He-sea point (water); Lung Excess Heat, acute cough, dyspnea, hoarse bark, high fever, dermatitis, immune-mediated skin diseases.”",xie’s-veterinary-acupuncture.pdf,151,"根據中醫理論，LU-5（膻中）是肺經的腧穴，主要治療呼吸系統疾病，如喘促、咳嗽等。因此，它通常不用來治療免疫皮膚病或黃疸。
+
+理由：LU-5的主治範圍是肺部疾病，而免疫皮膚病和黃疸與肝臟功能受損有關，通常不是LU-5的常見指征。
+
+[常識］ LU-5（膻中）是中醫腧穴之一，位於胸骨下緣的前方約2寸處，是肺經的腧穴，主要治療呼吸系統疾病，如喘促、咳嗽等。 [1]
+
+不過，免疫皮膚病和黃疸也可以通過其他腧穴進行治療。
+
+最適合的選項是 B Immune skin disease
+
+答案：B",B,0
+57,學生,multiple_choice,中醫,"LI-12 針刺深度建議為：
+A 0.3 寸 B 0.5 寸 C 1-1.5 寸","LI-12 acupuncture depth recommendations are:
+A 0.3 cun B 0.5 cun C 1-1.5 cun",C,"LI-12 Zhou-liao (Elbow Hole) Not a commonly used point (figs. 3.6 and 3.7)
+LOCATION
+1 cun craniodorsal to LI-11 along the line connecting LI-11 and LI-15
+METHOD
+Perpendicular insertion: dry-needle depth 1.5 cun
+INDICATION
+Elbow or shoulder lameness",xie’s-veterinary-acupuncture.pdf,141,"根據我的知識，我們知道LI-12是小腸俞穴，在手臂的後面。通常在進行針灸治療時，針深度取決於個體差異和不同疾病的需求。
+
+根據針灸學理論，LI-12的典型針深度為 1-1.5 cun（寸），這是基於古代針灸文獻中的描述和現代研究結果。因此，我們可以推斷選項 C 1-1.5 cun 是正確答案。
+
+［常識］ LI-12 小腸俞穴位於手臂的後面，與小腸的腧穴相關聯。針灸治療時，需要根據個體差異和疾病需求選擇適當的針深度。
+
+
+答案：C",C,1
+58,學生,multiple_choice,中醫,"若要刺激「脈會穴」，應選：
+A LU-9 B HT-7 C BL-13","To stimulate the ""Maihui point"", you should choose:
+A LU-9 B HT-7 C BL-13",A,"“Table 7.16 Application of Influential Points — LU-9: weakness of pulse, disorders of vessels.”",xie’s-veterinary-acupuncture.pdf,241,"根據中醫理論，Maihui點位於足三陰經，與神志、心情有關。刺激此點可以幫助調節情緒和精神狀態。
+
+HT-7（靈台）是調節心情的重要穴位，可以幫助緩解焦慮、憂鬱等症狀。因此，選擇HT-7來刺激Maihui點似乎是合理的。
+
+[常識] 中醫理論中，足三陰經（足少陽膀胱經）與下肢和背部有關，與神志、心情也有關。 [1]
+
+答案：B",B,0
+59,學生,multiple_choice,中醫,"免疫缺陷犬隻常用腧穴 前里 (LI-10) 位於 LI-11 往下幾吋？
+A 1 吋 B 2 吋 C 3 吋","Commonly used acupoints for immunodeficient dogs Qian-san-li (LI-10) is located several cun below LI-11?
+A 1 cun B 2 cun C 3 cun",B,"“LI-10 Qian-san-li — LOCATION: 2 cun distal to LI-11, in the same groove as LI-5 and LI-6.”",xie’s-veterinary-acupuncture.pdf,140,"根據中醫理論，選定適當的穴位對於犬類的免疫功能障礙有一定的幫助。Qian-san-li（LI-10）是一個重要的穴位，其位置一般位於肩胛骨下方約2寸處。
+
+因此，根據我的理解和中醫知識，正確答案是：
+
+B 2 cun
+
+［常識］在臨床實踐中，選定適當的穴位時應根據犬類的體型、個別特徵以及疾病的具體情況進行調整。例如，一些較小的犬種可能需要考慮到位置的微小變化，以確保穴位的正確性。
+
+參考資訊：
+[1] Chinese Veterinary Materia Medica
+[2] 中醫理論與實踐（中醫學出版社）
+[3] 獸醫中藥學（中國農業大學出版家）",B,1
+60,學生,multiple_choice,中醫,"下列哪穴位屬於 手少陰心經？
+A 少府 (HT-8) B 列缺 (LU-7) C 曲池 (LI-11)","Which of the following acupoints belong to the Hand Shaoyin Heart Meridian?
+A Shaofu (HT-8) B Lieque (LU-7) C Quchi (LI-11)",A,"“HT-8 Shao-fu — LOCATION: on the volar surface of the thoracic limb between the fourth and fifth metacarpal bones … ATTRIBUTES AND INDICATIONS: Ying-spring point (fire), horary point.”",xie’s-veterinary-acupuncture.pdf,156,"根據中醫理論，手少陰心經（Hand Shaoyin Heart Meridian）主要控制心臟和血管的功能。Shaofu（HT-8）是心俞穴，屬於手少陰心經的腧穴之一。
+
+理由：手少陰心經主要負責調節心臟和血管的功能， Shaofu（HT-8）作為心俞穴，直接與心臟相關聯，因此它應該是手少陰心經的一部分。［1］
+
+另外，Lieque（LU-7）屬於足太陰肺經，Quchi（LI-11）屬於手陽明大腸經，也不是手少陰心經的腧穴。
+
+因此，最合適的答案是：
+A Shaofu (HT-8)
+
+參考資訊：
+[1] 《黃帝內經》中提到手少陰心經和其腧穴之關係，包括心俞穴在內。
+
+
+source_file： 
+[1] 《黃帝內經》",A,1
+71,學生,multiple_choice,CCD,CCD 的臨床行為徵兆常用哪個英文字母縮寫來概括？ A) DISHA B) DAMNIT C) ABCDE D) LUPUS,Which English abbreviation is commonly used to summarize the clinical behavioral signs of CCD? A) DISHA B) DAMNIT C) ABCDE D) LUPUS,A,"Classic signs of CDS are summarized by the acronym DISHA (disorientation, interaction changes, sleep-wake cycle disturbance, housesoiling, activity change).",‎Cognitive Dysfunction Syndrome A Disease of Canine and Feline Brain Aging.pdf,6,"根據題目的描述，我們可以了解到這個問題是關於犬認知功能障礙綜合症（CCD）的臨床行為表現的英文縮寫。
+
+在動物醫學領域，認知功能障礙綜合症（CCD）是一種常見的神經系統疾病，其臨床行為表現包括了一系列的症狀，如注意力不集中、記憶力下降等。這些症狀可以用一些英文縮寫來總結和描述。
+
+根據我的知識和經驗，我們知道，DAMNIT（Danger, Alertness, Mood, Neurological abnormalities, Nociception, Incontinence, Tremor）是一種常用的英文縮寫，用於總結和描述犬類認知功能障礙綜合症的臨床行為表現。
+
+因此，我們可以推測，選項B) DAMNIT最有可能是正確答案。
+
+根據我的理解與常識：犬認知功能障礙綜合症（CCD）的臨床行為表現包括了一系列的症狀，如注意力不集中、記憶力下降等。這些症狀可以用一些英文縮寫來總結和描述，例如DAMNIT。
+
+［常識］犬認知功能障礙綜合症（CCD）是一種常見的神經系統疾病，其臨床行為表現包括了一系列的症狀，如注意力不集中、記憶力下降等。這些症狀可以用一些英文縮寫來總結和描述，例如DAMNIT。
+
+答案：
+B",B,0
+72,學生,multiple_choice,CCD,下列何者不是 DISHA 所涵蓋的臨床表現？ A) 方向感障礙 B) 與飼主互動改變 C) 活動量改變 D) 皮膚搔癢,Which of the following is not a clinical manifestation covered by DISHA? A) Disorder of direction B) Change of interaction with the owner C) Change of activity D) Itchy skin,D,DISHA covers behavioural domains; skin pruritus is not included.,‎Cognitive Dysfunction Syndrome A Disease of Canine and Feline Brain Aging.pdf,6,"根據犬認知功能障礙綜合症（CCD）的診斷標準，DISHA 是一種評估工具，用於檢測犬隻的認知功能。它涵蓋了多個方面的臨床表現，包括方向性失常（Disorder of direction）、互動性變化（Change of interaction with the owner）、活動性變化（Change of activity）等。
+
+然而，瘙癢皮膚（Itchy skin）並不是DISHA所涵蓋的臨床表現。瘙癢皮膚是一種常見的皮膚問題，可能由多種原因引起，包括過敏、寄生蟲感染等，但它與認知功能障礙綜合症無直接關係。
+
+因此，我們可以得出結論：選項D) Itchy skin 不是DISHA所涵蓋的臨床表現。
+
+[常識] 獸醫在日常工作中，需要了解各種疾病和條件的臨床表現和診斷標準，以提供適當的治療和護理。［1］
+
+答案：D",D,1
+73,學生,multiple_choice,CCD,研究顯示社區老犬 (>8 歲) 的 CCD 估計盛行率約為？ A) 5% B) 14% C) 30% D) 60%,Studies show that the estimated prevalence of CCD in community-old dogs (>8 years old) is about? A) 5% B) 14% C) 30% D) 60%,B,The estimated prevalence of CCD in community-based dogs was 14.2 %.,‎Under diagnosis of canine cognitive dysfunction.pdf,2,"根據我的知識，犬認知功能障礙綜合症（CCD）是一種常見的老年犬疾病。研究表明，8歲以上的社區老狗中，CCD的發生率約為14%。
+
+理由：
+CCD的發生率受多種因素影響，包括年齡、遺傳、環境和健康狀況等。但是，在老年犬群體中，14%的發生率被視為一個相對合理的估計值。這取決於研究設計、樣本大小以及定義CCD的標準等因素。
+
+常識：老年犬容易出現認知功能障礙，如記憶力衰退、注意力不集中、行為改變等，可能與神經退行性疾病相關［1］。
+
+答案：B",B,1
+74,學生,multiple_choice,CCD,同一研究中實際被獸醫診斷為 CCD 的比例約？ A) 0.5% B) 1.9% C) 10% D) 25%,What are the proportions actually diagnosed as CCD by veterinarians in the same study? A) 0.5% B) 1.9% C) 10% D) 25%,B,The rate of veterinary diagnosis reported was only 1.9 % (9/479).,‎Under diagnosis of canine cognitive dysfunction.pdf,2,"根據我的知識和常識，犬認知功能障礙綜合症（CCD）的診斷率相當低，而在相關研究中，這個比例被報導為約2-3%。
+
+選項A）0.5%，似乎過低，不太可能是正確的。選項C) 10%，和選項D) 25%，似乎也太高了。不過，根據某些文獻，犬隻中CCD的診斷率約為1-2%。
+
+因此，我們可以推測選項B）1.9%是最合理的答案。",UNK,0
+75,學生,multiple_choice,CCD,MRI 時若間丘黏連厚度小於等於多少數值，有助診斷 CCD？ A) 3 mm B) 5 mm C) 7 mm D) 10 mm,"What is the value of the adhesion thickness of the interstitial mound during MRI, which is it helpful to diagnose CCD? A) 3 mm B) 5 mm C) 7 mm D) 10 mm",B,An interthalamic adhesion thickness of 5 mm or less was found to be consistent with a diagnosis of CCD.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,8,"根據犬認知功能障礙綜合症（CCD）的MRI檢查標準，Interstitial Mound（IM）是指白質中的一個結構異常，它與 CCD 的診斷有關。IM的厚度值在臨床上被用來評估 CCD 的嚴重程度。
+
+根據我的知識和經驗，我們知道 IM 的厚度通常大於 4 mm，但小於 10 mm 是一個正常範圍，超過 10 mm 則可能與 CCD 有關。因此，選項 D) 10 mm 是最合理的答案。
+
+但是在臨床實踐中，我們需要根據個體患者的情況進行評估和診斷，不能僅憑藉這一數值就作出結論。
+
+　　［常識］：MRI檢查是犬認知功能障礙綜合症（CCD）的重要診斷工具，通過檢測白質中 Interstitial Mound 的厚度來評估 CCD 的嚴重程度。［2］
+
+選項 D) 10 mm",D,0
+76,學生,multiple_choice,CCD,哪種飲食添加物被證實可為老犬提供替代性腦能量並改善學習？ A) 長鏈飽和脂肪酸 B) Medium-Chain Triglycerides (MCT) 5 % C) 高蛋白質 D) 高磷酸鹽,Which dietary additives have been proven to provide alternative brain energy for older dogs and improve learning? A) Long chain saturated fatty acids B) Medium-Chain Triglycerides (MCT) 5 % C) High protein D) High phosphate,B,Dietary supplementation with 5 % MCT improved cognitive function in aged beagle dogs.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,11,"根據我的知識，我們知道Medium-Chain Triglycerides（MCT）是可以提供給老年犬作為替代腦部能量來源的，同時也能夠改善學習能力。這是因為MCT較容易被身體吸收和利用，是一種理想的能量來源。
+
+［常識］長鏈飽和脂肪酸（Long chain saturated fatty acids）不太適合作為老年犬腦部能量的替代品，因為它們需要更多的時間才能被身體吸收和利用。高蛋白質飲食可能對老年犬有幫助，但不是直接提供腦部能量的替代品。高磷酸鹽不太適合作為老年犬的飲食補充劑，因為它們可能會導致健康問題。
+
+根據這個知識，我們可以得出以下結論：
+
+答案：B",B,1
+77,學生,multiple_choice,CCD,DNMP 測驗主要評估老犬的哪項能力？ A) 聽覺 B) 視覺銳利度 C) 短期視空間記憶 D) 嗅覺辨識,Which abilities does the DNMP test mainly evaluate the old dog? A) Auditory B) Visual sharpness C) Short-term visual spatial memory D) Olfaction identification,C,The DNMP task evaluates short-term visuospatial memory.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,7,"根據我對犬認知功能障礙綜合症（CCD）的理解，DNMP測試主要評估老年狗的視覺空間記憶和識別能力，而不是聽力、視覺銳敏度或嗅覺辨識能力。
+
+理由：DNMP測試是一種評估犬類視覺空間記憶和識別能力的工具，旨在檢測犬類是否具有良好的視覺空間記憶和識別能力。這對於老年狗特別重要，因為他們可能會出現視力衰退或認知功能障礙等問題。
+
+[常識] 診斷犬類的視覺空間記憶和識別能力通常需要專業的訓練和評估工具，例如DNMP測試。［2］
+
+答案：C",C,1
+78,學生,multiple_choice,CCD,下列哪種藥物屬於 MAO-B 抑制劑，常用於治療 CCD？ A) Levetiracetam B) Selegiline C) Carprofen D) Gabapentin,Which of the following drugs is a MAO-B inhibitor and is commonly used to treat CCD? A) Levetiracetam B) Selegiline C) Carprofen D) Gabapentin,B,L-Deprenyl (selegiline) is licensed for the treatment of canine cognitive dysfunction.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,12,"根據我的知識，犬認知功能障礙綜合症（CCD）的治療藥物中，Selegiline是一種MAO-B抑制劑，被廣泛用於治療這種疾病。其他選項Levetiracetam、Carprofen和Gabapentin主要用於治療癲癇或疼痛等其他條件，而不是主要用於CCD的治療。
+
+因此，我認為正確答案是：
+
+B) Selegiline
+
+［常識］：MAO-B抑制劑是一種類型的抗抑鬱藥物，通過阻礙單胺氧化酶B（MAO-B）的活性來增加大腦中多巴胺的濃度，从而改善認知功能和運動能力。［1］
+
+參考資訊：
+[1] ""Canine Cognitive Dysfunction: A Review of the Literature"" by Dr. Debra F. Horwitz, et al., Journal of Veterinary Internal Medicine, 2018.
+
+整理列出的source_file：
+
+[1] ...pdf",A,0
+79,學生,multiple_choice,CCD,「認知預備」(cognitive reserve) 概念與哪項非藥物療法最相關？ A) 中鏈脂肪酸 B) 影像診斷 C) 認知豐富化(運動/社交/玩具) D) 抗氧化劑,"Which non-pharmacological therapy is the most relevant to the concept of ""cognitive reserve""? A) Medium-chain fatty acids B) Imaging diagnosis C) Cognitive enrichment (sports/socials/toys) D) Antioxidants",C,Cognitive enrichment is believed to build cognitive reserve and delay decline.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,13,"根據題目，非藥物治療中最相關於「認知儲備」（cognitive reserve）的概念是什麼。認知儲備是指個體在腦部功能衰退時仍能保持正常或較高水平的認知能力。
+
+我認為，最合適的答案是 C) 認知豐富（Cognitive enrichment），因為它涉及到提供給動物的刺激、活動和學習機會，以增強其腦部功能和抵禦認知衰退。這與「認知儲備」概念一致。
+
+在我的理解中，認知豐富是指透過適當的訓練、環境設計和社會互動來促進動物的認知能力和適應性，使其能夠更好地應對變化和挑戰。這種方法可以幫助建立或增強個體的認知儲備，從而減少因認知功能障礙綜合症（CCD）等疾病引起的問題。
+
+常識：動物的心理健康和認知能力與其生活環境、社會互動和適當的訓練有密切關係。透過提供豐富的刺激和活動，可以促進動物的腦部功能，減少心理壓力和認知衰退的風險。［1］
+
+答案：C",C,1
+80,學生,multiple_choice,CCD,以下哪項不是 Box 7 所列之 CCD 輔助營養品？ A) Omega-3 PUFA B) SAMe C) Phosphatidylserine D) 抗生素,Which of the following is not a CCD supplement listed in Box 7? A) Omega-3 PUFA B) SAMe C) Phosphatidylserine D) Antibiotics,D,Box 7 lists multiple nutraceuticals; antibiotics are not included.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,13,"根據CCD的護理指南，Omega-3 PUFA、SAMe和Phosphatidylserine都被用作補充劑來幫助改善犬隻認知功能障礙的症狀。然而，抗生素（Antibiotics）並不在典型的CCD護理指南中被列為一種適當的補充劑。
+
+因此，答案是：
+D)
+
+
+參考資訊：［1］CCD的護理指南，通常包括Omega-3 PUFA、SAMe和Phosphatidylserine等藥物。
+
+
+源文件：
+[1] CCD的護理指南（pdf）",D,1
+81,獸醫師,multiple_choice,CCD,問診時以下哪句最能及早發現 CCD？ A) 最近有嘔吐嗎？ B) 牠是否迷路或困惑？ C) 體重變化？ D) 食慾下降？,Which of the following sentences can best detect CCD during consultation? A) Have you vomited recently? B) Is it lost or confused? C) Weight changes? D) Decreased appetite?,B,Clinicians must ask specific questions regarding confusion or disorientation to detect CCD early.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,7,"根據犬認知功能障礙綜合症（CCD）的特徵，我們知道它是一種與認知功能和行為相關的疾病。選項B“Is it lost or confused?”最能體現出這個問題的核心，而其他選項則更關注於犬隻的生理狀況，如嘔吐、體重變化或食欲不振。
+
+所以，選項B是最適合用來檢測CCD的選擇。
+
+理由：
+
+
+選項B直接問及犬隻是否迷失或困惑，這與CCD的典型症狀非常吻合。其他選項雖然對於一般病理狀況有幫助，但並不能直接指向CCD的診斷。
+
+
+[常識]：在進行動物臨床檢查時，需要考慮到動物的行為和身體狀況，以便進行有效的診斷和治療。
+                    [1]
+答案：
+B",B,1
+82,獸醫師,multiple_choice,CCD,研究指出哪項治療可改善 CCD 的神經興奮與注意力障礙？ A) Levothyroxine B) Levetiracetam C) Prednisolone D) Atropine,Which treatment does the study indicate can improve neuroexcitation and attention disorders in CCD? A) Levothyroxine B) Levetiracetam C) Prednisolone D) Atropine,B,Recent evidence suggests the anticonvulsant drug levetiracetam improves cognitive function.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,12,"根據題目的描述，我們需要找出哪種治療可以改善CCD（犬認知功能障礙綜合症）中的神經興奮和注意力障礙。
+
+
+在CCD的治療中，Levetiracetam是一種常見的抗癲癇藥物，也被用於治療注意力缺陷多動症（ADHD）。它可以幫助改善神經興奮和注意力障礙。
+
+因此，我們可以合理地推斷Levetiracetam是正確的答案。
+
+
+理由：Levetiracetam已經被證明對於治療CCD中的神經興奮和注意力障礙有效，特別是在改善注意力缺陷多動症（ADHD）方面。
+
+選項分析：
+A) Levothyroxine：是一種類固醇激素替代劑，用於治療甲狀腺功能減退，不太可能用於CCD的神經興奮和注意力障礙。
+B) Levetiracetam：是一種抗癲癇藥物，也被用於治療注意力缺陷多動症（ADHD），可以改善神經興奮和注意力障礙。
+C) Prednisolone：是一種類固醇，主要用於治療炎症和免疫系統疾病，不太可能用於CCD的神經興奮和注意力障礙。
+D) Atropine：是一種抗膽鹼藥物，用於治療膽鹼過多的症狀，如出汗、流涕等，不太可能用於CCD的神經興奮和注意力障礙。
+
+最終答案：
+B",B,1
+83,獸醫師,multiple_choice,CCD,MRI 微出血檢出最佳序列為？ A) FLAIR B) T2* C) T1 加權 D) DWI,What is the best sequence for MRI microbleeding detection? A) FLAIR B) T2* C) T1 weighted D) DWI,B,T2*-weighted MRI sequences are useful in identifying haemorrhagic brain lesions in CCD.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,8,"根據我的知識和常識，MRI（磁振造影）是一種非侵入性成像技術，用於檢測神經系統的異常。微出血（microbleeding）是犬認知功能障礙綜合症（CCD）的重要病理特徵之一。
+
+FLAIR（膽固醇取代序列）和T2*序列都是MRI檢測微出血的常用技術，但FLAIR更適合檢測深部結構中的微出血，而T2*序列則適合檢測淺層結構中的微出血。
+
+DWI（動態脈流成像）主要用於檢測腦部血液流動，與微出血的檢測關係不大。T1加權序列通常用於檢測軟組織和骨骼等結構，不適合檢測微出血。
+
+綜上所述，FLAIR和T2*序列都是檢測MRI微出血的好選擇，但如果要選擇一個最佳順序，我會建議先使用FLAIR序列來檢測深部結構中的微出血，再使用T2*序列來檢測淺層結構中的微出血。
+
+因此，我的答案是：A) FLAIR B) T2*
+
+［常識］MRI檢測的基礎知識包括了解各種成像技術的優缺點和應用領域。［1,3］
+
+參考資訊：
+[1] MRI for Brain Imaging in Dogs.pdf
+[2] Chinese Veterinary Materia Medica
+[3] Veterinary Radiology and Ultrasound.pdf",B,1
+84,獸醫師,multiple_choice,CCD,Salvin 行為量表下列何者不是高風險行為？ A) 走路撞牆 B) 認不得熟人 C) 糞便顏色改變 D) 迷路卡家具,Which of the following is not a high-risk behavior in the Salvin Behavior Scale? A) Walking against the wall B) Not recognizing acquaintances C) Change of feces color D) Lost card furniture,C,Table 1 lists abnormal behaviours; stool-colour change is not included.,‎Under diagnosis of canine cognitive dysfunction.pdf,3,"根據我對犬認知功能障礙綜合症（CCD）的了解，Salvin 行為量表是一種用於評估寵物動物行為的工具。其中，不識別熟人是高風險行為之一。
+
+不過，我們需要確認其他選項是否與高風險行為相關。
+
+A) 在牆壁上行走（Walking against the wall）不是典型的高風險行為，可能與焦慮或失衡有關。
+B) 不識別熟人（Not recognizing acquaintances）是高風險行為之一，表明認知功能障礙的跡象。
+C) 糞便顏色變化（Change of feces color）不是直接相關於行為量表中評估的內容。
+D) 損失卡地亞家具（Lost card furniture）可能與認知功能障礙有關，可能是高風險行為之一。
+
+綜合上述，我們可以得出以下結論：
+
+答案：A",A,0
+85,獸醫師,multiple_choice,CCD,Under-diagnosis 研究指出阻礙臨床診斷的主因之一？ A) 缺影像設備 B) 缺血檢指標 C) 缺標準化評估工具 D) 藥物副作用,Under-diagnosis research points out one of the main reasons that hinder clinical diagnosis? A) Imaging equipment B) Ischemia test indicators C) Ischemia assessment tool D) Side effects of drugs,C,Lack of a clear and validated diagnostic assessment tool limits diagnosis of CCD.,‎Under diagnosis of canine cognitive dysfunction.pdf,3,"根據題目，我們可以知道這個問題是在問 CCD 的診斷困難原因。根據我的理解和常識，犬認知功能障礙綜合症（CCD）的診斷實際上需要經過一系列評估和檢查，包括臨床表現、神經系統檢查、影像學檢查等。
+
+然後，我們可以逐一分析選項：
+
+A) 影像設備：影像設備確實是診斷工具之一，但是它並不是主要原因導致的下診斷。
+B) 缺血試驗指標：這個選項比較接近，因為 CCD 的確需要通過評估大腦血液循環等指標來進行診斷，但是缺血試驗指標不是最主要的原因。
+C) 缺血評估工具：這個選項看起來很有可能是正確答案，因為缺血評估工具，例如腦功能檢查、神經心理學評估等，都是用來評估 CCD 診斷的重要工具。如果沒有合適的缺血評估工具，就會導致下診斷。
+D) 藥物副作用：藥物副作用不是主要原因導致下診斷。
+
+綜上所述，我們可以選擇最正確的答案。
+
+最終答案是 C。",C,1
+86,飼主,multiple_choice,CCD,老犬夜間吠叫最常被飼主視為？ A) 正常老化 B) CCD 徵兆 C) 腸胃問題 D) 心臟病,Old dogs barking at night are most often regarded as by the owner? A) Normal aging B) CCD signs C) Gastrointestinal problems D) Heart disease,A,Behavioural changes are commonly regarded by owners as part of normal ageing.,‎Under diagnosis of canine cognitive dysfunction.pdf,3,"根據題目描述，老狗夜間吠叫通常被主人認為是正常的老化現象（A）或犬認知功能障礙綜合症（CCD）的跡象（B）。其他選項如消化問題（C）和心臟病（D），雖然可能導致夜間吠叫，但不是最常見的原因。
+
+理由：
+1. 犬老年時，身體各個系統會出現變化，包括認知功能、聽力、視力等。其中，犬老年相關的行為問題，如夜間吠叫，可能與正常的老化過程有關。
+2. 犬認知功能障礙綜合症（CCD）是一種常見的老年動物疾病，其特徵包括記憶力下降、學習能力減退、行為問題等。夜間吠叫可能是犬認知功能障礙綜合症的跡象之一。
+3. 消化問題和心臟病雖然可能導致夜間吠叫，但這些情況較少見，並不如正常老化或CCD那樣常見。
+
+因此，選項A（Normal aging）是最合理的答案。［1］
+
+[1]. ""Canine Cognitive Dysfunction"" by the American Animal Hospital Association.",D,0
+87,飼主,multiple_choice,CCD,若犬在水碗前發呆不喝水，屬於 Salvin 量表哪類？ A) 活動量 B) 方向定位 C) 食慾 D) 喝水行為,"If a dog is in a daze in front of the water bowl and does not drink water, which category does it belong to the Salvin scale? A) Activity B) Directional positioning C) Appetite D) Water drinking behavior",D,Standing over the water bowl but not drinking is scored under water-related behaviour.,‎Under diagnosis of canine cognitive dysfunction.pdf,4,"根據Salvin 等級（Salvin Scale）的定義，該等級用於評估犬隻認知功能障礙的程度。這個等級包括五個方面：活動性、方向性定位、觸覺、嗅覺和飲水行為。若一隻狗在面對水碗時處于迷糊狀態，無法喝水，我們可以認為它主要與飲水行為有關。
+
+因此，這隻狗最可能屬於飲水行為的范圍內。
+
+選項D) Water drinking behavior是正確答案。",UNK,0
+88,飼主,multiple_choice,CCD,愛犬確診 CCD 後，下列日常行為最能提供認知豐富化？ A) 一成不變散步 B) 嗅聞尋寶遊戲 C) 減少互動 D) 終止運動,"After the dog is diagnosed with CCD, the following daily behaviors best provide cognitive enrichment? A) 10% walk B) Sniffing treasure hunt C) Reduce interaction D) End of movement",B,Introducing new toys or scent-based treasure hunts improves cognition.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,13,"根據犬認知功能障礙綜合症（CCD）的特點，我們知道這種疾病會影響狗的認知和行為。提供適當的認知豐富活動是提高狗生活品質和減少焦慮的一個重要方面。
+
+Sniffing treasure hunt 是一種刺激犬嗅覺和探索能力的活動，能夠幫助狗提升認知功能，並且是一種低強度、舒適的活動。這類型的活動不需要高強度運動或過多的互動，可以根據狗的情況進行調整。
+
+因此，我們可以結合常識和專業知識得出以下答案：
+
+B) Sniffing treasure hunt
+
+［常識］提供認知豐富活動對於犬認知功能障礙綜合症的管理是有幫助的，例如行走、嗅覺刺激等。這些活動可以幫助狗保持一定的認知功能和生活品質。
+
+參考資訊：
+[1] “Canine Cognitive Dysfunction” by the American Animal Hospital Association (AAHA)
+[2] “Cognitive Function in Dogs” by the Journal of Veterinary Behavior
+[3] “Dog Cognition: A Review of the Literature” by the Journal of Comparative Psychology",A,0
+89,飼主,multiple_choice,CCD,狗在門鉸鏈側等待放行屬於哪類 CCD 指標？ A) 空間定向障礙 B) 睡眠障礙 C) 飲食改變 D) 攻擊性,What type of CCD indicator does the dog wait for release on the door hinge side? A) Spatial dislocation B) Sleep disorder C) Dietary changes D) Aggressive,A,Orientating to the hinge side of doors is listed under spatial disorientation.,‎Under diagnosis of canine cognitive dysfunction.pdf,3,"根據犬認知功能障礙綜合症（CCD）的特點，犬隻可能會表現出各種行為問題。等待在門把手旁邊是犬隻試圖尋求安全感和安慰的跡象之一，這通常與空間定位能力受損有關。
+
+因此，最可能的答案是 A) 空間失調（Spatial dislocation）。
+
+［常識］空間失調是犬隻CCD的一個重要指標，表現為犬隻在家中難以找到門把手、窗戶或其他熟悉的地方。
+
+
+參考資源：
+1. Canine Cognitive Dysfunction (CCD) - American Animal Hospital Association（AAHA）[1]
+2. Canine Cognitive Dysfunction: A Guide for Veterinary Practitioners - Journal of the American Animal Hospital Association [2]
+
+Source_files：
+[1] https://www.aaha.org/wp-content/uploads/2020/03/Canine-Cognitive-Dysfunction.pdf
+[2] Canine Cognitive Dysfunction: A Guide for Veterinary Practitioners. J Am Anim Hosp Assoc 2019;55(3):e1-e11. doi: 10.5326/JAAHA-MS-01734 [3]
+
+答案：
+A",A,1
+90,飼主,multiple_choice,CCD,下列何者為 CCD 夜間常見症狀？ A) 過度飲水 B) 連續睡眠 10h C) 夜間醒來徘徊 D) 清晨精力充沛,Which of the following are common symptoms of CCD at night? A) Overdrinking B) Continuous sleep for 10h C) Wake up at night D) Energetic in the morning,C,Frequency of waking during the night and aimless wandering is a common sign.,‎Under diagnosis of canine cognitive dysfunction.pdf,4,"根據犬認知功能障礙綜合症（CCD）的特徵，CCD的患者可能會出現一些夜間行為異常的症狀。因此，我們可以推測選項C) Wake up at night是最有可能的答案。
+
+理由：
+ CCD 的患者可能會出現夜間醒來、不安、焦慮等症狀，這些症狀通常在晚上或清晨發生［2］。
+
+
+所以，我的答案是：
+
+C",C,1
+91,學生,true_false,CCD,CCD 與人類 Alzheimer 病在 β-類澱粉蛋白累積機制上相似。,CCD is similar to human Alzheimer disease in the β-amyloid accumulation mechanism.,TRUE,Dogs share neuropathologic changes including β-amyloid deposition similar to AD.,‎Cognitive Dysfunction Syndrome A Disease of Canine and Feline Brain Aging.pdf,6,"CCD（犬認知功能障礙綜合症）與人類阿茲海默病在β-淀粉樣蛋白（β-amyloid）積累機制上是有所不同。研究表明，CCD的β-amyloid積累主要與血清素系統異常相關，而非典型的人類阿茲海默病中見到的腺苷酸環化酶（ACHE）活性降低和β-淀粉樣蛋白生成增加。
+
+因此，答案是：
+False
+
+參考資訊：
+
+* 關於CCD的β-amyloid積累機制有多個研究論文，包括但不限於：
++ “Canine Cognitive Dysfunction: A Review of the Literature”［1］
++ “The Canine Model of Aging and Alzheimer's Disease”［2］
+* 人類阿茲海默病的β-淀粉樣蛋白積累機制的描述見於多個文獻，包括：
++ “Alzheimer's disease: a review of the literature”［3］
+
+整理參考資訊：
+
+[1] Canine Cognitive Dysfunction: A Review of the Literature - American Journal of Veterinary Research
+[2] The Canine Model of Aging and Alzheimer's Disease - Journal of Gerontology: Medical Sciences
+[3] Alzheimer's disease: a review of the literature - Nature Reviews Neuroscience
+
+備註：
+［常識］：β-淀粉樣蛋白（β-amyloid）是一種與人類阿茲海默病相關的蛋白質，其積累被認為是該疾病的一個關鍵機制。然而，CCD的β-amyloid積累機制與人類阿茲海默病不同。［1］",FALSE,0
+92,學生,true_false,CCD,間丘黏連厚度 >5 mm 可支持 CCD 診斷。,Intermodal adhesion thickness >5 mm can support CCD diagnosis.,FALSE,Thickness ≤ 5 mm supports CCD diagnosis; values above do not.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,8,"這個問題是關於犬認知功能障礙綜合症（CCD）的診斷。根據我的知識，Intermodal adhesion thickness並不是CCD的診斷標準或指標。
+
+因此，我回答是：**False**
+
+原因：目前沒有相關文獻支持Intermodal adhesion thickness >5 mm可以用於CCD的診斷。
+
+補充常識：
+［常識］犬認知功能障礙綜合症（CCD）的診斷主要依賴於臨床表現、神經學檢查和影像學檢查等，而非單一指標。診斷需要考慮多個因素，包括病史、體格檢查、神經功能評估等。
+
+
+補充常識來源：
+［1］ ""Canine Cognitive Dysfunction"" by Dr. Debra M. Eldredge, DVM, MS (PetMD)",FALSE,1
+93,學生,true_false,CCD,MCT 補充對狗腦能量幾乎無作用。,MCT supplementation has little effect on dog brain energy.,FALSE,MCTs provide an alternative energy source for the brain and improve cognition.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,11,"對於這個問題，我會根據我的知識和經驗給出答案。
+
+MCT（中鏈三酰甘油）是指一種由脂肪酸組成的化合物，常用作食補或藥物。它們可以被轉化為能量，並且有助於改善某些神經疾病患者的狀況，但對於犬類腦部能量的影響並不明確。
+
+根據一些研究發現，MCT 可以被動員到大腦中作為能量來源，特別是在高需求的情況下，比如在運動或其他需要大量能量的地方。然而，我們也知道，MCT 的效果可能受到個體差異、服用劑量和時間等因素的影響。
+
+綜上所述，如果題目問的是MCT對犬腦部能量的影響，那麼答案應該是「True」。
+
+原因：一些研究表明，MCT 可以被動員到大腦中作為能量來源。［2］
+
+整理參考資訊、我的理解和常識：
+
+* MCT 是一種可以被轉化為能量的化合物。
+* 它們可以被動員到大腦中作為能量來源。
+* MCT 的效果可能受到個體差異、服用劑量和時間等因素的影響。
+
+常識：［1］
+
+源文件：
+[1] Chinese Veterinary Journal
+[2] Nutrients",TRUE,0
+94,學生,true_false,CCD,DNMP 測驗主要評估聽覺記憶。,The DNMP test mainly evaluates auditory memory.,FALSE,"DNMP evaluates short-term visuospatial memory, not auditory memory.",‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,7,"DNMP（Double Negation of Motor Planning）測試主要評估的是動作計劃能力，而不是聽覺記憶。DNMP測試是一種評估犬隻認知功能的工具，特別針對犬隻認知功能障礙綜合症（CCD）的診斷與監測。
+
+［常識］狗隻的聽覺記憶可以通過其他特殊的測試來評估，如聽覺檢查、耳朵對音頻刺激的反應等。[1]
+
+答案：False",FALSE,1
+95,學生,true_false,CCD,CCD 行為症狀常被飼主誤認為正常老化。,CCD behavioral symptoms are often mistaken for normal aging by the owner.,TRUE,Behavioural changes are commonly ignored or regarded as normal ageing.,‎Under diagnosis of canine cognitive dysfunction.pdf,3,"CCD（犬認知功能障礙綜合症）的行為症狀常被擁有者誤以為是正常老化的一部分。這可能導致診斷和治療延遲。
+
+　　在CCD的患者中，記憶力下降、注意力不集中、行為變異（如吠叫或排泄異常）等症狀經常出現，但擁有者可能誤以為這些是老年犬的正常變化。然而，這些症狀其實是CCD的典型表現，需要及時診斷和治療。
+
+　　在臨床上，我們需要通過進一步的檢查和評估來確認是否為CCD的發作，並制定適當的護理計畫。
+
+　　[常識］老年犬可能會出現一些正常的生理變化，如體重減輕、步態不穩等，但這些與CCD的行為症狀有明顯差異。例如，老年犬可能會吠叫或排泄異常，但這通常是由於其他原因如疼痛、便秘等引起的，而不是真正的記憶力下降或注意力不集中。
+
+　　參考資源：
+
+　　[1] ""Canine Cognitive Dysfunction""（犬認知功能障礙綜合症）-American Animal Hospital Association（AAHA）
+　　[2] ""CCD and Aging in Dogs"" - Veterinary Partner
+　　[3] ""Canine cognitive dysfunction: a review of the literature"" – Journal of Small Animal Practice",UNK,0
+96,學生,true_false,CCD,DISHA 中的 H 代表 housesoiling。,H in DISHA stands for housesoiling.,TRUE,DISHA: … housesoiling is included.,‎Cognitive Dysfunction Syndrome A Disease of Canine and Feline Brain Aging.pdf,6,"根據DISHA的縮寫解釋，我們知道DISHA是犬認知功能障礙綜合症（Canine Cognitive Dysfunction）的四個核心特徵之一，分別代表的是：
+
+* D：Disorientation（迷路行為）
+* I：Interactions（與人互動困難）
+* S：Sleep Disturbances（睡眠問題）
+* H：House soiling（房子裡拉屎）
+* A：Apathy（不思議）
+
+所以，正確的答案是True。
+
+[常識］犬認知功能障礙綜合症（Canine Cognitive Dysfunction, CCD）是一種老年犬疾病，影響其認知功能，包括記憶力、學習能力、注意力和社交行為等。[1]
+
+[源文件]：[1] ""Canine Cognitive Dysfunction"" by American Animal Hospital Association (AAHA)",UNK,0
+97,學生,true_false,CCD,CCD 患犬與末期 AD 人類同樣無法自行進食。,CCD dogs with terminal AD humans are also unable to eat on their own.,FALSE,Dogs do not show such extensive impairments; ability to eat is retained.,‎Cognitive Dysfunction Syndrome A Disease of Canine and Feline Brain Aging.pdf,6,"不幸的是，CCD（犬認知功能障礙綜合症）狗的確可能會出現吞嚥困難和喂養問題，特別是在疾病的晚期。這與阿茲海默病（AD）的類似情況相同，患者也可能會遇到同樣的問題［1］。
+
+答案：True
+
+參考資源：
+
+[1] M. E. Smith, et al., ""Canine Cognitive Dysfunction: A Review of the Literature,"" Journal of Veterinary Internal Medicine, vol. 32, no. 4, 2018, pp. 1045-1053.
+
+註釋：
+［常識］：阿茲海默病是一種神經退行性疾病，影響人們的認知功能，包括記憶、語言和問題解決能力。犬類的CDD同樣是由於神經退行性變化引起的認知功能障礙，與阿茲海默病有相似之處［1］。
+
+source_file：
+[1] .pdf",TRUE,0
+98,學生,true_false,CCD,Omega-3 PUFA 被列為 CCD 建議營養素之一。,Omega-3 PUFA is listed as one of the recommended nutrients for CCD.,TRUE,Box 7 lists omega-3 polyunsaturated fatty acids among nutraceuticals.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,13,"Ω-3多不飽和脂肪酸（Omega-3 PUFA）確實是犬認知功能障礙綜合症（CCD）的建議營養素之一。 Omega-3 PUFA，尤其是 EPA 和 DHA，是神經健康和發育的關鍵成分。研究表明，它們對於改善神經傳導速度、減少炎症反應以及支持大腦功能至關重要［1］。
+
+　　Ω-3多不飽和脂肪酸是來自食物或補充劑，例如魚油，富含EPA和DHA，這些脂肪酸對於神經健康、發育和炎症反應都具有重要作用。它們被用作犬隻的營養補充品，以幫助改善大腦功能、抑制炎症和促進整體健康。
+
+　　[常識］營養支持是犬隻康復和預防的一部分，包括使用適當的食物或補充劑。 
+
+　　參考資料：
+1.      Grandin, T., & DePorter, D. (2014). The Road to Resilience: A Guide for Families of Children and Youth with Physical Disabilities or Mental Health Conditions. Waltham, MA: Tufts University Cummings School of Veterinary Medicine.
+
+　　整理參考資訊： True",TRUE,1
+99,獸醫師,true_false,CCD,缺乏標準化問卷是低診斷率原因之一。,The lack of standardized questionnaires is one of the reasons for the low diagnosis rate.,TRUE,Lack of a validated diagnostic assessment tool limits CCD diagnosis.,‎Under diagnosis of canine cognitive dysfunction.pdf,3,"這個問題的答案是：True。
+
+因為犬認知功能障礙綜合症（CCD）的診斷需要依靠患者的主觀評估和實驗室檢查，但缺乏標準化的問卷工具，可能會導致診斷率降低。［1］
+
+參考資訊：
+[1] Schatz, R. B., & Lord, L. K. (2017). Canine cognitive dysfunction: A review of the literature. Journal of Veterinary Behavior, 19, 53-64.
+
+常識：犬認知功能障礙綜合症（CCD）的診斷需要依靠患者的主觀評估和實驗室檢查。",TRUE,1
+100,獸醫師,true_false,CCD,Levetiracetam 僅在人類 AD 有效，犬無佐證。,"Levetiracetam is only valid in human AD, and no evidence is available to dogs.",FALSE,Levetiracetam improves cognitive performance in dogs and AD models.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,12,"Levetiracetam（利維拉塞）的有效性在人類中已經被研究和證實，但是對於犬類的研究數據尚未充分，特別是在犬類認知功能障礙綜合症（CCD）的治療上。然而，在現有的資訊中，也有少量的報告指出Levetiracetam在某些犬類中可能具有助益，尤其是在控制癲癇和改善神經功能方面［2］。
+
+因此，我們不能完全說Levetiracetam在犬類中無效，但是仍然需要更多的研究和證據來支持它的使用和有效性。
+
+[常識] 寵物藥物治療通常需要根據個體情況進行調整和監測，並且要與獸醫合作，確保藥物治療的安全性和有效性［1］。
+
+答案：False",FALSE,1
+101,獸醫師,true_false,CCD,MRI 腦室擴大亦見於正常老犬，非 CCD 專一指標。,"MRI ventricular enlargement is also seen in normal old dogs, not a CCD-specific indicator.",TRUE,Ventricular enlargement can be found without evidence of CCD.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,8,"根據我的知識和經驗，我可以說：
+
+MRI ventricular enlargement（腦室擴大）在老年犬中是相對常見的現象，無論是否患有犬認知功能障礙綜合症（CCD），這並不是 CCD 的特異性指標。
+
+　　因此答案是：False
+
+參考資訊：
+
+*   一些研究表明，老年犬中可能出現腦室擴大，但這不一定與 CCD 有直接關係 [1]。
+*   CCD 的診斷通常需要綜合考慮多個因素，包括臨床表現、神經學評估和影像檢查結果等。
+
+整理參考資訊：
+[1] Wang et al. (2019). Canine Cognitive Dysfunction: A Review of the Current State and Future Directions. Journal of Veterinary Internal Medicine, 33(3), 655-664. doi: 10.1111/jvim.15324",FALSE,0
+102,獸醫師,true_false,CCD,老年小型犬較大型犬更易出現微出血。,Small elderly dogs are more likely to experience minor bleeding than large dogs.,TRUE,Older small-breed dogs were over-represented in micro-haemorrhage cases.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,8,"這個陳述是錯誤的。實際上，大犬較小犬更容易出現輕微出血的情況［1］。
+
+參考資訊：
+
+[1] 小型老年犬不太可能比大犬更容易出現輕微出血情況，事實上，許多研究都表明了這一點。例如，一項研究發現，與年輕小犬相比，老年小犬的出血風險較高［2］。
+
+答案：False
+
+Source：
+[1] ...pdf
+[2] Chinese Veterinary Materia Medica",FALSE,0
+103,獸醫師,true_false,CCD,T2* 序列有助偵測腦內微出血。,The T2* sequence helps detect micro-hemorrhages in the brain.,TRUE,T2*-weighted imaging is useful for detecting cerebral micro-haemorrhage.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,8,"T2*序列（T2星序列）確實可以用於檢測腦部微出血（micro-hemorrhages）。這是因為微出血會導致局部磁化不均勻，影響T2*信號的恢復時間。因此，T2*序列可以幫助獸醫們檢測和診斷一些與微出血相關的神經系統疾病。
+
+常識：在影像學方面，MRI（核磁共振成像）技術提供了多種序列選擇，包括T1、T2、T2*等，每種序列都有其特點和應用。其中，T2*序列特別適合檢測微出血和鐵性變化。
+
+答案：True",TRUE,1
+104,獸醫師,true_false,CCD,Selegiline 可能僅產生非特異性活躍而非真正改善認知。,Selegiline may only produce nonspecific activity rather than truly improve cognition.,TRUE,Selegiline may produce nonspecific hyperactivity rather than true cognitive improvement.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,12,"Selegiline是一種可用於治療犬認知功能障礙綜合症（CCD）的藥物，但它的作用機制仍有爭議。雖然有些研究表明Selegiline可以改善犬的認知功能，但也有一些研究指出其效果可能是非特異性的。因此，題目的表述 ""Selegiline may only produce nonspecific activity rather than truly improve cognition"" 可能是正確的。
+
+常識： Selegiline是一種多巴胺氧化酶抑制劑（MAOI），它通過抑制神經元中多巴胺的分解來改善認知功能。然而，Selegiline的效果可能受到個體差異和其他因素的影響。［常識］
+
+答案：True",TRUE,1
+105,飼主,true_false,CCD,環境刺激增加可延緩 CCD 退化。,Increased environmental stimulation can delay CCD degeneration.,TRUE,Cognitive enrichment has been shown to delay cognitive decline.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,13,"這個問題很好！根據我的知識和經驗，我可以說：
+
+**False**
+
+犬認知功能障礙綜合症（CCD）是一種不可逆轉的神經退行性疾病，增加環境刺激通常不會延遲其退行性的進展。事實上，過度的環境刺激可能會加重動物的情緒壓力和焦慮，從而對 CCD 的症狀有所惡化。
+
+［常識］：CCD 的診斷通常需要通過一系列的心理測試和神經檢查來進行，包括認知功能評估、情緒狀態評估等。［1,2］
+
+參考資訊：
+
+* [1] Owen et al. (2012). Characteristics of canine cognitive dysfunction: a review. Journal of Veterinary Behavior, 7(5), 347-355.
+* [2] Hart et al. (2016). Canine Cognitive Dysfunction: A Review of the Literature. Journal of Veterinary Internal Medicine, 30(3), 641-652.
+
+整理的參考資訊：
+
+[1] Owen et al. (2012) pdf
+[2] Hart et al. (2016) Journal of Veterinary Internal Medicine",FALSE,0
+106,飼主,true_false,CCD,若犬夜吠屬 CCD，一定無法改善。,If the genus CCD of the genus genus is definitely not improved.,FALSE,Sleep-wake disturbances可透過多種治療策略改善.,‎Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf,12,"對於犬認知功能障礙綜合症（CCD），我需要更多資訊來回答這個題目。但根據我的知識，我可以確認以下幾點：
+
+犬認知功能障礙綜合症（CCD）是一種複雜的疾病，可能由多種因素引起，包括遺傳、環境和健康問題等。目前還沒有確切的治療方法，可以根據不同情況進行個體化治療。
+
+但是，如果題目中所指的“genus CCD”是指犬類認知功能障礙綜合症，我可以回答如下：
+
+如果題目指的是犬類認知功能障礙綜合症（CCD），而提到“genus CCD”的確定性沒有改善，則我需要更多資訊來確認。然而根據我的理解，CCD的治療通常需要個體化，並且可能會涉及藥物、行為治療和生活方式調整等多方面的干預。
+
+因此，答案是：
+
+False
+
+［常識］：犬類認知功能障礙綜合症（CCD）是一種複雜的疾病，需要個體化治療，並可能涉及藥物、行為治療和生活方式調整等多方面的干預。［1］",FALSE,1
+107,飼主,true_false,CCD,狗在水碗前發呆可能是 CCD 警訊之一。,The dog is dazed in front of the water bowl may be one of the CCD warnings.,TRUE,Standing over the water bowl but not drinking is a recognised sign.,‎Under diagnosis of canine cognitive dysfunction.pdf,4,"這個描述聽起來很熟悉。犬認知功能障礙綜合症（CCD）是一種常見的中老年犬疾病，可能導致各種類型的認知和行為問題。
+
+狗在水碗前嗅盲（即徘徊、找不到水碗或無法喝水）確實是CCD的一個警告跡象之一。這可能是由於犬隻對環境的認知能力下降，導致他們難以定位水碗或完成基本的飲食行為。
+
+在臨床上，我們會根據狗的行為和症狀進行評估，並與業餘訓練師或飼主合作，以確保犬隻得到適當的照顧和治療。
+
+常識：犬認知功能障礙綜合症（CCD）是一種多因素導致的神經退行性疾病，可能會影響狗的認知、動作和行為能力。它通常在中老年犬中發生，並且可以通過臨床評估和監測來診斷。
+
+答案：True",TRUE,1
+108,飼主,true_false,CCD,CCD 只會在 14 歲以上犬隻才出現。,CCD only appears in dogs over the age of 14.,FALSE,Prevalence 3.4 % already seen in 8–10-year-old dogs.,‎Under diagnosis of canine cognitive dysfunction.pdf,3,"CCD（犬認知功能障礙綜合症）的典型年齡範圍為5-13歲之間，尤其是老年犬。這種疾病不僅限於14歲以上的狗，也可能影響較年輕的犬隻。
+
+然而，在給定的選項中，我們需要判斷是否只有14歲以上的狗才會出現CCD。根據我的了解和常識，這個陳述是錯誤的，因為CCD可以在5-13歲之間的老年犬或較年輕的犬身上發生。
+
+最終答案：False
+
+［常識］：犬認知功能障礙綜合症（CCD）是一種常見於老年犬的神經退行性疾病，可能導致記憶力、學習能力和情緒變化等問題。診斷和護理CCD需要積累豐富的臨床經驗和知識，並且應該根據個體狗隻的情況進行調整。
+
+參考資訊：
+[1] ""Canine Cognitive Dysfunction"" by the American Animal Hospital Association (AAHA) [2] ""老年犬認知功能障礙綜合症的診斷和護理"" by Chinese Veterinary Materia Medica [3] ""犬認知功能障礙綜合症：臨床表現和治療方法"" by Journal of Veterinary Medicine",FALSE,1
+109,飼主,true_false,CCD,犬迷路卡在家具後一定是視力喪失，與 CCD 無關。,"If a dog gets stuck in the furniture, it must be a loss of vision and has nothing to do with CCD.",FALSE,"Getting stuck behind furniture is a CCD indicator, not solely vision loss.",‎Under diagnosis of canine cognitive dysfunction.pdf,3,"這個問題的答案是：**False**
+
+犬認知功能障礙綜合症（CCD）可能會導致動作協調和平衡能力的喪失，包括在家中移動時容易摔倒或卡住。因此，即使是一隻狗在家中的家具中卡住，也不一定是由於視力問題引起的，而有可能與CCD的相關症狀有關。
+
+［常識］：犬認知功能障礙綜合症（CCD）是一種動物神經疾病，影響犬類的認知功能、行為和身體健康。診斷和治療該疾病需要由專業獸醫進行，並可能涉及多個領域的專家合作。
+
+參考資源：
+
+* 國際犬隻認知功能障礙綜合症協會（CCD International Foundation）
+* 《犬隻神經系統疾病》一書，內容包括了犬隻認知功能障礙綜合症的診斷和治療方法。[1]
+* 《動物精神醫學》一文，提到了犬隻認知功能障礙綜合症的臨床表現和治療策略。[2]
+
+整理參考資訊：
+
+1. 國際犬隻認知功能障礙綜合症協會（CCD International Foundation）
+2. 《犬隻神經系統疾病》一書
+3. 《動物精神醫學》一文
+
+答案：False",FALSE,1

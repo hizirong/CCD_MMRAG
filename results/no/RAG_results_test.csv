@@ -1,0 +1,37 @@
+﻿id,actor,type,domain,question,answers,question_en,RAG,pdf_file,page,query_for_embed,llm_response,predicted,llm_ctx,is_correct
+1,飼主,true_false,中醫,根據中獸醫的概念，「虛證 (Deficiency Pattern)」通常出現在年輕且健康的動物身上,False,"AccordingtoTCVMconcepts, ""DeficiencyPattern"" istypicallyseeninyoungandhealthyanimals",Deficiency Patterns are often seen in geriatric patients with chronic illnesses.The Deficiency Pattern is often seen in older patients with chronic illnesses.,Herbology_ocr.pdf,563,"According to TCVM concepts, ""Deficiency Pattern"" is typically seen in young and healthy animals","根據提供的參考資料，我們可以找到與題目相關的資訊：
+
+*   《文獻》中提到，「The Deficiency Pattern is often seen in older patients with chronic ang」［1］
+*   《Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf》中提到，「The blood deficiency pattern is seen in the liver, spleen, and heart. A Yinde-ﬁciency pattern is similar to a deﬁciency heat pattern (or False Heat) and is seen in all ﬁve Yinorgans. Yangdeﬁciencypattern is similar to a deﬁciency cold pattern (False Col」［2］
+
+根據這些資訊，我們可以得出結論：《文獻》中提到，「The Deficiency Pattern is often seen in older patients with chronic ang」，而不是young and healthy animals。
+
+因此，答案是：
+
+<說明、理由、分析>
+ 
+答：False
+
+
+<空行>
+
+答案: False
+
+
+資料來源：
+[1] unknown.pdf
+[2] Canine Cognitive Dysfunction Pathophysiology Diagnosis and Treatment.pdf",FALSE,"['disorders that may mimic signs of cognitive impairment. In particular, a differential\ndiagnosis of a forebrain tumor is typically a top consideration in an elderly dog with\nbehavioral changes. Organ dysfunction (eg, liver, kidneys) and pain may also leadto clinical signs that may be confused with co', 'tic tests to find, then fix, the \ndamaged part. However, TCVM has a more energetic \nand holistic view of the body. TCVM takes all symptoms \ninto consideration in order to identify a special Zheng, \nor Pattern of disease, and then it uses this Pattern to \nselect treatments that can help bring the bod', ' 8 (TM)—nourishes Marrow, generates Blood, \ninvigorates Yang \nAscites and Edema \nAscites is most commonly seen in small animals in \ncases of Heart or Liver disease or with neoplasia. Edema \ncan been seen after trauma or with poor circulation. \nThe formulas listed may not act as quickly and dramati- ', ' and “disease \noccurs when there is loss of the balance between Yin and \nYang.” According to the Eight Principles theory, any \ndisease may be categorized as either Excess or Deficiency \nwhen the Yin and Yang equilibrium is broken. \nThe Deficiency Pattern is often seen in older patients \nwith chronic', 'ang, warms Channels \nWandering (Wind) Bi This syndrome is not seen as \ncommonly in animals as in humans. There is invasion \nof exogenous pathogens, characterized by wandering \nmuscle and joint pain, especially stifles, hocks, carpi, \nand elbows. There is acute onset, often characterized by \nfever or', 'is seen in the lung, heart, spleen, and kidney. The blood deﬁ-ciency pattern is seen in the liver, spleen, and heart. A Yinde-ﬁciency pattern is similar to a deﬁciency heat pattern (orFalse Heat) and is seen in all ﬁve Yinorgans. Yangdeﬁciencypattern is similar to a deﬁciency cold pattern (False Col', 'ional problems in young animals \nCombine with: Codonopsis Dang Shen, Atractylodes \nBai Zhu \nHistory and Comments: \n1. A good quality fruit peel is large, dark purple, and \nshiny, and the seeds should be full, round, and pale \nyellow. \n2. Fruits, leaves, and roots can be used for expelling \nroundworm', 'l treatments. Birds and \nferrets are more easily treated with liquids and not \ntopical preparations. Dogs are independent—some \nprefer powders, capsules, teapills, or raw herbs cooked \nin food, and some even prefer topical preparations. \nAge is also a consideration. Very young or very old \nanimals s']",1
+2,飼主,multiple_choice,中醫,"在中獸醫的「八綱辨證 (Eight Principles)」中，哪一對概念描述了疾病的深淺層次，例如「表 (Exterior)」與「裡 (Interior)」？◦
+A) 寒 (Cold) 與 熱 (Heat)
+B) 虛 (Deficiency) 與 實 (Excess)
+C) 表 (Exterior) 與 裡 (Interior)
+D) 陰 (Yin) 與 陽 (Yang)",C,"IntheTCVM ""EightPrinciples"" method, whichpairofconceptsdescribesthedepthofa disease, suchas ""Exterior"" and ""Interior""?
+A) ColdandHeatB) DeficiencyandExcessC) ExteriorandInteriorD) YinandYang","The Eight Principles method further characterizes disease by using pairs of opposite Patterns, which include Exterior or Interior, Heat or Cold, Excess or Defi ciency, and Yang or Yin.",Herbology_ocr.pdf,15,"In the TCVM ""Eight Principles"" method, which pair of concepts describes the depth of a disease, such as ""Exterior"" and ""Interior""?
+A) Cold and Heat
+B) Deficiency and Excess
+C) Exterior and Interior
+D) Yin and Yang","            根據TCVM的八個原則方法，描述疾病深度的對概念是「Exterior」和「Interior」。
+
+
+            <空行>
+            答案: C",C,"['g. \n% English Name Chinese Pin-Yin Actions \n16.7 Codonopsis Dang Shen Strengthen the Middle \nBurner and tonify Qi, \npromote the \ntransporting and \ntransforming function \nof the Spleen and \nStomach \nWarm the Yang of the \nMiddle Burner and \ndisperse Cold of the \nSpleen and Stomach \nHarmonize the other', ', tonify Yang Qi, \nnourish Yin and Blood, harmonize the Interior to allevi- \nate pain Table 22.5. Ingredients and actions of Huang Qi Jian Zhong \nTang. \n% English Name Chinese Pin-Yin Actions \n10.8 Cinnamomum = Gui Zhi Warm Yang Qi to \ndispel Cold \nHarmonize the other \nherbs and tonify Qi \nNourish S', 'nment gradually \nleads to generation of \nCold in the Stomach or \nSpleen. \nYang Deficiency \n(Interior damages Yang, or Ming- \nDeficiency men Fire weakness because \nCold) of aging leads to \ndevastated Yang or \ncollapsed Qi. Cold foods and drinks \nStomach and Spleen, or \nexposure to coldness and \nLong-', 'duce urinary frequency and \nstop incontinence \nIndications: Deficiency of the Kidney Qi and Yang with \nDeficient Cold in the Bladder characterized by frequent \nclear and prolonged urination or enuresis, accompa- \nnied by a pale tongue with a white coating and a sub- \nmerged, frail, or slow pulse’ \nD', 'Yang \nPattern (Excess) of sores/ulceration. The Yin Pattern \nshould be treated with a reinforcing method, and the \nYang Pattern should be treated with a reducing method. \nAccording to the TCVM Pattern of sores/ulcerations \nand the patient’s condition, there are different treat- \nments, such as remov', 'xterior Wind-Heat and purge Interior \nHeat \nIndications: Excess Patterns of both the Interior and \nExterior due to Wind invasion and internal accumula- \ntion of Heat, manifested as aversion to Cold, high \nfever, constipation, dark yellow urine, papules, pus- \ntules, eczema and pruritus, red and dry ', ' loss of the balance \nbetween Yin and Yang.” The Eight Principles method \nfurther characterizes disease by using pairs of opposite \nPatterns, which include Exterior or Interior, Heat or \nCold, Excess or Deficiency, and Yang or Yin. Deficiency \nPatterns are then divided into four categories: Qi \nDefi', 'aturia, uterine or vaginal bleeding, \nintraabdominal bleeding, and subcutaneous hemor- \nrhage such as pettechiae and echymoses. TCVM Bian \nZheng or Pattern Differentiation of bleeding may involve \nZang-Fu organ(s), Heat and Cold, Deficiency and Excess, \nand acute and chronic nature of the Blood loss']",1
